@@ -1,3 +1,4 @@
+using Test;
 using UnityEngine;
 
 namespace Core.Manager
@@ -17,6 +18,8 @@ namespace Core.Manager
             // var tmp = await AddressablesManager.LoadAssetAsync<GameObject>("3DTile");
             // var go = Instantiate(tmp).GetComponent<_TileController>();
             // go.Execute();
+            _CreateJson.TestCreateJson();
+            _CreateJson.TestLoadJson();
         }
 
         // Update is called once per frame
