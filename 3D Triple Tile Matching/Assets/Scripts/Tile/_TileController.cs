@@ -5,8 +5,6 @@ namespace Core.Tile{
     public class _TileController : MonoBehaviour
     {
         [SerializeField] private SpriteRenderer[] _spriteRenderers;
-
-
         private int _id = 5;
 
         public void Execute(){

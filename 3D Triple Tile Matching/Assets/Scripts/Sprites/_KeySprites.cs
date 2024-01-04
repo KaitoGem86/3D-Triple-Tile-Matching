@@ -2,10 +2,10 @@ namespace Core.Manager
 {
     public static class _KeySprites
     {
-        private const string _spritePath = "";
+        private const string _tileSpritePath = "";
 
         public static string GetKeyTileSprite(int id){
-            return _spritePath + id.ToString();
+            return _tileSpritePath + id.ToString();
         }
     }
 }
