@@ -1,3 +1,4 @@
+using Core.Manager;
 using UnityEngine;
 
 namespace Core.Tile{
@@ -6,7 +7,7 @@ namespace Core.Tile{
         [SerializeField] private SpriteRenderer[] _spriteRenderers;
 
 
-        private int _id;
+        private int _id = 5;
 
         public void Execute(){
             SetSprite();
@@ -16,8 +17,12 @@ namespace Core.Tile{
             Debug.Log("Tile Clicked");
         }
     
-        private void SetSprite(){
-              
+        private async void SetSprite(){
+            var tmp = await _SpriteManager.GetTileSprite(_id);
+            foreach (var spriteRenderer in _spriteRenderers)
+            {
+                spriteRenderer.sprite = tmp;
+            }
         }
     }
 }
