@@ -1,4 +1,3 @@
-using Test;
 using UnityEngine;
 
 namespace Core.Manager
@@ -13,7 +12,7 @@ namespace Core.Manager
         }
 
         // Start is called before the first frame update
-        /*async*/ void Start()
+        void Start()
         {
         }
 

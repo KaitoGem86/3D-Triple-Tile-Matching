@@ -23,7 +23,7 @@ namespace Core.Tile{
             }
         }
 
-        public void SetSprite(int id){
+        public void InitTileCube(int id){
             _id = id;
             SetSprite();
         }

@@ -7,6 +7,12 @@ namespace Core.Extensions.File
         private static string _jsonPath = Application.dataPath + "/";
         private const string _jsonExtension = ".json";
 
+
+        /// <summary>
+        /// Get Path with json name
+        /// </summary>
+        /// <param name="jsonName"></param>
+        /// <returns></returns>
         public static string GetJsonPath(string jsonName)
         {
             return _jsonPath + jsonName + _jsonExtension;
