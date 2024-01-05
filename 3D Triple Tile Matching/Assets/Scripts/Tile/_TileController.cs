@@ -15,12 +15,17 @@ namespace Core.Tile{
             Debug.Log("Tile Clicked");
         }
     
-        private async void SetSprite(){
+        public async void SetSprite(){
             var tmp = await _SpriteManager.GetTileSprite(_id);
             foreach (var spriteRenderer in _spriteRenderers)
             {
                 spriteRenderer.sprite = tmp;
             }
+        }
+
+        public void SetSprite(int id){
+            _id = id;
+            SetSprite();
         }
     }
 }

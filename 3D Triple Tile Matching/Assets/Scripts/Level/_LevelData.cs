@@ -1,10 +1,18 @@
-using UnityEngine;
+using System;
+using System.Collections.Generic;
 
 namespace Core.Level{
-    [CreateAssetMenu(fileName = "LevelData", menuName = "Level/LevelData")]
-    public class _LevelData : ScriptableObject{
-        [SerializeField] private _TileElementData[] _tileElementDatas;
+    [Serializable]
+    public class _LevelData{
+        public List<_TileElementData> _tileElementDatas;
 
-        public _TileElementData[] TileElementDatas => _tileElementDatas;
+        public _LevelData(_LevelDataSO levelDataSO){
+            _tileElementDatas = new List<_TileElementData>();
+            // for(int i = 0; i < levelDataSO.TileElementDatas.Length; i++){
+            //     _tileElementDatas[i] = levelDataSO.TileElementDatas[i];
+            // }
+        }
+
+        // public List<_TileElementData> TileElementDatas => _tileElementDatas;
     }
 }
