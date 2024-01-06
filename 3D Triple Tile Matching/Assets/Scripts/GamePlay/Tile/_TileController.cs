@@ -12,7 +12,12 @@ namespace Core.Tile{
         }
 
         private void OnMouseDown(){
-            Debug.Log("Tile Clicked");
+            Transform slot = _GameManager.Instance.SlotHolders.GetSlotPosition(0);
+            Vector3 postion = slot.position;
+            postion.z = Camera.main.nearClipPlane;
+            postion = Camera.main.ScreenToWorldPoint(postion);
+            this.transform.localScale = new Vector3(0.17f, 0.17f, 0.17f);
+            this.transform.position = postion;
         }
     
         public async void SetSprite(){
