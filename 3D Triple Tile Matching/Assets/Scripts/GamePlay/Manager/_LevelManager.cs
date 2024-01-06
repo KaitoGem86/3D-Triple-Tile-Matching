@@ -23,7 +23,7 @@ namespace Core.Manager
             foreach(var item in _levelData._tileElementDatas){
                 var tmpTile = GameObject.Instantiate(tmp);
                 tmpTile.GetComponent<_TileController>().InitTileCube(item.id);
-                tmpTile.transform.position = item.position;
+                tmpTile.transform.position = item.position * 0.2f;
             }                  
         }
 

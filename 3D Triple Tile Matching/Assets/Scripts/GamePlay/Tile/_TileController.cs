@@ -14,10 +14,9 @@ namespace Core.Tile{
         private void OnMouseDown(){
             Transform slot = _GameManager.Instance.SlotHolders.GetSlotPosition(0);
             Vector3 postion = slot.position;
-            postion.z = Camera.main.nearClipPlane;
-            postion = Camera.main.ScreenToWorldPoint(postion);
-            this.transform.localScale = new Vector3(0.17f, 0.17f, 0.17f);
+            this.transform.localScale = new Vector3(6f, 6f, 6f);
             this.transform.position = postion;
+            this.transform.SetParent(slot);
         }
     
         public async void SetSprite(){
