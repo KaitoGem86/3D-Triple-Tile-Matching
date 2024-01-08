@@ -30,6 +30,8 @@ namespace Core.Tile
             slot.ContainedTile = this;
             // check can collect triple tile group
             _GameManager.Instance.SlotHolders.CollectTripleTile(_id, selectSlotTupple.Item1);
+            //check if lose game
+            _GameManager.Instance.SlotHolders.CheckLoseGame();
         }
 
         public async void SetSprite()

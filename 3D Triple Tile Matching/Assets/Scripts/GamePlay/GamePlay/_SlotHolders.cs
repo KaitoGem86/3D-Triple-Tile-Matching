@@ -79,7 +79,12 @@ namespace Core.GamePlay
                 }
                 _currentFirtFreeSlotIndex -= 3;
                 _GameManager.Instance.NumOfTile -= 3;
+                _GameManager.Instance.NumOfFreeSlot = _numberOfSlots - _currentFirtFreeSlotIndex;
             }
+        }
+
+        public void CheckLoseGame(){
+            _GameManager.Instance.NumOfFreeSlot = _numberOfSlots - _currentFirtFreeSlotIndex;
         }
     }
 }

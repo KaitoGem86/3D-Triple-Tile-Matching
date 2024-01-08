@@ -9,7 +9,9 @@ namespace Core.Manager
         public static _GameManager Instance;
 
         private int _numOfTile;
+        private int _numOfFreeSlot;
         private Action _onWinGame;
+        private Action _onLoseGame;
 
         private void Awake()
         {
@@ -21,7 +23,6 @@ namespace Core.Manager
 
         public _SlotHolders SlotHolders;
         
-        [HideInInspector]
         public int NumOfTile {
             get => _numOfTile;
             set {
@@ -33,10 +34,27 @@ namespace Core.Manager
             }
         }
 
+        public int NumOfFreeSlot{
+            get => _numOfFreeSlot;
+            set {
+                if (value == 0)
+                {
+                    _onLoseGame?.Invoke();
+                }
+                _numOfFreeSlot = value;
+            }
+        }
+
         public Action OnWinGame
         {
             get => _onWinGame;
             set => _onWinGame = value;
+        }
+
+        public Action OnLoseGame
+        {
+            get => _onLoseGame;
+            set => _onLoseGame = value;
         }
 
     }

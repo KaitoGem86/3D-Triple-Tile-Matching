@@ -18,6 +18,10 @@ namespace Core.Manager
             {
                 Debug.Log("Win Game");
             };
+            _GameManager.Instance.OnLoseGame += () =>
+            {
+                Debug.Log("Lose Game");
+            };
         }
 
         // Update is called once per frame
