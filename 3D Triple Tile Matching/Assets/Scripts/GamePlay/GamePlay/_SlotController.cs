@@ -21,6 +21,19 @@ namespace Core.GamePlay{
             _containedTile = null;
         }
 
+        public void MoveTileToLeftSlotWithStep(int step){
+            if(step == 0) return;
+            if(step == 1) MoveTileToLeftSlot();
+            else{
+                var slot = this;
+                for(int i = 0; i < step; i++){
+                    if(slot == null) return;
+                    slot.MoveTileToLeftSlot();
+                    slot = slot.LeftSlot;
+                }
+            }
+        }
+
         public void MoveTileToRightSlot(){
             _rightSlot.ContainedTile = _containedTile;
             _containedTile.transform.position = _rightSlot.Transform.position;

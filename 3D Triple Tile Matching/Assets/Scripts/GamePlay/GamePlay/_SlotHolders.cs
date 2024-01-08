@@ -11,12 +11,12 @@ namespace Core.GamePlay
 
         // use queue instead of list
         private List<_SlotController> _usedSlots;
-        private List<int> _listContainedTileId;
+        private Dictionary<int, int> _listContainedTileId;
 
         private async void Awake()
         {
             _usedSlots = new List<_SlotController>();
-            _listContainedTileId = new List<int>();
+            _listContainedTileId = new Dictionary<int, int>();
             GameObject tmp = await AddressablesManager.LoadAssetAsync<GameObject>("Slot");
             for (int i = 0; i < _numberOfSlots; i++)
             {
@@ -30,25 +30,26 @@ namespace Core.GamePlay
             }
         }
 
-        public _SlotController GetSlotFree()
+        public (int,_SlotController) GetSlotFree()
         {
             if (_currentFirtFreeSlotIndex >= _numberOfSlots)
-                return null;
-            return _usedSlots[_currentFirtFreeSlotIndex++];
+                return (-1,null);
+            return (_currentFirtFreeSlotIndex, _usedSlots[_currentFirtFreeSlotIndex++]);
         }
 
-        public _SlotController GetSlotFreeForTile(int id)
+        public (int, _SlotController) GetSlotFreeForTile(int id)
         {
-            if (!_listContainedTileId.Contains(id))
+            if (!_listContainedTileId.ContainsKey(id))
             {
-                _listContainedTileId.Add(id);
+                _listContainedTileId.Add(id, 1);
                 return GetSlotFree();
             }
 
-            int index = _currentFirtFreeSlotIndex;
+            _listContainedTileId[id] += 1;
+            int index = _currentFirtFreeSlotIndex+1;
             for (int i = _currentFirtFreeSlotIndex - 1; i > 0; i--)
             {
-                index = i + 1;
+                index = index - 1;
                 if (_usedSlots[i].ContainedTile.Id == id)
                 {
                     index += 1;
@@ -57,7 +58,26 @@ namespace Core.GamePlay
                 _usedSlots[i].MoveTileToRightSlot();
             }
             _currentFirtFreeSlotIndex++;
-            return _usedSlots[index - 1];
+            return (index - 1, _usedSlots[index - 1]);
+        }
+
+        /// <summary>
+        /// Collect all triple tile, include move tiles to left slot three time and remove them from list;
+        /// index is the last tile's index of group
+        /// </summary>
+        public void CollectTripleTile(int id, int index){
+            if(_listContainedTileId[id] == 3)
+            {
+                _listContainedTileId.Remove(id);
+                int i = index;
+                for(int j = 0; j < 3; j++){
+                    _usedSlots[index - j].ContainedTile.gameObject.SetActive(false);
+                }
+                for(i = index + 1; i < _currentFirtFreeSlotIndex; i++){
+                    _usedSlots[i].MoveTileToLeftSlotWithStep(3);
+                }
+                _currentFirtFreeSlotIndex -= 3;
+            }
         }
     }
 }

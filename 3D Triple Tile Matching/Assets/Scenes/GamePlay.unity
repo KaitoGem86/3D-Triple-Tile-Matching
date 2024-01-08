@@ -609,7 +609,7 @@ GameObject:
   m_Component:
   - component: {fileID: 724162826}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: CameraRotation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1468,7 +1468,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SlotHolders: {fileID: 1157091603}
-  GamePlayCamera: {fileID: 1812845236}
 --- !u!4 &1513852389
 Transform:
   m_ObjectHideFlags: 0
