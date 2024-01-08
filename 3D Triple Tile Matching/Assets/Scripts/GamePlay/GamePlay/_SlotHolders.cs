@@ -62,7 +62,7 @@ namespace Core.GamePlay
         }
 
         /// <summary>
-        /// Collect all triple tile, include move tiles to left slot three time and remove them from list;
+        /// Collect all triple tile, include move tiles to left slot three time and remove their id from list;
         /// index is the last tile's index of group
         /// </summary>
         public void CollectTripleTile(int id, int index){
