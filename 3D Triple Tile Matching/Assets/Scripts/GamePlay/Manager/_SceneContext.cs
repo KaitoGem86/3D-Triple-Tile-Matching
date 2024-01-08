@@ -8,12 +8,16 @@ namespace Core.Manager
 
         private void Awake()
         {
-            _levelManager = new _LevelManager();
         }
 
         // Start is called before the first frame update
         void Start()
         {
+            _levelManager = new _LevelManager();
+            _GameManager.Instance.OnWinGame += () =>
+            {
+                Debug.Log("Win Game");
+            };
         }
 
         // Update is called once per frame

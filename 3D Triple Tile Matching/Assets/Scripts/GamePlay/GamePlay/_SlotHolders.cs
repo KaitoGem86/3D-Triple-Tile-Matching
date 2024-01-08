@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Core.Manager;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 
@@ -77,6 +78,7 @@ namespace Core.GamePlay
                     _usedSlots[i].MoveTileToLeftSlotWithStep(3);
                 }
                 _currentFirtFreeSlotIndex -= 3;
+                _GameManager.Instance.NumOfTile -= 3;
             }
         }
     }

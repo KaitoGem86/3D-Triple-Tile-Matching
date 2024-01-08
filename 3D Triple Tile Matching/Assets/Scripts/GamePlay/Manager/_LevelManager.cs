@@ -24,6 +24,7 @@ namespace Core.Manager
                 var tmpTile = GameObject.Instantiate(tmp);
                 tmpTile.GetComponent<_TileController>().InitTileCube(item.id);
                 tmpTile.transform.position = item.position * 0.2f;
+                _GameManager.Instance.NumOfTile++;
             }                  
         }
 
