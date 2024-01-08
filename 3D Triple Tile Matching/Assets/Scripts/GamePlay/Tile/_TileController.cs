@@ -1,3 +1,4 @@
+using Core.GamePlay;
 using Core.Manager;
 using UnityEngine;
 
@@ -5,18 +6,24 @@ namespace Core.Tile{
     public class _TileController : MonoBehaviour
     {
         [SerializeField] private SpriteRenderer[] _spriteRenderers;
+        
         private int _id = 5;
+        private _TileStateEnum _tileState;
 
         public void Execute(){
             SetSprite();
         }
 
         private void OnMouseDown(){
-            Transform slot = _GameManager.Instance.SlotHolders.GetSlotPosition(0);
-            Vector3 postion = slot.position;
+            if(_tileState == _TileStateEnum.Selected )
+                return;
+            _tileState = _TileStateEnum.Selected;
+            _SlotController slot = _GameManager.Instance.SlotHolders.GetSlotFreeForTile(_id);
+            Vector3 postion = slot.Transform.position;
             this.transform.localScale = new Vector3(6f, 6f, 6f);
             this.transform.position = postion;
-            this.transform.SetParent(slot);
+            this.transform.SetParent(slot.Transform);
+            slot.ContainedTile = this;
         }
     
         public async void SetSprite(){
@@ -29,7 +36,10 @@ namespace Core.Tile{
 
         public void InitTileCube(int id){
             _id = id;
+            _tileState = _TileStateEnum.Default;
             SetSprite();
         }
+
+        public int Id => _id;
     }
 }
