@@ -28,15 +28,15 @@ namespace Core.Tile
             Vector3 postion = slot.Position;
             Vector3 tmpPosition = _GameManager.Instance.CanvasGamePlay.worldCamera.WorldToScreenPoint(postion);
             tmpPosition = _GameManager.Instance.CameraGamePlay.ScreenToWorldPoint(tmpPosition);
-            AnimatedMovingToSlot(tmpPosition, slot.RectTransform.rotation.eulerAngles - (-_GameManager.Instance.CameraGamePlay.transform.rotation.eulerAngles + _GameManager.Instance.CanvasGamePlay.worldCamera.transform.rotation.eulerAngles), this.transform.localScale * 0.5f)
+            AnimatedMovingToSlot(tmpPosition, _GameManager.Instance.SlotHolders.SyncRotation.eulerAngles + _GameManager.Instance.SlotHolders.transform.TransformDirection(Vector3.forward * 30) - (-_GameManager.Instance.CameraGamePlay.transform.rotation.eulerAngles + _GameManager.Instance.CanvasGamePlay.worldCamera.transform.rotation.eulerAngles), this.transform.localScale * 0.5f)
                 .OnComplete(
                     () =>
                     {
                         this.transform.SetParent(slot.RectTransform);
                         SetLayer("TransparentFX");
                         transform.position = postion;
-                        transform.rotation = slot.RectTransform.rotation;
-                        this.transform.DOLocalRotate(Vector3.forward * 200, 3).SetLoops(-1, LoopType.Incremental).SetEase(Ease.Linear);
+                        transform.rotation = _GameManager.Instance.SlotHolders.SyncRotation;
+                        this.transform.DOLocalRotate(Vector3.forward * 180, 3).SetLoops(-1, LoopType.Incremental).SetEase(Ease.Linear);
                         slot.ContainedTile = this;
                         // check can collect triple tile group
                         _GameManager.Instance.SlotHolders.CollectTripleTile(_id, selectSlotTupple.Item1);

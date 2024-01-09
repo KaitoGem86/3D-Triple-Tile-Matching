@@ -31,10 +31,10 @@ namespace Core.GamePlay
             }
         }
 
-        public (int,_SlotController) GetSlotFree()
+        public (int, _SlotController) GetSlotFree()
         {
             if (_currentFirtFreeSlotIndex >= _numberOfSlots)
-                return (-1,null);
+                return (-1, null);
             return (_currentFirtFreeSlotIndex, _usedSlots[_currentFirtFreeSlotIndex++]);
         }
 
@@ -47,7 +47,7 @@ namespace Core.GamePlay
             }
 
             _listContainedTileId[id] += 1;
-            int index = _currentFirtFreeSlotIndex+1;
+            int index = _currentFirtFreeSlotIndex + 1;
             for (int i = _currentFirtFreeSlotIndex - 1; i > 0; i--)
             {
                 index = index - 1;
@@ -66,15 +66,18 @@ namespace Core.GamePlay
         /// Collect all triple tile, include move tiles to left slot three time and remove their id from list;
         /// index is the last tile's index of group
         /// </summary>
-        public void CollectTripleTile(int id, int index){
-            if(_listContainedTileId[id] == 3)
+        public void CollectTripleTile(int id, int index)
+        {
+            if (_listContainedTileId[id] == 3)
             {
                 _listContainedTileId.Remove(id);
                 int i = index;
-                for(int j = 0; j < 3; j++){
+                for (int j = 0; j < 3; j++)
+                {
                     _usedSlots[index - j].ContainedTile.gameObject.SetActive(false);
                 }
-                for(i = index + 1; i < _currentFirtFreeSlotIndex; i++){
+                for (i = index + 1; i < _currentFirtFreeSlotIndex; i++)
+                {
                     _usedSlots[i].MoveTileToLeftSlotWithStep(3);
                 }
                 _currentFirtFreeSlotIndex -= 3;
@@ -83,8 +86,22 @@ namespace Core.GamePlay
             }
         }
 
-        public void CheckLoseGame(){
+        public void CheckLoseGame()
+        {
             _GameManager.Instance.NumOfFreeSlot = _numberOfSlots - _currentFirtFreeSlotIndex;
+        }
+
+        public Quaternion SyncRotation
+        {
+            get
+            {
+                if (_usedSlots[0].ContainedTile == null) return Quaternion.identity;
+                else
+                {
+                    Debug.Log(_usedSlots[0].ContainedTile.transform.localRotation.eulerAngles);
+                    return _usedSlots[0].ContainedTile.transform.rotation;
+                }
+            }
         }
     }
 }
