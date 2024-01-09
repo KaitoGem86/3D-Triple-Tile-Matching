@@ -75,6 +75,14 @@ namespace Core.Tile
             return sequence;
         }
 
+        public Sequence AnimatedCollected(){
+            Sequence sequence = DOTween.Sequence();
+            sequence.Append(this.transform.DOScale(Vector3.zero, 0.5f).SetEase(Ease.InOutBack).OnComplete(() => {
+                gameObject.SetActive(false);
+            }));
+            return sequence;
+        }
+
         private void SetLayer(string layer){
             this.gameObject.layer = LayerMask.NameToLayer(layer);
             foreach (Transform child in this.transform)

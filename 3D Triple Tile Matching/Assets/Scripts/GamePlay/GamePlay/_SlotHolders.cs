@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Core.Manager;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 
@@ -72,17 +73,21 @@ namespace Core.GamePlay
             {
                 _listContainedTileId.Remove(id);
                 int i = index;
+                Sequence sequence = DOTween.Sequence();
                 for (int j = 0; j < 3; j++)
                 {
-                    _usedSlots[index - j].ContainedTile.gameObject.SetActive(false);
+                    sequence.Join(_usedSlots[index - j].ContainedTile.AnimatedCollected());
                 }
-                for (i = index + 1; i < _currentFirtFreeSlotIndex; i++)
+                sequence.OnComplete(() =>
                 {
-                    _usedSlots[i].MoveTileToLeftSlotWithStep(3);
-                }
-                _currentFirtFreeSlotIndex -= 3;
-                _GameManager.Instance.NumOfTile -= 3;
-                _GameManager.Instance.NumOfFreeSlot = _numberOfSlots - _currentFirtFreeSlotIndex;
+                    for (i = index + 1; i < _currentFirtFreeSlotIndex; i++)
+                    {
+                        _usedSlots[i].MoveTileToLeftSlotWithStep(3);
+                    }
+                    _currentFirtFreeSlotIndex -= 3;
+                    _GameManager.Instance.NumOfTile -= 3;
+                    _GameManager.Instance.NumOfFreeSlot = _numberOfSlots - _currentFirtFreeSlotIndex;
+                });
             }
         }
 
