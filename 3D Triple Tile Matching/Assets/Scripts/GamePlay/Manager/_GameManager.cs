@@ -22,6 +22,7 @@ namespace Core.Manager
         }
 
         public _SlotHolders SlotHolders;
+        public Canvas CanvasGamePlay;
         
         public int NumOfTile {
             get => _numOfTile;

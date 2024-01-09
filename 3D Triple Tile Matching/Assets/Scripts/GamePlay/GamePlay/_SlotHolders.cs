@@ -21,7 +21,7 @@ namespace Core.GamePlay
             GameObject tmp = await AddressablesManager.LoadAssetAsync<GameObject>("Slot");
             for (int i = 0; i < _numberOfSlots; i++)
             {
-                Transform tmpSlot = Instantiate(tmp, transform).transform;
+                RectTransform tmpSlot = Instantiate(tmp, transform).GetComponent<RectTransform>();
                 _usedSlots.Add(new _SlotController(tmpSlot, null, null));
             }
             for (int i = 0; i < _numberOfSlots; i++)

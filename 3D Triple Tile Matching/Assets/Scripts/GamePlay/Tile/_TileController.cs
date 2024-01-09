@@ -1,6 +1,8 @@
 using Core.GamePlay;
 using Core.Manager;
+using DG.Tweening;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 namespace Core.Tile
 {
@@ -23,15 +25,20 @@ namespace Core.Tile
             _tileState = _TileStateEnum.Selected;
             var selectSlotTupple = _GameManager.Instance.SlotHolders.GetSlotFreeForTile(_id);
             var slot = selectSlotTupple.Item2;
-            Vector3 postion = slot.Transform.position;
-            this.transform.localScale = new Vector3(6f, 6f, 6f);
-            this.transform.position = postion;
-            this.transform.SetParent(slot.Transform);
-            slot.ContainedTile = this;
-            // check can collect triple tile group
-            _GameManager.Instance.SlotHolders.CollectTripleTile(_id, selectSlotTupple.Item1);
-            //check if lose game
-            _GameManager.Instance.SlotHolders.CheckLoseGame();
+            Vector3 postion = slot.Position;
+            AnimatedMovingToSlot(postion, slot.RectTransform.rotation.eulerAngles, this.transform.localScale * 0.5f)
+                .OnComplete(
+                    () =>
+                    {
+                        this.transform.SetParent(slot.RectTransform);
+                        this.transform.DOLocalRotate(Vector3.forward * 200, 3).SetLoops(-1, LoopType.Incremental).SetEase(Ease.Linear);
+                        slot.ContainedTile = this;
+                        // check can collect triple tile group
+                        _GameManager.Instance.SlotHolders.CollectTripleTile(_id, selectSlotTupple.Item1);
+                        //check if lose games
+                        _GameManager.Instance.SlotHolders.CheckLoseGame();
+                    }
+                );
         }
 
         public async void SetSprite()
@@ -51,5 +58,16 @@ namespace Core.Tile
         }
 
         public int Id => _id;
+
+        public Sequence AnimatedMovingToSlot(Vector3 position, Vector3 rotation = default, Vector3 scale = default)
+        {
+            Sequence sequence = DOTween.Sequence();
+            sequence.Append(this.transform.DOMove(position, 0.5f));
+            if (rotation != default)
+                sequence.Join(this.transform.DORotate(rotation, 0.5f));
+            if (scale != default)
+                sequence.Join(this.transform.DOScale(scale, 0.5f));
+            return sequence;
+        }
     }
 }
