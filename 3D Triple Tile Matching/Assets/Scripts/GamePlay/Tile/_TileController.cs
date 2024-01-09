@@ -26,11 +26,16 @@ namespace Core.Tile
             var selectSlotTupple = _GameManager.Instance.SlotHolders.GetSlotFreeForTile(_id);
             var slot = selectSlotTupple.Item2;
             Vector3 postion = slot.Position;
-            AnimatedMovingToSlot(postion, slot.RectTransform.rotation.eulerAngles, this.transform.localScale * 0.5f)
+            Vector3 tmpPosition = _GameManager.Instance.CanvasGamePlay.worldCamera.WorldToScreenPoint(postion);
+            tmpPosition = _GameManager.Instance.CameraGamePlay.ScreenToWorldPoint(tmpPosition);
+            AnimatedMovingToSlot(tmpPosition, slot.RectTransform.rotation.eulerAngles - (-_GameManager.Instance.CameraGamePlay.transform.rotation.eulerAngles + _GameManager.Instance.CanvasGamePlay.worldCamera.transform.rotation.eulerAngles), this.transform.localScale * 0.5f)
                 .OnComplete(
                     () =>
                     {
                         this.transform.SetParent(slot.RectTransform);
+                        SetLayer("TransparentFX");
+                        transform.position = postion;
+                        transform.rotation = slot.RectTransform.rotation;
                         this.transform.DOLocalRotate(Vector3.forward * 200, 3).SetLoops(-1, LoopType.Incremental).SetEase(Ease.Linear);
                         slot.ContainedTile = this;
                         // check can collect triple tile group
@@ -68,6 +73,14 @@ namespace Core.Tile
             if (scale != default)
                 sequence.Join(this.transform.DOScale(scale, 0.5f));
             return sequence;
+        }
+
+        private void SetLayer(string layer){
+            this.gameObject.layer = LayerMask.NameToLayer(layer);
+            foreach (Transform child in this.transform)
+            {
+                child.gameObject.layer = LayerMask.NameToLayer(layer);
+            }
         }
     }
 }
