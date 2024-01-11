@@ -25,6 +25,7 @@ namespace Core.Tile
             _tileState = _TileStateEnum.Selected;
             var selectSlotTupple = _GameManager.Instance.SlotHolders.GetSlotFreeForTile(_id);
             var slot = selectSlotTupple.Item2;
+            slot.ContainedTile = this;
             Vector3 postion = slot.Position;
             Vector3 tmpPosition = _GameManager.Instance.CanvasGamePlay.worldCamera.WorldToScreenPoint(postion);
             tmpPosition = _GameManager.Instance.CameraGamePlay.ScreenToWorldPoint(tmpPosition);
@@ -35,9 +36,8 @@ namespace Core.Tile
                         this.transform.SetParent(slot.RectTransform);
                         SetLayer("TransparentFX");
                         transform.position = postion;
-                        transform.rotation = _GameManager.Instance.SlotHolders.SyncRotation;
-                        this.transform.DOLocalRotate(Vector3.forward * 180, 3).SetLoops(-1, LoopType.Incremental).SetEase(Ease.Linear);
-                        slot.ContainedTile = this;
+                        //transform.rotation = _GameManager.Instance.SlotHolders.SyncRotation;
+                        this.transform.DOLocalRotate(this.transform.localEulerAngles + Vector3.forward * 180, 3, RotateMode.FastBeyond360).SetLoops(-1, LoopType.Incremental).SetEase(Ease.Linear);
                         // check can collect triple tile group
                         _GameManager.Instance.SlotHolders.CollectTripleTile(_id, selectSlotTupple.Item1);
                         //check if lose games
@@ -75,15 +75,18 @@ namespace Core.Tile
             return sequence;
         }
 
-        public Sequence AnimatedCollected(){
+        public Sequence AnimatedCollected()
+        {
             Sequence sequence = DOTween.Sequence();
-            sequence.Append(this.transform.DOScale(Vector3.zero, 0.5f).SetEase(Ease.InOutBack).OnComplete(() => {
+            sequence.Append(this.transform.DOScale(Vector3.zero, 0.5f).SetEase(Ease.InOutBack).OnComplete(() =>
+            {
                 gameObject.SetActive(false);
             }));
             return sequence;
         }
 
-        private void SetLayer(string layer){
+        private void SetLayer(string layer)
+        {
             this.gameObject.layer = LayerMask.NameToLayer(layer);
             foreach (Transform child in this.transform)
             {

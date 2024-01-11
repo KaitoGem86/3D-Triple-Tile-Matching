@@ -9,7 +9,7 @@ namespace Core.GamePlay
     public class _SlotHolders : MonoBehaviour
     {
         private int _numberOfSlots = 7;
-        private int _currentFirtFreeSlotIndex = 0;
+        private int _currentFirstFreeSlotIndex = 0;
 
         // use queue instead of list
         private List<_SlotController> _usedSlots;
@@ -34,9 +34,9 @@ namespace Core.GamePlay
 
         public (int, _SlotController) GetSlotFree()
         {
-            if (_currentFirtFreeSlotIndex >= _numberOfSlots)
+            if (_currentFirstFreeSlotIndex >= _numberOfSlots)
                 return (-1, null);
-            return (_currentFirtFreeSlotIndex, _usedSlots[_currentFirtFreeSlotIndex++]);
+            return (_currentFirstFreeSlotIndex, _usedSlots[_currentFirstFreeSlotIndex++]);
         }
 
         public (int, _SlotController) GetSlotFreeForTile(int id)
@@ -48,8 +48,8 @@ namespace Core.GamePlay
             }
 
             _listContainedTileId[id] += 1;
-            int index = _currentFirtFreeSlotIndex + 1;
-            for (int i = _currentFirtFreeSlotIndex - 1; i > 0; i--)
+            int index = _currentFirstFreeSlotIndex + 1;
+            for (int i = _currentFirstFreeSlotIndex - 1; i > 0; i--)
             {
                 index = index - 1;
                 if (_usedSlots[i].ContainedTile.Id == id)
@@ -59,7 +59,7 @@ namespace Core.GamePlay
                 }
                 _usedSlots[i].MoveTileToRightSlot();
             }
-            _currentFirtFreeSlotIndex++;
+            _currentFirstFreeSlotIndex++;
             return (index - 1, _usedSlots[index - 1]);
         }
 
@@ -80,20 +80,20 @@ namespace Core.GamePlay
                 }
                 sequence.OnComplete(() =>
                 {
-                    for (i = index + 1; i < _currentFirtFreeSlotIndex; i++)
+                    for (i = index + 1; i < _currentFirstFreeSlotIndex; i++)
                     {
                         _usedSlots[i].MoveTileToLeftSlotWithStep(3);
                     }
-                    _currentFirtFreeSlotIndex -= 3;
+                    _currentFirstFreeSlotIndex -= 3;
                     _GameManager.Instance.NumOfTile -= 3;
-                    _GameManager.Instance.NumOfFreeSlot = _numberOfSlots - _currentFirtFreeSlotIndex;
+                    _GameManager.Instance.NumOfFreeSlot = _numberOfSlots - _currentFirstFreeSlotIndex;
                 });
             }
         }
 
         public void CheckLoseGame()
         {
-            _GameManager.Instance.NumOfFreeSlot = _numberOfSlots - _currentFirtFreeSlotIndex;
+            _GameManager.Instance.NumOfFreeSlot = _numberOfSlots - _currentFirstFreeSlotIndex;
         }
 
         public Quaternion SyncRotation
