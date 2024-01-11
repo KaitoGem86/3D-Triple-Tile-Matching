@@ -20,9 +20,9 @@ namespace Core.Tile
 
         private void OnMouseDown()
         {
-            if (_tileState == _TileStateEnum.Selected)
+            if (_tileState == _TileStateEnum.Selected || _tileState == _TileStateEnum.Moving)
                 return;
-            _tileState = _TileStateEnum.Selected;
+            _tileState = _TileStateEnum.Moving;
             var selectSlotTupple = _GameManager.Instance.SlotHolders.GetSlotFreeForTile(_id);
             var slot = selectSlotTupple.Item2;
             slot.ContainedTile = this;
@@ -33,10 +33,10 @@ namespace Core.Tile
                 .OnComplete(
                     () =>
                     {
+                        _tileState = _TileStateEnum.Selected;
                         this.transform.SetParent(slot.RectTransform);
                         SetLayer("TransparentFX");
                         transform.position = postion;
-                        //transform.rotation = _GameManager.Instance.SlotHolders.SyncRotation;
                         this.transform.DOLocalRotate(this.transform.localEulerAngles + Vector3.forward * 180, 3, RotateMode.FastBeyond360).SetLoops(-1, LoopType.Incremental).SetEase(Ease.Linear);
                         // check can collect triple tile group
                         _GameManager.Instance.SlotHolders.CollectTripleTile(_id, selectSlotTupple.Item1);
@@ -93,5 +93,7 @@ namespace Core.Tile
                 child.gameObject.layer = LayerMask.NameToLayer(layer);
             }
         }
+
+        public _TileStateEnum TileState => _tileState;
     }
 }
