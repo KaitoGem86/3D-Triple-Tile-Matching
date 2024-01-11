@@ -10,6 +10,7 @@ namespace Core.GamePlay
     {
         private int _numberOfSlots = 7;
         private int _currentFirstFreeSlotIndex = 0;
+        private int _numOfTilesInSlots = 0;
 
         // use queue instead of list
         private List<_SlotController> _usedSlots;
@@ -43,6 +44,7 @@ namespace Core.GamePlay
         {
             if (!_listContainedTileId.ContainsKey(id))
             {
+                _numOfTilesInSlots++;
                 _listContainedTileId.Add(id, 1);
                 return GetSlotFree();
             }
@@ -60,6 +62,7 @@ namespace Core.GamePlay
                 _usedSlots[i].MoveTileToRightSlot();
             }
             _currentFirstFreeSlotIndex++;
+            _numOfTilesInSlots++;
             return (index - 1, _usedSlots[index - 1]);
         }
 
@@ -71,6 +74,7 @@ namespace Core.GamePlay
         {
             if (_listContainedTileId[id] == 3)
             {
+                _numOfTilesInSlots -= 3;
                 _listContainedTileId.Remove(id);
                 int i = index;
                 Sequence sequence = DOTween.Sequence();
@@ -86,14 +90,14 @@ namespace Core.GamePlay
                     }
                     _currentFirstFreeSlotIndex -= 3;
                     _GameManager.Instance.NumOfTile -= 3;
-                    _GameManager.Instance.NumOfFreeSlot = _numberOfSlots - _currentFirstFreeSlotIndex;
+                    _GameManager.Instance.NumOfFreeSlot = _numberOfSlots - _numOfTilesInSlots;
                 });
             }
         }
 
         public void CheckLoseGame()
         {
-            _GameManager.Instance.NumOfFreeSlot = _numberOfSlots - _currentFirstFreeSlotIndex;
+            _GameManager.Instance.NumOfFreeSlot = _numberOfSlots - _numOfTilesInSlots;
         }
 
         public Quaternion SyncRotation

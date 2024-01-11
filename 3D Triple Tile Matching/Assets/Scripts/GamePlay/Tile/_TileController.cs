@@ -43,7 +43,6 @@ namespace Core.Tile
                     {
                         this.transform.SetParent(slot.RectTransform);
                         _defaultScale = this.transform.localScale;
-                        Debug.Log("Complete Method " + _defaultScale.ToString());
                         _tileState = _TileStateEnum.Selected;
                         SetLayer("TransparentFX");
                         transform.position = slot.Position;
