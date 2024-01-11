@@ -14,6 +14,7 @@ namespace Core.Tile
 
         private int _id = 5;
         private _TileStateEnum _tileState;
+        private bool _isCanCollectTripleTile = false;
 
         public void Execute()
         {
@@ -34,6 +35,7 @@ namespace Core.Tile
             var selectSlotTupple = _GameManager.Instance.SlotHolders.GetSlotFreeForTile(_id);
             var slot = selectSlotTupple.Item2;
             slot.ContainedTile = this;
+            _isCanCollectTripleTile = _GameManager.Instance.SlotHolders.NumOfTilesWithId(_id) == 3;
             // Vector3 tmpPosition = _GameManager.Instance.CanvasGamePlay.worldCamera.WorldToScreenPoint(postion);
             // tmpPosition = _GameManager.Instance.CameraGamePlay.ScreenToWorldPoint(tmpPosition);
             // AnimatedMovingToSlot(tmpPosition, _GameManager.Instance.SlotHolders.SyncRotation.eulerAngles + _GameManager.Instance.SlotHolders.transform.TransformDirection(Vector3.forward * 30) - (-_GameManager.Instance.CameraGamePlay.transform.rotation.eulerAngles + _GameManager.Instance.CanvasGamePlay.worldCamera.transform.rotation.eulerAngles), this.transform.localScale * 0.5f)
@@ -48,7 +50,8 @@ namespace Core.Tile
                         transform.position = slot.Position;
                         this.transform.DOLocalRotate(this.transform.localEulerAngles + Vector3.forward * 180, 3, RotateMode.FastBeyond360).SetLoops(-1, LoopType.Incremental).SetEase(Ease.Linear);
                         // check can collect triple tile group
-                        _GameManager.Instance.SlotHolders.CollectTripleTile(_id, selectSlotTupple.Item1);
+                        if (_isCanCollectTripleTile)
+                            _GameManager.Instance.SlotHolders.CollectTripleTile(_id, selectSlotTupple.Item1);
                         //check if lose games
                         _GameManager.Instance.SlotHolders.CheckLoseGame();
                     }

@@ -26,7 +26,8 @@ namespace Core.GamePlay
                 RectTransform tmpSlot = Instantiate(tmp, transform).GetComponent<RectTransform>();
                 _usedSlots.Add(new _SlotController(tmpSlot, null, null));
             }
-            for(int i = 0; i < 3; i++){
+            for (int i = 0; i < 3; i++)
+            {
                 RectTransform tmpSlot = Instantiate(tmp, transform).GetComponent<RectTransform>();
                 _usedSlots.Add(new _SlotController(tmpSlot, null, null));
                 _usedSlots[_numberOfSlots + i].SetSpriteSubSlot();
@@ -77,28 +78,27 @@ namespace Core.GamePlay
         /// </summary>
         public void CollectTripleTile(int id, int index)
         {
-            if (_listContainedTileId[id] == 3)
+
+            _numOfTilesInSlots -= 3;
+            _listContainedTileId.Remove(id);
+            int i = index;
+            Sequence sequence = DOTween.Sequence();
+            for (int j = 0; j < 3; j++)
             {
-                _numOfTilesInSlots -= 3;
-                _listContainedTileId.Remove(id);
-                int i = index;
-                Sequence sequence = DOTween.Sequence();
-                for (int j = 0; j < 3; j++)
-                {
-                    sequence.Join(_usedSlots[index - j].ContainedTile.AnimatedCollected());
-                }
-                sequence.OnComplete(() =>
-                {
-                    for (i = index + 1; i < _currentFirstFreeSlotIndex; i++)
-                    {
-                        _usedSlots[i].MoveTileToLeftSlotWithStep(3);
-                    }
-                    _currentFirstFreeSlotIndex -= 3;
-                    _GameManager.Instance.NumOfTile -= 3;
-                    _GameManager.Instance.NumOfFreeSlot = _numberOfSlots - _numOfTilesInSlots;
-                });
+                sequence.Join(_usedSlots[index - j].ContainedTile.AnimatedCollected());
             }
+            sequence.OnComplete(() =>
+            {
+                for (i = index + 1; i < _currentFirstFreeSlotIndex; i++)
+                {
+                    _usedSlots[i].MoveTileToLeftSlotWithStep(3);
+                }
+                _currentFirstFreeSlotIndex -= 3;
+                _GameManager.Instance.NumOfTile -= 3;
+                _GameManager.Instance.NumOfFreeSlot = _numberOfSlots - _numOfTilesInSlots;
+            });
         }
+
 
         public void CheckLoseGame()
         {
@@ -116,5 +116,7 @@ namespace Core.GamePlay
                 }
             }
         }
+
+        public int NumOfTilesWithId(int id) => _listContainedTileId[id];
     }
 }
