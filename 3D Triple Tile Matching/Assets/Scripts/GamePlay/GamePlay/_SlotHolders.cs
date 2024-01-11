@@ -26,10 +26,15 @@ namespace Core.GamePlay
                 RectTransform tmpSlot = Instantiate(tmp, transform).GetComponent<RectTransform>();
                 _usedSlots.Add(new _SlotController(tmpSlot, null, null));
             }
-            for (int i = 0; i < _numberOfSlots; i++)
+            for(int i = 0; i < 3; i++){
+                RectTransform tmpSlot = Instantiate(tmp, transform).GetComponent<RectTransform>();
+                _usedSlots.Add(new _SlotController(tmpSlot, null, null));
+                _usedSlots[_numberOfSlots + i].SetSpriteSubSlot();
+            }
+            for (int i = 0; i < _numberOfSlots + 3; i++)
             {
                 _usedSlots[i].LeftSlot = (i == 0 ? null : _usedSlots[i - 1]);
-                _usedSlots[i].RightSlot = (i == _numberOfSlots - 1 ? null : _usedSlots[i + 1]);
+                _usedSlots[i].RightSlot = (i == _numberOfSlots + 3 - 1 ? null : _usedSlots[i + 1]);
             }
         }
 

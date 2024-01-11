@@ -1,8 +1,8 @@
 using Core.Manager;
 using Core.Tile;
-using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Core.GamePlay
 {
@@ -61,6 +61,10 @@ namespace Core.GamePlay
                     throw new System.Exception("TileState is not Selected or Moving");
             }
             _containedTile = null;
+        }
+
+        public void SetSpriteSubSlot(){
+            _slotTrf.GetComponent<Image>().color = new Color(0, 0, 0, 0);
         }
 
 
