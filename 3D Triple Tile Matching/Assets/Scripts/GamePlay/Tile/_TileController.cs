@@ -8,6 +8,8 @@ namespace Core.Tile
 {
     public class _TileController : MonoBehaviour
     {
+        private Vector3 _defaultScale;
+
         [SerializeField] private SpriteRenderer[] _spriteRenderers;
 
         private int _id = 5;
@@ -18,6 +20,12 @@ namespace Core.Tile
             SetSprite();
         }
 
+        void Start()
+        {
+            _defaultScale = this.transform.localScale * 0.5f;
+        }
+
+
         private void OnMouseDown()
         {
             if (_tileState == _TileStateEnum.Selected || _tileState == _TileStateEnum.Moving)
@@ -26,17 +34,19 @@ namespace Core.Tile
             var selectSlotTupple = _GameManager.Instance.SlotHolders.GetSlotFreeForTile(_id);
             var slot = selectSlotTupple.Item2;
             slot.ContainedTile = this;
-            Vector3 postion = slot.Position;
-            Vector3 tmpPosition = _GameManager.Instance.CanvasGamePlay.worldCamera.WorldToScreenPoint(postion);
-            tmpPosition = _GameManager.Instance.CameraGamePlay.ScreenToWorldPoint(tmpPosition);
-            AnimatedMovingToSlot(tmpPosition, _GameManager.Instance.SlotHolders.SyncRotation.eulerAngles + _GameManager.Instance.SlotHolders.transform.TransformDirection(Vector3.forward * 30) - (-_GameManager.Instance.CameraGamePlay.transform.rotation.eulerAngles + _GameManager.Instance.CanvasGamePlay.worldCamera.transform.rotation.eulerAngles), this.transform.localScale * 0.5f)
+            // Vector3 tmpPosition = _GameManager.Instance.CanvasGamePlay.worldCamera.WorldToScreenPoint(postion);
+            // tmpPosition = _GameManager.Instance.CameraGamePlay.ScreenToWorldPoint(tmpPosition);
+            // AnimatedMovingToSlot(tmpPosition, _GameManager.Instance.SlotHolders.SyncRotation.eulerAngles + _GameManager.Instance.SlotHolders.transform.TransformDirection(Vector3.forward * 30) - (-_GameManager.Instance.CameraGamePlay.transform.rotation.eulerAngles + _GameManager.Instance.CanvasGamePlay.worldCamera.transform.rotation.eulerAngles), this.transform.localScale * 0.5f)
+            AnimatedMovingToSlot(slot)
                 .OnComplete(
                     () =>
                     {
-                        _tileState = _TileStateEnum.Selected;
                         this.transform.SetParent(slot.RectTransform);
+                        _defaultScale = this.transform.localScale;
+                        Debug.Log("Complete Method " + _defaultScale.ToString());
+                        _tileState = _TileStateEnum.Selected;
                         SetLayer("TransparentFX");
-                        transform.position = postion;
+                        transform.position = slot.Position;
                         this.transform.DOLocalRotate(this.transform.localEulerAngles + Vector3.forward * 180, 3, RotateMode.FastBeyond360).SetLoops(-1, LoopType.Incremental).SetEase(Ease.Linear);
                         // check can collect triple tile group
                         _GameManager.Instance.SlotHolders.CollectTripleTile(_id, selectSlotTupple.Item1);
@@ -75,6 +85,29 @@ namespace Core.Tile
             return sequence;
         }
 
+        public Sequence AnimatedMovingToSlot(_SlotController slot)
+        {
+            var slotPostion = slot.Position;
+            slotPostion = _GameManager.Instance.CanvasGamePlay.worldCamera.WorldToScreenPoint(slotPostion);
+            slotPostion = _GameManager.Instance.CameraGamePlay.ScreenToWorldPoint(slotPostion);
+            Sequence sequence = DOTween.Sequence();
+            sequence.Append(this.transform.DOMove(slotPostion, 0.5f));
+            sequence.Join(this.transform.DORotate(_GameManager.Instance.SlotHolders.SyncRotation.eulerAngles + _GameManager.Instance.SlotHolders.transform.TransformDirection(Vector3.forward * 30) - (-_GameManager.Instance.CameraGamePlay.transform.rotation.eulerAngles + _GameManager.Instance.CanvasGamePlay.worldCamera.transform.rotation.eulerAngles), 0.5f));
+            sequence.Join(this.transform.DOScale(_defaultScale, 0.5f));
+            CurrentAnimSequence = sequence;
+            sequence.OnComplete(() =>
+            {
+                this.transform.SetParent(slot.RectTransform);
+                _defaultScale = this.transform.localScale;
+                _tileState = _TileStateEnum.Selected;
+
+                SetLayer("TransparentFX");
+                transform.position = slot.Position;
+                this.transform.DOLocalRotate(this.transform.localEulerAngles + Vector3.forward * 180, 3, RotateMode.FastBeyond360).SetLoops(-1, LoopType.Incremental).SetEase(Ease.Linear);
+            });
+            return sequence;
+        }
+
         public Sequence AnimatedCollected()
         {
             Sequence sequence = DOTween.Sequence();
@@ -95,5 +128,6 @@ namespace Core.Tile
         }
 
         public _TileStateEnum TileState => _tileState;
+        public Sequence CurrentAnimSequence { get; private set; }
     }
 }

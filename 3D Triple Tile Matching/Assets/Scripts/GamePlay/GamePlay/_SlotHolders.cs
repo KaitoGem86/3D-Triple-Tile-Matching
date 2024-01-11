@@ -103,7 +103,6 @@ namespace Core.GamePlay
                 if (_usedSlots[0].ContainedTile == null) return Quaternion.identity;
                 else
                 {
-                    Debug.Log(_usedSlots[0].ContainedTile.transform.localRotation.eulerAngles);
                     return _usedSlots[0].ContainedTile.transform.rotation;
                 }
             }
