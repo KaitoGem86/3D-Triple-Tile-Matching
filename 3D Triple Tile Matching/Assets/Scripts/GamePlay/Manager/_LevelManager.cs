@@ -22,6 +22,7 @@ namespace Core.Manager
             GameObject tmp = await AddressablesManager.LoadAssetAsync<GameObject>("3DTile");
             foreach(var item in _levelData._tileElementDatas){
                 var tmpTile = GameObject.Instantiate(tmp);
+                tmpTile.name = item.id.ToString();
                 tmpTile.GetComponent<_TileController>().InitTileCube(item.id);
                 tmpTile.transform.position = item.position * 0.2f;
                 _GameManager.Instance.NumOfTile++;

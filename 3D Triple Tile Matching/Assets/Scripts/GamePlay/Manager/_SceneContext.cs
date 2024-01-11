@@ -1,3 +1,4 @@
+using DG.Tweening;
 using UnityEngine;
 
 namespace Core.Manager
@@ -8,6 +9,8 @@ namespace Core.Manager
 
         private void Awake()
         {
+            DOTween.Init();
+            Application.targetFrameRate = 60;
         }
 
         // Start is called before the first frame update

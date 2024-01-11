@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Core.Manager;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 
@@ -8,7 +9,8 @@ namespace Core.GamePlay
     public class _SlotHolders : MonoBehaviour
     {
         private int _numberOfSlots = 7;
-        private int _currentFirtFreeSlotIndex = 0;
+        private int _currentFirstFreeSlotIndex = 0;
+        private int _numOfTilesInSlots = 0;
 
         // use queue instead of list
         private List<_SlotController> _usedSlots;
@@ -21,7 +23,7 @@ namespace Core.GamePlay
             GameObject tmp = await AddressablesManager.LoadAssetAsync<GameObject>("Slot");
             for (int i = 0; i < _numberOfSlots; i++)
             {
-                Transform tmpSlot = Instantiate(tmp, transform).transform;
+                RectTransform tmpSlot = Instantiate(tmp, transform).GetComponent<RectTransform>();
                 _usedSlots.Add(new _SlotController(tmpSlot, null, null));
             }
             for (int i = 0; i < _numberOfSlots; i++)
@@ -31,24 +33,25 @@ namespace Core.GamePlay
             }
         }
 
-        public (int,_SlotController) GetSlotFree()
+        public (int, _SlotController) GetSlotFree()
         {
-            if (_currentFirtFreeSlotIndex >= _numberOfSlots)
-                return (-1,null);
-            return (_currentFirtFreeSlotIndex, _usedSlots[_currentFirtFreeSlotIndex++]);
+            if (_currentFirstFreeSlotIndex >= _numberOfSlots)
+                return (-1, null);
+            return (_currentFirstFreeSlotIndex, _usedSlots[_currentFirstFreeSlotIndex++]);
         }
 
         public (int, _SlotController) GetSlotFreeForTile(int id)
         {
             if (!_listContainedTileId.ContainsKey(id))
             {
+                _numOfTilesInSlots++;
                 _listContainedTileId.Add(id, 1);
                 return GetSlotFree();
             }
 
             _listContainedTileId[id] += 1;
-            int index = _currentFirtFreeSlotIndex+1;
-            for (int i = _currentFirtFreeSlotIndex - 1; i > 0; i--)
+            int index = _currentFirstFreeSlotIndex + 1;
+            for (int i = _currentFirstFreeSlotIndex - 1; i > 0; i--)
             {
                 index = index - 1;
                 if (_usedSlots[i].ContainedTile.Id == id)
@@ -58,7 +61,8 @@ namespace Core.GamePlay
                 }
                 _usedSlots[i].MoveTileToRightSlot();
             }
-            _currentFirtFreeSlotIndex++;
+            _currentFirstFreeSlotIndex++;
+            _numOfTilesInSlots++;
             return (index - 1, _usedSlots[index - 1]);
         }
 
@@ -66,25 +70,46 @@ namespace Core.GamePlay
         /// Collect all triple tile, include move tiles to left slot three time and remove their id from list;
         /// index is the last tile's index of group
         /// </summary>
-        public void CollectTripleTile(int id, int index){
-            if(_listContainedTileId[id] == 3)
+        public void CollectTripleTile(int id, int index)
+        {
+            if (_listContainedTileId[id] == 3)
             {
+                _numOfTilesInSlots -= 3;
                 _listContainedTileId.Remove(id);
                 int i = index;
-                for(int j = 0; j < 3; j++){
-                    _usedSlots[index - j].ContainedTile.gameObject.SetActive(false);
+                Sequence sequence = DOTween.Sequence();
+                for (int j = 0; j < 3; j++)
+                {
+                    sequence.Join(_usedSlots[index - j].ContainedTile.AnimatedCollected());
                 }
-                for(i = index + 1; i < _currentFirtFreeSlotIndex; i++){
-                    _usedSlots[i].MoveTileToLeftSlotWithStep(3);
-                }
-                _currentFirtFreeSlotIndex -= 3;
-                _GameManager.Instance.NumOfTile -= 3;
-                _GameManager.Instance.NumOfFreeSlot = _numberOfSlots - _currentFirtFreeSlotIndex;
+                sequence.OnComplete(() =>
+                {
+                    for (i = index + 1; i < _currentFirstFreeSlotIndex; i++)
+                    {
+                        _usedSlots[i].MoveTileToLeftSlotWithStep(3);
+                    }
+                    _currentFirstFreeSlotIndex -= 3;
+                    _GameManager.Instance.NumOfTile -= 3;
+                    _GameManager.Instance.NumOfFreeSlot = _numberOfSlots - _numOfTilesInSlots;
+                });
             }
         }
 
-        public void CheckLoseGame(){
-            _GameManager.Instance.NumOfFreeSlot = _numberOfSlots - _currentFirtFreeSlotIndex;
+        public void CheckLoseGame()
+        {
+            _GameManager.Instance.NumOfFreeSlot = _numberOfSlots - _numOfTilesInSlots;
+        }
+
+        public Quaternion SyncRotation
+        {
+            get
+            {
+                if (_usedSlots[0].ContainedTile == null) return Quaternion.identity;
+                else
+                {
+                    return _usedSlots[0].ContainedTile.transform.rotation;
+                }
+            }
         }
     }
 }
