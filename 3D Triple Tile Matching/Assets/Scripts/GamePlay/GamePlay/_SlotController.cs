@@ -8,12 +8,12 @@ namespace Core.GamePlay
 {
     public class _SlotController
     {
-        private readonly RectTransform _slotTrf;
+        private readonly Transform _slotTrf;
         private _SlotController _leftSlot;
         private _SlotController _rightSlot;
         private _TileController _containedTile;
 
-        public _SlotController(RectTransform slotTrf, _SlotController leftSlot, _SlotController rightSlot)
+        public _SlotController(Transform slotTrf, _SlotController leftSlot, _SlotController rightSlot)
         {
             _slotTrf = slotTrf;
             _containedTile = null;
@@ -75,11 +75,11 @@ namespace Core.GamePlay
         }
 
         public void SetSpriteSubSlot(){
-            _slotTrf.GetComponent<Image>().color = new Color(0, 0, 0, 0);
+            _slotTrf.GetComponent<SpriteRenderer>().color = new Color(0, 0, 0, 0);
         }
 
 
-        public RectTransform RectTransform => _slotTrf;
+        public Transform Transform => _slotTrf;
         public Vector3 Position
         {
             get

@@ -6,8 +6,17 @@ using UnityEngine.AddressableAssets;
 
 namespace Core.GamePlay
 {
-    public class _SlotHolders : MonoBehaviour
+    public class _SlotHolders
     {
+        private readonly GameObject _slotHolderObject;
+        private readonly Vector3 _pivotPosition;
+
+        public _SlotHolders(GameObject slotHolderObject, Vector3 pivotPosition)
+        {
+            _slotHolderObject = slotHolderObject;
+            _pivotPosition = pivotPosition;
+        }
+
         private int _numberOfSlots = 7;
         private int _currentFirstFreeSlotIndex = 0;
         private int _numOfTilesInSlots = 0;
@@ -16,19 +25,19 @@ namespace Core.GamePlay
         private List<_SlotController> _usedSlots;
         private Dictionary<int, int> _listContainedTileId;
 
-        private async void Awake()
+        public async void Awake()
         {
             _usedSlots = new List<_SlotController>();
             _listContainedTileId = new Dictionary<int, int>();
-            GameObject tmp = await AddressablesManager.LoadAssetAsync<GameObject>("Slot");
+            GameObject tmp = await AddressablesManager.LoadAssetAsync<GameObject>("SlotObject");
             for (int i = 0; i < _numberOfSlots; i++)
             {
-                RectTransform tmpSlot = Instantiate(tmp, transform).GetComponent<RectTransform>();
+                Transform tmpSlot = MonoBehaviour.Instantiate(tmp, _slotHolderObject.transform).GetComponent<Transform>();
                 _usedSlots.Add(new _SlotController(tmpSlot, null, null));
             }
             for (int i = 0; i < 3; i++)
             {
-                RectTransform tmpSlot = Instantiate(tmp, transform).GetComponent<RectTransform>();
+                Transform tmpSlot = MonoBehaviour.Instantiate(tmp, _slotHolderObject.transform).GetComponent<Transform>();
                 _usedSlots.Add(new _SlotController(tmpSlot, null, null));
                 _usedSlots[_numberOfSlots + i].SetSpriteSubSlot();
             }
@@ -37,6 +46,7 @@ namespace Core.GamePlay
                 _usedSlots[i].LeftSlot = (i == 0 ? null : _usedSlots[i - 1]);
                 _usedSlots[i].RightSlot = (i == _numberOfSlots + 3 - 1 ? null : _usedSlots[i + 1]);
             }
+            SetPositionSlot();
         }
 
         public (int, _SlotController) GetSlotFree()
@@ -118,5 +128,12 @@ namespace Core.GamePlay
         }
 
         public int NumOfTilesWithId(int id) => _listContainedTileId[id];
+
+        private void SetPositionSlot(){
+            float size = _usedSlots[0].Transform.GetComponent<SpriteRenderer>().sprite.bounds.size.x;
+            for(int i = 0; i < _numberOfSlots + 3; i++){
+                _usedSlots[i].Transform.position = _pivotPosition + new Vector3(size * i + 0.005f*i, 0, 0);
+            }
+        }
     }
 }

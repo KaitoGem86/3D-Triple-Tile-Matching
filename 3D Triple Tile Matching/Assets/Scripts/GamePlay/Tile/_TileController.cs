@@ -43,7 +43,7 @@ namespace Core.Tile
                 .OnComplete(
                     () =>
                     {
-                        this.transform.SetParent(slot.RectTransform);
+                        this.transform.SetParent(slot.Transform);
                         _defaultScale = this.transform.localScale;
                         _tileState = _TileStateEnum.Selected;
                         SetLayer("TransparentFX");
@@ -95,12 +95,12 @@ namespace Core.Tile
             Sequence sequence = DOTween.Sequence();
             sequence.Append(this.transform.DOMove(slotPostion, 0.5f));
             //sequence.Join(this.transform.DORotate(_GameManager.Instance.SlotHolders.SyncRotation.eulerAngles + _GameManager.Instance.SlotHolders.transform.TransformDirection(Vector3.forward * 30) - (-_GameManager.Instance.CameraGamePlay.transform.rotation.eulerAngles + _GameManager.Instance.CanvasGamePlay.worldCamera.transform.rotation.eulerAngles), 0.5f));
-            sequence.Join(this.transform.DORotate(_GameManager.Instance.SlotHolders.SyncRotation.eulerAngles + _GameManager.Instance.SlotHolders.transform.TransformDirection(Vector3.forward) * 30 - _GameManager.Instance.CanvasGamePlay.worldCamera.transform.rotation.eulerAngles, 0.5f));
+            //sequence.Join(this.transform.DORotate(_GameManager.Instance.SlotHolders.SyncRotation.eulerAngles + _GameManager.Instance.SlotHolders.transform.TransformDirection(Vector3.forward) * 30 - _GameManager.Instance.CanvasGamePlay.worldCamera.transform.rotation.eulerAngles, 0.5f));
             sequence.Join(this.transform.DOScale(_defaultScale, 0.5f));
             CurrentAnimSequence = sequence;
             sequence.OnComplete(() =>
             {
-                this.transform.SetParent(slot.RectTransform);
+                this.transform.SetParent(slot.Transform);
                 _defaultScale = this.transform.localScale;
                 _tileState = _TileStateEnum.Selected;
 
