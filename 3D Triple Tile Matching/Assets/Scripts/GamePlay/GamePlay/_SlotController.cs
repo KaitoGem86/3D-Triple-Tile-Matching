@@ -43,6 +43,7 @@ namespace Core.GamePlay
 
         public void MoveTileToLeftSlotWithStep(int step)
         {
+            if(_containedTile == null) return;
             if (step == 0) return;
             if (step == 1) MoveTileToLeftSlot();
             else

@@ -129,7 +129,7 @@ namespace Core.Tile
             return sequence;
         }
 
-        public _TileStateEnum TileState => _tileState;
+        public _TileStateEnum TileState { get => _tileState; set => _tileState = value; }
         public Sequence CurrentAnimSequence { get; private set; }
         public int Index
         {

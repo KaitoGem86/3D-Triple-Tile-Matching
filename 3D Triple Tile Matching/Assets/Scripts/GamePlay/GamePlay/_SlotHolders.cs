@@ -75,7 +75,8 @@ namespace Core.GamePlay
                     index += 1;
                     break;
                 }
-                _usedSlots[i].MoveTileToRightSlot();
+                if(_usedSlots[i].ContainedTile.TileState != Tile._TileStateEnum.Collected)
+                    _usedSlots[i].MoveTileToRightSlot();
             }
             _currentFirstFreeSlotIndex++;
             _numOfTilesInSlots++;
@@ -95,10 +96,12 @@ namespace Core.GamePlay
             Sequence sequence = DOTween.Sequence();
             for (int j = 0; j < 3; j++)
             {
+                _usedSlots[index - j].ContainedTile.TileState = Tile._TileStateEnum.Collected;
                 sequence.Join(_usedSlots[index - j].ContainedTile.AnimatedCollected());
             }
             sequence.OnComplete(() =>
             {
+                Debug.Log(index + " " + _currentFirstFreeSlotIndex);
                 for (i = index + 1; i < _currentFirstFreeSlotIndex; i++)
                 {
                     _usedSlots[i].MoveTileToLeftSlotWithStep(3);
