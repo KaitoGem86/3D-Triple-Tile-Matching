@@ -22,6 +22,7 @@ namespace Core.Manager
         {
             _levelManager = new _LevelManager();
             _slotHolders = new _SlotHolders(GameObject.Find("SlotHolder"), _pivotSlotsPosition);
+            _GameManager.Instance.SlotHolders = _slotHolders;
             _slotHolders.Awake();
             _GameManager.Instance.OnWinGame += () =>
             {

@@ -1204,7 +1204,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f623d1e7bc353141a4ca0985a54b934, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CanvasGamePlay: {fileID: 0}
+  CameraCanvas: {fileID: 3987344}
   CameraGamePlay: {fileID: 1812845236}
 --- !u!4 &1513852389
 Transform:

@@ -85,8 +85,8 @@ namespace Core.GamePlay
             get
             {
                 var position = _slotTrf.position;
-                position = _GameManager.Instance.CanvasGamePlay.worldCamera.WorldToScreenPoint(position);
-                position = _GameManager.Instance.CanvasGamePlay.worldCamera.ScreenToWorldPoint(position);
+                // position = _GameManager.Instance.CanvasGamePlay.worldCamera.WorldToScreenPoint(position);
+                // position = _GameManager.Instance.CanvasGamePlay.worldCamera.ScreenToWorldPoint(position);
                 return position;
             }
         }

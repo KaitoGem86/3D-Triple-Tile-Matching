@@ -90,7 +90,7 @@ namespace Core.Tile
         public Sequence AnimatedMovingToSlot(_SlotController slot)
         {
             var slotPostion = slot.Position;
-            slotPostion = _GameManager.Instance.CanvasGamePlay.worldCamera.WorldToScreenPoint(slotPostion);
+            slotPostion = _GameManager.Instance.CameraCanvas.WorldToScreenPoint(slotPostion);
             slotPostion = _GameManager.Instance.CameraGamePlay.ScreenToWorldPoint(slotPostion);
             Sequence sequence = DOTween.Sequence();
             sequence.Append(this.transform.DOMove(slotPostion, 0.5f));
