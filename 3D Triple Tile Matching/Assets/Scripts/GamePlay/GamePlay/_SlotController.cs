@@ -24,8 +24,19 @@ namespace Core.GamePlay
         public void MoveTileToLeftSlot()
         {
             _leftSlot.ContainedTile = _containedTile;
-            _containedTile.AnimatedMovingToSlot(_leftSlot.RectTransform.position);
-            _containedTile.transform.SetParent(_leftSlot.RectTransform);
+            // _containedTile.AnimatedMovingToSlot(_leftSlot.RectTransform.position);
+            // _containedTile.transform.SetParent(_leftSlot.RectTransform);
+            switch(_containedTile.TileState){
+                case _TileStateEnum.Selected:
+                    _containedTile.AnimatedMovingToSlot(_leftSlot);
+                    break;
+                case _TileStateEnum.Moving:
+                    _containedTile.CurrentAnimSequence.Kill();
+                    _containedTile.AnimatedMovingToSlot(_leftSlot);
+                    break;
+                default:
+                    throw new System.Exception("TileState is not Selected or Moving");
+            }
             _containedTile = null;
         }
 

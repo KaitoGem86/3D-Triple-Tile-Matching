@@ -41,7 +41,7 @@ namespace Core.GamePlay
 
         public (int, _SlotController) GetSlotFree()
         {
-            if (_currentFirstFreeSlotIndex >= _numberOfSlots)
+            if (_currentFirstFreeSlotIndex >= _numberOfSlots + 3)
                 return (-1, null);
             return (_currentFirstFreeSlotIndex, _usedSlots[_currentFirstFreeSlotIndex++]);
         }
