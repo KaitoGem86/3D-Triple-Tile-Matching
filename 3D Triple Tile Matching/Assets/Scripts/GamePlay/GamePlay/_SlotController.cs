@@ -24,6 +24,7 @@ namespace Core.GamePlay
         public void MoveTileToLeftSlot()
         {
             _leftSlot.ContainedTile = _containedTile;
+            _containedTile.Index -= 1;
             // _containedTile.AnimatedMovingToSlot(_leftSlot.RectTransform.position);
             // _containedTile.transform.SetParent(_leftSlot.RectTransform);
             switch(_containedTile.TileState){
@@ -59,6 +60,7 @@ namespace Core.GamePlay
         public void MoveTileToRightSlot()
         {
             _rightSlot.ContainedTile = _containedTile;
+            _containedTile.Index += 1;
             switch (_containedTile.TileState)
             {
                 case _TileStateEnum.Selected:
