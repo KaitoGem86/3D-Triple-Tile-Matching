@@ -122,7 +122,7 @@ namespace Core.GamePlay
         {
             get
             {
-                if (_usedSlots[0].ContainedTile == null) return Quaternion.identity;
+                if (_usedSlots[0].ContainedTile == null || _numOfTilesInSlots <= 1) return Quaternion.identity;
                 else
                 {
                     return _usedSlots[0].ContainedTile.transform.rotation;

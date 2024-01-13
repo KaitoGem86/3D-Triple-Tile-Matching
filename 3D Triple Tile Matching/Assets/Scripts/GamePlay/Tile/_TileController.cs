@@ -98,6 +98,7 @@ namespace Core.Tile
             slotPostion = _GameManager.Instance.CameraGamePlay.ScreenToWorldPoint(slotPostion);
             Sequence sequence = DOTween.Sequence();
             sequence.Append(this.transform.DOMove(slotPostion, 0.5f));
+            sequence.Join(this.transform.DORotate(_GameManager.Instance.SlotHolders.SyncRotation.eulerAngles + Vector3.forward * 30 - (-_GameManager.Instance.CameraGamePlay.transform.rotation.eulerAngles + _GameManager.Instance.CameraCanvas.transform.rotation.eulerAngles), 0.5f));
             sequence.Join(this.transform.DOScale(_defaultScale, 0.5f));
             CurrentAnimSequence = sequence;
             sequence.OnComplete(() =>
@@ -108,6 +109,8 @@ namespace Core.Tile
 
                 SetLayer("TransparentFX");
                 transform.position = slot.Position;
+                transform.rotation = _GameManager.Instance.SlotHolders.SyncRotation;
+                Debug.Log("SyncRotation: " + _GameManager.Instance.SlotHolders.SyncRotation);
                 this.transform.DOLocalRotate(this.transform.localEulerAngles + Vector3.forward * 180, 3, RotateMode.FastBeyond360).SetLoops(-1, LoopType.Incremental).SetEase(Ease.Linear);
                 // check can collect triple tile group
                 if (_isCanCollectTripleTile)
