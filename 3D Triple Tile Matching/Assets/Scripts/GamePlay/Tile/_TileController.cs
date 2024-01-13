@@ -2,7 +2,6 @@ using Core.GamePlay;
 using Core.Manager;
 using DG.Tweening;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 namespace Core.Tile
 {
@@ -12,8 +11,10 @@ namespace Core.Tile
 
         [SerializeField] private SpriteRenderer[] _spriteRenderers;
 
-        private int _id = 5;
+        private int _id = 0;
+        private int _index = 0;
         private _TileStateEnum _tileState;
+        private bool _isCanCollectTripleTile = false;
 
         public void Execute()
         {
@@ -33,26 +34,10 @@ namespace Core.Tile
             _tileState = _TileStateEnum.Moving;
             var selectSlotTupple = _GameManager.Instance.SlotHolders.GetSlotFreeForTile(_id);
             var slot = selectSlotTupple.Item2;
+            _index = selectSlotTupple.Item1;
             slot.ContainedTile = this;
-            // Vector3 tmpPosition = _GameManager.Instance.CanvasGamePlay.worldCamera.WorldToScreenPoint(postion);
-            // tmpPosition = _GameManager.Instance.CameraGamePlay.ScreenToWorldPoint(tmpPosition);
-            // AnimatedMovingToSlot(tmpPosition, _GameManager.Instance.SlotHolders.SyncRotation.eulerAngles + _GameManager.Instance.SlotHolders.transform.TransformDirection(Vector3.forward * 30) - (-_GameManager.Instance.CameraGamePlay.transform.rotation.eulerAngles + _GameManager.Instance.CanvasGamePlay.worldCamera.transform.rotation.eulerAngles), this.transform.localScale * 0.5f)
-            AnimatedMovingToSlot(slot)
-                .OnComplete(
-                    () =>
-                    {
-                        this.transform.SetParent(slot.RectTransform);
-                        _defaultScale = this.transform.localScale;
-                        _tileState = _TileStateEnum.Selected;
-                        SetLayer("TransparentFX");
-                        transform.position = slot.Position;
-                        this.transform.DOLocalRotate(this.transform.localEulerAngles + Vector3.forward * 180, 3, RotateMode.FastBeyond360).SetLoops(-1, LoopType.Incremental).SetEase(Ease.Linear);
-                        // check can collect triple tile group
-                        _GameManager.Instance.SlotHolders.CollectTripleTile(_id, selectSlotTupple.Item1);
-                        //check if lose games
-                        _GameManager.Instance.SlotHolders.CheckLoseGame();
-                    }
-                );
+            _isCanCollectTripleTile = _GameManager.Instance.SlotHolders.NumOfTilesWithId(_id) == 3;
+            AnimatedMovingToSlot(slot);
         }
 
         public async void SetSprite()
@@ -73,38 +58,18 @@ namespace Core.Tile
 
         public int Id => _id;
 
-        public Sequence AnimatedMovingToSlot(Vector3 position, Vector3 rotation = default, Vector3 scale = default)
-        {
-            Sequence sequence = DOTween.Sequence();
-            sequence.Append(this.transform.DOMove(position, 0.5f));
-            if (rotation != default)
-                sequence.Join(this.transform.DORotate(rotation, 0.5f));
-            if (scale != default)
-                sequence.Join(this.transform.DOScale(scale, 0.5f));
-            return sequence;
-        }
-
         public Sequence AnimatedMovingToSlot(_SlotController slot)
         {
-            var slotPostion = slot.Position;
-            slotPostion = _GameManager.Instance.CanvasGamePlay.worldCamera.WorldToScreenPoint(slotPostion);
-            slotPostion = _GameManager.Instance.CameraGamePlay.ScreenToWorldPoint(slotPostion);
-            Sequence sequence = DOTween.Sequence();
-            sequence.Append(this.transform.DOMove(slotPostion, 0.5f));
-            sequence.Join(this.transform.DORotate(_GameManager.Instance.SlotHolders.SyncRotation.eulerAngles + _GameManager.Instance.SlotHolders.transform.TransformDirection(Vector3.forward * 30) - (-_GameManager.Instance.CameraGamePlay.transform.rotation.eulerAngles + _GameManager.Instance.CanvasGamePlay.worldCamera.transform.rotation.eulerAngles), 0.5f));
-            sequence.Join(this.transform.DOScale(_defaultScale, 0.5f));
-            CurrentAnimSequence = sequence;
-            sequence.OnComplete(() =>
+            switch (_tileState)
             {
-                this.transform.SetParent(slot.RectTransform);
-                _defaultScale = this.transform.localScale;
-                _tileState = _TileStateEnum.Selected;
-
-                SetLayer("TransparentFX");
-                transform.position = slot.Position;
-                this.transform.DOLocalRotate(this.transform.localEulerAngles + Vector3.forward * 180, 3, RotateMode.FastBeyond360).SetLoops(-1, LoopType.Incremental).SetEase(Ease.Linear);
-            });
-            return sequence;
+                case _TileStateEnum.Selected:
+                    return MoveTileFromSlotToSlot(slot);
+                case _TileStateEnum.Moving:
+                case _TileStateEnum.Default:
+                    return MoveFromTileBlockToSlot(slot);
+                default:
+                    throw new System.Exception("TileState is not Selected or Moving");
+            }
         }
 
         public Sequence AnimatedCollected()
@@ -126,7 +91,53 @@ namespace Core.Tile
             }
         }
 
-        public _TileStateEnum TileState => _tileState;
+        private Sequence MoveFromTileBlockToSlot(_SlotController slot)
+        {
+            var slotPostion = slot.Position;
+            slotPostion = _GameManager.Instance.CameraCanvas.WorldToScreenPoint(slotPostion);
+            slotPostion = _GameManager.Instance.CameraGamePlay.ScreenToWorldPoint(slotPostion);
+            Sequence sequence = DOTween.Sequence();
+            sequence.Append(this.transform.DOMove(slotPostion, 0.5f));
+            sequence.Join(this.transform.DORotate(_GameManager.Instance.SlotHolders.SyncRotation.eulerAngles + Vector3.forward * 30 - (-_GameManager.Instance.CameraGamePlay.transform.rotation.eulerAngles + _GameManager.Instance.CameraCanvas.transform.rotation.eulerAngles), 0.5f));
+            sequence.Join(this.transform.DOScale(_defaultScale, 0.5f));
+            CurrentAnimSequence = sequence;
+            sequence.OnComplete(() =>
+            {
+                this.transform.SetParent(slot.Transform);
+                _defaultScale = this.transform.localScale;
+                _tileState = _TileStateEnum.Selected;
+
+                SetLayer("TransparentFX");
+                transform.position = slot.Position;
+                transform.rotation = _GameManager.Instance.SlotHolders.SyncRotation;
+                Debug.Log("SyncRotation: " + _GameManager.Instance.SlotHolders.SyncRotation);
+                this.transform.DOLocalRotate(this.transform.localEulerAngles + Vector3.forward * 180, 3, RotateMode.FastBeyond360).SetLoops(-1, LoopType.Incremental).SetEase(Ease.Linear);
+                // check can collect triple tile group
+                if (_isCanCollectTripleTile)
+                    _GameManager.Instance.SlotHolders.CollectTripleTile(_id, _index);
+                //check if lose games
+                _GameManager.Instance.SlotHolders.CheckLoseGame();
+            });
+            return sequence;
+        }
+
+        private Sequence MoveTileFromSlotToSlot(_SlotController slot)
+        {
+            Sequence sequence = DOTween.Sequence();
+            sequence.Append(this.transform.DOMove(slot.Position, 0.5f));
+            sequence.OnComplete(() =>
+            {
+                this.transform.SetParent(slot.Transform);
+            });
+            return sequence;
+        }
+
+        public _TileStateEnum TileState { get => _tileState; set => _tileState = value; }
         public Sequence CurrentAnimSequence { get; private set; }
+        public int Index
+        {
+            get => _index;
+            set => _index = value;
+        }
     }
 }

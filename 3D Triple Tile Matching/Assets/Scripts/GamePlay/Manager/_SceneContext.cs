@@ -1,3 +1,4 @@
+using Core.GamePlay;
 using DG.Tweening;
 using UnityEngine;
 
@@ -5,7 +6,10 @@ namespace Core.Manager
 {
     public class _SceneContext : MonoBehaviour
     {
+        [SerializeField] private Vector3 _pivotSlotsPosition;
+
         private _LevelManager _levelManager;
+        private _SlotHolders _slotHolders;
 
         private void Awake()
         {
@@ -17,6 +21,9 @@ namespace Core.Manager
         void Start()
         {
             _levelManager = new _LevelManager();
+            _slotHolders = new _SlotHolders(GameObject.Find("SlotHolder"), _pivotSlotsPosition);
+            _GameManager.Instance.SlotHolders = _slotHolders;
+            _slotHolders.Awake();
             _GameManager.Instance.OnWinGame += () =>
             {
                 Debug.Log("Win Game");

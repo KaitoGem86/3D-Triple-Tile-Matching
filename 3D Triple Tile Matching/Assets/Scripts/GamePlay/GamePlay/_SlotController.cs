@@ -1,19 +1,19 @@
 using Core.Manager;
 using Core.Tile;
-using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Core.GamePlay
 {
     public class _SlotController
     {
-        private readonly RectTransform _slotTrf;
+        private readonly Transform _slotTrf;
         private _SlotController _leftSlot;
         private _SlotController _rightSlot;
         private _TileController _containedTile;
 
-        public _SlotController(RectTransform slotTrf, _SlotController leftSlot, _SlotController rightSlot)
+        public _SlotController(Transform slotTrf, _SlotController leftSlot, _SlotController rightSlot)
         {
             _slotTrf = slotTrf;
             _containedTile = null;
@@ -24,13 +24,26 @@ namespace Core.GamePlay
         public void MoveTileToLeftSlot()
         {
             _leftSlot.ContainedTile = _containedTile;
-            _containedTile.AnimatedMovingToSlot(_leftSlot.RectTransform.position);
-            _containedTile.transform.SetParent(_leftSlot.RectTransform);
+            _containedTile.Index -= 1;
+            // _containedTile.AnimatedMovingToSlot(_leftSlot.RectTransform.position);
+            // _containedTile.transform.SetParent(_leftSlot.RectTransform);
+            switch(_containedTile.TileState){
+                case _TileStateEnum.Selected:
+                    _containedTile.AnimatedMovingToSlot(_leftSlot);
+                    break;
+                case _TileStateEnum.Moving:
+                    _containedTile.CurrentAnimSequence.Kill();
+                    _containedTile.AnimatedMovingToSlot(_leftSlot);
+                    break;
+                default:
+                    throw new System.Exception("TileState is not Selected or Moving");
+            }
             _containedTile = null;
         }
 
         public void MoveTileToLeftSlotWithStep(int step)
         {
+            if(_containedTile == null) return;
             if (step == 0) return;
             if (step == 1) MoveTileToLeftSlot();
             else
@@ -48,6 +61,7 @@ namespace Core.GamePlay
         public void MoveTileToRightSlot()
         {
             _rightSlot.ContainedTile = _containedTile;
+            _containedTile.Index += 1;
             switch (_containedTile.TileState)
             {
                 case _TileStateEnum.Selected:
@@ -63,15 +77,19 @@ namespace Core.GamePlay
             _containedTile = null;
         }
 
+        public void SetSpriteSubSlot(){
+            _slotTrf.GetComponent<SpriteRenderer>().color = new Color(0, 0, 0, 0);
+        }
 
-        public RectTransform RectTransform => _slotTrf;
+
+        public Transform Transform => _slotTrf;
         public Vector3 Position
         {
             get
             {
                 var position = _slotTrf.position;
-                position = _GameManager.Instance.CanvasGamePlay.worldCamera.WorldToScreenPoint(position);
-                position = _GameManager.Instance.CanvasGamePlay.worldCamera.ScreenToWorldPoint(position);
+                // position = _GameManager.Instance.CanvasGamePlay.worldCamera.WorldToScreenPoint(position);
+                // position = _GameManager.Instance.CanvasGamePlay.worldCamera.ScreenToWorldPoint(position);
                 return position;
             }
         }

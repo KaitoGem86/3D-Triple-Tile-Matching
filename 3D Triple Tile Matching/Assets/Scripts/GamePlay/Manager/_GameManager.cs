@@ -22,7 +22,7 @@ namespace Core.Manager
         }
 
         public _SlotHolders SlotHolders;
-        public Canvas CanvasGamePlay;
+        public Camera CameraCanvas;
         public Camera CameraGamePlay;
         
         public int NumOfTile {
