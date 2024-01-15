@@ -15,9 +15,9 @@ namespace  Core.GamePlay.Booster
                 _shuffle = new _Shuffle();
                 _undo = new _Undo();
                 _dictNumOfBooster = new Dictionary<_BoosterEnum, int>();
-                _dictNumOfBooster.Add(_BoosterEnum.Hint, 0);
-                _dictNumOfBooster.Add(_BoosterEnum.Shuffle, 0);
-                _dictNumOfBooster.Add(_BoosterEnum.Undo, 0);
+                _dictNumOfBooster.Add(_BoosterEnum.Hint, 1);
+                _dictNumOfBooster.Add(_BoosterEnum.Shuffle, 1);
+                _dictNumOfBooster.Add(_BoosterEnum.Undo, 1);
             }
 
             public void UseBooster(_BoosterEnum boosterEnum)

@@ -1,4 +1,5 @@
 using Core.GamePlay;
+using Core.GamePlay.Booster;
 using DG.Tweening;
 using UnityEngine;
 
@@ -10,6 +11,7 @@ namespace Core.Manager
 
         private _LevelManager _levelManager;
         private _SlotHolders _slotHolders;
+        private _BoosterSystem _boosterSystem;
 
         private void Awake()
         {
@@ -22,6 +24,8 @@ namespace Core.Manager
         {
             _levelManager = new _LevelManager();
             _slotHolders = new _SlotHolders(GameObject.Find("SlotHolder"), _pivotSlotsPosition);
+            _boosterSystem = new _BoosterSystem();
+            _GameManager.Instance.BoosterSystem = _boosterSystem;
             _GameManager.Instance.SlotHolders = _slotHolders;
             _slotHolders.Awake();
             _GameManager.Instance.OnWinGame += () =>

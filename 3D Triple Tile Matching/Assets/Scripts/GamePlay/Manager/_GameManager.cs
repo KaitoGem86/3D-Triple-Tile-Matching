@@ -1,5 +1,6 @@
 using System;
 using Core.GamePlay;
+using Core.GamePlay.Booster;
 using UnityEngine;
 
 namespace Core.Manager
@@ -24,6 +25,7 @@ namespace Core.Manager
         public _SlotHolders SlotHolders;
         public Camera CameraCanvas;
         public Camera CameraGamePlay;
+        public _BoosterSystem BoosterSystem;
         
         public int NumOfTile {
             get => _numOfTile;
