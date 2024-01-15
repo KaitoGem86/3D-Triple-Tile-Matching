@@ -29,15 +29,15 @@ namespace Core.GamePlay
                 _remainingDelta = mouseDelta * _sensitivity * Time.deltaTime;
             }
 
-            Vector3 remainTmp = _camera.TransformDirection(_remainingDelta);
-            Vector3 rotation = _cameraRotation.localEulerAngles;
+            Vector3 remainTmp = _remainingDelta;
+            Vector3 rotation = _cameraRotation.rotation.eulerAngles;
             rotation.x -= remainTmp.y;
             rotation.y += remainTmp.x;
-            _cameraRotation.localEulerAngles = rotation;
+            _cameraRotation.rotation = Quaternion.Euler(rotation);
 
             if (_damping > 0.0f)
             {
-                _remainingDelta = Vector3.Lerp(_remainingDelta, Vector3.zero, _inertia * Time.deltaTime);
+                _remainingDelta = Vector3.Lerp(_remainingDelta, Vector3.zero,  Time.deltaTime);
             }
             // if(Input.GetMouseButtonDown(0)){
             //     _rid.AddRelativeTorque(new Vector3(0, 0, 1000));
