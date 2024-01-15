@@ -138,5 +138,7 @@ namespace Core.GamePlay
                 _usedSlots[i].Transform.position = _pivotPosition + new Vector3(size * i + 0.005f*i, 0, 0);
             }
         }
+
+        public List<_SlotController> UsedSlots => _usedSlots;
     }
 }

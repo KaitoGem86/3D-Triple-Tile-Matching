@@ -15,6 +15,7 @@ namespace Core.Tile
         private int _index = 0;
         private _TileStateEnum _tileState;
         private bool _isCanCollectTripleTile = false;
+        private Vector3 _undoPosition;
 
         public void Execute()
         {
@@ -31,6 +32,7 @@ namespace Core.Tile
         {
             if (_tileState == _TileStateEnum.Selected || _tileState == _TileStateEnum.Moving)
                 return;
+            _undoPosition = this.transform.position;
             _tileState = _TileStateEnum.Moving;
             var selectSlotTupple = _GameManager.Instance.SlotHolders.GetSlotFreeForTile(_id);
             var slot = selectSlotTupple.Item2;
@@ -102,7 +104,6 @@ namespace Core.Tile
             sequence.OnComplete(() =>
             {
                 this.transform.SetParent(slot.Transform);
-                _defaultScale = this.transform.localScale;
                 _tileState = _TileStateEnum.Selected;
 
                 // SetLayer("TransparentFX");
@@ -123,7 +124,7 @@ namespace Core.Tile
                 pos = _GameManager.Instance.CameraCanvas.ScreenToWorldPoint(pos);
                 transform.position = pos;
                 Vector3 rot = transform.rotation.eulerAngles;
-                rot -=  (-_GameManager.Instance.CameraGamePlay.transform.rotation.eulerAngles + _GameManager.Instance.CameraCanvas.transform.rotation.eulerAngles);
+                rot -= (-_GameManager.Instance.CameraGamePlay.transform.rotation.eulerAngles + _GameManager.Instance.CameraCanvas.transform.rotation.eulerAngles);
                 transform.rotation = Quaternion.Euler(rot);
             });
             return sequence;
@@ -138,6 +139,26 @@ namespace Core.Tile
                 this.transform.SetParent(slot.Transform);
             });
             return sequence;
+        }
+
+        public void Undo()
+        {
+            _tileState = _TileStateEnum.Moving;
+            Vector3 undoPos = _GameManager.Instance.CameraGamePlay.WorldToScreenPoint(_undoPosition);
+            undoPos = _GameManager.Instance.CameraCanvas.ScreenToWorldPoint(undoPos);
+            transform.SetParent(null);
+            transform.DOKill();
+            Sequence sequence = DOTween.Sequence();
+            sequence.Append(this.transform.DOMove(undoPos, 0.25f));
+            sequence.Join(this.transform.DOScale(_defaultScale * 2, 0.25f));
+            sequence.Join(this.transform.DORotate(-_GameManager.Instance.CameraGamePlay.transform.rotation.eulerAngles + _GameManager.Instance.CameraCanvas.transform.rotation.eulerAngles, 0.25f));
+            sequence.OnComplete(() =>
+            {
+                SetLayer("GameElement");
+                _tileState = _TileStateEnum.Default;
+                this.transform.position = _undoPosition;
+                this.transform.rotation = Quaternion.identity;
+            });
         }
 
         public _TileStateEnum TileState { get => _tileState; set => _tileState = value; }
