@@ -94,11 +94,9 @@ namespace Core.Tile
         private Sequence MoveFromTileBlockToSlot(_SlotController slot)
         {
             var slotPostion = slot.Position;
-            slotPostion = _GameManager.Instance.CameraCanvas.WorldToScreenPoint(slotPostion);
-            slotPostion = _GameManager.Instance.CameraGamePlay.ScreenToWorldPoint(slotPostion);
             Sequence sequence = DOTween.Sequence();
             sequence.Append(this.transform.DOMove(slotPostion, 0.5f));
-            sequence.Join(this.transform.DORotate(_GameManager.Instance.SlotHolders.SyncRotation.eulerAngles + Vector3.forward * 30 - (-_GameManager.Instance.CameraGamePlay.transform.rotation.eulerAngles + _GameManager.Instance.CameraCanvas.transform.rotation.eulerAngles), 0.5f));
+            sequence.Join(this.transform.DORotate(_GameManager.Instance.SlotHolders.SyncRotation.eulerAngles + Vector3.forward * 30, 0.5f));
             sequence.Join(this.transform.DOScale(_defaultScale, 0.5f));
             CurrentAnimSequence = sequence;
             sequence.OnComplete(() =>
@@ -107,16 +105,26 @@ namespace Core.Tile
                 _defaultScale = this.transform.localScale;
                 _tileState = _TileStateEnum.Selected;
 
-                SetLayer("TransparentFX");
+                // SetLayer("TransparentFX");
                 transform.position = slot.Position;
                 transform.rotation = _GameManager.Instance.SlotHolders.SyncRotation;
-                Debug.Log("SyncRotation: " + _GameManager.Instance.SlotHolders.SyncRotation);
                 this.transform.DOLocalRotate(this.transform.localEulerAngles + Vector3.forward * 180, 3, RotateMode.FastBeyond360).SetLoops(-1, LoopType.Incremental).SetEase(Ease.Linear);
                 // check can collect triple tile group
                 if (_isCanCollectTripleTile)
                     _GameManager.Instance.SlotHolders.CollectTripleTile(_id, _index);
                 //check if lose games
                 _GameManager.Instance.SlotHolders.CheckLoseGame();
+            });
+            sequence.OnStart(() =>
+            {
+                SetLayer("TransparentFX");
+                Vector3 pos = transform.position;
+                pos = _GameManager.Instance.CameraGamePlay.WorldToScreenPoint(pos);
+                pos = _GameManager.Instance.CameraCanvas.ScreenToWorldPoint(pos);
+                transform.position = pos;
+                Vector3 rot = transform.rotation.eulerAngles;
+                rot -=  (-_GameManager.Instance.CameraGamePlay.transform.rotation.eulerAngles + _GameManager.Instance.CameraCanvas.transform.rotation.eulerAngles);
+                transform.rotation = Quaternion.Euler(rot);
             });
             return sequence;
         }
