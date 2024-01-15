@@ -1,6 +1,6 @@
 namespace Core.GamePlay.Booster
 {
-    public enum BoosterEnum : byte
+    public enum _BoosterEnum : byte
     {
         Hint,
         Shuffle,

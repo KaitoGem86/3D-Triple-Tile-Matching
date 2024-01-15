@@ -1,6 +1,6 @@
 namespace Core.GamePlay.Booster
 {
-    public class Shuffle
+    public class _Shuffle
     {
         public void Use()
         {

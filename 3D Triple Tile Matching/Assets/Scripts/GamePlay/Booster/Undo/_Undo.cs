@@ -1,6 +1,6 @@
 namespace Core.GamePlay.Booster
 {
-    public class Undo{
+    public class _Undo{
         public void Use(){
             
         }

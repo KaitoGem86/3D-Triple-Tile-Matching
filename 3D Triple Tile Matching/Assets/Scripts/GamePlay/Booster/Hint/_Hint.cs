@@ -1,5 +1,5 @@
 namespace Core.GamePlay.Booster{
-    public class Hint{
+    public class _Hint{
         public void Use(){
             
         }
