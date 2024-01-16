@@ -141,6 +141,8 @@ namespace Core.Tile
 
         public void Undo()
         {
+            if(_tileState == _TileStateEnum.Collected || _tileState == _TileStateEnum.Moving)
+                return;
             _tileState = _TileStateEnum.Moving;
             Vector3 undoPos = _GameManager.Instance.CameraGamePlay.WorldToScreenPoint(_undoPosition);
             undoPos = _GameManager.Instance.CameraCanvas.ScreenToWorldPoint(undoPos);
