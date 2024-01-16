@@ -107,7 +107,6 @@ namespace Core.Tile
                 this.transform.SetParent(slot.Transform);
                 _tileState = _TileStateEnum.Selected;
 
-                // SetLayer("TransparentFX");
                 transform.position = slot.Position;
                 transform.rotation = _GameManager.Instance.SlotHolders.SyncRotation;
                 this.transform.DOLocalRotate(this.transform.localEulerAngles + Vector3.forward * 180, 3, RotateMode.FastBeyond360).SetLoops(-1, LoopType.Incremental).SetEase(Ease.Linear);
@@ -162,9 +161,6 @@ namespace Core.Tile
                 this.transform.position = _undoPosition;
                 this.transform.rotation = Quaternion.identity;
             });
-            // sequence.OnStart(() => {
-            //     _GameManager.Instance.SlotHolders.UndoTile(_index, _id);
-            // });
         }
 
         public _TileStateEnum TileState { get => _tileState; set => _tileState = value; }
