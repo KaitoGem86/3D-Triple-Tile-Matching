@@ -170,5 +170,6 @@ namespace Core.GamePlay
 
         public List<_SlotController> UsedSlots => _usedSlots;
         public _TileMovedManager TileMovedManager => _tileMovedManager;
+        public Dictionary<int, int> ListContainedTileId => _listContainedTileId;
     }
 }
