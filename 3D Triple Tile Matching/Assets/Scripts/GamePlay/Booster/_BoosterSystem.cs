@@ -1,4 +1,7 @@
 using System.Collections.Generic;
+using Core.Tile;
+using Cysharp.Threading.Tasks;
+using JetBrains.Annotations;
 
 namespace  Core.GamePlay.Booster
 {
@@ -9,7 +12,7 @@ namespace  Core.GamePlay.Booster
             private readonly _Shuffle _shuffle;
             private readonly _Undo _undo;
 
-            public _BoosterSystem()
+            public _BoosterSystem(List<_TileController> listTile)
             {
                 _hint = new _Hint();
                 _shuffle = new _Shuffle();
@@ -18,6 +21,7 @@ namespace  Core.GamePlay.Booster
                 _dictNumOfBooster.Add(_BoosterEnum.Hint, 1);
                 _dictNumOfBooster.Add(_BoosterEnum.Shuffle, 1);
                 _dictNumOfBooster.Add(_BoosterEnum.Undo, 1);
+                ListHintTileManager = new _ListHintTileManager(listTile);
             }
 
             public void UseBooster(_BoosterEnum boosterEnum)
@@ -38,5 +42,7 @@ namespace  Core.GamePlay.Booster
                         break;
                 }
             }
+    
+            public _ListHintTileManager ListHintTileManager { get; set; }
     }    
 }

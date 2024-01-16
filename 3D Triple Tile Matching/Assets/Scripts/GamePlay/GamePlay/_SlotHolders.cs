@@ -107,6 +107,7 @@ namespace Core.GamePlay
             for (int j = 0; j < 3; j++)
             {
                 _usedSlots[index - j].ContainedTile.TileState = Tile._TileStateEnum.Collected;
+                _GameManager.Instance.BoosterSystem.ListHintTileManager.RemoveTile(_usedSlots[index - j].ContainedTile);
                 sequence.Join(_usedSlots[index - j].ContainedTile.AnimatedCollected());
             }
             sequence.OnComplete(() =>

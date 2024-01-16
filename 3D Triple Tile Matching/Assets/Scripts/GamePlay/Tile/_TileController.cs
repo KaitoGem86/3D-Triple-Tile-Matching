@@ -11,24 +11,21 @@ namespace Core.Tile
 
         [SerializeField] private SpriteRenderer[] _spriteRenderers;
 
+        private BoxCollider _boxCollider;
         private int _id = 0;
         private int _index = 0;
         private _TileStateEnum _tileState;
         private bool _isCanCollectTripleTile = false;
         private Vector3 _undoPosition;
 
-        public void Execute()
-        {
-            SetSprite();
-        }
-
         void Start()
         {
             _defaultScale = this.transform.localScale * 0.5f;
+            _boxCollider = GetComponent<BoxCollider>();
         }
 
 
-        private void OnMouseDown()
+        public void OnMouseDown()
         {
             if (_tileState == _TileStateEnum.Selected || _tileState == _TileStateEnum.Moving)
                 return;
@@ -162,6 +159,43 @@ namespace Core.Tile
                 this.transform.rotation = Quaternion.identity;
             });
         }
+
+        public bool CheckCanHint(){
+            _boxCollider.enabled = false;
+            if(!Physics.Raycast(transform.position, Vector3.forward, 10, LayerMask.GetMask("GameElement"))){
+                _boxCollider.enabled = true;
+                Debug.DrawRay(transform.position, Vector3.forward * 10, Color.red, 10);
+                return true;
+            }
+            if(!Physics.Raycast(transform.position, Vector3.back, 10, LayerMask.GetMask("GameElement"))){
+                _boxCollider.enabled = true;
+                Debug.DrawRay(transform.position, Vector3.back * 10, Color.red, 10);
+                return true;
+            }
+            if(!Physics.Raycast(transform.position, Vector3.left, 10, LayerMask.GetMask("GameElement"))){
+                _boxCollider.enabled = true;
+                Debug.DrawRay(transform.position, Vector3.left * 10, Color.red, 10);
+                return true;
+            }
+            if(!Physics.Raycast(transform.position, Vector3.right, 10, LayerMask.GetMask("GameElement"))){
+                _boxCollider.enabled = true;
+                Debug.DrawRay(transform.position, Vector3.right * 10, Color.red, 10);
+                return true;
+            }
+            if(!Physics.Raycast(transform.position, Vector3.up, 10, LayerMask.GetMask("GameElement"))){
+                _boxCollider.enabled = true;
+                Debug.DrawRay(transform.position, Vector3.up * 10, Color.red, 10);
+                return true;
+            }
+            if(!Physics.Raycast(transform.position, Vector3.down, 10, LayerMask.GetMask("GameElement"))){
+                _boxCollider.enabled = true;
+                Debug.DrawRay(transform.position, Vector3.down * 10, Color.red, 10);
+                return true;
+            }
+            _boxCollider.enabled = true;
+            return false;
+        }
+
 
         public _TileStateEnum TileState { get => _tileState; set => _tileState = value; }
         public Sequence CurrentAnimSequence { get; private set; }
