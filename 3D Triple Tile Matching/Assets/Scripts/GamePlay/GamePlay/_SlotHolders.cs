@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Core.GamePlay.Booster;
 using Core.Manager;
 using DG.Tweening;
 using UnityEngine;
@@ -11,10 +12,13 @@ namespace Core.GamePlay
         private readonly GameObject _slotHolderObject;
         private readonly Vector3 _pivotPosition;
 
+        private readonly _TileMovedManager _tileMovedManager;
+
         public _SlotHolders(GameObject slotHolderObject, Vector3 pivotPosition)
         {
             _slotHolderObject = slotHolderObject;
             _pivotPosition = pivotPosition;
+            _tileMovedManager = new _TileMovedManager();
         }
 
         private int _numberOfSlots = 7;
@@ -65,6 +69,12 @@ namespace Core.GamePlay
                 return GetSlotFree();
             }
 
+            if(_listContainedTileId[id] == 0){
+                _numOfTilesInSlots++;
+                _listContainedTileId[id] = 1;
+                return GetSlotFree();
+            }
+
             _listContainedTileId[id] += 1;
             int index = _currentFirstFreeSlotIndex + 1;
             for (int i = _currentFirstFreeSlotIndex - 1; i > 0; i--)
@@ -75,7 +85,7 @@ namespace Core.GamePlay
                     index += 1;
                     break;
                 }
-                if(_usedSlots[i].ContainedTile.TileState != Tile._TileStateEnum.Collected)
+                if (_usedSlots[i].ContainedTile.TileState != Tile._TileStateEnum.Collected)
                     _usedSlots[i].MoveTileToRightSlot();
             }
             _currentFirstFreeSlotIndex++;
@@ -97,11 +107,12 @@ namespace Core.GamePlay
             for (int j = 0; j < 3; j++)
             {
                 _usedSlots[index - j].ContainedTile.TileState = Tile._TileStateEnum.Collected;
+                _GameManager.Instance.BoosterSystem.ListHintTileManager.RemoveTile(_usedSlots[index - j].ContainedTile);
                 sequence.Join(_usedSlots[index - j].ContainedTile.AnimatedCollected());
             }
             sequence.OnComplete(() =>
             {
-                Debug.Log(index + " " + _currentFirstFreeSlotIndex);
+                _tileMovedManager.RemoveTileMovedWhenCollect(index);
                 for (i = index + 1; i < _currentFirstFreeSlotIndex; i++)
                 {
                     _usedSlots[i].MoveTileToLeftSlotWithStep(3);
@@ -130,13 +141,35 @@ namespace Core.GamePlay
             }
         }
 
+        public void UndoTile(int index, int id)
+        {
+            _usedSlots[index].ContainedTile = null;
+            _listContainedTileId[id] -= 1;
+            _numOfTilesInSlots -= 1;
+            _GameManager.Instance.NumOfFreeSlot = _numberOfSlots - _numOfTilesInSlots;
+            _GameManager.Instance.NumOfTile += 1;
+            _tileMovedManager.RemoveTileMovedWhenUndo(index);
+            for (int i = index + 1; i < _currentFirstFreeSlotIndex; i++)
+            {
+                if (_usedSlots[i].ContainedTile != null)
+                    _usedSlots[i].MoveTileToLeftSlot();
+            }
+            _currentFirstFreeSlotIndex -= 1;
+        }
+
         public int NumOfTilesWithId(int id) => _listContainedTileId[id];
 
-        private void SetPositionSlot(){
+        private void SetPositionSlot()
+        {
             float size = _usedSlots[0].Transform.GetComponent<SpriteRenderer>().sprite.bounds.size.x;
-            for(int i = 0; i < _numberOfSlots + 3; i++){
-                _usedSlots[i].Transform.position = _pivotPosition + new Vector3(size * i + 0.005f*i, 0, 0);
+            for (int i = 0; i < _numberOfSlots + 3; i++)
+            {
+                _usedSlots[i].Transform.position = _pivotPosition + new Vector3(size * i + 0.005f * i, 0, 0);
             }
         }
+
+        public List<_SlotController> UsedSlots => _usedSlots;
+        public _TileMovedManager TileMovedManager => _tileMovedManager;
+        public Dictionary<int, int> ListContainedTileId => _listContainedTileId;
     }
 }
