@@ -1,3 +1,5 @@
+using Core.CameraGamePlay;
+using Core.Manager;
 using UnityEngine;
 
 namespace Core.GamePlay
@@ -14,6 +16,12 @@ namespace Core.GamePlay
 
         private Vector3 _remainingDelta;
         private Vector3 _lastMousePosition;
+
+        private void Awake()
+        {
+            SetCameraSize();
+        }
+
 
         private void LateUpdate()
         {
@@ -42,6 +50,16 @@ namespace Core.GamePlay
             // if(Input.GetMouseButtonDown(0)){
             //     _rid.AddRelativeTorque(new Vector3(0, 0, 1000));
             // }        
+        }
+
+        //Set Camera size by modify position.z and position.y of camera
+        public void SetCameraSize(){
+            var cameraSize = _GameManager.Instance.CameraCanvas.aspect;
+            if(cameraSize < 0.5 && cameraSize > 0.4)
+                _GameManager.Instance.CameraCanvas.transform.position = _ConstantCameraSetting._9x21PositionSetting;
+            if(cameraSize < 0.6 && cameraSize > 0.5)
+                _GameManager.Instance.CameraCanvas.transform.position = _ConstantCameraSetting._9x16PositionSetting;
+            Debug.Log(cameraSize);
         }
     }
 }
