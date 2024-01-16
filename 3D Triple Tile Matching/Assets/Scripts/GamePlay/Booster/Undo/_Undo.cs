@@ -6,7 +6,12 @@ namespace Core.GamePlay.Booster
     public class _Undo{
         public void Use(){
             Debug.Log("Undo");
-            _GameManager.Instance.SlotHolders.UsedSlots[0].ContainedTile?.Undo();
+            int undoIndex = _GameManager.Instance.SlotHolders.TileMovedManager.GetLastTileMoved();
+            if (undoIndex == -1)
+            {
+                return;
+            }
+            _GameManager.Instance.SlotHolders.UsedSlots[undoIndex].ContainedTile?.Undo();
         }
     }
 }

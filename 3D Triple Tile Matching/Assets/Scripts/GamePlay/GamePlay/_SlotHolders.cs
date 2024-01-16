@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Core.GamePlay.Booster;
 using Core.Manager;
 using DG.Tweening;
 using UnityEngine;
@@ -11,10 +12,13 @@ namespace Core.GamePlay
         private readonly GameObject _slotHolderObject;
         private readonly Vector3 _pivotPosition;
 
+        private readonly _TileMovedManager _tileMovedManager;
+
         public _SlotHolders(GameObject slotHolderObject, Vector3 pivotPosition)
         {
             _slotHolderObject = slotHolderObject;
             _pivotPosition = pivotPosition;
+            _tileMovedManager = new _TileMovedManager();
         }
 
         private int _numberOfSlots = 7;
@@ -107,7 +111,7 @@ namespace Core.GamePlay
             }
             sequence.OnComplete(() =>
             {
-                Debug.Log(index + " " + _currentFirstFreeSlotIndex);
+                _tileMovedManager.RemoveTileMovedWhenCollect(index);
                 for (i = index + 1; i < _currentFirstFreeSlotIndex; i++)
                 {
                     _usedSlots[i].MoveTileToLeftSlotWithStep(3);
@@ -143,6 +147,7 @@ namespace Core.GamePlay
             _numOfTilesInSlots -= 1;
             _GameManager.Instance.NumOfFreeSlot = _numberOfSlots - _numOfTilesInSlots;
             _GameManager.Instance.NumOfTile += 1;
+            _tileMovedManager.RemoveTileMovedWhenUndo(index);
             for (int i = index + 1; i < _currentFirstFreeSlotIndex; i++)
             {
                 if (_usedSlots[i].ContainedTile != null)
@@ -163,6 +168,6 @@ namespace Core.GamePlay
         }
 
         public List<_SlotController> UsedSlots => _usedSlots;
-        public Dictionary<int, int> ListContainedTileId => _listContainedTileId;
+        public _TileMovedManager TileMovedManager => _tileMovedManager;
     }
 }
