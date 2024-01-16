@@ -134,7 +134,7 @@ namespace Core.Tile
         {
             Sequence sequence = DOTween.Sequence();
             sequence.Append(this.transform.DOMove(slot.Position, 0.5f));
-            sequence.OnComplete(() =>
+            sequence.OnStart(() =>
             {
                 this.transform.SetParent(slot.Transform);
             });
@@ -147,6 +147,7 @@ namespace Core.Tile
             Vector3 undoPos = _GameManager.Instance.CameraGamePlay.WorldToScreenPoint(_undoPosition);
             undoPos = _GameManager.Instance.CameraCanvas.ScreenToWorldPoint(undoPos);
             transform.SetParent(null);
+            _GameManager.Instance.SlotHolders.UndoTile(_index, _id);
             transform.DOKill();
             Sequence sequence = DOTween.Sequence();
             sequence.Append(this.transform.DOMove(undoPos, 0.25f));
@@ -156,9 +157,13 @@ namespace Core.Tile
             {
                 SetLayer("GameElement");
                 _tileState = _TileStateEnum.Default;
+                Debug.Log(_undoPosition + " " + _id);
                 this.transform.position = _undoPosition;
                 this.transform.rotation = Quaternion.identity;
             });
+            // sequence.OnStart(() => {
+            //     _GameManager.Instance.SlotHolders.UndoTile(_index, _id);
+            // });
         }
 
         public _TileStateEnum TileState { get => _tileState; set => _tileState = value; }

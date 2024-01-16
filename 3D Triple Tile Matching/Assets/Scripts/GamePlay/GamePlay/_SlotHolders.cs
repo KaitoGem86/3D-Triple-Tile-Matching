@@ -65,6 +65,12 @@ namespace Core.GamePlay
                 return GetSlotFree();
             }
 
+            if(_listContainedTileId[id] == 0){
+                _numOfTilesInSlots++;
+                _listContainedTileId[id] = 1;
+                return GetSlotFree();
+            }
+
             _listContainedTileId[id] += 1;
             int index = _currentFirstFreeSlotIndex + 1;
             for (int i = _currentFirstFreeSlotIndex - 1; i > 0; i--)
@@ -75,7 +81,7 @@ namespace Core.GamePlay
                     index += 1;
                     break;
                 }
-                if(_usedSlots[i].ContainedTile.TileState != Tile._TileStateEnum.Collected)
+                if (_usedSlots[i].ContainedTile.TileState != Tile._TileStateEnum.Collected)
                     _usedSlots[i].MoveTileToRightSlot();
             }
             _currentFirstFreeSlotIndex++;
@@ -130,15 +136,33 @@ namespace Core.GamePlay
             }
         }
 
+        public void UndoTile(int index, int id)
+        {
+            _usedSlots[index].ContainedTile = null;
+            _listContainedTileId[id] -= 1;
+            _numOfTilesInSlots -= 1;
+            _GameManager.Instance.NumOfFreeSlot = _numberOfSlots - _numOfTilesInSlots;
+            _GameManager.Instance.NumOfTile += 1;
+            for (int i = index + 1; i < _currentFirstFreeSlotIndex; i++)
+            {
+                if (_usedSlots[i].ContainedTile != null)
+                    _usedSlots[i].MoveTileToLeftSlot();
+            }
+            _currentFirstFreeSlotIndex -= 1;
+        }
+
         public int NumOfTilesWithId(int id) => _listContainedTileId[id];
 
-        private void SetPositionSlot(){
+        private void SetPositionSlot()
+        {
             float size = _usedSlots[0].Transform.GetComponent<SpriteRenderer>().sprite.bounds.size.x;
-            for(int i = 0; i < _numberOfSlots + 3; i++){
-                _usedSlots[i].Transform.position = _pivotPosition + new Vector3(size * i + 0.005f*i, 0, 0);
+            for (int i = 0; i < _numberOfSlots + 3; i++)
+            {
+                _usedSlots[i].Transform.position = _pivotPosition + new Vector3(size * i + 0.005f * i, 0, 0);
             }
         }
 
         public List<_SlotController> UsedSlots => _usedSlots;
+        public Dictionary<int, int> ListContainedTileId => _listContainedTileId;
     }
 }
