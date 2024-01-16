@@ -43,16 +43,19 @@ namespace Core.GamePlay.Booster
 
         public void GetHintTile()
         {
-            var sortedDict = _GameManager.Instance.SlotHolders.ListContainedTileId.OrderByDescending(pair => pair.Value);
-            foreach (var keyValuePair in sortedDict)
+            if (_GameManager.Instance.SlotHolders.ListContainedTileId?.Count != 0)
             {
-                if (_listTileCollect.ContainsKey(keyValuePair.Key) && _listTileCollect.ContainsKey(keyValuePair.Key) && _listTileCollect[keyValuePair.Key].Count >= 3 - keyValuePair.Value)
+                var sortedDict = _GameManager.Instance.SlotHolders.ListContainedTileId.OrderByDescending(pair => pair.Value);
+                foreach (var keyValuePair in sortedDict)
                 {
-                    for(int i = 0; i < 3 - keyValuePair.Value; i++)
+                    if (_listTileCollect.ContainsKey(keyValuePair.Key) && _listTileCollect.ContainsKey(keyValuePair.Key) && _listTileCollect[keyValuePair.Key].Count >= 3 - keyValuePair.Value)
                     {
-                        _listTileCollect[keyValuePair.Key][0].OnMouseDown();
+                        for (int i = 0; i < 3 - keyValuePair.Value; i++)
+                        {
+                            _listTileCollect[keyValuePair.Key][0].OnMouseDown();
+                        }
+                        return;
                     }
-                    return;
                 }
             }
 
@@ -61,8 +64,8 @@ namespace Core.GamePlay.Booster
                 if (pair.Value.Count >= 3)
                 {
                     pair.Value[0].OnMouseDown();
-                    pair.Value[1].OnMouseDown();
-                    pair.Value[2].OnMouseDown();
+                    pair.Value[0].OnMouseDown();
+                    pair.Value[0].OnMouseDown();
                     return;
                 }
             }

@@ -146,6 +146,7 @@ namespace Core.Tile
             undoPos = _GameManager.Instance.CameraCanvas.ScreenToWorldPoint(undoPos);
             transform.SetParent(null);
             _GameManager.Instance.SlotHolders.UndoTile(_index, _id);
+            _GameManager.Instance.BoosterSystem.ListHintTileManager.AddTile(this);
             transform.DOKill();
             Sequence sequence = DOTween.Sequence();
             sequence.Append(this.transform.DOMove(undoPos, 0.25f));
