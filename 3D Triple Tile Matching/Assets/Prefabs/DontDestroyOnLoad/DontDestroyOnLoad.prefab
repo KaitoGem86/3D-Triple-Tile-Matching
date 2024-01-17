@@ -191,7 +191,7 @@ MonoBehaviour:
   _identifier: 
   _rectTransform: {fileID: 0}
   _canvasGroup: {fileID: 8470339166379638080}
-  unityScreenNavigatorSettings: {fileID: 0}
+  unityScreenNavigatorSettings: {fileID: 11400000, guid: a5b662e6a4a99414eaaafd5bda1d9a52, type: 2}
   windowContainerSettings: {fileID: 11400000, guid: 8a8e6f16c9b87354e997a0a09193c745, type: 2}
 --- !u!225 &8470339166379638080
 CanvasGroup:
