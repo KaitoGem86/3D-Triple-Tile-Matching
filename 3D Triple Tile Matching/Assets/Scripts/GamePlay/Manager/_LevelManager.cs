@@ -2,7 +2,9 @@ using System.Collections.Generic;
 using Core.Extensions.File;
 using Core.File;
 using Core.Level;
+using Core.Resources;
 using Core.Tile;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 
@@ -14,14 +16,13 @@ namespace Core.Manager
         private List<_TileController> _listTileController;
 
         public _LevelManager(){
-            LoadLevel();
         }
 
-        private async void LoadLevel(){
+        public async UniTask LoadLevel(){
             // if new level => load from level path
             // if continued level => load from saved path
             _levelData = _JsonFileManager.LoadJsonFile<_LevelData>(_JsonPath.GetJsonPath("LevelDataTest"));
-            GameObject tmp = await AddressablesManager.LoadAssetAsync<GameObject>("3DTile");
+            GameObject tmp = await AddressablesManager.LoadAssetAsync<GameObject>(_KeyPrefabsResources.GetKeyTilePrefab());
             _listTileController = new List<_TileController>();
             foreach(var item in _levelData._tileElementDatas){
                 var tmpTile = GameObject.Instantiate(tmp);

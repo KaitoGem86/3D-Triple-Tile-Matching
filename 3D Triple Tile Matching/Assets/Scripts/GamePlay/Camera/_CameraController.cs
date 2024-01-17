@@ -10,14 +10,11 @@ namespace Core.GamePlay
         [SerializeField] private float _damping = -1.0f;
         [SerializeField][Range(0.0f, 1.0f)] private float _inertia;
         [SerializeField] private Transform _cameraRotation;
-        [SerializeField] private Transform _camera;
-        [SerializeField] private Rigidbody _rid; 
-
 
         private Vector3 _remainingDelta;
         private Vector3 _lastMousePosition;
 
-        private void Awake()
+        public void SetUp()
         {
             SetCameraSize();
         }
