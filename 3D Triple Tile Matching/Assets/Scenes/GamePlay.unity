@@ -1298,9 +1298,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a361898347613f4697a1b0e3a671049, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sensitivity: 1
+  _sensitivity: 8
   _damping: 0.01
-  _inertia: 0.01
+  _inertia: 0.15
   _cameraRotation: {fileID: 724162826}
   _camera: {fileID: 1812845237}
   _rid: {fileID: 724162827}

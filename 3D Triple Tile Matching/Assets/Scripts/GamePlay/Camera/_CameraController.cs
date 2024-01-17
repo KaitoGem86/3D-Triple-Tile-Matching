@@ -1,3 +1,5 @@
+using Core.CameraGamePlay;
+using Core.Manager;
 using UnityEngine;
 
 namespace Core.GamePlay
@@ -15,6 +17,12 @@ namespace Core.GamePlay
         private Vector3 _remainingDelta;
         private Vector3 _lastMousePosition;
 
+        private void Awake()
+        {
+            SetCameraSize();
+        }
+
+
         private void LateUpdate()
         {
             if ((Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began) || Input.GetMouseButtonDown(0))
@@ -30,18 +38,28 @@ namespace Core.GamePlay
             }
 
             Vector3 remainTmp = _remainingDelta;
-            Vector3 rotation = _cameraRotation.rotation.eulerAngles;
-            rotation.x -= remainTmp.y;
-            rotation.y += remainTmp.x;
-            _cameraRotation.rotation = Quaternion.Euler(rotation);
-
+            // Vector3 rotation = _cameraRotation.rotation.eulerAngles;
+            // remainTmp = _GameManager.Instance.CameraGamePlay.transform.InverseTransformDirection(remainTmp);
+            // rotation.x -= remainTmp.y;
+            // rotation.y += remainTmp.x;
+            // _cameraRotation.rotation = Quaternion.Euler(rotation);
+            _cameraRotation.Rotate(Vector3.left, remainTmp.y, Space.Self);
+            _cameraRotation.Rotate(Vector3.up, remainTmp.x, Space.Self);
+                                                                                                                                                                                                                                                                    
             if (_damping > 0.0f)
             {
-                _remainingDelta = Vector3.Lerp(_remainingDelta, Vector3.zero,  Time.deltaTime);
-            }
-            // if(Input.GetMouseButtonDown(0)){
-            //     _rid.AddRelativeTorque(new Vector3(0, 0, 1000));
-            // }        
+                _remainingDelta = Vector3.Lerp(_remainingDelta, Vector3.zero, _inertia);
+            }     
+        }
+
+        //Set Camera size by modify position.z and position.y of camera
+        private void SetCameraSize(){
+            var cameraSize = _GameManager.Instance.CameraCanvas.aspect;
+            if(cameraSize < 0.5 && cameraSize > 0.4)
+                _GameManager.Instance.CameraCanvas.transform.position = _ConstantCameraSetting._9x21PositionSetting;
+            if(cameraSize < 0.6 && cameraSize > 0.5)
+                _GameManager.Instance.CameraCanvas.transform.position = _ConstantCameraSetting._9x16PositionSetting;
+            Debug.Log(cameraSize);
         }
     }
 }
