@@ -1,8 +1,11 @@
 using Core.GamePlay;
 using Core.GamePlay.Booster;
+using Core.Resources;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 
 namespace Core.Manager
 {
@@ -21,15 +24,11 @@ namespace Core.Manager
         }
 
         // Start is called before the first frame update
-        private async void Start()
+        private void Start()
         {
-            _levelManager = new _LevelManager();
-            _slotHolders = new _SlotHolders(GameObject.Find("SlotHolder"), _pivotSlotsPosition);
-            await UniTask.WaitUntil(() => _levelManager.IsLoaded);
-            _boosterSystem = new _BoosterSystem(_levelManager.ListTileController);
-            _GameManager.Instance.BoosterSystem = _boosterSystem;
-            _GameManager.Instance.SlotHolders = _slotHolders;
-            _slotHolders.Awake();
+            SetUpCamera();
+            LoadSlot();
+            LoadLevel();
             _GameManager.Instance.OnWinGame += () =>
             {
                 Debug.Log("Win Game");
@@ -40,8 +39,29 @@ namespace Core.Manager
             };
         }
 
-        private void SetUpCamera(){
-            
+        private async void SetUpCamera(){
+            var cameraRotationPrefab = await AddressablesManager.LoadAssetAsync<GameObject>(_KeyPrefabsResources.GetKeyCameraRotationPrefab());
+            var cameraRotation = Instantiate(cameraRotationPrefab);
+            _GameManager.Instance.CameraGamePlay = cameraRotation.GameObject().transform.GetChild(0).GetComponent<Camera>();
+            var cameraUIPrefab = await AddressablesManager.LoadAssetAsync<GameObject>(_KeyPrefabsResources.GetKeyUICameraPrefab());
+            var cameraUI = Instantiate(cameraUIPrefab);
+            _GameManager.Instance.CameraCanvas = cameraUI.GameObject().GetComponent<Camera>();
+            _GameManager.Instance.CameraGamePlay.GetComponent<_CameraController>().SetUp();
+        }
+
+        private void LoadSlot(){
+            var slotHolder = new GameObject("SlotHolder");
+            _slotHolders = new _SlotHolders(slotHolder, _pivotSlotsPosition);
+            _GameManager.Instance.SlotHolders = _slotHolders;
+            _slotHolders.Awake();
+        }
+
+        private async void LoadLevel(){
+            _levelManager = new _LevelManager();
+            await _levelManager.LoadLevel();
+            await UniTask.WaitUntil(() => _levelManager.IsLoaded);
+            _boosterSystem = new _BoosterSystem(_levelManager.ListTileController);
+            _GameManager.Instance.BoosterSystem = _boosterSystem;
         }
     }
 
