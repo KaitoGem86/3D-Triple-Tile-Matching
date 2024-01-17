@@ -26,6 +26,7 @@ namespace Core.Manager
         // Start is called before the first frame update
         private void Start()
         {
+            LoadDontDestroyObject();
             SetUpCamera();
             LoadSlot();
             LoadLevel();
@@ -62,6 +63,12 @@ namespace Core.Manager
             await UniTask.WaitUntil(() => _levelManager.IsLoaded);
             _boosterSystem = new _BoosterSystem(_levelManager.ListTileController);
             _GameManager.Instance.BoosterSystem = _boosterSystem;
+        }
+
+        private async void LoadDontDestroyObject(){
+            var tmp = await AddressablesManager.LoadAssetAsync<GameObject>(_KeyPrefabsResources.GetKeyDontDestroyOnLoadPrefab());
+            var go = Instantiate(tmp);
+            go.GetComponent<_DontDestroyOnLoad>().Awake();
         }
     }
 
