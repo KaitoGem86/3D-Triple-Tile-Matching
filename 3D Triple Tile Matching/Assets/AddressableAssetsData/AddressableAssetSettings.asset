@@ -89,6 +89,7 @@ MonoBehaviour:
     - default
     - Prefabs
     - Sprites
+    - Cameras
   m_SchemaTemplates: []
   m_GroupTemplateObjects:
   - {fileID: 11400000, guid: 91ed0f9c7aa81114997dd09cd0b1bfae, type: 2}

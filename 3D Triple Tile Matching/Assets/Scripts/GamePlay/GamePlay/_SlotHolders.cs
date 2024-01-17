@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using Core.GamePlay.Booster;
 using Core.Manager;
+using Core.Resources;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
@@ -33,7 +34,7 @@ namespace Core.GamePlay
         {
             _usedSlots = new List<_SlotController>();
             _listContainedTileId = new Dictionary<int, int>();
-            GameObject tmp = await AddressablesManager.LoadAssetAsync<GameObject>("SlotObject");
+            GameObject tmp = await AddressablesManager.LoadAssetAsync<GameObject>(_KeyPrefabsResources.GetKeySlotPrefab());
             for (int i = 0; i < _numberOfSlots; i++)
             {
                 Transform tmpSlot = MonoBehaviour.Instantiate(tmp, _slotHolderObject.transform).GetComponent<Transform>();

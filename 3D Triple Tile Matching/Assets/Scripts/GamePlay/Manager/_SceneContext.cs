@@ -40,12 +40,9 @@ namespace Core.Manager
             };
         }
 
-        // Update is called once per frame
-        void Update()
-        {
-
+        private void SetUpCamera(){
+            
         }
-        
     }
 
 }
