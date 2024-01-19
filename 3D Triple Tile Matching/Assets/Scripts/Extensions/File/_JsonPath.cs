@@ -4,7 +4,7 @@ namespace Core.Extensions.File
 {
     public static class _JsonPath
     {
-        private static string _jsonPath = Application.dataPath + "/";
+        private static string _jsonPath = Application.persistentDataPath + "/";
         private const string _jsonExtension = ".json";
 
 
