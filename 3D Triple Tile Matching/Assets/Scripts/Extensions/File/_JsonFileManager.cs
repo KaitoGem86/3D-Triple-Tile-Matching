@@ -12,7 +12,8 @@ namespace Core.File{
         /// <param name="path"></param>
         /// <returns></returns>
         public static T LoadJsonFile<T>(string path){
-            string json = System.IO.File.ReadAllText(path);
+            //string json = System.IO.File.ReadAllText(path);
+            string json = Resources.Load<TextAsset>(path).text;
             T item = UnityEngine.JsonUtility.FromJson<T>(json);
             return item;
         }

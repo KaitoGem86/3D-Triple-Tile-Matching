@@ -1,4 +1,4 @@
-namespace Core.Resources{
+namespace Core.ResourcesKey{
     public class _KeyPrefabsResources
     {
         private const string _tilePrefabPath = "3DTile";

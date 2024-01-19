@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using Core.GamePlay.Booster;
 using Core.Manager;
-using Core.Resources;
+using Core.ResourcesKey;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.AddressableAssets;

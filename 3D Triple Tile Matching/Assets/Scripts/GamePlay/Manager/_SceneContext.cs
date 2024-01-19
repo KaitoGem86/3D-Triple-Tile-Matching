@@ -1,6 +1,6 @@
 using Core.GamePlay;
 using Core.GamePlay.Booster;
-using Core.Resources;
+using Core.ResourcesKey;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using Unity.VisualScripting;
