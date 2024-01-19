@@ -1,4 +1,7 @@
+using Core.Extensions.File;
 using Core.Level;
+using UnityEditor;
+using UnityEditor.AddressableAssets;
 using UnityEngine;
 
 namespace Core.File{
@@ -30,6 +33,22 @@ namespace Core.File{
             string json = UnityEngine.JsonUtility.ToJson(data);
             Debug.Log(json);
             System.IO.File.WriteAllText(path, json);
+
+            AddressableAssetUtility.AddAssetToAddressables("LevelDataTest", "TextData");
+        }
+    }
+
+    public class AddressableAssetUtility{
+        public static void AddAssetToAddressables(string addressName, string groupName){
+            var settings = AddressableAssetSettingsDefaultObject.Settings;
+
+            var group = settings.FindGroup(groupName);
+            if (group == null){
+                group = settings.CreateGroup(groupName, false, false, true, null);
+            }
+
+            var entry = settings.CreateOrMoveEntry(AssetDatabase.AssetPathToGUID(_JsonPath.GetJsonPath(addressName)), group);
+            entry.address = addressName;
         }
     }
 }
