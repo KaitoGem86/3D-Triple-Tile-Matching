@@ -1,5 +1,6 @@
 using Core.Manager;
 using Core.UI.Modals;
+using Core.UI.Screens;
 using UnityEngine;
 using ZBase.UnityScreenNavigator.Core;
 using ZBase.UnityScreenNavigator.Core.Activities;
@@ -13,6 +14,7 @@ namespace Core.UI{
             base.Start();
             SetContainer();
             SetEvent();
+            SetMainScreen();
         }
 
         private void SetContainer(){
@@ -26,6 +28,10 @@ namespace Core.UI{
             _GameManager.Instance.OnWinGame += () => _Modal.ShowModal<Modal>(_ModalEnum.WinGame);
             // _GameManager.Instance.OnLoseGame -= () => _Modal.ShowModal<Modal>(_ModalEnum.LoseGame);
             // _GameManager.Instance.OnLoseGame += () => _Modal.ShowModal<Modal>(_ModalEnum.LoseGame);
+        }
+
+        private void SetMainScreen(){
+            _Screen.ShowScreen<ZBase.UnityScreenNavigator.Core.Screens.Screen>(_ScreenEnum.GamePlay);
         }
     }
 }
