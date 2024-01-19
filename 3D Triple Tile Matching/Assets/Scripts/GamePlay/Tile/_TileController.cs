@@ -25,7 +25,7 @@ namespace Core.Tile
         }
 
 
-        public void OnMouseDown()
+        public void OnMouseUp()
         {
             if (_tileState == _TileStateEnum.Selected || _tileState == _TileStateEnum.Moving)
                 return;
