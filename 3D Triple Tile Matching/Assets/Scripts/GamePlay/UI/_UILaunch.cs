@@ -18,12 +18,5 @@ namespace Core.UI{
             _ContainerUI.ModalContainer = transform.Find("Modal").GetComponent<ModalContainer>();
             _ContainerUI.ScreenContainer = transform.Find("Screen").GetComponent<ScreenContainer>();
         }
-
-        protected void Update(){
-            if(Input.GetKeyDown(KeyCode.Space)){
-                Debug.Log("Space");
-                _Modal.ShowModalAsync<Modal>(_ModalEnum.WinGame);
-            }
-        }
     }
 }
