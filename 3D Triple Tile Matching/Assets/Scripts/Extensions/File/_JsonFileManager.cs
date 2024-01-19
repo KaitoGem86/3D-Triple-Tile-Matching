@@ -1,8 +1,14 @@
 using Core.Extensions.File;
 using Core.Level;
 using UnityEditor;
-using UnityEditor.AddressableAssets;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
+using System.Threading.Tasks;
+
+
+#if UNITY_EDITOR
+using UnityEditor.AddressableAssets;
+#endif
 
 namespace Core.File{
     public static class _JsonFileManager{
@@ -14,14 +20,16 @@ namespace Core.File{
         /// <typeparam name="T"></typeparam>
         /// <param name="path"></param>
         /// <returns></returns>
-        public static T LoadJsonFile<T>(string path){
+        public static async Task<T> LoadJsonFile<T>(string path){
             //string json = System.IO.File.ReadAllText(path);
-            string json = Resources.Load<TextAsset>(path).text;
+            // string json = Resources.Load<TextAsset>(path).text;
+            var textAsset = await AddressablesManager.LoadAssetAsync<TextAsset>(path);
+            string json = textAsset.Value.text;
             T item = UnityEngine.JsonUtility.FromJson<T>(json);
             return item;
         }
 
-
+#if UNITY_EDITOR
         /// <summary>
         /// save object to json file
         /// only public fields will be serialized
@@ -36,8 +44,11 @@ namespace Core.File{
 
             AddressableAssetUtility.AddAssetToAddressables("LevelDataTest", "TextData");
         }
+
+#endif
     }
 
+#if UNITY_EDITOR
     public class AddressableAssetUtility{
         public static void AddAssetToAddressables(string addressName, string groupName){
             var settings = AddressableAssetSettingsDefaultObject.Settings;
@@ -51,4 +62,5 @@ namespace Core.File{
             entry.address = addressName;
         }
     }
+#endif
 }

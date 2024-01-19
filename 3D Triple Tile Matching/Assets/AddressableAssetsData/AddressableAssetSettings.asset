@@ -47,7 +47,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 6ca43c885c6d2a044b304379e8d672f7, type: 2}
   - {fileID: 11400000, guid: 220db217a046f1a418e0c88ce67493a7, type: 2}
   - {fileID: 11400000, guid: 0dedba76b1e8fcf4d8f5b13341a31e38, type: 2}
-  - {fileID: 11400000, guid: a86dfeb40d2fc3c4d919aa26577cdaf0, type: 2}
+  - {fileID: 11400000, guid: ca26325a1db7b734aa873a459180931e, type: 2}
   m_BuildSettings:
     m_CompileScriptsInVirtualMode: 0
     m_CleanupStreamingAssetsAfterBuilds: 1
@@ -93,6 +93,7 @@ MonoBehaviour:
     - Sprites
     - Cameras
     - UI
+    - TextData
   m_SchemaTemplates: []
   m_GroupTemplateObjects:
   - {fileID: 11400000, guid: 91ed0f9c7aa81114997dd09cd0b1bfae, type: 2}

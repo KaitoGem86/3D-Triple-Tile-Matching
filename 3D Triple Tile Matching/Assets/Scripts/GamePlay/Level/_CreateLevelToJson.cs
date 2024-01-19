@@ -14,13 +14,15 @@ namespace Core.Level{
         // }
         private _LevelData _levelData;
 
+#if UNITY_EDITOR
         [Button("Create Level To Json")]
         public void _CreateLevel(){
             _levelData = new _LevelData(_levelDataSO);
             foreach(var itemData in _levelDataSO.TileElementDatas){
                 _levelData._tileElementDatas.Add(itemData);
             }
-            _JsonFileManager.SaveJsonFile<_LevelData>(_JsonPath.GetJsonPath(_path), _levelData);
+            _JsonFileManager.SaveJsonFile<_LevelData>(_JsonPath.GetJsonLevelDataPath(_path), _levelData);
         }
+#endif
     }
 }
