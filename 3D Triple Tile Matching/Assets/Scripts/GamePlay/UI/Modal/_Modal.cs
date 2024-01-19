@@ -1,3 +1,4 @@
+using ZBase.UnityScreenNavigator.Core;
 using ZBase.UnityScreenNavigator.Core.Modals;
 using ZBase.UnityScreenNavigator.Core.Views;
 
@@ -11,16 +12,17 @@ namespace Core.UI.Modals
         //option.TryGetTransform(out var modal);
         //modal.GetComponent<T>().OpenAnimation(); 
 
-        public static void ShowModal<T>(_ModalEnum modalEnum) where T : Modal
+        public static void ShowModal(_ModalEnum modalEnum)
         {
             var option = new ViewOptions(_KeyUIResources.GetModalPath(modalEnum), playAnimation: false);
-            _ContainerUI.ModalContainer.Push<T>(option);
+            _ContainerUI.ModalContainer.Push(option);
         }
 
-        public static void ShowModalAsync<T>(_ModalEnum modalEnum) where T : Modal
+        public static async void ShowModalAsync<T>(_ModalEnum modalEnum) where T : _BaseModal
         {
             var option = new ViewOptions(_KeyUIResources.GetModalPath(modalEnum), playAnimation: false);
-            _ContainerUI.ModalContainer.PushAsync<T>(option);
+            await _ContainerUI.ModalContainer.PushAsync<T>(option);
+            GetLastestModal().View.GetComponent<T>().Execute();
         }
 
         public static void HideModal<T>() where T : Modal
@@ -39,6 +41,12 @@ namespace Core.UI.Modals
             {
                 _ContainerUI.ModalContainer.Pop(playAnimation: false);
             }
+        }
+
+        private static ViewRef GetLastestModal()
+        {
+            if (_ContainerUI.ModalContainer.Modals.Count == 0) return default;
+            return _ContainerUI.ModalContainer.Modals[_ContainerUI.ModalContainer.Modals.Count - 1];
         }
     }
 }

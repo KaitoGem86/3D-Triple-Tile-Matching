@@ -9,14 +9,13 @@ namespace Core.UI.Screens
         {
             var option = new ViewOptions(_KeyUIResources.GetScreenPath(screenEnum), playAnimation: false);
             _ContainerUI.ScreenContainer.Push(option);
-            GetLastestScreen().View.GetComponent<_BaseScreen>().Execute();
         }
 
         public static async void ShowScreenAsync<T>(_ScreenEnum screenEnum) where T : _BaseScreen
         {
             var option = new ViewOptions(_KeyUIResources.GetScreenPath(screenEnum), playAnimation: false);
             await _ContainerUI.ScreenContainer.PushAsync<T>(option);
-            GetLastestScreen().View.GetComponent<_BaseScreen>().Execute();
+            GetLastestScreen().View.GetComponent<T>().Execute();
         }
 
         public static void HideScreen<T>() where T : _BaseScreen

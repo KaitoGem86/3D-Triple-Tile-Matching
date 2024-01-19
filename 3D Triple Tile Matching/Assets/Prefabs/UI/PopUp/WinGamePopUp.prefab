@@ -526,7 +526,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6822434625866246040}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 3103955736582134621}
+        m_TargetAssemblyTypeName: Core.UI.Modals._WinGameModal, Assembly-CSharp
+        m_MethodName: NextLevel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &6822434625939045180
 GameObject:
   m_ObjectHideFlags: 0
@@ -538,8 +550,8 @@ GameObject:
   - component: {fileID: 6822434625939045183}
   - component: {fileID: 6822434625939045169}
   - component: {fileID: 6822434625939045182}
-  - component: {fileID: 5915024352374498628}
-  - component: {fileID: 2826328892737227214}
+  - component: {fileID: -800126712023668063}
+  - component: {fileID: 3103955736582134621}
   m_Layer: 5
   m_Name: WinGamePopUp
   m_TagString: Untagged
@@ -606,7 +618,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!225 &5915024352374498628
+--- !u!225 &-800126712023668063
 CanvasGroup:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -618,7 +630,7 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
---- !u!114 &2826328892737227214
+--- !u!114 &3103955736582134621
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -627,14 +639,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 6822434625939045180}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe9e4f2a8264b264c987d53ae53f6d07, type: 3}
+  m_Script: {fileID: 11500000, guid: 19e3cfd74a5cc5644bfc4c76d2fbc1b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _dontAddCanvasGroupAutomatically: 0
   _usePrefabNameAsIdentifier: 1
   _identifier: 
   _rectTransform: {fileID: 0}
-  _canvasGroup: {fileID: 5915024352374498628}
+  _canvasGroup: {fileID: -800126712023668063}
   _animationContainer:
     _enterAnimations: []
     _exitAnimations: []
@@ -759,7 +771,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6822434626223178207}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 3103955736582134621}
+        m_TargetAssemblyTypeName: Core.UI.Modals._WinGameModal, Assembly-CSharp
+        m_MethodName: Replay
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &6822434626924300658
 GameObject:
   m_ObjectHideFlags: 0

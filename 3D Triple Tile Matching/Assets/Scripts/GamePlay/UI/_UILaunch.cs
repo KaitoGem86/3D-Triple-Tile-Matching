@@ -24,8 +24,8 @@ namespace Core.UI{
         }
 
         private void SetEvent(){
-            _GameManager.Instance.OnWinGame -= () => _Modal.ShowModal<Modal>(_ModalEnum.WinGame);
-            _GameManager.Instance.OnWinGame += () => _Modal.ShowModal<Modal>(_ModalEnum.WinGame);
+            _GameManager.Instance.OnWinGame -= () => _Modal.ShowModalAsync<_WinGameModal>(_ModalEnum.WinGame);
+            _GameManager.Instance.OnWinGame += () => _Modal.ShowModalAsync<_WinGameModal>(_ModalEnum.WinGame);
             // _GameManager.Instance.OnLoseGame -= () => _Modal.ShowModal<Modal>(_ModalEnum.LoseGame);
             // _GameManager.Instance.OnLoseGame += () => _Modal.ShowModal<Modal>(_ModalEnum.LoseGame);
         }
