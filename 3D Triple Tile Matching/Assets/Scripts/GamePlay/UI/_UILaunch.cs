@@ -1,3 +1,5 @@
+using Core.UI.Modals;
+using UnityEngine;
 using ZBase.UnityScreenNavigator.Core;
 using ZBase.UnityScreenNavigator.Core.Activities;
 using ZBase.UnityScreenNavigator.Core.Modals;
@@ -15,6 +17,13 @@ namespace Core.UI{
             _ContainerUI.ActivityContainer = transform.Find("Activity").GetComponent<ActivityContainer>();
             _ContainerUI.ModalContainer = transform.Find("Modal").GetComponent<ModalContainer>();
             _ContainerUI.ScreenContainer = transform.Find("Screen").GetComponent<ScreenContainer>();
+        }
+
+        protected void Update(){
+            if(Input.GetKeyDown(KeyCode.Space)){
+                Debug.Log("Space");
+                _Modal.ShowModalAsync<Modal>(_ModalEnum.WinGame);
+            }
         }
     }
 }

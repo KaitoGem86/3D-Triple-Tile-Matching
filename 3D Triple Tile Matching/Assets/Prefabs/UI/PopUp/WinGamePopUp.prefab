@@ -538,6 +538,8 @@ GameObject:
   - component: {fileID: 6822434625939045183}
   - component: {fileID: 6822434625939045169}
   - component: {fileID: 6822434625939045182}
+  - component: {fileID: 5915024352374498628}
+  - component: {fileID: 2826328892737227214}
   m_Layer: 5
   m_Name: WinGamePopUp
   m_TagString: Untagged
@@ -604,6 +606,38 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!225 &5915024352374498628
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6822434625939045180}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
+--- !u!114 &2826328892737227214
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6822434625939045180}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe9e4f2a8264b264c987d53ae53f6d07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _dontAddCanvasGroupAutomatically: 0
+  _usePrefabNameAsIdentifier: 1
+  _identifier: 
+  _rectTransform: {fileID: 0}
+  _canvasGroup: {fileID: 0}
+  _animationContainer:
+    _enterAnimations: []
+    _exitAnimations: []
 --- !u!1 &6822434626223178202
 GameObject:
   m_ObjectHideFlags: 0
