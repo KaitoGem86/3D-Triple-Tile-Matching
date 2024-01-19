@@ -21,7 +21,7 @@ namespace Core.Manager
         public async UniTask LoadLevel(){
             // if new level => load from level path
             // if continued level => load from saved path
-            _levelData = await _JsonFileManager.LoadJsonFile<_LevelData>("LevelDataTest");
+            _levelData = await _JsonFileManager.LoadJsonFileFromAddressables<_LevelData>("LevelDataTest");
             GameObject tmp = await AddressablesManager.LoadAssetAsync<GameObject>(_KeyPrefabsResources.GetKeyTilePrefab());
             _listTileController = new List<_TileController>();
             foreach(var item in _levelData._tileElementDatas){

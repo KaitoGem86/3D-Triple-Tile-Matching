@@ -14,16 +14,14 @@ namespace Core.File{
     public static class _JsonFileManager{
 
         /// <summary>
-        /// load json from path, return object
+        /// load json from addressables group by addressableName, return object
         /// only public fields will be serialized
         /// </summary>
         /// <typeparam name="T"></typeparam>
-        /// <param name="path"></param>
+        /// <param name="addressablesName"></param>
         /// <returns></returns>
-        public static async Task<T> LoadJsonFile<T>(string path){
-            //string json = System.IO.File.ReadAllText(path);
-            // string json = Resources.Load<TextAsset>(path).text;
-            var textAsset = await AddressablesManager.LoadAssetAsync<TextAsset>(path);
+        public static async Task<T> LoadJsonFileFromAddressables<T>(string addressablesName){
+            var textAsset = await AddressablesManager.LoadAssetAsync<TextAsset>(addressablesName);
             string json = textAsset.Value.text;
             T item = UnityEngine.JsonUtility.FromJson<T>(json);
             return item;
@@ -42,15 +40,14 @@ namespace Core.File{
             Debug.Log(json);
             System.IO.File.WriteAllText(path, json);
 
-            AddressableAssetUtility.AddAssetToAddressables("LevelDataTest", "TextData");
+            AddressableAssetUtility.AddLevelDataAssetToAddressables("LevelDataTest", "TextData");
         }
-
 #endif
     }
 
 #if UNITY_EDITOR
     public class AddressableAssetUtility{
-        public static void AddAssetToAddressables(string addressName, string groupName){
+        public static void AddLevelDataAssetToAddressables(string addressName, string groupName){
             var settings = AddressableAssetSettingsDefaultObject.Settings;
 
             var group = settings.FindGroup(groupName);
@@ -58,8 +55,9 @@ namespace Core.File{
                 group = settings.CreateGroup(groupName, false, false, true, null);
             }
 
-            var entry = settings.CreateOrMoveEntry(AssetDatabase.AssetPathToGUID(_JsonPath.GetJsonPath(addressName)), group);
+            var entry = settings.CreateOrMoveEntry(AssetDatabase.AssetPathToGUID(_JsonPath.GetJsonLevelDataPath(addressName)), group);
             entry.address = addressName;
+            entry.SetLabel("TextData", true, true, true);
         }
     }
 #endif
