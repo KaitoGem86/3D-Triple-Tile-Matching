@@ -169,6 +169,15 @@
       },
       "url": "https://packages.unity.com"
     },
+    "com.zbase.unityscreennavigator": {
+      "version": "https://github.com/Zitga-Tech/ZBase.UnityScreenNavigator.git?path=/Packages/ZBase.UnityScreenNavigator",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {
+        "com.cysharp.unitask": "2.3.3"
+      },
+      "hash": "cffda935db251398cd8630a4b937241cb416602e"
+    },
     "com.unity.modules.ai": {
       "version": "1.0.0",
       "depth": 0,
