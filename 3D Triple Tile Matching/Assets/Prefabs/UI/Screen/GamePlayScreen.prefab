@@ -236,8 +236,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8060491554086608788}
-  - component: {fileID: 452014249164902692}
-  - component: {fileID: 5013808718302824175}
+  - component: {fileID: 7934431813301669370}
+  - component: {fileID: 8968013149437397063}
   m_Layer: 5
   m_Name: GamePlayScreen
   m_TagString: Untagged
@@ -266,7 +266,7 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!225 &452014249164902692
+--- !u!225 &7934431813301669370
 CanvasGroup:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -278,7 +278,7 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
---- !u!114 &5013808718302824175
+--- !u!114 &8968013149437397063
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -287,20 +287,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 8060491554086608787}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aeb9b38cbfd7f6d47917253c40395378, type: 3}
+  m_Script: {fileID: 11500000, guid: d760fd50b1789784ab1a5858a604a25e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _dontAddCanvasGroupAutomatically: 0
   _usePrefabNameAsIdentifier: 1
   _identifier: 
   _rectTransform: {fileID: 0}
-  _canvasGroup: {fileID: 452014249164902692}
+  _canvasGroup: {fileID: 7934431813301669370}
   _renderingOrder: 0
   _animationContainer:
     _pushEnterAnimations: []
     _pushExitAnimations: []
     _popEnterAnimations: []
     _popExitAnimations: []
+  _hintButton: {fileID: 8060491554339685936}
+  _undoButton: {fileID: 8060491554747142710}
 --- !u!1 &8060491554339685950
 GameObject:
   m_ObjectHideFlags: 0

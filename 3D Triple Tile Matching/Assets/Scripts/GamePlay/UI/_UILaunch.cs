@@ -31,7 +31,7 @@ namespace Core.UI{
         }
 
         private void SetMainScreen(){
-            _Screen.ShowScreen<ZBase.UnityScreenNavigator.Core.Screens.Screen>(_ScreenEnum.GamePlay);
+            _Screen.ShowScreenAsync<_GamePlayScreen>(_ScreenEnum.GamePlay);
         }
     }
 }
