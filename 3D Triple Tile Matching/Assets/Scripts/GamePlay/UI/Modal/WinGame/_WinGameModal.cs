@@ -8,8 +8,8 @@ namespace Core.UI.Modals{
             _isExecute = true;
         }
 
-        public async void NextLevel(){
-            await  _GameManager.Instance.LevelManager.LoadLevel();
+        public void NextLevel(){
+            _GameManager.Instance.NextLevel();
             _Modal.HideAllModal();
         }
 

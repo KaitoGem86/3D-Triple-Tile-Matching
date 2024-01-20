@@ -1,6 +1,7 @@
 using System;
 using Core.GamePlay;
 using Core.GamePlay.Booster;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 
 namespace Core.Manager
@@ -60,6 +61,12 @@ namespace Core.Manager
         {
             get => _onLoseGame;
             set => _onLoseGame = value;
+        }
+
+        public async void NextLevel(){
+            await LevelManager.LoadLevel();
+            await UniTask.WaitUntil(() => LevelManager.IsLoaded);
+            BoosterSystem.Reset(LevelManager.ListTileController);
         }
 
     }

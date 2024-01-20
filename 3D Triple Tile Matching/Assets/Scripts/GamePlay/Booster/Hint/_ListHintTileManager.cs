@@ -16,7 +16,7 @@ namespace Core.GamePlay.Booster
             SetStartHintList(listTile);
         }
 
-        private void SetStartHintList(List<_TileController> listTile)
+        public void SetStartHintList(List<_TileController> listTile)
         {
             foreach (_TileController tile in listTile)
             {

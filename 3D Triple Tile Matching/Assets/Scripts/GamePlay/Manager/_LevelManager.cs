@@ -22,6 +22,7 @@ namespace Core.Manager
         public async UniTask LoadLevel(){
             // if new level => load from level path
             // if continued level => load from saved path
+            IsLoaded = false;
             _levelData = await _JsonFileManager.LoadJsonFileFromAddressables<_LevelData>("LevelDataTest");
             GameObject tmp = await AddressablesManager.LoadAssetAsync<GameObject>(_KeyPrefabsResources.GetKeyTilePrefab());
             _ObjectPooling.Instance.CreatePool(_TypeGameObjectEnum.Tile, tmp, 20);

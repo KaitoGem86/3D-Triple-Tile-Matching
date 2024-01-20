@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Core.Manager;
 using Core.Tile;
 
 namespace  Core.GamePlay.Booster
@@ -36,7 +37,13 @@ namespace  Core.GamePlay.Booster
                 }
             }
 
+            public void Reset(List<_TileController> listTile){
+                TileMovedManager.Reset();
+                ListHintTileManager.SetStartHintList(listTile);
+            }
+
             public _ListHintTileManager ListHintTileManager { get; set; }
             public _TileMovedManager TileMovedManager { get; set; }
+
     }    
 }
