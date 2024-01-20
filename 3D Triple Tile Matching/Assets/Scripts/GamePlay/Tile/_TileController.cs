@@ -39,7 +39,7 @@ namespace Core.Tile
             _index = selectSlotTupple.Item1;
             slot.ContainedTile = this;
             _GameManager.Instance.BoosterSystem.ListHintTileManager.RemoveTile(this);
-            _GameManager.Instance.SlotHolders.TileMovedManager.AddTileMoved(_index);
+            _GameManager.Instance.BoosterSystem.TileMovedManager.AddTileMoved(_index);
             _isCanCollectTripleTile = _GameManager.Instance.SlotHolders.NumOfTilesWithId(_id) == 3;
             AnimatedMovingToSlot(slot);
         }

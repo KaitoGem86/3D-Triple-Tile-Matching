@@ -18,6 +18,7 @@ namespace  Core.GamePlay.Booster
                 _dictNumOfBooster.Add(_BoosterEnum.Hint, 1);
                 _dictNumOfBooster.Add(_BoosterEnum.Undo, 1);
                 ListHintTileManager = new _ListHintTileManager(listTile);
+                TileMovedManager = new _TileMovedManager();
             }
 
             public void UseBooster(_BoosterEnum boosterEnum)
@@ -34,7 +35,8 @@ namespace  Core.GamePlay.Booster
                         break;
                 }
             }
-    
+
             public _ListHintTileManager ListHintTileManager { get; set; }
+            public _TileMovedManager TileMovedManager { get; set; }
     }    
 }
