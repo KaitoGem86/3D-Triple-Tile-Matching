@@ -62,6 +62,7 @@ namespace Core.Manager
             await _levelManager.LoadLevel();
             await UniTask.WaitUntil(() => _levelManager.IsLoaded);
             _boosterSystem = new _BoosterSystem(_levelManager.ListTileController);
+            _GameManager.Instance.LevelManager = _levelManager;
             _GameManager.Instance.BoosterSystem = _boosterSystem;
         }
 

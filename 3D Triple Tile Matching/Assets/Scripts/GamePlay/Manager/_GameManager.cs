@@ -23,6 +23,7 @@ namespace Core.Manager
         }
 
         public _SlotHolders SlotHolders;
+        public _LevelManager LevelManager;
         public Camera CameraCanvas;
         public Camera CameraGamePlay;
         public _BoosterSystem BoosterSystem;
