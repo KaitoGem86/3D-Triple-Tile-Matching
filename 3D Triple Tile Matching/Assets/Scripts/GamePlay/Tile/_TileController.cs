@@ -1,13 +1,15 @@
 using Core.GamePlay;
 using Core.Manager;
 using DG.Tweening;
+using ObjectPool;
 using UnityEngine;
 
 namespace Core.Tile
 {
     public class _TileController : MonoBehaviour
     {
-        private Vector3 _defaultScale;
+        private Vector3 _defaultScaleInBlock = new Vector3(10, 10, 10);
+        private Vector3 _defaultScaleInSlot = new Vector3(5, 5, 5);
 
         [SerializeField] private SpriteRenderer[] _spriteRenderers;
 
@@ -20,12 +22,13 @@ namespace Core.Tile
 
         void Start()
         {
-            _defaultScale = this.transform.localScale * 0.5f;
+            // _defaultScaleInBlock = this.transform.localScale;
+            // _defaultScaleInSlot = this.transform.localScale * 0.5f;
             _boxCollider = GetComponent<BoxCollider>();
         }
 
 
-        public void OnMouseDown()
+        public void OnMouseUp()
         {
             if (_tileState == _TileStateEnum.Selected || _tileState == _TileStateEnum.Moving)
                 return;
@@ -36,7 +39,7 @@ namespace Core.Tile
             _index = selectSlotTupple.Item1;
             slot.ContainedTile = this;
             _GameManager.Instance.BoosterSystem.ListHintTileManager.RemoveTile(this);
-            _GameManager.Instance.SlotHolders.TileMovedManager.AddTileMoved(_index);
+            _GameManager.Instance.BoosterSystem.TileMovedManager.AddTileMoved(_index);
             _isCanCollectTripleTile = _GameManager.Instance.SlotHolders.NumOfTilesWithId(_id) == 3;
             AnimatedMovingToSlot(slot);
         }
@@ -54,7 +57,9 @@ namespace Core.Tile
         {
             _id = id;
             _tileState = _TileStateEnum.Default;
+            transform.localScale = _defaultScaleInBlock;
             SetSprite();
+            SetLayer("GameElement");
         }
 
         public int Id => _id;
@@ -78,7 +83,8 @@ namespace Core.Tile
             Sequence sequence = DOTween.Sequence();
             sequence.Append(this.transform.DOScale(Vector3.zero, 0.5f).SetEase(Ease.InOutBack).OnComplete(() =>
             {
-                gameObject.SetActive(false);
+                transform.DOKill();
+                _ObjectPooling.Instance.ReturnToPool(_TypeGameObjectEnum.Tile, this.gameObject);
             }));
             return sequence;
         }
@@ -98,7 +104,7 @@ namespace Core.Tile
             Sequence sequence = DOTween.Sequence();
             sequence.Append(this.transform.DOMove(slotPostion, 0.5f));
             sequence.Join(this.transform.DORotate(_GameManager.Instance.SlotHolders.SyncRotation.eulerAngles + Vector3.forward * 30, 0.5f));
-            sequence.Join(this.transform.DOScale(_defaultScale, 0.5f));
+            sequence.Join(this.transform.DOScale(_defaultScaleInSlot, 0.5f));
             CurrentAnimSequence = sequence;
             sequence.OnComplete(() =>
             {
@@ -152,7 +158,7 @@ namespace Core.Tile
             transform.DOKill();
             Sequence sequence = DOTween.Sequence();
             sequence.Append(this.transform.DOMove(undoPos, 0.25f));
-            sequence.Join(this.transform.DOScale(_defaultScale * 2, 0.25f));
+            sequence.Join(this.transform.DOScale(_defaultScaleInBlock, 0.25f));
             sequence.Join(this.transform.DORotate(-_GameManager.Instance.CameraGamePlay.transform.rotation.eulerAngles + _GameManager.Instance.CameraCanvas.transform.rotation.eulerAngles, 0.25f));
             sequence.OnComplete(() =>
             {

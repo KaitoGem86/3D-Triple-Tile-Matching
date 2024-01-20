@@ -16,7 +16,7 @@ namespace Core.GamePlay.Booster
             SetStartHintList(listTile);
         }
 
-        private void SetStartHintList(List<_TileController> listTile)
+        public void SetStartHintList(List<_TileController> listTile)
         {
             foreach (_TileController tile in listTile)
             {
@@ -52,7 +52,7 @@ namespace Core.GamePlay.Booster
                     {
                         for (int i = 0; i < 3 - keyValuePair.Value; i++)
                         {
-                            _listTileCollect[keyValuePair.Key][0].OnMouseDown();
+                            _listTileCollect[keyValuePair.Key][0].OnMouseUp();
                         }
                         return;
                     }
@@ -63,9 +63,9 @@ namespace Core.GamePlay.Booster
             {
                 if (pair.Value.Count >= 3)
                 {
-                    pair.Value[0].OnMouseDown();
-                    pair.Value[0].OnMouseDown();
-                    pair.Value[0].OnMouseDown();
+                    pair.Value[0].OnMouseUp();
+                    pair.Value[0].OnMouseUp();
+                    pair.Value[0].OnMouseUp();
                     return;
                 }
             }

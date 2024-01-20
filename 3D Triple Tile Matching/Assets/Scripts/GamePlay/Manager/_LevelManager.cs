@@ -2,9 +2,10 @@ using System.Collections.Generic;
 using Core.Extensions.File;
 using Core.File;
 using Core.Level;
-using Core.Resources;
+using Core.ResourcesKey;
 using Core.Tile;
 using Cysharp.Threading.Tasks;
+using ObjectPool;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 
@@ -21,11 +22,13 @@ namespace Core.Manager
         public async UniTask LoadLevel(){
             // if new level => load from level path
             // if continued level => load from saved path
-            _levelData = _JsonFileManager.LoadJsonFile<_LevelData>(_JsonPath.GetJsonPath("LevelDataTest"));
+            IsLoaded = false;
+            _levelData = await _JsonFileManager.LoadJsonFileFromAddressables<_LevelData>("LevelDataTest");
             GameObject tmp = await AddressablesManager.LoadAssetAsync<GameObject>(_KeyPrefabsResources.GetKeyTilePrefab());
+            _ObjectPooling.Instance.CreatePool(_TypeGameObjectEnum.Tile, tmp, 20);
             _listTileController = new List<_TileController>();
             foreach(var item in _levelData._tileElementDatas){
-                var tmpTile = GameObject.Instantiate(tmp);
+                var tmpTile = _ObjectPooling.Instance.SpawnFromPool(_TypeGameObjectEnum.Tile, Vector3.zero, Quaternion.identity);
                 tmpTile.name = item.id.ToString();
                 tmpTile.GetComponent<_TileController>().InitTileCube(item.id);
                 tmpTile.transform.position = item.position * 0.2f;

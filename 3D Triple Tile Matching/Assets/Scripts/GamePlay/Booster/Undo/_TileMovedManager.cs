@@ -94,5 +94,9 @@ namespace Core.GamePlay.Booster
             }
             _stackTileMoved.Push(index);
         }
+
+        public void Reset(){
+            _stackTileMoved.Clear();
+        }
     }
 }

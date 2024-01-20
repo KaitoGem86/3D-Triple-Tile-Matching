@@ -1,3 +1,4 @@
+using Core.Manager;
 using UnityEngine;
 
 namespace Core.UI.Modals{
@@ -8,7 +9,8 @@ namespace Core.UI.Modals{
         }
 
         public void NextLevel(){
-            Debug.Log("Next Level");
+            _GameManager.Instance.NextLevel();
+            _Modal.HideAllModal();
         }
 
         public void Replay(){

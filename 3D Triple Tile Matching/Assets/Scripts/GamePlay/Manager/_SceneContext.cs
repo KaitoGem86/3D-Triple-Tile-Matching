@@ -1,6 +1,6 @@
 using Core.GamePlay;
 using Core.GamePlay.Booster;
-using Core.Resources;
+using Core.ResourcesKey;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using Unity.VisualScripting;
@@ -62,6 +62,7 @@ namespace Core.Manager
             await _levelManager.LoadLevel();
             await UniTask.WaitUntil(() => _levelManager.IsLoaded);
             _boosterSystem = new _BoosterSystem(_levelManager.ListTileController);
+            _GameManager.Instance.LevelManager = _levelManager;
             _GameManager.Instance.BoosterSystem = _boosterSystem;
         }
 
