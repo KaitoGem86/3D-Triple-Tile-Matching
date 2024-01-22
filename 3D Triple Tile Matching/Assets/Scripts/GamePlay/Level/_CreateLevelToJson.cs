@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Core.Extensions.File;
 using Core.File;
 using NaughtyAttributes;
@@ -14,6 +15,14 @@ namespace Core.Level{
         // }
         private _LevelData _levelData;
 
+        public static void CreateLevel(List<Vector2> listPosition, string path){
+            var levelData = new _LevelData();
+            foreach (var item in listPosition){
+                levelData._tileElementDatas.Add(new _TileElementData(1, new Vector3(item.x, item.y, 0)));
+            }
+            _JsonFileManager.SaveJsonFile<_LevelData>(path, levelData);
+        }
+
 #if UNITY_EDITOR
         [Button("Create Level To Json")]
         public void _CreateLevel(){
@@ -21,7 +30,7 @@ namespace Core.Level{
             foreach(var itemData in _levelDataSO.TileElementDatas){
                 _levelData._tileElementDatas.Add(itemData);
             }
-            _JsonFileManager.SaveJsonFile<_LevelData>(_JsonPath.GetJsonLevelDataPath(_path), _levelData);
+            _JsonFileManager.SaveJsonFile<_LevelData>(_path, _levelData);
         }
 #endif
     }

@@ -33,14 +33,14 @@ namespace Core.File{
         /// only public fields will be serialized
         /// </summary>
         /// <typeparam name="T"></typeparam>
-        /// <param name="path"></param>
+        /// <param name="addressName"></param>
         /// <param name="data"></param>
-        public static void SaveJsonFile<T>(string path, T data){
+        public static void SaveJsonFile<T>(string addressName, T data){
             string json = UnityEngine.JsonUtility.ToJson(data);
             Debug.Log(json);
-            System.IO.File.WriteAllText(path, json);
+            System.IO.File.WriteAllText(_JsonPath.GetJsonLevelDataPath(addressName), json);
 
-            AddressableAssetUtility.AddLevelDataAssetToAddressables("LevelDataTest", "TextData");
+            AddressableAssetUtility.AddLevelDataAssetToAddressables(addressName, "TextData");
         }
 #endif
     }

@@ -10,6 +10,10 @@ namespace Core.Level{
             _tileElementDatas = new List<_TileElementData>();
         }
 
+        public _LevelData(){
+            _tileElementDatas = new List<_TileElementData>();
+        }
+
         // public List<_TileElementData> TileElementDatas => _tileElementDatas;
     }
 }
