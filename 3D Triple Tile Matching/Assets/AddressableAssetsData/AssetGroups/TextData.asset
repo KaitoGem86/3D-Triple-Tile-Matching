@@ -31,6 +31,11 @@ MonoBehaviour:
     m_Address: Level2
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: 5d5a69a45c0dca74bb0f96f8893e9eb0
+    m_Address: Level3
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - TextData
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 1119a1644b59a4a478c6eef4f635f61c, type: 2}
   m_SchemaSet:

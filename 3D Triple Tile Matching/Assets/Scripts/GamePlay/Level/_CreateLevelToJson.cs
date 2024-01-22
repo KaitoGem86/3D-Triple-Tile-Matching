@@ -20,7 +20,7 @@ namespace Core.Level{
             foreach (var item in listPosition){
                 levelData._tileElementDatas.Add(new _TileElementData(1, new Vector3(item.x, item.y, 0)));
             }
-            _JsonFileManager.SaveJsonFile<_LevelData>(path, levelData);
+            _JsonFileManager.SaveLevelJsonFile<_LevelData>(path, levelData);
         }
 
 #if UNITY_EDITOR
@@ -30,7 +30,7 @@ namespace Core.Level{
             foreach(var itemData in _levelDataSO.TileElementDatas){
                 _levelData._tileElementDatas.Add(itemData);
             }
-            _JsonFileManager.SaveJsonFile<_LevelData>(_path, _levelData);
+            _JsonFileManager.SaveLevelJsonFile<_LevelData>(_path, _levelData);
         }
 #endif
     }

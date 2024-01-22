@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Core.File;
 using NaughtyAttributes;
 using UnityEngine;
 
@@ -25,6 +26,12 @@ namespace Core.Level{
                 }
             }
             _CreateLevelToJson.CreateLevel(_listPosition, "Level" + _levelId);
+        }
+
+    [Button("ConvertTextureToLayerData")]
+        public void ConvertTextureToLayerData(){
+            var mapLayerData = new _MapLayerData(_texture2D);
+            _JsonFileManager.SaveLayerJsonFile<_MapLayerData>("Layer" + _levelId, mapLayerData);
         }
 #endif
     }
