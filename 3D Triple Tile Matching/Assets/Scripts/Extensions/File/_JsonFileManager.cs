@@ -4,6 +4,8 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using System.Threading.Tasks;
+using Cysharp.Threading.Tasks;
+
 
 
 #if UNITY_EDITOR
@@ -47,7 +49,7 @@ namespace Core.File{
 
 #if UNITY_EDITOR
     public class AddressableAssetUtility{
-        public static void AddLevelDataAssetToAddressables(string addressName, string groupName){
+        public static async void AddLevelDataAssetToAddressables(string addressName, string groupName){
             var settings = AddressableAssetSettingsDefaultObject.Settings;
 
             var group = settings.FindGroup(groupName);
@@ -56,6 +58,7 @@ namespace Core.File{
             }
 
             var entry = settings.CreateOrMoveEntry(AssetDatabase.AssetPathToGUID(_JsonPath.GetJsonLevelDataPath(addressName)), group);
+            await UniTask.WaitUntil(() => entry != null);
             entry.address = addressName;
             entry.SetLabel("TextData", true, true, true);
         }

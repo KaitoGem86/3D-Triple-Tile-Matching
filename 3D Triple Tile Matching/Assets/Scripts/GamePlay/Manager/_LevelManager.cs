@@ -23,7 +23,7 @@ namespace Core.Manager
             // if new level => load from level path
             // if continued level => load from saved path
             IsLoaded = false;
-            _levelData = await _JsonFileManager.LoadJsonFileFromAddressables<_LevelData>("Level1");
+            _levelData = await _JsonFileManager.LoadJsonFileFromAddressables<_LevelData>("Level2");
             GameObject tmp = await AddressablesManager.LoadAssetAsync<GameObject>(_KeyPrefabsResources.GetKeyTilePrefab());
             _ObjectPooling.Instance.CreatePool(_TypeGameObjectEnum.Tile, tmp, 20);
             _listTileController = new List<_TileController>();
