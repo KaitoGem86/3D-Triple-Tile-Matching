@@ -28,6 +28,7 @@ public class PlayableAdsManager : MonoBehaviour
         }
 
         DOTween.Init();
+        Luna.Unity.Playable.InstallFullGame();
     }
 
     private Dictionary<int, List<Tile>> _dictCollectTile;
@@ -57,6 +58,7 @@ public class PlayableAdsManager : MonoBehaviour
                 _listTile[tileId].Remove(item);
             }
             _dictCollectTile.Remove(tileId);
+            Luna.Unity.LifeCycle.GameEnded();
         }
     }
 

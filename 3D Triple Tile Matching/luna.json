@@ -1,17 +1,19 @@
 {
-    "version": "5.5.0",
+    "version": "5.4.0",
     "projectId": "35f35fef124d76f4a9621e5a310bcc25",
     "applicationID": 20259,
     "creativeName": "TripleTile",
     "pgServer": "EU",
     "window": {
-        "‐ ": true
+        "‐ ": true
     },
     "unity": {
-        "environmentID": 1144182322,
+        "environmentID": 1144182419,
         "scripts": {
             "excludes": [
-                "Assets/Scripts/PlayableScript/",
+                "Assets/Scripts/",
+                "Assets/Scripts/PlayableScript/PlayableAdsManager.cs",
+                "Assets/Scripts/PlayableScript/Tile.cs",
                 "**/Editor/",
                 "**/Luna/RuntimeScripts/",
                 "**/FacebookSDK/",
@@ -63,6 +65,18 @@
             "export": [],
             "excludes": [
                 "Assets/Scripts/PlayableScript/",
+                "Assets/Sprites/PlayableAds/BG8.png",
+                "Assets/Sprites/PlayableAds/BtnNow.png",
+                "Assets/Sprites/PlayableAds/chuối.png",
+                "Assets/Sprites/PlayableAds/cá nóc cam.png",
+                "Assets/Sprites/PlayableAds/female hand.png",
+                "Assets/Sprites/PlayableAds/kem sicula.png",
+                "Assets/Sprites/PlayableAds/nấm đỏ.png",
+                "Assets/Sprites/PlayableAds/Puzzle_Master.png",
+                "Assets/Sprites/PlayableAds/quả sồi.png",
+                "Assets/Sprites/PlayableAds/text.png",
+                "Assets/Sprites/PlayableAds/Tile.png",
+                "Assets/Sprites/PlayableAds/táo.png",
                 "**/Editor/",
                 "**/FacebookSDK/",
                 "**/googleads**/",
@@ -103,6 +117,18 @@
             "includes": [
                 "Assets/Resources/DOTweenSettings.asset",
                 "Assets/Scripts/PlayableScript/",
+                "Assets/Sprites/PlayableAds/BG8.png",
+                "Assets/Sprites/PlayableAds/BtnNow.png",
+                "Assets/Sprites/PlayableAds/chuối.png",
+                "Assets/Sprites/PlayableAds/cá nóc cam.png",
+                "Assets/Sprites/PlayableAds/female hand.png",
+                "Assets/Sprites/PlayableAds/kem sicula.png",
+                "Assets/Sprites/PlayableAds/nấm đỏ.png",
+                "Assets/Sprites/PlayableAds/Puzzle_Master.png",
+                "Assets/Sprites/PlayableAds/quả sồi.png",
+                "Assets/Sprites/PlayableAds/text.png",
+                "Assets/Sprites/PlayableAds/Tile.png",
+                "Assets/Sprites/PlayableAds/táo.png",
                 "Assets/TextMesh Pro/Resources/TMP Settings.asset"
             ]
         },
@@ -251,8 +277,8 @@
                 "default": {
                     "channels": 1,
                     "startTime": "00:00.000",
-                    "endTime": "00:00.000",
-                    "lengthInSeconds": 0.0,
+                    "endTime": "00:30.000",
+                    "lengthInSeconds": 30.0,
                     "bitrate": 128,
                     "script": "",
                     "ext": ""
