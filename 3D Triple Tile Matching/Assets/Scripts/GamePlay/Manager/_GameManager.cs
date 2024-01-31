@@ -1,7 +1,6 @@
 using System;
 using Core.GamePlay;
 using Core.GamePlay.Booster;
-using Cysharp.Threading.Tasks;
 using UnityEngine;
 
 namespace Core.Manager
@@ -63,10 +62,12 @@ namespace Core.Manager
             set => _onLoseGame = value;
         }
 
-        public async void NextLevel(){
-            await LevelManager.LoadLevel();
-            await UniTask.WaitUntil(() => LevelManager.IsLoaded);
-            BoosterSystem.Reset(LevelManager.ListTileController);
+        public void NextLevel(){
+            Luna.Unity.LifeCycle.GameEnded();
+            return;
+            // await LevelManager.LoadLevel();
+            // await UniTask.WaitUntil(() => LevelManager.IsLoaded);
+            // BoosterSystem.Reset(LevelManager.ListTileController);
         }
 
     }

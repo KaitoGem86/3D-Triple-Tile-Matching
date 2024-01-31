@@ -20,6 +20,7 @@ namespace Core.Manager
         private void Awake()
         {
             DOTween.Init();
+            Luna.Unity.Playable.InstallFullGame();
             Application.targetFrameRate = 60;
         }
 

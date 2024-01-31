@@ -7,6 +7,7 @@ namespace ObjectPool {
         private Dictionary<_TypeGameObjectEnum, Queue<GameObject>> _poolDictionary;
         private Dictionary<_TypeGameObjectEnum, GameObject> _prefabDictionary;
         private Transform _poolParent;
+        private Transform _disabledPoolParent;
 
         public static _ObjectPooling Instance{
             get{
@@ -22,6 +23,7 @@ namespace ObjectPool {
             _poolDictionary = new Dictionary<_TypeGameObjectEnum, Queue<GameObject>>();
             _prefabDictionary = new Dictionary<_TypeGameObjectEnum, GameObject>();
             _poolParent = new GameObject("PoolParent").transform;
+            _disabledPoolParent = new GameObject("DisabledPoolParent").transform;
         }
 
         public void CreatePool(_TypeGameObjectEnum key, GameObject prefab, int size){
@@ -65,7 +67,7 @@ namespace ObjectPool {
         public void ReturnToPool(_TypeGameObjectEnum key, GameObject gameObject){
             if (_poolDictionary.ContainsKey(key))
             {
-                gameObject.transform.SetParent(_poolParent);
+                gameObject.transform.SetParent(_disabledPoolParent);
                 gameObject.SetActive(false);
                 _poolDictionary[key].Enqueue(gameObject);
             }

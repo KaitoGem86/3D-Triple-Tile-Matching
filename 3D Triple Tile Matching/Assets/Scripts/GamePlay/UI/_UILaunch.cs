@@ -1,7 +1,6 @@
 using Core.Manager;
 using Core.UI.Modals;
 using Core.UI.Screens;
-using UnityEngine;
 using ZBase.UnityScreenNavigator.Core;
 using ZBase.UnityScreenNavigator.Core.Activities;
 using ZBase.UnityScreenNavigator.Core.Modals;

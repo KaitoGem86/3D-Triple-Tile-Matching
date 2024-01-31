@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using Core.Extensions.File;
 using Core.File;
 using NaughtyAttributes;
 using UnityEngine;
@@ -7,6 +6,7 @@ using UnityEngine;
 namespace Core.Level{
     public class _CreateLevelToJson : MonoBehaviour
     {
+#if UNITY_EDITOR
         [SerializeField] private _LevelDataSO _levelDataSO;
         [SerializeField] private string _path;
 
@@ -23,7 +23,6 @@ namespace Core.Level{
             _JsonFileManager.SaveLevelJsonFile<_LevelData>(path, levelData);
         }
 
-#if UNITY_EDITOR
         [Button("Create Level To Json")]
         public void _CreateLevel(){
             _levelData = new _LevelData(_levelDataSO);
@@ -32,6 +31,8 @@ namespace Core.Level{
             }
             _JsonFileManager.SaveLevelJsonFile<_LevelData>(_path, _levelData);
         }
+
+        
 #endif
     }
 }
