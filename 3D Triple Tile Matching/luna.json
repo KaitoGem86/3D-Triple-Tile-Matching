@@ -1,14 +1,14 @@
 {
-    "version": "5.4.0",
+    "version": "5.5.0",
     "projectId": "35f35fef124d76f4a9621e5a310bcc25",
     "applicationID": 20259,
     "creativeName": "TripleTile",
     "pgServer": "EU",
     "window": {
-        "‐ ": true
+        "‐ ": true
     },
     "unity": {
-        "environmentID": 1144182419,
+        "environmentID": 1144182322,
         "scripts": {
             "excludes": [
                 "Assets/Scripts/",

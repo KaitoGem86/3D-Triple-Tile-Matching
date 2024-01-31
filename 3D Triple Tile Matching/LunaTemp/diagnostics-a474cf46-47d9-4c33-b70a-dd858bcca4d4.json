@@ -1,0 +1,115 @@
+{
+  "BuildID": "a474cf46-47d9-4c33-b70a-dd858bcca4d4",
+  "Command": "project:build",
+  "ProjectID": "35f35fef124d76f4a9621e5a310bcc25",
+  "ProjectStateHash": "70a1131ec944fee87b074df85f5abd2cfea2956fbf71df3c3ccaff52adacd149",
+  "StageCompletedAt": 3,
+  "EarliestFatalError": 0,
+  "StartTime": 1706721322367,
+  "EndTime": 1706721367078,
+  "PlaygroundUserID": 13720,
+  "OperatingSystem": "win32",
+  "UnityPackageID": null,
+  "TargetPlatform": "develop",
+  "UnityVersion": "2021.3.30f1",
+  "LunaVersion": "5.5.0",
+  "LogCount": 4,
+  "Logs": [
+    {
+      "LogID": "f5a0c7c7-75a4-47f1-b603-317ba5d17fa3",
+      "Order": 1,
+      "Timestamp": 1706721367579,
+      "Stage": 3,
+      "ErrorType": 1,
+      "ErrorCode": "LP3006",
+      "Description": "You are not using the Luna API: Playable.InstallFullGame",
+      "Details": [
+        "You are not using the Luna API: Playable.InstallFullGame. Some ad networks require these calls. Please add these calls to ensure your playable works on all ad networks. Check documentation for more information."
+      ],
+      "DescriptionValues": [
+        "Playable",
+        "InstallFullGame"
+      ],
+      "DetailsValues": [
+        "Playable",
+        "InstallFullGame"
+      ],
+      "LogCount": 1,
+      "LinePosition": null,
+      "FilePath": "",
+      "ClassName": "",
+      "MemberName": "",
+      "Severity": 0
+    },
+    {
+      "LogID": "4fb80bdf-f106-494b-9663-3df01d0bd07b",
+      "Order": 1,
+      "Timestamp": 1706721367580,
+      "Stage": 3,
+      "ErrorType": 1,
+      "ErrorCode": "LP3006",
+      "Description": "You are not using the Luna API: LifeCycle.GameEnded",
+      "Details": [
+        "You are not using the Luna API: LifeCycle.GameEnded. Some ad networks require these calls. Please add these calls to ensure your playable works on all ad networks. Check documentation for more information."
+      ],
+      "DescriptionValues": [
+        "LifeCycle",
+        "GameEnded"
+      ],
+      "DetailsValues": [
+        "LifeCycle",
+        "GameEnded"
+      ],
+      "LogCount": 1,
+      "LinePosition": null,
+      "FilePath": "",
+      "ClassName": "",
+      "MemberName": "",
+      "Severity": 0
+    },
+    {
+      "LogID": "ef8a2f7a-db0c-4817-92d1-5ea3ae61f2d4",
+      "Order": 1,
+      "Timestamp": 1706721367581,
+      "Stage": 3,
+      "ErrorType": 3,
+      "ErrorCode": "LP3007",
+      "Description": "You are not using any custom events",
+      "Details": [
+        "You are not using any custom events. It is recommended to use custom events to have a better understanding of the playable."
+      ],
+      "DescriptionValues": [
+        ""
+      ],
+      "DetailsValues": [
+        ""
+      ],
+      "LogCount": 1,
+      "LinePosition": null,
+      "FilePath": "",
+      "ClassName": "",
+      "MemberName": "",
+      "Severity": 0
+    },
+    {
+      "LogID": "d27dd505-7487-4e26-80b4-e35d047746bf",
+      "Order": 1,
+      "Timestamp": 1706721367582,
+      "Stage": 3,
+      "ErrorType": 3,
+      "ErrorCode": "LP3011",
+      "Description": "You are not using any LunaPlaygroundFields attributes.",
+      "Details": [
+        "You are not using any LunaPlaygroundFields attributes, it allows you to configure your playable to different concepts to find the best variation, which can drastically improve playable performance on all ad networks."
+      ],
+      "DescriptionValues": null,
+      "DetailsValues": null,
+      "LogCount": 1,
+      "LinePosition": null,
+      "FilePath": "",
+      "ClassName": "",
+      "MemberName": "",
+      "Severity": 0
+    }
+  ]
+}

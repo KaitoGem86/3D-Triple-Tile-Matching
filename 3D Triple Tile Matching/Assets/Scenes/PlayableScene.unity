@@ -327,6 +327,7 @@ GameObject:
   m_Component:
   - component: {fileID: 75462050}
   - component: {fileID: 75462049}
+  - component: {fileID: 75462051}
   m_Layer: 0
   m_Name: Hand
   m_TagString: Untagged
@@ -394,13 +395,25 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 75462048}
   m_LocalRotation: {x: 0, y: 0, z: 0.19936788, w: 0.97992474}
-  m_LocalPosition: {x: 7.5, y: -8.9, z: 0}
+  m_LocalPosition: {x: 2.49, y: 0.56, z: 0}
   m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 23}
+--- !u!114 &75462051
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 75462048}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16902407d10e94545abeb13340779c24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &83711151
 GameObject:
   m_ObjectHideFlags: 0

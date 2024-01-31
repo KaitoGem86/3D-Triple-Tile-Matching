@@ -167,7 +167,7 @@
       "hash": "cffda935db251398cd8630a4b937241cb416602e"
     },
     "uk.lunalabs.luna": {
-      "version": "file:../../../AdsGame/5.4.0/scripts",
+      "version": "file:../../../AdsGame/5.5.0/scripts",
       "depth": 0,
       "source": "local",
       "dependencies": {}
