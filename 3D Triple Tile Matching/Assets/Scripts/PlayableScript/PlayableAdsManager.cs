@@ -27,7 +27,6 @@ public class PlayableAdsManager : MonoBehaviour
             Destroy(gameObject);
         }
 
-        DOTween.Init();
         Luna.Unity.Playable.InstallFullGame();
     }
 
