@@ -86,4 +86,21 @@ public class PlayableAdsManager : MonoBehaviour
         }
         return null;
     }
+
+    public void Update(){
+        if(Input.touchCount <= 0)
+            return;
+        Touch touch = Input.GetTouch(0);
+        if ( touch.phase == TouchPhase.Ended)
+        {
+            Vector3 touchPosition = Camera.main.ScreenToWorldPoint(touch.position);
+            Debug.DrawRay(touchPosition, Vector3.forward * 100, Color.red, 100f);
+            if(Physics.Raycast(touchPosition - Vector3.forward * 10, Vector3.forward, out RaycastHit hit, 100f))
+            {
+                Debug.Log("Tile.OnMouseDown");
+                if(hit.transform.GetComponent<Tile>() != null)
+                    hit.transform.GetComponent<Tile>().OnTileCollect();
+            }
+        }
+    }
 }

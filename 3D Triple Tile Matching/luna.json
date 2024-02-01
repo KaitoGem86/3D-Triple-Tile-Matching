@@ -199,8 +199,8 @@
         "unusedModules": [
             {
                 "name": "physics3d",
-                "excluded": true,
-                "forceIncluded": false
+                "excluded": false,
+                "forceIncluded": true
             },
             {
                 "name": "physics2d",
@@ -20515,10 +20515,6 @@
                         "excluded": false
                     },
                     {
-                        "name": "OnMouseDown",
-                        "excluded": false
-                    },
-                    {
                         "name": "AnimCollect",
                         "excluded": false
                     },
@@ -20531,7 +20527,11 @@
                         "excluded": false
                     },
                     {
-                        "name": "Update",
+                        "name": "OnTileCollect",
+                        "excluded": false
+                    },
+                    {
+                        "name": "FixedUpdate",
                         "excluded": false
                     }
                 ]
@@ -21122,6 +21122,10 @@
                     },
                     {
                         "name": "GetTile",
+                        "excluded": false
+                    },
+                    {
+                        "name": "Update",
                         "excluded": false
                     }
                 ]
@@ -24272,7 +24276,7 @@
                 "instanceMethods": [
                     {
                         "name": "World#get",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "gravity#get",
@@ -24320,7 +24324,7 @@
                     },
                     {
                         "name": "Raycast$3",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "Raycast",
@@ -24508,7 +24512,7 @@
                     },
                     {
                         "name": "RaycastInternal$1",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "RaycastInternal",
@@ -24520,11 +24524,11 @@
                     },
                     {
                         "name": "CapRaycastDistance",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "ShouldHitTriggers",
-                        "excluded": true
+                        "excluded": false
                     }
                 ]
             },
@@ -24958,19 +24962,19 @@
                     },
                     {
                         "name": "transform#get",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "init",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "$ctor1",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "ctor",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "getHashCode",
@@ -27664,7 +27668,7 @@
                     },
                     {
                         "name": "ctor",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "ClosestPoint",
@@ -29260,7 +29264,7 @@
                     },
                     {
                         "name": "ctor",
-                        "excluded": true
+                        "excluded": false
                     }
                 ]
             },

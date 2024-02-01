@@ -46,7 +46,7 @@ public class HandController : MonoBehaviour
             transform.position += _pos;
             if (Vector3.Distance(transform.position, _listTile[0].GetPosition()) < 0.1f)
             {
-                _listTile[0].OnMouseDown();
+                _listTile[0].OnTileCollect();
                 _isCompleteSegment = true;
                 _isCompleteSetVar = false;
             }
@@ -66,7 +66,7 @@ public class HandController : MonoBehaviour
             transform.position += _pos;
             if (Vector3.Distance(transform.position, _listTile[1].GetPosition()) < 0.1f)
             {
-                _listTile[1].OnMouseDown();
+                _listTile[1].OnTileCollect();
                 _isCompleteSegment = true;
                 _isCompleteSetVar = false;
             }
@@ -87,7 +87,7 @@ public class HandController : MonoBehaviour
             transform.position += _pos;
             if (Vector3.Distance(transform.position, _listTile[2].GetPosition()) < 0.1f)
             {
-                _listTile[2].OnMouseDown();
+                _listTile[2].OnTileCollect();
                 _isCompleteSegment = true;
                 _isCompleteSetVar = false;
             }

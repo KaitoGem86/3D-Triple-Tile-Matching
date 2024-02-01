@@ -1,4 +1,3 @@
-using DG.Tweening;
 using UnityEngine;
 
 public class Tile : MonoBehaviour
@@ -8,6 +7,7 @@ public class Tile : MonoBehaviour
     private float _scaleDuration = 0.5f;
     private float _scaleTimer = 0.0f;
     private bool _isScaling = false;
+    private bool _isSelect = false;
 
     private void Start()
     {
@@ -15,8 +15,13 @@ public class Tile : MonoBehaviour
         PlayableAdsManager.Instance.AddTile(_tileId, this);
     }
 
-    public void OnMouseDown()
+    public void OnTileCollect()
     {
+        if (_isSelect)
+        {
+            return;
+        }
+        _isSelect = true;
         _backGroundSprite.color = Color.red;
         PlayableAdsManager.Instance.AddCollectTile(_tileId, this);
     }
@@ -26,13 +31,13 @@ public class Tile : MonoBehaviour
         _scaleTimer = -0.2f;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         if (_isScaling)
         {
-            _scaleTimer += Time.deltaTime;
+            _scaleTimer += Time.fixedDeltaTime;
             if (_scaleTimer < 0)
-                _scaleTimer += Time.deltaTime * 2;
+                _scaleTimer += Time.fixedDeltaTime * 2;
 
             if (_scaleTimer >= _scaleDuration)
             {
