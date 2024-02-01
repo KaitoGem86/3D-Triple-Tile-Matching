@@ -1,25 +1,25 @@
-report@config:load 87.17
+report@config:load 101.29
 Authorized using stored user info.
-report@account:authorize 66.48
-Exporting assets from Unity...........
+report@account:authorize 54.01
+Exporting assets from Unity............
 
 [ Stage1 ] Assets exported from Unity and staged for further processing
-report@unity:export 8352.57
-report@config:load 33.11
+report@unity:export 9325.13
+report@config:load 81.85
 Resources:
 {}
-report@assets:stage2 9559.29
-report@assets:stage3 529.67
+report@assets:stage2 12904.69
+report@assets:stage3 580.33
 [ Stage2 ] Assets postprocessed and bundled successfully
-report@config:unity 0.21
-report@config:load 132.78
-report@config:unity 0.50
-report@code:compose 200.08
+report@config:unity 0.15
+report@config:load 90.24
+report@config:unity 0.69
+report@code:compose 241.18
 Authorized using stored user info.
-report@account:authorize 15.66
+report@account:authorize 6.26
 MSBuild version 17.6.3+07e294721 for .NET Framework
 
-Build started 2/1/2024 11:37:56 AM.
+Build started 2/1/2024 4:35:29 PM.
 
 
 
@@ -86,36 +86,23 @@ GenerateTargetFrameworkMonikerAttribute:
 Skipping target "GenerateTargetFrameworkMonikerAttribute" because all output files are up-to-date with respect to the input files.
 
 CoreCompile:
-  C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Current\Bin\Roslyn\csc.exe /noconfig /nowarn:CS0626,1701,1702 /fullpaths /nostdlib+ /errorreport:prompt /warn:4 /define:UNITY_LUNA;CSHARP_7_OR_LATER;CSHARP_7_3_OR_NEWER;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_5_OR_NEWER;UNITY_2021;UNITY_2017_1_OR_NEWER;UNITY_2017_2_OR_NEWER;UNITY_2017_3_OR_NEWER;UNITY_2017_4_OR_NEWER;UNITY_2018_1_OR_NEWER;UNITY_2018_2_OR_NEWER;UNITY_2018_3_OR_NEWER;UNITY_2018_4_OR_NEWER;UNITY_2019_1_OR_NEWER;UNITY_2019_2_OR_NEWER;UNITY_2019_3_OR_NEWER;UNITY_2019_4_OR_NEWER;UNITY_2020_1_OR_NEWER;UNITY_2020_2_OR_NEWER;UNITY_2020_3_OR_NEWER;UNITY_2021_1_OR_NEWER;UNITY_2021_2_OR_NEWER;UNITY_2021_3_OR_NEWER;UNITY_2021_3;UNITY_2021_3_30 /highentropyva+ /reference:"D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\packages\Bridge.Core.17.9.40-luna\lib\net40\Bridge.dll" /reference:"D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\packages\Bridge.Html5.17.9.0\lib\net40\Bridge.Html5.dll" /reference:"D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\packages\Bridge.WebGL.1.22.0\lib\net40\Bridge.WebGL.dll" /reference:"D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\packages\DOTween.1.2.705\lib\net40\DOTween.dll" /reference:"D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\packages\com.unity.ide.rider\3.0.0\JetBrains.dll" /reference:"D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\packages\Bridge.Newtonsoft.Json.1.16.0\lib\net40\Newtonsoft.Json.dll" /reference:"D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\packages\Retyped.Core.1.6.6733\lib\net40\Retyped.Core.dll" /reference:"D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\packages\Retyped.dom.2.8.6733\lib\net40\Retyped.dom.dll" /reference:"D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\packages\Retyped.es5.2.8.6733\lib\net40\Retyped.es5.dll" /reference:"D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\packages\Retyped.scripthost.2.8.6733\lib\net40\Retyped.scripthost.dll" /reference:"D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\Vendor\UnityEngine.dll" /reference:"D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\packages\com.unity.ui\1.2.1\UnityEngine.UI.dll" /reference:"D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\packages\com.unity.urp\7.6\UnityEngine.UniversalRenderPipeline.dll" /debug+ /debug:full /optimize- /out:obj\Debug\UnityScriptsCompiler.dll /subsystemversion:6.00 /target:library /warnaserror- /utf8output /langversion:8 "D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\PlayNowButton.cs" "D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\Plugins\Demigiant\DOTwee
-n\Modules\DOTweenModuleAudio.cs" "D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\Plugins\Demigiant\DOTween\Modules\DOTweenModuleEPOOutline.cs" "D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\Plugins\Demigiant\DOTween\Modules\DOTweenModulePhysics.cs" "D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\Plugins\Demigiant\DOTween\Modules\DOTweenModulePhysics2D.cs" "D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\Plugins\Demigiant\DOTween\Modules\DOTweenModuleSprite.cs" "D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\Plugins\Demigiant\DOTween\Modules\DOTweenModuleUI.cs" "D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\Plugins\Demigiant\DOTween\Modules\DOTweenModuleUnityVersion.cs" "D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\Plugins\Demigiant\DOTween\Modules\DOTweenModuleUtils.cs" "D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\Scripts\PlayableScript\HandController.cs" "D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\Scripts\PlayableScript\PlayableAdsManager.cs" "D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\Scripts\PlayableScript\Tile.cs" Properties/AssemblyInfo.cs Sources/OtherDummyScript.cs "obj\Debug\.NETFramework,Version=v4.7.AssemblyAttributes.cs"
+  C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Current\Bin\Roslyn\csc.exe /noconfig /nowarn:CS0626,1701,1702 /fullpaths /nostdlib+ /errorreport:prompt /warn:4 /define:UNITY_LUNA;CSHARP_7_OR_LATER;CSHARP_7_3_OR_NEWER;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_5_OR_NEWER;UNITY_2021;UNITY_2017_1_OR_NEWER;UNITY_2017_2_OR_NEWER;UNITY_2017_3_OR_NEWER;UNITY_2017_4_OR_NEWER;UNITY_2018_1_OR_NEWER;UNITY_2018_2_OR_NEWER;UNITY_2018_3_OR_NEWER;UNITY_2018_4_OR_NEWER;UNITY_2019_1_OR_NEWER;UNITY_2019_2_OR_NEWER;UNITY_2019_3_OR_NEWER;UNITY_2019_4_OR_NEWER;UNITY_2020_1_OR_NEWER;UNITY_2020_2_OR_NEWER;UNITY_2020_3_OR_NEWER;UNITY_2021_1_OR_NEWER;UNITY_2021_2_OR_NEWER;UNITY_2021_3_OR_NEWER;UNITY_2021_3;UNITY_2021_3_30 /highentropyva+ /reference:"D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\packages\Bridge.Core.17.9.40-luna\lib\net40\Bridge.dll" /reference:"D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\packages\Bridge.Html5.17.9.0\lib\net40\Bridge.Html5.dll" /reference:"D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\packages\Bridge.WebGL.1.22.0\lib\net40\Bridge.WebGL.dll" /reference:"D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\packages\DOTween.1.2.705\lib\net40\DOTween.dll" /reference:"D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\packages\com.unity.ide.rider\3.0.0\JetBrains.dll" /reference:"D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\packages\Bridge.Newtonsoft.Json.1.16.0\lib\net40\Newtonsoft.Json.dll" /reference:"D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\packages\Retyped.Core.1.6.6733\lib\net40\Retyped.Core.dll" /reference:"D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\packages\Retyped.dom.2.8.6733\lib\net40\Retyped.dom.dll" /reference:"D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\packages\Retyped.es5.2.8.6733\lib\net40\Retyped.es5.dll" /reference:"D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\packages\Retyped.scripthost.2.8.6733\lib\net40\Retyped.scripthost.dll" /reference:"D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\Vendor\UnityEngine.dll" /reference:"D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\packages\com.unity.ui\1.2.1\UnityEngine.UI.dll" /reference:"D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\packages\com.unity.urp\7.6\UnityEngine.UniversalRenderPipeline.dll" /debug+ /debug:full /optimize- /out:obj\Debug\UnityScriptsCompiler.dll /subsystemversion:6.00 /target:library /warnaserror- /utf8output /langversion:8 "D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\PlayNowButton.cs" "D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\Plugins\Demigiant\DOTween\Modules\DOTweenModuleAudio.cs" "D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\Plugins\Demigiant\DOTween\Modules\DOTweenModuleEPOOutline.cs" "D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\Plugins\Demigiant\DOTween\Modules\DOTweenModulePhysics.cs" "D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\Plugins\Demigiant\DOTween\Modules\DOTweenModulePhysics2D.cs" "D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\Plugins\Demigiant\DOTween\Modules\DOTweenModuleSprite.cs" "D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\Plugins\Demigiant\DOTween\Modules\DOTweenModuleUI.cs" "D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\Plugins\Demigiant\DOTween\Modules\DOTweenModuleUnityVersion.cs" "D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\Plugins\Demigiant\DOTween\Modules\DOTweenModuleUtils.cs" "D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\Scripts\PlayableScript\HandController.cs" "D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\Scripts\PlayableScript\PlayableAdsManager.cs" "D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\Scripts\PlayableScript\Tile.cs" Properties/AssemblyInfo.cs Sources/OtherDummyScript.cs "obj\Debug\.NETFramework,Version=v4.7.AssemblyAttributes.cs"
 
-D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\Scripts\PlayableScript\Tile.cs(7,34): warning CS0649: Field 'Tile._tileId' is never assigned to, and will always have its default value 0 [D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj]
+D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\Scripts\PlayableScript\Tile.cs(6,34): warning CS0649: Field 'Tile._tileId' is never assigned to, and will always have its default value 0 [D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj]
 
-D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\Scripts\PlayableScript\HandController.cs(20,21): warning CS0169: The field 'HandController._pos' is never used [D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj]
-D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\Scripts\PlayableScript\HandController.cs(14,19): warning CS0169: The field 'HandController._time' is never used [D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj]
-D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\Scripts\PlayableScript\HandController.cs(19,21): warning CS0169: The field 'HandController._direction' is never used [D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj]
-D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\Scripts\PlayableScript\HandController.cs(16,18): warning CS0169: The field 'HandController._isCompleteSetVar' is never used [D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj]
-D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\Scripts\PlayableScript\HandController.cs(21,24): warning CS0169: The field 'HandController._listTile' is never used [D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj]
-D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\Scripts\PlayableScript\Tile.cs(10,20): warning CS0169: The field 'Tile._onDeviceData' is never used [D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj]
-D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\Scripts\PlayableScript\HandController.cs(18,19): warning CS0169: The field 'HandController._timeFrame' is never used [D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj]
-D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\Scripts\PlayableScript\HandController.cs(15,18): warning CS0169: The field 'HandController._isCompleteSegment' is never used [D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj]
-D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\Scripts\PlayableScript\HandController.cs(17,18): warning CS0414: The field 'HandController._isCompleteTutorial' is assigned but its value is never used [D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj]
-
-  CompilerServer: server - server processed compilation - b6a3648e-e0d2-40a4-9405-c445108d71ec
+  CompilerServer: server - server processed compilation - f178db5f-0f98-4a98-9440-3c11631ed128
 
 _CopyFilesMarkedCopyLocal:
-  Copying file from "D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\packages\Bridge.Core.17.9.40-luna\lib\net40\Bridge.dll" to "D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\bin\Debug\Bridge.dll".
-
-  Copying file from "D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\packages\DOTween.1.2.705\lib\net40\DOTween.dll" to "D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\bin\Debug\DOTween.dll".
   Copying file from "D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\packages\Bridge.WebGL.1.22.0\lib\net40\Bridge.WebGL.dll" to "D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\bin\Debug\Bridge.WebGL.dll".
 
+  Copying file from "D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\packages\Bridge.Newtonsoft.Json.1.16.0\lib\net40\Newtonsoft.Json.dll" to "D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\bin\Debug\Newtonsoft.Json.dll".
+  Copying file from "D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\packages\DOTween.1.2.705\lib\net40\DOTween.dll" to "D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\bin\Debug\DOTween.dll".
+  Copying file from "D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\packages\com.unity.ide.rider\3.0.0\JetBrains.dll" to "D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\bin\Debug\JetBrains.dll".
+  Copying file from "D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\packages\Bridge.Core.17.9.40-luna\lib\net40\Bridge.dll" to "D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\bin\Debug\Bridge.dll".
   Copying file from "D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\packages\Bridge.Html5.17.9.0\lib\net40\Bridge.Html5.dll" to "D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\bin\Debug\Bridge.Html5.dll".
 
-  Copying file from "D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\packages\Bridge.Newtonsoft.Json.1.16.0\lib\net40\Newtonsoft.Json.dll" to "D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\bin\Debug\Newtonsoft.Json.dll".
-
-  Copying file from "D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\packages\com.unity.ide.rider\3.0.0\JetBrains.dll" to "D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\bin\Debug\JetBrains.dll".
-
   Copying file from "D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\packages\Retyped.Core.1.6.6733\lib\net40\Retyped.Core.dll" to "D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\bin\Debug\Retyped.Core.dll".
+
   Copying file from "D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\packages\Retyped.dom.2.8.6733\lib\net40\Retyped.dom.dll" to "D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\bin\Debug\Retyped.dom.dll".
 
   Copying file from "D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\packages\Retyped.es5.2.8.6733\lib\net40\Retyped.es5.dll" to "D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\bin\Debug\Retyped.es5.dll".
@@ -124,24 +111,23 @@ _CopyFilesMarkedCopyLocal:
 
   Copying file from "D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\Vendor\UnityEngine.dll" to "D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\bin\Debug\UnityEngine.dll".
 
-  Copying file from "D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\packages\com.unity.urp\7.6\UnityEngine.UniversalRenderPipeline.dll" to "D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\bin\Debug\UnityEngine.UniversalRenderPipeline.dll".
-
   Copying file from "D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\packages\com.unity.ui\1.2.1\UnityEngine.UI.dll" to "D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\bin\Debug\UnityEngine.UI.dll".
+
+  Copying file from "D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\packages\com.unity.urp\7.6\UnityEngine.UniversalRenderPipeline.dll" to "D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\bin\Debug\UnityEngine.UniversalRenderPipeline.dll".
 
   Copying file from "D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\packages\Bridge.Core.17.9.40-luna\lib\net40\Bridge.xml" to "D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\bin\Debug\Bridge.xml".
 
-  Copying file from "D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\packages\Bridge.Newtonsoft.Json.1.16.0\lib\net40\Newtonsoft.Json.xml" to "D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\bin\Debug\Newtonsoft.Js
-on.xml".
-
-  Copying file from "D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\packages\Retyped.Core.1.6.6733\lib\net40\Retyped.Core.xml" to "D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\bin\Debug\Retyped.Core.xml".
-
   Copying file from "D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\packages\Bridge.Html5.17.9.0\lib\net40\Bridge.Html5.xml" to "D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\bin\Debug\Bridge.Html5.xml".
-
-  Copying file from "D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\packages\Retyped.dom.2.8.6733\lib\net40\Retyped.dom.xml" to "D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\bin\Debug\Retyped.dom.xml".
 
   Copying file from "D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\packages\Bridge.WebGL.1.22.0\lib\net40\Bridge.WebGL.xml" to "D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\bin\Debug\Bridge.WebGL.xml".
 
+  Copying file from "D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\packages\Bridge.Newtonsoft.Json.1.16.0\lib\net40\Newtonsoft.Json.xml" to "D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\bin\Debug\Newtonsoft.Json.xml".
+
+  Copying file from "D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\packages\Retyped.Core.1.6.6733\lib\net40\Retyped.Core.xml" to "D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\bin\Debug\Retyped.Core.xml".
+
   Copying file from "D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\packages\Retyped.es5.2.8.6733\lib\net40\Retyped.es5.xml" to "D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\bin\Debug\Retyped.es5.xml".
+
+  Copying file from "D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\packages\Retyped.dom.2.8.6733\lib\net40\Retyped.dom.xml" to "D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\bin\Debug\Retyped.dom.xml".
 
   Copying file from "D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\packages\Retyped.scripthost.2.8.6733\lib\net40\Retyped.scripthost.xml" to "D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\bin\Debug\Retyped.scripthost.xml".
 
@@ -158,11 +144,13 @@ BridgeNetCompilerTask:
   Bridge started
 
       To enable detailed logging, configure "logging" in bridge.json.
+
       https://github.com/bridgedotnet/Bridge/wiki/global-configuration#logging
 
   Bridge done
 
 Done Building Project "D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj" (Rebuild target(s)).
+
 
 
 Build succeeded.
@@ -171,32 +159,23 @@ Build succeeded.
 
 "D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj" (Rebuild target) (1) ->
 (CoreCompile target) -> 
-  D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\Scripts\PlayableScript\Tile.cs(7,34): warning CS0649: Field 'Tile._tileId' is never assigned to, and will always have its default value 0 [D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj]
-  D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\Scripts\PlayableScript\HandController.cs(20,21): warning CS0169: The field 'HandController._pos' is never used [D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj]
-  D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\Scripts\PlayableScript\HandController.cs(14,19): warning CS0169: The field 'HandController._time' is never used [D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj]
-  D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\Scripts\PlayableScript\HandController.cs(19,21): warning CS0169: The field 'HandController._direction' is never used [D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj]
-  D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\Scripts\PlayableScript\HandController.cs(16,18): warning CS0169: The field 'HandController._isCompleteSetVar' is never used [D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj]
-  D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\Scripts\PlayableScript\HandController.cs(21,24): warning CS0169: The field 'HandController._listTile' is never used [D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj]
-  D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\Scripts\PlayableScript\Tile.cs(10,20): warning CS0169: The field 'Tile._onDeviceData' is never used [D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj]
-  D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\Scripts\PlayableScript\HandController.cs(18,19): warning CS0169: The field 'HandController._timeFrame' is never used [D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj]
-  D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\Scripts\PlayableScript\HandController.cs(15,18): warning CS0169: The field 'HandController._isCompleteSegment' is never used [D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj]
-  D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\Scripts\PlayableScript\HandController.cs(17,18): warning CS0414: The field 'HandController._isCompleteTutorial' is assigned but its value is never used [D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj]
+  D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\Scripts\PlayableScript\Tile.cs(6,34): warning CS0649: Field 'Tile._tileId' is never assigned to, and will always have its default value 0 [D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj]
 
-    10 Warning(s)
+    1 Warning(s)
     0 Error(s)
 
 
-Time Elapsed 00:00:25.19
+Time Elapsed 00:00:28.80
 
 Source code compiled successfully!
 Diagnostics gathered successfully
-report@code:build 56034.00
-report@diagnostics:verify 1.06
-report@diagnostics:upload 11884.32
-report@code:stage 15716.50
+report@code:build 40740.95
+report@diagnostics:verify 1.36
+report@diagnostics:upload 11321.11
+report@code:stage 17726.53
 [ Stage3 ] Code compiled and bundled successfully.
-report@code:bundle 83991.50
-report@package:stage 3853.41
+report@code:bundle 70147.80
+report@package:stage 2860.26
 [ Stage4 ] Target platform: develop
 [ Stage4 ] Package bundled successfully
-report@assets:stats 0.60
+report@assets:stats 1.83

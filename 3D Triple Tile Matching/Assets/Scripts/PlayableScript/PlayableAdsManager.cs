@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using DG.Tweening;
 using UnityEngine;
 
 public class PlayableAdsManager : MonoBehaviour
@@ -27,6 +26,7 @@ public class PlayableAdsManager : MonoBehaviour
             Destroy(gameObject);
         }
 
+        Application.targetFrameRate = 60;
         Luna.Unity.Playable.InstallFullGame();
     }
 
@@ -76,14 +76,12 @@ public class PlayableAdsManager : MonoBehaviour
         {
             _listTile.Add(tileId, new List<Tile> { tile });
         }
-        Debug.Log("Tile Added: " + _listTile[tileId].Count + " - " + tileId);
     }
 
     public List<Tile> GetTile(int tileId)
     {
         if (_listTile.ContainsKey(tileId))
         {
-            Debug.Log("GetTile: " + tileId);
             return _listTile[tileId];
         }
         return null;

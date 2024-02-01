@@ -1,4 +1,3 @@
-using System;
 using DG.Tweening;
 using UnityEngine;
 
@@ -6,35 +5,46 @@ public class Tile : MonoBehaviour
 {
     [SerializeField] private int _tileId;
     private SpriteRenderer _backGroundSprite;
+    private float _scaleDuration = 0.5f;
+    private float _scaleTimer = 0.0f;
+    private bool _isScaling = false;
 
-    private Action _onDeviceData;
-
-    private void Start(){
+    private void Start()
+    {
         _backGroundSprite = GetComponent<SpriteRenderer>();
         PlayableAdsManager.Instance.AddTile(_tileId, this);
     }
-
-    // void Update(){
-    //     if (Input.GetMouseButtonDown(0)){
-    //         Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-    //         RaycastHit2D hit = Physics2D.Raycast(mousePosition, Vector2.zero);
-    //         if (hit.collider != null){
-    //             if (hit.collider.gameObject == gameObject){
-    //                 OnMouseDown();
-    //             }
-    //         }
-    //     }
-    // }
 
     public void OnMouseDown()
     {
         _backGroundSprite.color = Color.red;
         PlayableAdsManager.Instance.AddCollectTile(_tileId, this);
     }
-
     public void AnimCollect()
     {
-        transform.DOScale(Vector3.zero, 0.5f).SetEase(Ease.InBack).OnComplete(() => { gameObject.SetActive(false); });
+        _isScaling = true;
+        _scaleTimer = -0.2f;
+    }
+
+    private void Update()
+    {
+        if (_isScaling)
+        {
+            _scaleTimer += Time.deltaTime;
+            if (_scaleTimer < 0)
+                _scaleTimer += Time.deltaTime * 2;
+
+            if (_scaleTimer >= _scaleDuration)
+            {
+                _isScaling = false;
+                gameObject.SetActive(false);
+            }
+            else
+            {
+                float scale = 1.4f - 1.4f * (_scaleTimer / _scaleDuration);
+                transform.localScale = new Vector3(scale, scale, scale);
+            }
+        }
     }
 
     public Vector3 GetPosition()
