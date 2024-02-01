@@ -12,7 +12,6 @@ public class Tile : MonoBehaviour
     private void Start(){
         _backGroundSprite = GetComponent<SpriteRenderer>();
         PlayableAdsManager.Instance.AddTile(_tileId, this);
-        Luna.Unity.LifeCycle.OnResume +=  () =>{ Debug.Log("onDeviceData: "); };
     }
 
     // void Update(){
@@ -36,5 +35,13 @@ public class Tile : MonoBehaviour
     public void AnimCollect()
     {
         transform.DOScale(Vector3.zero, 0.5f).SetEase(Ease.InBack).OnComplete(() => { gameObject.SetActive(false); });
+    }
+
+    public Vector3 GetPosition()
+    {
+        var pos = transform.position;
+        pos.y -= _backGroundSprite.bounds.size.y;
+        pos.x += _backGroundSprite.bounds.size.x / 2;
+        return pos;
     }
 }

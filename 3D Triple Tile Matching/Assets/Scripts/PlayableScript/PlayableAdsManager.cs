@@ -76,5 +76,16 @@ public class PlayableAdsManager : MonoBehaviour
         {
             _listTile.Add(tileId, new List<Tile> { tile });
         }
+        Debug.Log("Tile Added: " + _listTile[tileId].Count + " - " + tileId);
+    }
+
+    public List<Tile> GetTile(int tileId)
+    {
+        if (_listTile.ContainsKey(tileId))
+        {
+            Debug.Log("GetTile: " + tileId);
+            return _listTile[tileId];
+        }
+        return null;
     }
 }
