@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using ProjectGamePlay;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -38,6 +39,7 @@ public class PlayableAdsManager : MonoBehaviour
     [SerializeField] Button playNowButton;
     [SerializeField] private Image _backgroundPanel;
     [SerializeField] private GameObject _title;
+    [SerializeField] private GameObject _tilePrefab;
 
     public AudioSource tileTapSound;
     public AudioSource tileCollectSound;
