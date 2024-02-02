@@ -20,7 +20,7 @@ public class HandController : MonoBehaviour
         if (_isCompleteTutorial)
         {
             _pos = new Vector3(15, -20, 0) - transform.position;
-            _pos = _pos / _timeFrame;
+            _pos = _pos / 16;
             transform.position += _pos;
             if (Vector3.Distance(transform.position, new Vector3(15, -20, 0)) < 0.1f)
             {

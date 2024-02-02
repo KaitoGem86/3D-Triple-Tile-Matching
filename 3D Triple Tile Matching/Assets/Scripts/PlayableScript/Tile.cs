@@ -31,6 +31,12 @@ public class Tile : MonoBehaviour
         _scaleTimer = -0.2f;
     }
 
+    public void AnimUnCollected()
+    {
+        _isSelect = false;
+        _backGroundSprite.color = Color.white;
+    }
+
     private void FixedUpdate()
     {
         if (_isScaling)
