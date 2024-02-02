@@ -13,7 +13,7 @@ public class HandController : MonoBehaviour
     private bool _isCompleteTutorial = false;
     private float _timeFrame;
     private Vector3 _pos;
-    private List<Tile> _listTile;
+    private List<ProjectGamePlay.Tile> _listTile;
 
     void FixedUpdate()
     {
