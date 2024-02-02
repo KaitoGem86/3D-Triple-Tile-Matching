@@ -113,6 +113,10 @@
                 "Stubs/MoreMountains.NiceVibrations"
             ],
             "includes": [
+                "Assets/Audio/BG-music.ogg",
+                "Assets/Audio/Matching 3.ogg",
+                "Assets/Audio/Tap tile.ogg",
+                "Assets/Audio/tap-vào-tile-ko-ăn-đc.ogg",
                 "Assets/Plugins/",
                 "Assets/Plugins/Demigiant/",
                 "Assets/Plugins/Demigiant/DOTween/",
@@ -31441,6 +31445,26 @@
                         "script": "",
                         "ext": "",
                         "name": "Assets/TextMesh Pro/Resources/Fonts & Materials/LiberationSans SDF.asset"
+                    },
+                    {
+                        "maxWidth": 512,
+                        "maxHeight": 512,
+                        "format": "png32",
+                        "compression": "none",
+                        "quality": 65,
+                        "script": "",
+                        "ext": "",
+                        "name": "Assets/TripleTileGamePlayProject/TextMesh Pro/Resources/Fonts & Materials/LiberationSans SDF - Fallback.asset"
+                    },
+                    {
+                        "maxWidth": 512,
+                        "maxHeight": 512,
+                        "format": "png32",
+                        "compression": "none",
+                        "quality": 65,
+                        "script": "",
+                        "ext": "",
+                        "name": "Assets/TripleTileGamePlayProject/TextMesh Pro/Resources/Fonts & Materials/LiberationSans SDF.asset"
                     }
                 ]
             },

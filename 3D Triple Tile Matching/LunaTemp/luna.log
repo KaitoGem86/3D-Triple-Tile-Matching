@@ -1,31 +1,36 @@
-report@config:load 89.50
+report@config:load 118.20
 Authorized using stored user info.
-report@account:authorize 29.90
-Exporting assets from Unity........
+report@account:authorize 78.73
+Exporting assets from Unity..................
 
 [ Stage1 ] Assets exported from Unity and staged for further processing
-report@unity:export 5290.50
-report@config:load 33.68
+report@unity:export 15478.61
+report@config:load 108.53
+Using D:/Unity Game/Git 3D Triple Tile Matching/3D Triple Tile Matching/Assets/TextMesh Pro/Fonts/LiberationSans.ttf file to generate an atlas for LiberationSans[39252] font
+  Using alphabet  §1234567890-=qwertyuiop[]asdfghjkl;'\`zxcvbnm,./±!@#$%^&*()_+QWERTYUIOP{}ASDFGHJKL:"|~ZXCVBNM<>?
+Combined 97 glyphs into bitmap texture at D:/Unity Game/Git 3D Triple Tile Matching/3D Triple Tile Matching/LunaTemp/stage1/tmp/fonts/LiberationSans-39252/output_0.png (56kb)
+Found custom rules for texture Assets/TripleTileGamePlayProject/TextMesh Pro/Resources/Fonts & Materials/LiberationSans SDF.asset
+  {"maxWidth":512,"maxHeight":512,"format":"png32","compression":"none","quality":65,"script":"","ext":"","name":"Assets/TripleTileGamePlayProject/TextMesh Pro/Resources/Fonts & Materials/LiberationSans SDF.asset","isOverride":true}
 Resources:
 {}
-report@assets:stage2 10850.80
-report@assets:stage3 583.71
+report@assets:stage2 20314.98
+report@assets:stage3 633.95
 [ Stage2 ] Assets postprocessed and bundled successfully
-report@config:unity 1.21
-report@config:load 67.50
-report@config:unity 0.08
-report@code:compose 150.81
+report@config:unity 0.39
+report@config:load 111.40
+report@config:unity 3.29
+report@code:compose 323.55
 Authorized using stored user info.
-report@account:authorize 11.15
+report@account:authorize 9.14
 MSBuild version 17.6.3+07e294721 for .NET Framework
 
-Build started 2/2/2024 7:23:40 AM.
+Build started 2/2/2024 5:11:48 PM.
 
 
 
 Project "D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj" on node 1 (Rebuild target(s)).
-CoreClean:
 
+CoreClean:
   Deleting file "D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\bin\Debug\UnityScriptsCompiler.dll".
 
   Deleting file "D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\bin\Debug\UnityScriptsCompiler.pdb".
@@ -86,110 +91,123 @@ GenerateTargetFrameworkMonikerAttribute:
 Skipping target "GenerateTargetFrameworkMonikerAttribute" because all output files are up-to-date with respect to the input files.
 
 CoreCompile:
-  C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Current\Bin\Roslyn\csc.exe /noconfig /nowarn:CS0626,1701,1702 /fullpaths /nostdlib+ /errorreport:prompt /warn:4 /define:UNITY_LUNA;CSHARP_7_OR_LATER;CSHARP_7_3_OR_NEWER;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_5_OR_NEWER;UNITY_2021;UNITY_2017_1_OR_NEWER;UNITY_2017_2_OR_NEWER;UNITY_2017_3_OR_NEWER;UNITY_2017_4_OR_NEWER;UNITY_2018_1_OR_NEWER;UNITY_2018_2_OR_NEWER;UNITY_2018_3_OR_NEWER;UNITY_2018_4_OR_NEWER;UNITY_2019_1_OR_NEWER;UNITY_2019_2_OR_NEWER;UNITY_2019_3_OR_NEWER;UNITY_2019_4_OR_NEWER;UNITY_2020_1_OR_NEWER;UNITY_2020_2_OR_NEWER;UNITY_2020_3_OR_NEWER;UNITY_2021_1_OR_NEWER;UNITY_2021_2_OR_NEWER;UNITY_2021_3_OR_NEWER;UNITY_2021_3;UNITY_2021_3_30 /highentropyva+ /reference:"D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\packages\Bridge.Core.17.9.40-luna\lib\net40\Bridge.dll" /reference:"D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\packages\Bridge.Html5.17.9.0\lib\net40\Bridge.Html5.dll" /reference:"D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\packages\Bridge.WebGL.1.22.0\lib\net40\Bridge.WebGL.dll" /reference:"D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\packages\DOTween.1.2.705\lib\net40\DOTween.dll" /reference:"D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\packages\com.unity.ide.rider\3.0.0\JetBrains.dll" /reference:"D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\packages\Bridge.Newtonsoft.Json.1.16.0\lib\net40\Newtonsoft.Json.dll" /reference:"D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\packages\Retyped.Core.1.6.6733\lib\net40\Retyped.Core.dll" /reference:"D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\packages\Retyped.dom.2.8.6733\lib\net40\Retyped.dom.dll" /reference:"D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\packages\Retyped.es5.2.8.6733\lib\net40\Retyped.es5.dll" /reference:"D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\packages\Retyped.script
-host.2.8.6733\lib\net40\Retyped.scripthost.dll" /reference:"D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\Vendor\UnityEngine.dll" /reference:"D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\packages\com.unity.ui\1.2.1\UnityEngine.UI.dll" /reference:"D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\packages\com.unity.urp\7.6\UnityEngine.UniversalRenderPipeline.dll" /debug+ /debug:full /optimize- /out:obj\Debug\UnityScriptsCompiler.dll /subsystemversion:6.00 /target:library /warnaserror- /utf8output /langversion:8 "D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\PlayNowButton.cs" "D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\Plugins\Demigiant\DOTween\Modules\DOTweenModuleAudio.cs" "D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\Plugins\Demigiant\DOTween\Modules\DOTweenModuleEPOOutline.cs" "D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\Plugins\Demigiant\DOTween\Modules\DOTweenModulePhysics.cs" "D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\Plugins\Demigiant\DOTween\Modules\DOTweenModulePhysics2D.cs" "D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\Plugins\Demigiant\DOTween\Modules\DOTweenModuleSprite.cs" "D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\Plugins\Demigiant\DOTween\Modules\DOTweenModuleUI.cs" "D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\Plugins\Demigiant\DOTween\Modules\DOTweenModuleUnityVersion.cs" "D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\Plugins\Demigiant\DOTween\Modules\DOTweenModuleUtils.cs" "D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\Scripts\PlayableScript\HandController.cs" "D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\Scripts\PlayableScript\PlayableAdsManager.cs" "D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\Scripts\PlayableScript\Tile.cs" Properties/AssemblyInfo.cs Sources/OtherDummyScript.cs "obj\Debug\.NETFramework,Version=v4.7.AssemblyAttributes.cs"
+  C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Current\Bin\Roslyn\csc.exe /noconfig /nowarn:CS0626,1701,1702 /fullpaths /nostdlib+ /errorreport:prompt /warn:4 /define:UNITY_LUNA;CSHARP_7_OR_LATER;CSHARP_7_3_OR_NEWER;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_5_OR_NEWER;UNITY_2021;UNITY_2017_1_OR_NEWER;UNITY_2017_2_OR_NEWER;UNITY_2017_3_OR_NEWER;UNITY_2017_4_OR_NEWER;UNITY_2018_1_OR_NEWER;UNITY_2018_2_OR_NEWER;UNITY_2018_3_OR_NEWER;UNITY_2018_4_OR_NEWER;UNITY_2019_1_OR_NEWER;UNITY_2019_2_OR_NEWER;UNITY_2019_3_OR_NEWER;UNITY_2019_4_OR_NEWER;UNITY_2020_1_OR_NEWER;UNITY_2020_2_OR_NEWER;UNITY_2020_3_OR_NEWER;UNITY_2021_1_OR_NEWER;UNITY_2021_2_OR_NEWER;UNITY_2021_3_OR_NEWER;UNITY_2021_3;UNITY_2021_3_30 /highentropyva+ /reference:"D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\packages\Bridge.Core.17.9.40-luna\lib\net40\Bridge.dll" /reference:"D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\packages\Bridge.Html5.17.9.0\lib\net40\Bridge.Html5.dll" /reference:"D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\packages\Bridge.WebGL.1.22.0\lib\net40\Bridge.WebGL.dll" /reference:"D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\packages\DOTween.1.2.705\lib\net40\DOTween.dll" /reference:"D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\packages\com.unity.ide.rider\3.0.0\JetBrains.dll" /reference:"D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\packages\Bridge.Newtonsoft.Json.1.16.0\lib\net40\Newtonsoft.Json.dll" /reference:"D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\packages\Retyped.Core.1.6.6733\lib\net40\Retyped.Core.dll" /reference:"D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\packages\Retyped.dom.2.8.6733\lib\net40\Retyped.dom.dll" /reference:"D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\packages\Retyped.es5.2.8.6733\lib\net40\Retyped.es5.dll" /reference:"D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\packages\Retyped.scripthost.2.8.6733\lib\net40\Retyped.scripthost.dll" /reference:"D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\packages\com.unity.textmeshpro\3.0.6\TextMeshPro.dll" /reference:"D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\Vendor\UnityEngine.dll" /reference:"D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\packages\com.unity.ui\1.2.1\UnityEngine.UI.dll" /reference:"D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\packages\com.unity.urp\7.6\UnityEngine.UniversalRenderPipeline.dll" /debug+ /debug:full /optimize- /out:obj\Debug\UnityScriptsCompiler.dll /subsystemversion:6.00 /target:library /warnaserror- /utf8output /langversion:8 "D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\PlayNowButton.cs" "D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\Plugins\Demigiant\DOTween\Modules\DOTweenModuleAudio.cs" "D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\Plugins\Demigiant\DOTween\Modules\DOTweenModuleEPOOutline.cs" "D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\Plugins\Demigiant\DOTween\Modules\DOTweenModulePhysics.cs" "D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\Plugins\Demigiant\DOTween\Modules\DOTweenModulePhysics2D.cs" "D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\Plugins\Demigiant\DOTween\Modules\DOTweenModuleSprite.cs" "D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\Plugins\Demigiant\DOTween\Modules\DOTweenModuleUI.cs" "D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\Plugins\Demigiant\DOTween\Modules\DOTweenModuleUnityVersion.cs" "D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\Plugins\Demigiant\DOTween\Modules\DOTweenModuleUtils.cs" "D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\Scripts\PlayableScript\HandController.cs" "D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\Scripts\PlayableScript\PlayableAdsManager.cs" "D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\Scripts\PlayableScript\SlotController.cs" "D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\Scripts\PlayableScript\SlotHolder.cs" "D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\Scripts\PlayableScript\Tile.cs" "D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\TripleTileGamePlayProject\MyTools\Analysis\Firebase\StatsRecord.cs" "D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\TripleTileGamePlayProject\MyTools\RenMapTool\CreatorWindow.cs" "D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\TripleTileGamePlayProject\MyTools\RenMapTool\LevelData.cs" "D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\TripleTileGamePlayProject\Resources\ItemData\ItemData.cs" "D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\TripleTileGamePlayProject\Scripts\FunctionCommon.cs" "D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\TripleTileGamePlayProject\Scripts\GamePlayManager.cs" "D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\TripleTileGamePlayProject\Scripts\ItemTile.cs" "D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\TripleTileGamePlayProject\Scripts\ItemTileConnect.cs" "D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\TripleTileGamePlayProject\Scripts\ItemTileSlot.cs" "D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\TripleTileGamePlayProject\Scripts\LevelManager.cs" "D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\TripleTileGamePlayProject\Scripts\SlotHolder.cs" "D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\TripleTileGamePlayProject\Scripts\ToolMakeTileMap.cs" Properties/AssemblyInfo.cs Sources/OtherDummyScript.cs "obj\Debug\.NETFramework,Version=v4.7.AssemblyAttributes.cs"
 
-D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\Scripts\PlayableScript\PlayableAdsManager.cs(40,41): warning CS0649: Field 'PlayableAdsManager._title' is never assigned to, and will always have its default value null [D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj]
+D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\TripleTileGamePlayProject\Scripts\ItemTileConnect.cs(46,32): error CS8400: Feature 'not pattern' is not available in C# 8.0. Please use language version 9.0 or greater. [D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj]
 
-D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\Scripts\PlayableScript\PlayableAdsManager.cs(39,36): warning CS0649: Field 'PlayableAdsManager._backgroundPanel' is never assigned to, and will always have its default value null [D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj]
+D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\TripleTileGamePlayProject\Scripts\ItemTileConnect.cs(53,31): error CS8400: Feature 'not pattern' is not available in C# 8.0. Please use language version 9.0 or greater. [D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj]
+
+D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\TripleTileGamePlayProject\Scripts\LevelManager.cs(382,17): warning CS0219: The variable 'tileFall' is assigned but its value is never used [D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj]
+
+D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\TripleTileGamePlayProject\Scripts\LevelManager.cs(750,30): error CS8400: Feature 'not pattern' is not available in C# 8.0. Please use language version 9.0 or greater. [D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj]
+
+D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\TripleTileGamePlayProject\Scripts\LevelManager.cs(755,30): error CS8400: Feature 'not pattern' is not available in C# 8.0. Please use language version 9.0 or greater. [D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj]
+
+D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\TripleTileGamePlayProject\Scripts\LevelManager.cs(760,30): error CS8400: Feature 'not pattern' is not available in C# 8.0. Please use language version 9.0 or greater. [D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj]
+
+D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\TripleTileGamePlayProject\Scripts\LevelManager.cs(765,30): error CS8400: Feature 'not pattern' is not available in C# 8.0. Please use language version 9.0 or greater. [D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj]
+
+D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\TripleTileGamePlayProject\Scripts\LevelManager.cs(774,30): error CS8400: Feature 'not pattern' is not available in C# 8.0. Please use language version 9.0 or greater. [D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj]
+
+D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\TripleTileGamePlayProject\Scripts\LevelManager.cs(779,30): error CS8400: Feature 'not pattern' is not available in C# 8.0. Please use language version 9.0 or greater. [D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj]
+
+D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\TripleTileGamePlayProject\Scripts\LevelManager.cs(784,30): error CS8400: Feature 'not pattern' is not available in C# 8.0. Please use language version 9.0 or greater. [D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj]
+
+D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\TripleTileGamePlayProject\Scripts\LevelManager.cs(789,30): error CS8400: Feature 'not pattern' is not available in C# 8.0. Please use language version 9.0 or greater. [D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj]
+
+D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\TripleTileGamePlayProject\Scripts\LevelManager.cs(803,30): error CS8400: Feature 'not pattern' is not available in C# 8.0. Please use language version 9.0 or greater. [D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj]
+
+D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\TripleTileGamePlayProject\Scripts\LevelManager.cs(808,30): error CS8400: Feature 'not pattern' is not available in C# 8.0. Please use language version 9.0 or greater. [D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj]
+
+D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\TripleTileGamePlayProject\Scripts\LevelManager.cs(813,30): error CS8400: Feature 'not pattern' is not available in C# 8.0. Please use language version 9.0 or greater. [D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj]
+
+D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\TripleTileGamePlayProject\Scripts\LevelManager.cs(818,30): error CS8400: Feature 'not pattern' is not available in C# 8.0. Please use language version 9.0 or greater. [D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj]
+
+D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\TripleTileGamePlayProject\Scripts\LevelManager.cs(826,30): error CS8400: Feature 'not pattern' is not available in C# 8.0. Please use language version 9.0 or greater. [D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj]
+
+D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\TripleTileGamePlayProject\Scripts\LevelManager.cs(831,30): error CS8400: Feature 'not pattern' is not available in C# 8.0. Please use language version 9.0 or greater. [D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj]
+
+D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\TripleTileGamePlayProject\Scripts\LevelManager.cs(836,30): error CS8400: Feature 'not pattern' is not available in C# 8.0. Please use language version 9.0 or greater. [D:\Unity Game\A
+dsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj]
+
+D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\TripleTileGamePlayProject\Scripts\LevelManager.cs(841,30): error CS8400: Feature 'not pattern' is not available in C# 8.0. Please use language version 9.0 or greater. [D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj]
+
+D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\TripleTileGamePlayProject\MyTools\Analysis\Firebase\StatsRecord.cs(69,18): error CS7036: There is no argument given that corresponds to the required parameter 'reset' of 'ProfilerRecorder.CopyTo(List<ProfilerRecorderSample>, bool)' [D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj]
+
+D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\Scripts\PlayableScript\PlayableAdsManager.cs(39,29): warning CS0649: Field 'PlayableAdsManager.playNowButton' is never assigned to, and will always have its default value null [D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj]
+
 D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\PlayNowButton.cs(6,22): warning CS0649: Field 'PlayNowButton._animator' is never assigned to, and will always have its default value null [D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj]
 
-D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\Scripts\PlayableScript\PlayableAdsManager.cs(38,29): warning CS0649: Field 'PlayableAdsManager.playNowButton' is never assigned to, and will always have its default value null [D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj]
+D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\Scripts\PlayableScript\PlayableAdsManager.cs(41,41): warning CS0649: Field 'PlayableAdsManager._title' is never assigned to, and will always have its default value null [D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj]
 
-D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\Scripts\PlayableScript\Tile.cs(5,34): warning CS0649: Field 'Tile._tileId' is never assigned to, and will always have its default value 0 [D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj]
+D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\Scripts\PlayableScript\Tile.cs(7,38): warning CS0649: Field 'Tile._tileId' is never assigned to, and will always have its default value 0 [D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj]
 
-  CompilerServer: server - server processed compilation - 4066de4b-2665-41db-9858-ecd1f806fa09
+D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\Scripts\PlayableScript\PlayableAdsManager.cs(40,36): warning CS0649: Field 'PlayableAdsManager._backgroundPanel' is never assigned to, and will always have its default value null [D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj]
 
-_CopyFilesMarkedCopyLocal:
-  Copying file from "D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\packages\Bridge.WebGL.1.22.0\lib\net40\Bridge.WebGL.dll" to "D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\bin\Debug\Bridge.WebGL.dll".
+D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\Scripts\PlayableScript\PlayableAdsManager.cs(42,41): warning CS0169: The field 'PlayableAdsManager._tilePrefab' is never used [D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj]
 
-  Copying file from "D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\packages\Bridge.Core.17.9.40-luna\lib\net40\Bridge.dll" to "D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\bin\Debug\Bridge.dll".
-  Copying file from "D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\packages\com.unity.ide.rider\3.0.0\JetBrains.dll" to "D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\bin\Debug\JetBrains.dll".
-  Copying file from "D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\packages\DOTween.1.2.705\lib\net40\DOTween.dll" to "D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\bin\Debug\DOTween.dll".
+  CompilerServer: server - server processed compilation - a791d434-1fa4-46b4-aa82-e44d647f7488
 
-  Copying file from "D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\packages\Bridge.Newtonsoft.Json.1.16.0\lib\net40\Newtonsoft.Json.dll" to "D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\bin\Debug\Newtonsoft.Json.dll".
+Done Building Project "D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj" (Rebuild target(s)) -- FAILED.
 
-  Copying file from "D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\packages\Bridge.Html5.17.9.0\lib\net40\Bridge.Html5.dll" to "D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\bin\Debug\Bridge.Html5.dll".
+[ error ] $
+[ error ] $Build FAILED.
+[ error ] $
+[ error ] $
+[ error ] $"D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj" (Rebuild target) (1) ->
+[ error ] $(CoreCompile target) -> 
+[ error ] $  D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\TripleTileGamePlayProject\Scripts\LevelManager.cs(382,17): warning CS0219: The variable 'tileFall' is assigned but its value is never used [D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj]
+[ error ] $
+[ error ] $  D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\Scripts\PlayableScript\PlayableAdsManager.cs(39,29): warning CS0649: Field 'PlayableAdsManager.playNowButton' is never assigned to, and will always have its default value null [D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj]
+[ error ] $  D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\PlayNowButton.cs(6,22): warning CS0649: Field 'PlayNowButton._animator' is never assigned to, and will always have its default value null [D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj]
+[ error ] $  D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\Scripts\PlayableScript\PlayableAdsManager.cs(41,41): warning CS0649: Field 'PlayableAdsManager._title' is never assigned to, and will always have its default value null [D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj]
+[ error ] $  D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\Scripts\PlayableScript\Tile.cs(7,38): warning CS0649: Field 'Tile._tileId' is never assigned to, and will always have its default value 0 [D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj]
+[ error ] $  D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\Scripts\PlayableScript\PlayableAdsManager.cs(40,36): warning CS0649: Field 'PlayableAdsManager._backgroundPanel' is never assigned to, and will always have its default value null [D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj]
+[ error ] $  D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\Scripts\PlayableScript\PlayableAdsManager.cs(42,41): warning CS0169: The field 'PlayableAdsManager._tilePrefab' is never used [D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj]
+[ error ] $
+[ error ] $
+[ error ] $"D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj" (Rebuild target) (1) ->
+[ error ] $(CoreCompile target) -> 
+[ error ] $  D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\TripleTileGamePlayProject\Scripts\ItemTileConnect.cs(46,32): error CS8400: Feature 'not pattern' is not available in C# 8.0. Please use language version 9.0 or greater. [D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj]
+[ error ] $  D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\TripleTileGamePlayProject\Scripts\ItemTileConnect.cs(53,31): error CS8400: Feature 'not pattern' is not available in C# 8.0. Please use language version 9.0 or greater. [D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj]
+[ error ] $  D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\TripleTileGamePlayProject\Scripts\LevelManager.cs(750,30): error CS8400: Feature 'not pattern' is not available in C# 8.0. Please use language version 9.0 or greater. [D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj]
+[ error ] $  D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\TripleTileGamePlayProject\Scripts\LevelManager.cs(755,30): error CS8400: Feature 'not pattern' is not available in C# 8.0. Please use language version 9.0 or greater. [D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj]
+[ error ] $  D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\TripleTileGamePlayProject\Scripts\LevelManager.cs(760,30): error CS8400: Feature 'not pattern' is not available in C# 8.0. Please use language version 9.0 or greater. [D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj]
+[ error ] $  D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\TripleTileGamePlayProject\Scripts\LevelManager.cs(765,30): error CS8400: Feature 'not pattern' is not available in C# 8.0. Please use language version 9.0 or greater. [D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj]
+[ error ] $  D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\TripleTileGamePlayProject\Scripts\LevelManager.cs(774,30): error CS8400: Feature 'not pattern' is not available in C# 8.0. Please use language version 9.0 or greater. [D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj]
+[ error ] $  D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\TripleTileGamePlayProject\Scripts\LevelManager.cs(779,30): error CS8400: Feature 'not pattern' is not available in C# 8.0. Please use language version 9.0 or greater. [D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj]
+[ error ] $  D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\TripleTileGamePlayProject\Scripts\LevelManager.cs(784,30): error CS8400: Feature 'not pattern' is not available in C# 8.0. Please use language version 9.0 or greater. [D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj]
+[ error ] $  D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\TripleTileGamePlayProject\Scripts\LevelManager.cs(789,30): error CS8400: Feature 'not pattern' is not available in C# 8.0. Please use language version 9.0 or greater. [D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj]
+[ error ] $
+[ error ] $  D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\TripleTileGamePlayProject\Scripts\LevelManager.cs(803,30): error CS8400: Feature 'not pattern' is not available in C# 8.0. Please use language version 9.0 or greater. [D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj]
+[ error ] $  D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\TripleTileGamePlayProject\Scripts\LevelManager.cs(808,30): error CS8400: Feature 'not pattern' is not available in C# 8.0. Please use language version 9.0 or greater. [D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj]
+[ error ] $  D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\TripleTileGamePlayProject\Scripts\LevelManager.cs(813,30): error CS8400: Feature 'not pattern' is not available in C# 8.0. Please use language version 9.0 or greater. [D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj]
+[ error ] $  D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\TripleTileGamePlayProject\Scripts\LevelManager.cs(818,30): error CS8400: Feature 'not pattern' is not available in C# 8.0. Please use language version 9.0 or greater. [D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj]
+[ error ] $  D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\TripleTileGamePlayProject\Scripts\LevelManager.cs(826,30): error CS8400: Feature 'not pattern' is not available in C# 8.0. Please use language version 9.0 or greater. [D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj]
+[ error ] $  D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\TripleTileGamePlayProject\Scripts\LevelManager.cs(831,30): error CS8400: Feature 'not pattern' is not available in C# 8.0. Please use language version 9.0 or greater. [D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj]
+[ error ] $  D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\TripleTileGamePlayProject\Scripts\LevelManager.cs(836,30): error CS8400: Feature 'not pattern' is not available in C# 8.0. Please use language version 9.0 or greater. [D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj]
+[ error ] $  D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\TripleTileGamePlayProject\Scripts\LevelManager.cs(841,30): error CS8400: Feature 'not pattern' is not available in C# 8.0. Please use language version 9.0 or greater. [D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj]
+[ error ] $  D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\TripleTileGamePlayProject\MyTools\Analysis\Firebase\StatsRecord.cs(69,18): error CS7036: There is no argument given that corresponds to the required parameter 'reset' of 'ProfilerRecorder.CopyTo(List<ProfilerRecorderSample>, bool)' [D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj]
+[ error ] $
+[ error ] $    7 Warning(s)
+[ error ] $    19 Error(s)
+[ error ] $
+[ error ] $Time Elapsed 00:00:02.38
+[ error ] $
+PHC: LP error code not found in JSON: 3013, JSON file might be outdated. Error message: Sequence contains no matching element
 
-  Copying file from "D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\packages\Retyped.Core.1.6.6733\lib\net40\Retyped.Core.dll" to "D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\bin\Debug\Retyped.Core.dll".
+PHC: LP error code not found in JSON: 3013, JSON file might be outdated. Error message: Sequence contains no matching element
 
-  Copying file from "D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\packages\Retyped.dom.2.8.6733\lib\net40\Retyped.dom.dll" to "D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\bin\Debug\Retyped.dom.dll".
+PHC: LP error code not found in JSON: 3013, JSON file might be outdated. Error message: Sequence contains no matching element
 
-  Copying file from "D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\packages\Retyped.es5.2.8.6733\lib\net40\Retyped.es5.dll" to "D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\bin\Debug\Retyped.es5.dll".
+PHC: LP error code not found in JSON: 3013, JSON file might be outdated. Error message: Sequence contains no matching element
 
-  Copying file from "D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\packages\Retyped.scripthost.2.8.6733\lib\net40\Retyped.scripthost.dll" to "D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\bin\Debug\Retyped.scripthost.dll".
-
-  Copying file from "D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\Vendor\UnityEngine.dll" to "D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\bin\Debug\UnityEngine.dll".
-
-  Copying file from "D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\packages\com.unity.ui\1.2.1\UnityEngine.UI.dll" to "D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\bin\Debug\UnityEngine.UI.dll".
-
-  Copying file from "D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\packages\com.unity.urp\7.6\UnityEngine.UniversalRenderPipeline.dll" to "D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\bin\Debug\UnityEngine.UniversalRenderPipeline.dll".
-
-  Copying file from "D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\packages\Bridge.Core.17.9.40-luna\lib\net40\Bridge.xml" to "D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\bin\Debug\Bridge.xml".
-
-  Copying file from "D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\packages\Bridge.Html5.17.9.0\lib\net40\Bridge.Html5.xml" to "D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\bin\Debug\Bridge.Html5.xml".
-
-  Copying file from "D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\packages\Bridge.WebGL.1.22.0\lib\net40\Bridge.WebGL.xml" to "D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\bin\Debug\Bridge.WebGL.xml".
-
-  Copying file from "D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\packages\Bridge.Newtonsoft.Json.1.16.0\lib\net40\Newtonsoft.Json.xml" to "D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\bin\Debug\Newtonsoft.Json.xml".
-
-  Copying file from "D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\packages\Retyped.Core.1.6.6733\lib\net40\Retyped.Core.xml" to "D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\bin\Debug\Retyped.Core.xml".
-
-  Copying file from "D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\packages\Retyped.dom.2.8.6733\lib\net40\Retyped.dom.xml" to "D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\bin\Debug\Retyped.dom.xml".
-
-  Copying file from "D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\packages\Retyped.scripthost.2.8.6733\lib\net40\Retyped.scripthost.xml" to "D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\bin\Debug\Retyped.scri
-pthost.xml".
-
-  Copying file from "D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\packages\Retyped.es5.2.8.6733\lib\net40\Retyped.es5.xml" to "D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\bin\Debug\Retyped.es5.xml".
-
-  Creating "D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\obj\Debug\Scripts.csproj.CopyComplete" because "AlwaysCreate" was specified.
-
-CopyFilesToOutputDirectory:
-  Copying file from "D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\obj\Debug\UnityScriptsCompiler.dll" to "D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\bin\Debug\UnityScriptsCompiler.dll".
-
-  Scripts -> D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\bin\Debug\UnityScriptsCompiler.dll
-
-  Copying file from "D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\obj\Debug\UnityScriptsCompiler.pdb" to "D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\bin\Debug\UnityScriptsCompiler.pdb".
-
-BridgeNetCompilerTask:
-  Bridge started
-
-      To enable detailed logging, configure "logging" in bridge.json.
-
-      https://github.com/bridgedotnet/Bridge/wiki/global-configuration#logging
-
-  Bridge done
-
-Done Building Project "D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj" (Rebuild target(s)).
-
-
-Build succeeded.
-
-
-
-"D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj" (Rebuild target) (1) ->
-(CoreCompile target) -> 
-  D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\Scripts\PlayableScript\PlayableAdsManager.cs(40,41): warning CS0649: Field 'PlayableAdsManager._title' is never assigned to, and will always have its default value null [D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj]
-  D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\Scripts\PlayableScript\PlayableAdsManager.cs(39,36): warning CS0649: Field 'PlayableAdsManager._backgroundPanel' is never assigned to, and will always have its default value null [D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj]
-  D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\PlayNowButton.cs(6,22): warning CS0649: Field 'PlayNowButton._animator' is never assigned to, and will always have its default value null [D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj]
-  D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\Scripts\PlayableScript\PlayableAdsManager.cs(38,29): warning CS0649: Field 'PlayableAdsManager.playNowButton' is never assigned to, and will always have its default value null [D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj]
-  D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\Scripts\PlayableScript\Tile.cs(5,34): warning CS0649: Field 'Tile._tileId' is never assigned to, and will always have its default value 0 [D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj]
-
-    5 Warning(s)
-    0 Error(s)
-
-
-Time Elapsed 00:00:22.98
-
-Source code compiled successfully!
 Diagnostics gathered successfully
-report@code:build 30480.24
-report@diagnostics:verify 3.44
-report@diagnostics:upload 2473.79
-report@code:stage 15162.56
-[ Stage3 ] Code compiled and bundled successfully.
-report@code:bundle 48357.41
-report@package:stage 2206.34
-[ Stage4 ] Target platform: develop
-[ Stage4 ] Package bundled successfully
-report@assets:stats 0.90
+report@code:build 34946.30
+report@diagnostics:verify 1.10
+
+Fatal error while building C# code
+[ error ] $Project failed to build, check project diagnostics
+Error: DIAGNOSTICS_FATAL_ERROR
+    at Function.checkForErrors (D:\Unity Game\AdsGame\LunaPlugin\pipeline\Jakefile.js:6:2981957)
+    at async _0x2d97c9.action (D:\Unity Game\AdsGame\LunaPlugin\pipeline\Jakefile.js:6:2987086)
