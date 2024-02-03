@@ -33,23 +33,28 @@ public class PlayableAdsManager : MonoBehaviour
         Luna.Unity.Playable.InstallFullGame();
     }
 
-    private Dictionary<int, List<Tile>> _dictCollectTile;
-    private Dictionary<int, List<Tile>> _listTile;
+    private Dictionary<int, List<ProjectGamePlay.Tile>> _dictCollectTile;
+    private Dictionary<int, List<ProjectGamePlay.Tile>> _listTile;
     private int numOfPlayerTurn = 3;
     [SerializeField] Button playNowButton;
     [SerializeField] private Image _backgroundPanel;
     [SerializeField] private GameObject _title;
     [SerializeField] private GameObject _tilePrefab;
+    [SerializeField] private Transform _slotRootPrefab;
 
     public AudioSource tileTapSound;
     public AudioSource tileCollectSound;
     public AudioSource unCollectSound;
 
-    public void AddCollectTile(int tileId, Tile tile)
+    private void Start(){
+        SlotHolder = new ProjectGamePlay.SlotHolder(_slotRootPrefab);
+    }
+
+    public void AddCollectTile(int tileId, ProjectGamePlay.Tile tile)
     {
         if (_dictCollectTile == null)
         {
-            _dictCollectTile = new Dictionary<int, List<Tile>>();
+            _dictCollectTile = new Dictionary<int, List<ProjectGamePlay.Tile>>();
         }
 
         if (_dictCollectTile.ContainsKey(tileId))
@@ -74,7 +79,7 @@ public class PlayableAdsManager : MonoBehaviour
             }
             else
             {
-                _dictCollectTile.Add(tileId, new List<Tile> { tile });
+                _dictCollectTile.Add(tileId, new List<ProjectGamePlay.Tile> { tile });
             }
         }
 
@@ -95,11 +100,11 @@ public class PlayableAdsManager : MonoBehaviour
         }
     }
 
-    public void AddTile(int tileId, Tile tile)
+    public void AddTile(int tileId, ProjectGamePlay.Tile tile)
     {
         if (_listTile == null)
         {
-            _listTile = new Dictionary<int, List<Tile>>();
+            _listTile = new Dictionary<int, List<ProjectGamePlay.Tile>>();
         }
 
         if (_listTile.ContainsKey(tileId))
@@ -108,11 +113,11 @@ public class PlayableAdsManager : MonoBehaviour
         }
         else
         {
-            _listTile.Add(tileId, new List<Tile> { tile });
+            _listTile.Add(tileId, new List<ProjectGamePlay.Tile> { tile });
         }
     }
 
-    public List<Tile> GetTile(int tileId)
+    public List<ProjectGamePlay.Tile> GetTile(int tileId)
     {
         if (_listTile.ContainsKey(tileId))
         {
@@ -123,7 +128,7 @@ public class PlayableAdsManager : MonoBehaviour
 
     public void Update()
     {
-        if (numOfPlayerTurn == 0 || numOfPlayerTurn == 3)
+        if (numOfPlayerTurn == 0 )
             return;
         if (Input.touchCount <= 0)
             return;
@@ -133,9 +138,9 @@ public class PlayableAdsManager : MonoBehaviour
             Vector3 touchPosition = Camera.main.ScreenToWorldPoint(touch.position);
             if (Physics.Raycast(touchPosition - Vector3.forward * 10, Vector3.forward, out RaycastHit hit, 100f))
             {
-                if (hit.transform.GetComponent<Tile>() != null)
+                if (hit.transform.GetComponent<ProjectGamePlay.Tile>() != null)
                 {
-                    hit.transform.GetComponent<Tile>().OnTileCollect();
+                    hit.transform.GetComponent<ProjectGamePlay.Tile>().OnTileCollect();
                     tileTapSound.Play();
                 }
 
@@ -149,4 +154,6 @@ public class PlayableAdsManager : MonoBehaviour
         _title.SetActive(true);
         playNowButton.GetComponent<PlayNowButton>().ZoomInButton();
     }
+
+    public ProjectGamePlay.SlotHolder SlotHolder { get; set; }
 }
