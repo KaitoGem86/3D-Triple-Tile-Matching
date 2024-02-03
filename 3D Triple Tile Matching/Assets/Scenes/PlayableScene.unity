@@ -291,6 +291,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _tileId: 3
+  _animator: {fileID: 0}
 --- !u!65 &60992145
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -321,7 +322,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &75462049
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -753,6 +754,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _tileId: 6
+  _animator: {fileID: 0}
 --- !u!65 &218551245
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1078,6 +1080,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _tileId: 1
+  _animator: {fileID: 0}
 --- !u!65 &305240389
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1112,7 +1115,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6643816521605669441, guid: 4b03f50028b711e4ab968d7efab780fc, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6643816521605669441, guid: 4b03f50028b711e4ab968d7efab780fc, type: 3}
       propertyPath: m_LocalScale.x
@@ -1273,6 +1276,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _tileId: 4
+  _animator: {fileID: 0}
 --- !u!65 &425920519
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1696,6 +1700,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _tileId: 3
+  _animator: {fileID: 0}
 --- !u!65 &549524262
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1809,6 +1814,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _tileId: 3
+  _animator: {fileID: 0}
 --- !u!65 &566474542
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2302,6 +2308,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _tileId: 5
+  _animator: {fileID: 0}
 --- !u!65 &805994385
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2499,6 +2506,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _tileId: 6
+  _animator: {fileID: 0}
 --- !u!65 &870087885
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2696,6 +2704,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _tileId: 5
+  _animator: {fileID: 0}
 --- !u!65 &892036370
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2809,6 +2818,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _tileId: 6
+  _animator: {fileID: 0}
 --- !u!65 &924433421
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2922,6 +2932,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _tileId: 4
+  _animator: {fileID: 0}
 --- !u!65 &937642828
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3035,6 +3046,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _tileId: 4
+  _animator: {fileID: 0}
 --- !u!65 &943442433
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3203,6 +3215,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _tileId: 3
+  _animator: {fileID: 0}
 --- !u!65 &950944520
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3482,6 +3495,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _tileId: 2
+  _animator: {fileID: 0}
 --- !u!65 &989310121
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4016,6 +4030,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _tileId: 1
+  _animator: {fileID: 0}
 --- !u!65 &1090648543
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4314,7 +4329,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6643816521605669441, guid: 4b03f50028b711e4ab968d7efab780fc, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6643816521605669441, guid: 4b03f50028b711e4ab968d7efab780fc, type: 3}
       propertyPath: m_LocalScale.x
@@ -4431,7 +4446,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6643816521605669441, guid: 4b03f50028b711e4ab968d7efab780fc, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6643816521605669441, guid: 4b03f50028b711e4ab968d7efab780fc, type: 3}
       propertyPath: m_LocalScale.x
@@ -4592,6 +4607,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _tileId: 4
+  _animator: {fileID: 0}
 --- !u!65 &1224080399
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4653,6 +4669,7 @@ MonoBehaviour:
   _backgroundPanel: {fileID: 1095332286}
   _title: {fileID: 492480038}
   _tilePrefab: {fileID: 3435983278738778368, guid: ce8d30a483afbb040bc8d88d6f43bfe6, type: 3}
+  _slotRootPrefab: {fileID: 2082639306}
   tileTapSound: {fileID: 534040147}
   tileCollectSound: {fileID: 263023223}
   unCollectSound: {fileID: 726091529}
@@ -5184,6 +5201,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _tileId: 5
+  _animator: {fileID: 0}
 --- !u!65 &1548977786
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5509,6 +5527,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _tileId: 4
+  _animator: {fileID: 0}
 --- !u!65 &1628904168
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5622,6 +5641,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _tileId: 3
+  _animator: {fileID: 0}
 --- !u!65 &1641673349
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5819,6 +5839,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _tileId: 3
+  _animator: {fileID: 0}
 --- !u!65 &1697564725
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6012,7 +6033,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6643816521605669441, guid: 4b03f50028b711e4ab968d7efab780fc, type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6643816521605669441, guid: 4b03f50028b711e4ab968d7efab780fc, type: 3}
       propertyPath: m_LocalScale.x
@@ -6425,6 +6446,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _tileId: 4
+  _animator: {fileID: 0}
 --- !u!65 &2039521293
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6538,6 +6560,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _tileId: 2
+  _animator: {fileID: 0}
 --- !u!65 &2050163831
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6572,7 +6595,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6643816521605669441, guid: 4b03f50028b711e4ab968d7efab780fc, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6643816521605669441, guid: 4b03f50028b711e4ab968d7efab780fc, type: 3}
       propertyPath: m_LocalScale.x
@@ -6661,11 +6684,11 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1924233462}
-  - {fileID: 2075043512}
+  - {fileID: 1202313185}
   - {fileID: 321203111}
   - {fileID: 1185486493}
-  - {fileID: 1202313185}
+  - {fileID: 1924233462}
+  - {fileID: 2075043512}
   - {fileID: 1363616922}
   - {fileID: 981329044}
   m_Father: {fileID: 0}

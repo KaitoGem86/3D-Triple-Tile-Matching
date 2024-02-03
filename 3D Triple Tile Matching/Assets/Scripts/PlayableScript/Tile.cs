@@ -5,11 +5,14 @@ namespace ProjectGamePlay
     public class Tile : MonoBehaviour
     {
         [SerializeField] private int _tileId;
+        [SerializeField] private Animator _animator;
         private SpriteRenderer _backGroundSprite;
-        private float _scaleDuration = 0.5f;
-        private float _scaleTimer = 0.0f;
-        private bool _isScaling = false;
         private bool _isSelect = false;
+        private bool _isMoving = false;
+        private Vector3 _targetPos;
+
+        private TileStateEnum _tileState = TileStateEnum.UnCollected;
+        private SlotHolder _slotHolder;
 
         private void Start()
         {
@@ -24,13 +27,14 @@ namespace ProjectGamePlay
                 return;
             }
             _isSelect = true;
-            _backGroundSprite.color = Color.red;
+            //_backGroundSprite.color = Color.red;
+            var item = PlayableAdsManager.Instance.SlotHolder.GetSlotFreeForTile(_tileId);
+            SetTargetPosToMove(item.Item2.GetSlotPosition());
+            item.Item2.ContainedTile = this;
             PlayableAdsManager.Instance.AddCollectTile(_tileId, this);
         }
         public void AnimCollect()
         {
-            _isScaling = true;
-            _scaleTimer = -0.2f;
         }
 
         public void AnimUnCollected()
@@ -41,23 +45,18 @@ namespace ProjectGamePlay
 
         private void FixedUpdate()
         {
-            if (_isScaling)
-            {
-                _scaleTimer += Time.fixedDeltaTime;
-                if (_scaleTimer < 0)
-                    _scaleTimer += Time.fixedDeltaTime * 2;
-
-                if (_scaleTimer >= _scaleDuration)
-                {
-                    _isScaling = false;
-                    gameObject.SetActive(false);
-                }
-                else
-                {
-                    float scale = 1.4f - 1.4f * (_scaleTimer / _scaleDuration);
-                    transform.localScale = new Vector3(scale, scale, scale);
+            if(_isMoving){
+                var pos = Vector3.Lerp(transform.position, _targetPos, Time.fixedDeltaTime * 15);
+                transform.position = pos;
+                if(Vector3.Distance(transform.position, _targetPos) < 0.1f){
+                    _isMoving = false;
                 }
             }
+        }
+
+        public void SetTargetPosToMove(Vector3 targetPos){
+            _targetPos = targetPos;
+            _isMoving = true;
         }
 
         public Vector3 GetPosition()
@@ -67,5 +66,17 @@ namespace ProjectGamePlay
             pos.x += _backGroundSprite.bounds.size.x / 2;
             return pos;
         }
+
+        public TileStateEnum TileState
+        {
+            get => _tileState;
+            set => _tileState = value;
+        }
+
+        public int Id
+        {
+            get => _tileId;
+            set => _tileId = value;
+        } 
     }
 }

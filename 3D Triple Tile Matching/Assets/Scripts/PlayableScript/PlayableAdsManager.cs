@@ -40,10 +40,15 @@ public class PlayableAdsManager : MonoBehaviour
     [SerializeField] private Image _backgroundPanel;
     [SerializeField] private GameObject _title;
     [SerializeField] private GameObject _tilePrefab;
+    [SerializeField] private Transform _slotRootPrefab;
 
     public AudioSource tileTapSound;
     public AudioSource tileCollectSound;
     public AudioSource unCollectSound;
+
+    private void Start(){
+        SlotHolder = new ProjectGamePlay.SlotHolder(_slotRootPrefab);
+    }
 
     public void AddCollectTile(int tileId, ProjectGamePlay.Tile tile)
     {
@@ -123,7 +128,7 @@ public class PlayableAdsManager : MonoBehaviour
 
     public void Update()
     {
-        if (numOfPlayerTurn == 0 || numOfPlayerTurn == 3)
+        if (numOfPlayerTurn == 0 )
             return;
         if (Input.touchCount <= 0)
             return;
@@ -149,4 +154,6 @@ public class PlayableAdsManager : MonoBehaviour
         _title.SetActive(true);
         playNowButton.GetComponent<PlayNowButton>().ZoomInButton();
     }
+
+    public ProjectGamePlay.SlotHolder SlotHolder { get; set; }
 }
