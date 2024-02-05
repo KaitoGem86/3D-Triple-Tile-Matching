@@ -207,7 +207,7 @@
         "forceBase64": false,
         "genericCheck": true,
         "disableAntiAliasing": true,
-        "preferWebGl2": false,
+        "preferWebGl2": true,
         "forceStableRandomSeed": false,
         "unusedModules": [
             {
@@ -6880,10 +6880,6 @@
                 "excluded": true
             },
             {
-                "name": "TMPro.HighlightState",
-                "excluded": true
-            },
-            {
                 "name": "TMPro.KerningPair",
                 "excluded": true
             },
@@ -6896,19 +6892,11 @@
                 "excluded": true
             },
             {
-                "name": "TMPro.MaterialReference",
-                "excluded": true
-            },
-            {
                 "name": "TMPro.MaterialReferenceManager",
                 "excluded": true
             },
             {
                 "name": "TMPro.Mesh_Extents",
-                "excluded": true
-            },
-            {
-                "name": "TMPro.RichTextTagAttribute",
                 "excluded": true
             },
             {
@@ -6960,10 +6948,6 @@
                 "excluded": true
             },
             {
-                "name": "TMPro.TMP_ColorGradient",
-                "excluded": true
-            },
-            {
                 "name": "TMPro.TMP_Compatibility",
                 "excluded": true
             },
@@ -7000,10 +6984,6 @@
                 "excluded": true
             },
             {
-                "name": "TMPro.TMP_FontStyleStack",
-                "excluded": true
-            },
-            {
                 "name": "TMPro.TMP_FontUtilities",
                 "excluded": true
             },
@@ -7028,10 +7008,6 @@
                 "excluded": true
             },
             {
-                "name": "TMPro.TMP_LineInfo",
-                "excluded": true
-            },
-            {
                 "name": "TMPro.TMP_LinkInfo",
                 "excluded": true
             },
@@ -7044,15 +7020,7 @@
                 "excluded": true
             },
             {
-                "name": "TMPro.TMP_Math",
-                "excluded": true
-            },
-            {
                 "name": "TMPro.TMP_MeshInfo",
-                "excluded": true
-            },
-            {
-                "name": "TMPro.TMP_Offset",
                 "excluded": true
             },
             {
@@ -7164,10 +7132,6 @@
                 "excluded": true
             },
             {
-                "name": "TMPro.WordWrapState",
-                "excluded": true
-            },
-            {
                 "name": "TMPro.ColorTween",
                 "excluded": true
             },
@@ -7213,7 +7177,7 @@
             },
             {
                 "name": "TMPro.ColorMode",
-                "excluded": true
+                "excluded": false
             },
             {
                 "name": "TMPro.ITweenValue",
@@ -7249,11 +7213,11 @@
             },
             {
                 "name": "TMPro.FontWeight",
-                "excluded": true
+                "excluded": false
             },
             {
                 "name": "TMPro.HorizontalAlignmentOptions",
-                "excluded": true
+                "excluded": false
             },
             {
                 "name": "TMPro.ITextElement",
@@ -8369,7 +8333,7 @@
                     },
                     {
                         "name": "fromSeconds",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "fromTicks",
@@ -8469,7 +8433,7 @@
                     },
                     {
                         "name": "getTotalMilliseconds",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "getTotalMinutes",
@@ -31599,7 +31563,7 @@
                 "instanceMethods": [
                     {
                         "name": "init",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "SetDefault",
@@ -31627,7 +31591,7 @@
                     },
                     {
                         "name": "$ctor1",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "$ctor2",
@@ -31635,11 +31599,11 @@
                     },
                     {
                         "name": "$ctor3",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "ctor",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "CopyBase",
@@ -31759,7 +31723,7 @@
                     },
                     {
                         "name": "LeftSlot#get",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "LeftSlot#set",
@@ -31767,7 +31731,7 @@
                     },
                     {
                         "name": "RightSlot#get",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "RightSlot#set",
@@ -31783,11 +31747,15 @@
                     },
                     {
                         "name": "MoveTileToRightSlot",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "MoveTileToLeftSlot",
-                        "excluded": true
+                        "excluded": false
+                    },
+                    {
+                        "name": "MoveTileToLeftSlotWithStep",
+                        "excluded": false
                     }
                 ]
             },
@@ -31810,6 +31778,14 @@
                     {
                         "name": "GetSlotFreeForTile",
                         "excluded": false
+                    },
+                    {
+                        "name": "ListContainedTileId#get",
+                        "excluded": false
+                    },
+                    {
+                        "name": "CollectTripleTile",
+                        "excluded": false
                     }
                 ]
             },
@@ -31829,7 +31805,7 @@
                 "instanceMethods": [
                     {
                         "name": "TileState#get",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "TileState#set",
@@ -31849,10 +31825,6 @@
                     },
                     {
                         "name": "init",
-                        "excluded": false
-                    },
-                    {
-                        "name": "Start",
                         "excluded": false
                     },
                     {
@@ -31902,6 +31874,14 @@
                     {
                         "name": "WaitForCompleteParticle",
                         "excluded": false
+                    },
+                    {
+                        "name": "Index#get",
+                        "excluded": false
+                    },
+                    {
+                        "name": "Index#set",
+                        "excluded": false
                     }
                 ]
             },
@@ -31939,7 +31919,7 @@
                 "instanceMethods": [
                     {
                         "name": "init",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "text#get",
@@ -33126,6 +33106,380 @@
                     {
                         "name": "ReturnToPool",
                         "excluded": false
+                    }
+                ]
+            },
+            {
+                "className": "TMPro.HighlightState",
+                "staticMethods": [],
+                "instanceMethods": [
+                    {
+                        "name": "op_Equality",
+                        "excluded": true
+                    },
+                    {
+                        "name": "op_Inequality",
+                        "excluded": true
+                    },
+                    {
+                        "name": "getDefaultValue",
+                        "excluded": false
+                    },
+                    {
+                        "name": "init",
+                        "excluded": false
+                    },
+                    {
+                        "name": "$ctor1",
+                        "excluded": true
+                    },
+                    {
+                        "name": "ctor",
+                        "excluded": false
+                    },
+                    {
+                        "name": "Copy",
+                        "excluded": true
+                    },
+                    {
+                        "name": "getHashCode",
+                        "excluded": true
+                    },
+                    {
+                        "name": "equals",
+                        "excluded": true
+                    },
+                    {
+                        "name": "Equals",
+                        "excluded": true
+                    },
+                    {
+                        "name": "$clone",
+                        "excluded": true
+                    }
+                ]
+            },
+            {
+                "className": "TMPro.MaterialReference",
+                "staticMethods": [],
+                "instanceMethods": [
+                    {
+                        "name": "Contains",
+                        "excluded": true
+                    },
+                    {
+                        "name": "AddMaterialReference",
+                        "excluded": true
+                    },
+                    {
+                        "name": "AddMaterialReference$1",
+                        "excluded": true
+                    },
+                    {
+                        "name": "getDefaultValue",
+                        "excluded": false
+                    },
+                    {
+                        "name": "$ctor1",
+                        "excluded": true
+                    },
+                    {
+                        "name": "ctor",
+                        "excluded": false
+                    },
+                    {
+                        "name": "Copy",
+                        "excluded": true
+                    },
+                    {
+                        "name": "getHashCode",
+                        "excluded": true
+                    },
+                    {
+                        "name": "equals",
+                        "excluded": true
+                    },
+                    {
+                        "name": "$clone",
+                        "excluded": true
+                    }
+                ]
+            },
+            {
+                "className": "TMPro.RichTextTagAttribute",
+                "staticMethods": [],
+                "instanceMethods": [
+                    {
+                        "name": "getDefaultValue",
+                        "excluded": true
+                    },
+                    {
+                        "name": "ctor",
+                        "excluded": false
+                    },
+                    {
+                        "name": "getHashCode",
+                        "excluded": true
+                    },
+                    {
+                        "name": "equals",
+                        "excluded": true
+                    },
+                    {
+                        "name": "$clone",
+                        "excluded": true
+                    }
+                ]
+            },
+            {
+                "className": "TMPro.TMP_ColorGradient",
+                "staticMethods": [],
+                "instanceMethods": [
+                    {
+                        "name": "init",
+                        "excluded": false
+                    },
+                    {
+                        "name": "ctor",
+                        "excluded": true
+                    },
+                    {
+                        "name": "$ctor1",
+                        "excluded": true
+                    },
+                    {
+                        "name": "$ctor2",
+                        "excluded": true
+                    }
+                ]
+            },
+            {
+                "className": "TMPro.TMP_FontStyleStack",
+                "staticMethods": [],
+                "instanceMethods": [
+                    {
+                        "name": "getDefaultValue",
+                        "excluded": true
+                    },
+                    {
+                        "name": "ctor",
+                        "excluded": false
+                    },
+                    {
+                        "name": "Copy",
+                        "excluded": true
+                    },
+                    {
+                        "name": "Clear",
+                        "excluded": true
+                    },
+                    {
+                        "name": "Add",
+                        "excluded": true
+                    },
+                    {
+                        "name": "Remove",
+                        "excluded": true
+                    },
+                    {
+                        "name": "getHashCode",
+                        "excluded": true
+                    },
+                    {
+                        "name": "equals",
+                        "excluded": true
+                    },
+                    {
+                        "name": "$clone",
+                        "excluded": true
+                    }
+                ]
+            },
+            {
+                "className": "TMPro.TMP_LineInfo",
+                "staticMethods": [],
+                "instanceMethods": [
+                    {
+                        "name": "getDefaultValue",
+                        "excluded": true
+                    },
+                    {
+                        "name": "init",
+                        "excluded": false
+                    },
+                    {
+                        "name": "ctor",
+                        "excluded": false
+                    },
+                    {
+                        "name": "getHashCode",
+                        "excluded": true
+                    },
+                    {
+                        "name": "equals",
+                        "excluded": true
+                    },
+                    {
+                        "name": "$clone",
+                        "excluded": true
+                    }
+                ]
+            },
+            {
+                "className": "TMPro.TMP_Math",
+                "staticMethods": [],
+                "instanceMethods": [
+                    {
+                        "name": "init",
+                        "excluded": false
+                    },
+                    {
+                        "name": "Approximately",
+                        "excluded": true
+                    },
+                    {
+                        "name": "Mod",
+                        "excluded": true
+                    }
+                ]
+            },
+            {
+                "className": "TMPro.TMP_Offset",
+                "staticMethods": [],
+                "instanceMethods": [
+                    {
+                        "name": "zero#get",
+                        "excluded": true
+                    },
+                    {
+                        "name": "init",
+                        "excluded": false
+                    },
+                    {
+                        "name": "op_Equality",
+                        "excluded": true
+                    },
+                    {
+                        "name": "op_Inequality",
+                        "excluded": true
+                    },
+                    {
+                        "name": "op_Multiply",
+                        "excluded": true
+                    },
+                    {
+                        "name": "getDefaultValue",
+                        "excluded": true
+                    },
+                    {
+                        "name": "left#get",
+                        "excluded": true
+                    },
+                    {
+                        "name": "left#set",
+                        "excluded": true
+                    },
+                    {
+                        "name": "right#get",
+                        "excluded": true
+                    },
+                    {
+                        "name": "right#set",
+                        "excluded": true
+                    },
+                    {
+                        "name": "top#get",
+                        "excluded": true
+                    },
+                    {
+                        "name": "top#set",
+                        "excluded": true
+                    },
+                    {
+                        "name": "bottom#get",
+                        "excluded": true
+                    },
+                    {
+                        "name": "bottom#set",
+                        "excluded": true
+                    },
+                    {
+                        "name": "horizontal#get",
+                        "excluded": true
+                    },
+                    {
+                        "name": "horizontal#set",
+                        "excluded": true
+                    },
+                    {
+                        "name": "vertical#get",
+                        "excluded": true
+                    },
+                    {
+                        "name": "vertical#set",
+                        "excluded": true
+                    },
+                    {
+                        "name": "$ctor2",
+                        "excluded": false
+                    },
+                    {
+                        "name": "$ctor1",
+                        "excluded": true
+                    },
+                    {
+                        "name": "ctor",
+                        "excluded": false
+                    },
+                    {
+                        "name": "Copy",
+                        "excluded": true
+                    },
+                    {
+                        "name": "getHashCode",
+                        "excluded": true
+                    },
+                    {
+                        "name": "equals",
+                        "excluded": true
+                    },
+                    {
+                        "name": "Equals",
+                        "excluded": true
+                    },
+                    {
+                        "name": "$clone",
+                        "excluded": true
+                    }
+                ]
+            },
+            {
+                "className": "TMPro.WordWrapState",
+                "staticMethods": [],
+                "instanceMethods": [
+                    {
+                        "name": "getDefaultValue",
+                        "excluded": false
+                    },
+                    {
+                        "name": "init",
+                        "excluded": false
+                    },
+                    {
+                        "name": "ctor",
+                        "excluded": false
+                    },
+                    {
+                        "name": "getHashCode",
+                        "excluded": true
+                    },
+                    {
+                        "name": "equals",
+                        "excluded": true
+                    },
+                    {
+                        "name": "$clone",
+                        "excluded": true
                     }
                 ]
             }

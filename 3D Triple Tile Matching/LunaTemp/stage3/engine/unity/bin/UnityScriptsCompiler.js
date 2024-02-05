@@ -1,6 +1,6 @@
-if ( TRACE ) { TRACE( JSON.parse( '["HandController#init","HandController#FixedUpdate","ObjectPool.Pooling#Instance#get","ObjectPool.Pooling#ctor","ObjectPool.Pooling#CreatePool","ObjectPool.Pooling#SpawnFromPool","ObjectPool.Pooling#ReturnToPool","PlayableAdsManager#Instance#get","PlayableAdsManager#SpriteSheetData#get","PlayableAdsManager#init","PlayableAdsManager#Awake","PlayableAdsManager#Start","PlayableAdsManager#AddCollectTile","PlayableAdsManager#AddTile","PlayableAdsManager#GetTile","PlayableAdsManager#LateUpdate","PlayableAdsManager#ShowPopUpPlayNow","PlayNowButton#Start","PlayNowButton#OnMouseDown","PlayNowButton#ZoomInButton","PlayNowButton#CompleteZoomInButton","ProjectGamePlay.MapGenerate#GenerateTestMap$1","ProjectGamePlay.MapGenerate#GenerateTestMap","ProjectGamePlay.SlotController#ContainedTile#get","ProjectGamePlay.SlotController#ContainedTile#set","ProjectGamePlay.SlotController#LeftSlot#get","ProjectGamePlay.SlotController#LeftSlot#set","ProjectGamePlay.SlotController#RightSlot#get","ProjectGamePlay.SlotController#RightSlot#set","ProjectGamePlay.SlotController#ctor","ProjectGamePlay.SlotController#GetSlotPosition","ProjectGamePlay.SlotController#MoveTileToRightSlot","ProjectGamePlay.SlotController#MoveTileToLeftSlot","ProjectGamePlay.SlotHolder#init","ProjectGamePlay.SlotHolder#ctor","ProjectGamePlay.SlotHolder#GetSlotFree","ProjectGamePlay.SlotHolder#GetSlotFreeForTile","ProjectGamePlay.SpriteSheetData#GetSprite","ProjectGamePlay.Tile#TileState#get","ProjectGamePlay.Tile#TileState#set","ProjectGamePlay.Tile#Id#get","ProjectGamePlay.Tile#Id#set","ProjectGamePlay.Tile#Animator#get","ProjectGamePlay.Tile#init","ProjectGamePlay.Tile#Start","ProjectGamePlay.Tile#OnTileCollect","ProjectGamePlay.Tile#AnimCollect","ProjectGamePlay.Tile#AnimUnCollected","ProjectGamePlay.Tile#FixedUpdate","ProjectGamePlay.Tile#SetSpriteIcon","ProjectGamePlay.Tile#SetTargetPosToMove","ProjectGamePlay.Tile#GetPosition","ProjectGamePlay.Tile#SetTileMovingLayer","ProjectGamePlay.Tile#ReturnToBlockLayer","ProjectGamePlay.Tile#OnTileInSlot","ProjectGamePlay.Tile#WaitForCompleteParticle","ProjectGamePlay.Tile#OnCompleteMoveToSlot","ProjectGamePlay.TileDataController#init","ProjectGamePlay.TileDataController#ctor","ProjectGamePlay.TileDataController#GetRandomTileId"]' ) ); }
+if ( TRACE ) { TRACE( JSON.parse( '["HandController#init","HandController#FixedUpdate","ObjectPool.Pooling#Instance#get","ObjectPool.Pooling#ctor","ObjectPool.Pooling#CreatePool","ObjectPool.Pooling#SpawnFromPool","ObjectPool.Pooling#ReturnToPool","PlayableAdsManager#Instance#get","PlayableAdsManager#SpriteSheetData#get","PlayableAdsManager#init","PlayableAdsManager#Awake","PlayableAdsManager#Start","PlayableAdsManager#AddCollectTile","PlayableAdsManager#AddTile","PlayableAdsManager#GetTile","PlayableAdsManager#LateUpdate","PlayableAdsManager#ShowPopUpPlayNow","PlayNowButton#Start","PlayNowButton#OnMouseDown","PlayNowButton#ZoomInButton","PlayNowButton#CompleteZoomInButton","ProjectGamePlay.MapGenerate#GenerateTestMap$1","ProjectGamePlay.MapGenerate#GenerateTestMap","ProjectGamePlay.SlotController#ContainedTile#get","ProjectGamePlay.SlotController#ContainedTile#set","ProjectGamePlay.SlotController#LeftSlot#get","ProjectGamePlay.SlotController#LeftSlot#set","ProjectGamePlay.SlotController#RightSlot#get","ProjectGamePlay.SlotController#RightSlot#set","ProjectGamePlay.SlotController#ctor","ProjectGamePlay.SlotController#GetSlotPosition","ProjectGamePlay.SlotController#MoveTileToRightSlot","ProjectGamePlay.SlotController#MoveTileToLeftSlot","ProjectGamePlay.SlotController#MoveTileToLeftSlotWithStep","ProjectGamePlay.SlotHolder#ListContainedTileId#get","ProjectGamePlay.SlotHolder#init","ProjectGamePlay.SlotHolder#ctor","ProjectGamePlay.SlotHolder#GetSlotFree","ProjectGamePlay.SlotHolder#GetSlotFreeForTile","ProjectGamePlay.SlotHolder#CollectTripleTile","ProjectGamePlay.SpriteSheetData#GetSprite","ProjectGamePlay.Tile#TileState#get","ProjectGamePlay.Tile#TileState#set","ProjectGamePlay.Tile#Id#get","ProjectGamePlay.Tile#Id#set","ProjectGamePlay.Tile#Index#get","ProjectGamePlay.Tile#Index#set","ProjectGamePlay.Tile#Animator#get","ProjectGamePlay.Tile#init","ProjectGamePlay.Tile#OnTileCollect","ProjectGamePlay.Tile#AnimCollect","ProjectGamePlay.Tile#AnimUnCollected","ProjectGamePlay.Tile#FixedUpdate","ProjectGamePlay.Tile#SetSpriteIcon","ProjectGamePlay.Tile#SetTargetPosToMove","ProjectGamePlay.Tile#GetPosition","ProjectGamePlay.Tile#SetTileMovingLayer","ProjectGamePlay.Tile#ReturnToBlockLayer","ProjectGamePlay.Tile#OnTileInSlot","ProjectGamePlay.Tile#WaitForCompleteParticle","ProjectGamePlay.Tile#OnCompleteMoveToSlot","ProjectGamePlay.TileDataController#init","ProjectGamePlay.TileDataController#ctor","ProjectGamePlay.TileDataController#GetRandomTileId"]' ) ); }
 /**
- * @version 1.0.8801.27917
+ * @version 1.0.8801.31074
  * @copyright anton
  * @compiler Bridge.NET 17.9.40-luna
  */
@@ -610,12 +610,14 @@ if ( TRACE ) { TRACE( "ProjectGamePlay.SlotController#GetSlotPosition", this ); 
             MoveTileToRightSlot: function () {
 if ( TRACE ) { TRACE( "ProjectGamePlay.SlotController#MoveTileToRightSlot", this ); }
 
+                var $t;
                 if (UnityEngine.MonoBehaviour.op_Equality(this.ContainedTile, null)) {
                     return;
                 }
                 if (this.RightSlot == null) {
                     return;
                 }
+                ($t = this.ContainedTile).Index = ($t.Index + 1) | 0;
                 this.ContainedTile.SetTargetPosToMove(this.RightSlot.GetSlotPosition());
                 this.rightSlot.ContainedTile = this.ContainedTile;
                 this.ContainedTile = null;
@@ -626,17 +628,44 @@ if ( TRACE ) { TRACE( "ProjectGamePlay.SlotController#MoveTileToRightSlot", this
             MoveTileToLeftSlot: function () {
 if ( TRACE ) { TRACE( "ProjectGamePlay.SlotController#MoveTileToLeftSlot", this ); }
 
+                var $t;
                 if (UnityEngine.MonoBehaviour.op_Equality(this.ContainedTile, null)) {
                     return;
                 }
                 if (this.LeftSlot == null) {
                     return;
                 }
+                ($t = this.ContainedTile).Index = ($t.Index - 1) | 0;
                 this.ContainedTile.SetTargetPosToMove(this.LeftSlot.GetSlotPosition());
                 this.leftSlot.ContainedTile = this.ContainedTile;
                 this.ContainedTile = null;
             },
             /*ProjectGamePlay.SlotController.MoveTileToLeftSlot end.*/
+
+            /*ProjectGamePlay.SlotController.MoveTileToLeftSlotWithStep start.*/
+            MoveTileToLeftSlotWithStep: function (step) {
+if ( TRACE ) { TRACE( "ProjectGamePlay.SlotController#MoveTileToLeftSlotWithStep", this ); }
+
+                if (UnityEngine.MonoBehaviour.op_Equality(this._containedTile, null)) {
+                    return;
+                }
+                if (step === 0) {
+                    return;
+                }
+                if (step === 1) {
+                    this.MoveTileToLeftSlot();
+                } else {
+                    var slot = this;
+                    for (var i = 0; i < step; i = (i + 1) | 0) {
+                        if (slot == null) {
+                            return;
+                        }
+                        slot.MoveTileToLeftSlot();
+                        slot = slot.LeftSlot;
+                    }
+                }
+            },
+            /*ProjectGamePlay.SlotController.MoveTileToLeftSlotWithStep end.*/
 
 
         }
@@ -651,6 +680,15 @@ if ( TRACE ) { TRACE( "ProjectGamePlay.SlotController#MoveTileToLeftSlot", this 
             _currentFirstFreeSlotIndex: 0,
             _numOfTilesInSlots: 0,
             _numberOfSlots: 0
+        },
+        props: {
+            ListContainedTileId: {
+                get: function () {
+if ( TRACE ) { TRACE( "ProjectGamePlay.SlotHolder#ListContainedTileId#get", this ); }
+
+                    return this._listContainedTileId;
+                }
+            }
         },
         ctors: {
             init: function () {
@@ -724,6 +762,52 @@ if ( TRACE ) { TRACE( "ProjectGamePlay.SlotHolder#GetSlotFreeForTile", this ); }
             },
             /*ProjectGamePlay.SlotHolder.GetSlotFreeForTile end.*/
 
+            /*ProjectGamePlay.SlotHolder.CollectTripleTile start.*/
+            CollectTripleTile: function (id, index) {
+if ( TRACE ) { TRACE( "ProjectGamePlay.SlotHolder#CollectTripleTile", this ); }
+
+                var $step = 0,
+                    $task1, 
+                    $jumpFromFinally, 
+                    i, 
+                    $asyncBody = Bridge.fn.bind(this, function () {
+                        for (;;) {
+                            $step = System.Array.min([0,1], $step);
+                            switch ($step) {
+                                case 0: {
+                                    this._numOfTilesInSlots = (this._numOfTilesInSlots - 3) | 0;
+                                    this._listContainedTileId.remove(id);
+                                    i = index;
+                                    for (var j = 0; j < 3; j = (j + 1) | 0) {
+                                        this._usedSlots.getItem(((index - j) | 0)).ContainedTile.AnimCollect();
+                                    }
+                                    $task1 = System.Threading.Tasks.Task.delay(System.TimeSpan.fromSeconds(0.5));
+                                    $step = 1;
+                                    if ($task1.isCompleted()) {
+                                        continue;
+                                    }
+                                    $task1.continue($asyncBody);
+                                    return;
+                                }
+                                case 1: {
+                                    $task1.getAwaitedResult();
+                                    for (i = (index + 1) | 0; i < this._currentFirstFreeSlotIndex; i = (i + 1) | 0) {
+                                        this._usedSlots.getItem(i).MoveTileToLeftSlotWithStep(3);
+                                    }
+                                    this._currentFirstFreeSlotIndex = (this._currentFirstFreeSlotIndex - 3) | 0;
+                                    return;
+                                }
+                                default: {
+                                    return;
+                                }
+                            }
+                        }
+                    }, arguments);
+
+                $asyncBody();
+            },
+            /*ProjectGamePlay.SlotHolder.CollectTripleTile end.*/
+
 
         }
     });
@@ -759,6 +843,7 @@ if ( TRACE ) { TRACE( "ProjectGamePlay.SpriteSheetData#GetSprite", this ); }
             _iconSprite: null,
             _isSelect: false,
             _isMoving: false,
+            _index: 0,
             _targetPos: null,
             _tileState: 0
         },
@@ -787,6 +872,18 @@ if ( TRACE ) { TRACE( "ProjectGamePlay.Tile#Id#set", this ); }
                     this._tileId = value;
                 }
             },
+            Index: {
+                get: function () {
+if ( TRACE ) { TRACE( "ProjectGamePlay.Tile#Index#get", this ); }
+
+                    return this._index;
+                },
+                set: function (value) {
+if ( TRACE ) { TRACE( "ProjectGamePlay.Tile#Index#set", this ); }
+
+                    this._index = value;
+                }
+            },
             Animator: {
                 get: function () {
 if ( TRACE ) { TRACE( "ProjectGamePlay.Tile#Animator#get", this ); }
@@ -802,19 +899,11 @@ if ( TRACE ) { TRACE( "ProjectGamePlay.Tile#init", this ); }
                 this._targetPos = new UnityEngine.Vector3();
                 this._isSelect = false;
                 this._isMoving = false;
+                this._index = 0;
                 this._tileState = ProjectGamePlay.TileStateEnum.UnCollected;
             }
         },
         methods: {
-            /*ProjectGamePlay.Tile.Start start.*/
-            Start: function () {
-if ( TRACE ) { TRACE( "ProjectGamePlay.Tile#Start", this ); }
-
-                //_backGroundSprite = GetComponent<SpriteRenderer>();
-                //PlayableAdsManager.Instance.AddTile(_tileId, this);
-            },
-            /*ProjectGamePlay.Tile.Start end.*/
-
             /*ProjectGamePlay.Tile.OnTileCollect start.*/
             OnTileCollect: function () {
 if ( TRACE ) { TRACE( "ProjectGamePlay.Tile#OnTileCollect", this ); }
@@ -826,6 +915,7 @@ if ( TRACE ) { TRACE( "ProjectGamePlay.Tile#OnTileCollect", this ); }
                 var item = PlayableAdsManager.Instance.SlotHolder.GetSlotFreeForTile(this._tileId);
                 this.SetTargetPosToMove(item.Item2.GetSlotPosition());
                 this.SetTileMovingLayer();
+                this._index = item.Item1;
                 this._animator.SetBool$1("IsMoveToSlot", true);
                 item.Item2.ContainedTile = this;
             },
@@ -914,8 +1004,10 @@ if ( TRACE ) { TRACE( "ProjectGamePlay.Tile#ReturnToBlockLayer", this ); }
             OnTileInSlot: function () {
 if ( TRACE ) { TRACE( "ProjectGamePlay.Tile#OnTileInSlot", this ); }
 
-                UnityEngine.Debug.Log$1("OnTileInSlot");
-                PlayableAdsManager.Instance.AddCollectTile(this._tileId, this);
+                if (PlayableAdsManager.Instance.SlotHolder.ListContainedTileId.getItem(this._tileId) === 3) {
+                    PlayableAdsManager.Instance.SlotHolder.CollectTripleTile(this._tileId, this._index);
+                }
+                //PlayableAdsManager.Instance.AddCollectTile(_tileId, this);
             },
             /*ProjectGamePlay.Tile.OnTileInSlot end.*/
 
@@ -1089,7 +1181,7 @@ if ( TRACE ) { TRACE( "ProjectGamePlay.TileDataController#GetRandomTileId", this
     /*ProjectGamePlay.TileDataController end.*/
 
     /*ProjectGamePlay.SlotController start.*/
-    $m("ProjectGamePlay.SlotController", function () { return {"att":1048577,"a":2,"m":[{"a":2,"n":".ctor","t":1,"p":[$n[2].Transform],"pi":[{"n":"slotTransform","pt":$n[2].Transform,"ps":0}],"sn":"ctor"},{"a":2,"n":"GetSlotPosition","t":8,"sn":"GetSlotPosition","rt":$n[2].Vector3},{"a":2,"n":"MoveTileToLeftSlot","t":8,"sn":"MoveTileToLeftSlot","rt":$n[0].Void},{"a":2,"n":"MoveTileToRightSlot","t":8,"sn":"MoveTileToRightSlot","rt":$n[0].Void},{"a":2,"n":"ContainedTile","t":16,"rt":$n[3].Tile,"g":{"a":2,"n":"get_ContainedTile","t":8,"rt":$n[3].Tile,"fg":"ContainedTile"},"s":{"a":2,"n":"set_ContainedTile","t":8,"p":[$n[3].Tile],"rt":$n[0].Void,"fs":"ContainedTile"},"fn":"ContainedTile"},{"a":2,"n":"LeftSlot","t":16,"rt":$n[3].SlotController,"g":{"a":2,"n":"get_LeftSlot","t":8,"rt":$n[3].SlotController,"fg":"LeftSlot"},"s":{"a":2,"n":"set_LeftSlot","t":8,"p":[$n[3].SlotController],"rt":$n[0].Void,"fs":"LeftSlot"},"fn":"LeftSlot"},{"a":2,"n":"RightSlot","t":16,"rt":$n[3].SlotController,"g":{"a":2,"n":"get_RightSlot","t":8,"rt":$n[3].SlotController,"fg":"RightSlot"},"s":{"a":2,"n":"set_RightSlot","t":8,"p":[$n[3].SlotController],"rt":$n[0].Void,"fs":"RightSlot"},"fn":"RightSlot"},{"a":1,"n":"_containedTile","t":4,"rt":$n[3].Tile,"sn":"_containedTile"},{"a":1,"n":"_slotTransform","t":4,"rt":$n[2].Transform,"sn":"_slotTransform"},{"a":1,"n":"leftSlot","t":4,"rt":$n[3].SlotController,"sn":"leftSlot"},{"a":1,"n":"rightSlot","t":4,"rt":$n[3].SlotController,"sn":"rightSlot"}]}; }, $n);
+    $m("ProjectGamePlay.SlotController", function () { return {"att":1048577,"a":2,"m":[{"a":2,"n":".ctor","t":1,"p":[$n[2].Transform],"pi":[{"n":"slotTransform","pt":$n[2].Transform,"ps":0}],"sn":"ctor"},{"a":2,"n":"GetSlotPosition","t":8,"sn":"GetSlotPosition","rt":$n[2].Vector3},{"a":2,"n":"MoveTileToLeftSlot","t":8,"sn":"MoveTileToLeftSlot","rt":$n[0].Void},{"a":2,"n":"MoveTileToLeftSlotWithStep","t":8,"pi":[{"n":"step","pt":$n[0].Int32,"ps":0}],"sn":"MoveTileToLeftSlotWithStep","rt":$n[0].Void,"p":[$n[0].Int32]},{"a":2,"n":"MoveTileToRightSlot","t":8,"sn":"MoveTileToRightSlot","rt":$n[0].Void},{"a":2,"n":"ContainedTile","t":16,"rt":$n[3].Tile,"g":{"a":2,"n":"get_ContainedTile","t":8,"rt":$n[3].Tile,"fg":"ContainedTile"},"s":{"a":2,"n":"set_ContainedTile","t":8,"p":[$n[3].Tile],"rt":$n[0].Void,"fs":"ContainedTile"},"fn":"ContainedTile"},{"a":2,"n":"LeftSlot","t":16,"rt":$n[3].SlotController,"g":{"a":2,"n":"get_LeftSlot","t":8,"rt":$n[3].SlotController,"fg":"LeftSlot"},"s":{"a":2,"n":"set_LeftSlot","t":8,"p":[$n[3].SlotController],"rt":$n[0].Void,"fs":"LeftSlot"},"fn":"LeftSlot"},{"a":2,"n":"RightSlot","t":16,"rt":$n[3].SlotController,"g":{"a":2,"n":"get_RightSlot","t":8,"rt":$n[3].SlotController,"fg":"RightSlot"},"s":{"a":2,"n":"set_RightSlot","t":8,"p":[$n[3].SlotController],"rt":$n[0].Void,"fs":"RightSlot"},"fn":"RightSlot"},{"a":1,"n":"_containedTile","t":4,"rt":$n[3].Tile,"sn":"_containedTile"},{"a":1,"n":"_slotTransform","t":4,"rt":$n[2].Transform,"sn":"_slotTransform"},{"a":1,"n":"leftSlot","t":4,"rt":$n[3].SlotController,"sn":"leftSlot"},{"a":1,"n":"rightSlot","t":4,"rt":$n[3].SlotController,"sn":"rightSlot"}]}; }, $n);
     /*ProjectGamePlay.SlotController end.*/
 
     /*ProjectGamePlay.TileStateEnum start.*/
@@ -1097,7 +1189,7 @@ if ( TRACE ) { TRACE( "ProjectGamePlay.TileDataController#GetRandomTileId", this
     /*ProjectGamePlay.TileStateEnum end.*/
 
     /*ProjectGamePlay.SlotHolder start.*/
-    $m("ProjectGamePlay.SlotHolder", function () { return {"att":1048577,"a":2,"m":[{"a":2,"n":".ctor","t":1,"p":[$n[2].Transform],"pi":[{"n":"slotRoot","pt":$n[2].Transform,"ps":0}],"sn":"ctor"},{"a":2,"n":"GetSlotFree","t":8,"sn":"GetSlotFree","rt":$n[0].ValueTuple$2(System.Int32,ProjectGamePlay.SlotController)},{"a":2,"n":"GetSlotFreeForTile","t":8,"pi":[{"n":"id","pt":$n[0].Int32,"ps":0}],"sn":"GetSlotFreeForTile","rt":$n[0].ValueTuple$2(System.Int32,ProjectGamePlay.SlotController),"p":[$n[0].Int32]},{"a":1,"n":"_currentFirstFreeSlotIndex","t":4,"rt":$n[0].Int32,"sn":"_currentFirstFreeSlotIndex","box":function ($v) { return Bridge.box($v, System.Int32);}},{"a":1,"n":"_listContainedTileId","t":4,"rt":$n[1].Dictionary$2(System.Int32,System.Int32),"sn":"_listContainedTileId"},{"a":1,"n":"_numOfTilesInSlots","t":4,"rt":$n[0].Int32,"sn":"_numOfTilesInSlots","box":function ($v) { return Bridge.box($v, System.Int32);}},{"a":1,"n":"_numberOfSlots","t":4,"rt":$n[0].Int32,"sn":"_numberOfSlots","box":function ($v) { return Bridge.box($v, System.Int32);}},{"a":1,"n":"_usedSlots","t":4,"rt":$n[1].List$1(ProjectGamePlay.SlotController),"sn":"_usedSlots"}]}; }, $n);
+    $m("ProjectGamePlay.SlotHolder", function () { return {"att":1048577,"a":2,"m":[{"a":2,"n":".ctor","t":1,"p":[$n[2].Transform],"pi":[{"n":"slotRoot","pt":$n[2].Transform,"ps":0}],"sn":"ctor"},{"a":2,"n":"CollectTripleTile","t":8,"pi":[{"n":"id","pt":$n[0].Int32,"ps":0},{"n":"index","pt":$n[0].Int32,"ps":1}],"sn":"CollectTripleTile","rt":$n[0].Void,"p":[$n[0].Int32,$n[0].Int32]},{"a":2,"n":"GetSlotFree","t":8,"sn":"GetSlotFree","rt":$n[0].ValueTuple$2(System.Int32,ProjectGamePlay.SlotController)},{"a":2,"n":"GetSlotFreeForTile","t":8,"pi":[{"n":"id","pt":$n[0].Int32,"ps":0}],"sn":"GetSlotFreeForTile","rt":$n[0].ValueTuple$2(System.Int32,ProjectGamePlay.SlotController),"p":[$n[0].Int32]},{"a":2,"n":"ListContainedTileId","t":16,"rt":$n[1].Dictionary$2(System.Int32,System.Int32),"g":{"a":2,"n":"get_ListContainedTileId","t":8,"rt":$n[1].Dictionary$2(System.Int32,System.Int32),"fg":"ListContainedTileId"},"fn":"ListContainedTileId"},{"a":1,"n":"_currentFirstFreeSlotIndex","t":4,"rt":$n[0].Int32,"sn":"_currentFirstFreeSlotIndex","box":function ($v) { return Bridge.box($v, System.Int32);}},{"a":1,"n":"_listContainedTileId","t":4,"rt":$n[1].Dictionary$2(System.Int32,System.Int32),"sn":"_listContainedTileId"},{"a":1,"n":"_numOfTilesInSlots","t":4,"rt":$n[0].Int32,"sn":"_numOfTilesInSlots","box":function ($v) { return Bridge.box($v, System.Int32);}},{"a":1,"n":"_numberOfSlots","t":4,"rt":$n[0].Int32,"sn":"_numberOfSlots","box":function ($v) { return Bridge.box($v, System.Int32);}},{"a":1,"n":"_usedSlots","t":4,"rt":$n[1].List$1(ProjectGamePlay.SlotController),"sn":"_usedSlots"}]}; }, $n);
     /*ProjectGamePlay.SlotHolder end.*/
 
     /*ProjectGamePlay.SpriteSheetData start.*/
@@ -1107,7 +1199,7 @@ if ( TRACE ) { TRACE( "ProjectGamePlay.TileDataController#GetRandomTileId", this
     /*ProjectGamePlay.SpriteSheetData end.*/
 
     /*ProjectGamePlay.Tile start.*/
-    $m("ProjectGamePlay.Tile", function () { return {"att":1048577,"a":2,"m":[{"a":2,"isSynthetic":true,"n":".ctor","t":1,"sn":"ctor"},{"a":2,"n":"AnimCollect","t":8,"sn":"AnimCollect","rt":$n[0].Void},{"a":2,"n":"AnimUnCollected","t":8,"sn":"AnimUnCollected","rt":$n[0].Void},{"a":1,"n":"FixedUpdate","t":8,"sn":"FixedUpdate","rt":$n[0].Void},{"a":2,"n":"GetPosition","t":8,"sn":"GetPosition","rt":$n[2].Vector3},{"a":2,"n":"OnCompleteMoveToSlot","t":8,"sn":"OnCompleteMoveToSlot","rt":$n[0].Void},{"a":2,"n":"OnTileCollect","t":8,"sn":"OnTileCollect","rt":$n[0].Void},{"a":2,"n":"OnTileInSlot","t":8,"sn":"OnTileInSlot","rt":$n[0].Void},{"a":2,"n":"ReturnToBlockLayer","t":8,"sn":"ReturnToBlockLayer","rt":$n[0].Void},{"a":2,"n":"SetSpriteIcon","t":8,"pi":[{"n":"index","pt":$n[0].Int32,"ps":0}],"sn":"SetSpriteIcon","rt":$n[0].Void,"p":[$n[0].Int32]},{"a":2,"n":"SetTargetPosToMove","t":8,"pi":[{"n":"targetPos","pt":$n[2].Vector3,"ps":0}],"sn":"SetTargetPosToMove","rt":$n[0].Void,"p":[$n[2].Vector3]},{"a":2,"n":"SetTileMovingLayer","t":8,"sn":"SetTileMovingLayer","rt":$n[0].Void},{"a":1,"n":"Start","t":8,"sn":"Start","rt":$n[0].Void},{"a":1,"n":"WaitForCompleteParticle","t":8,"pi":[{"n":"ps","pt":$n[2].ParticleSystem,"ps":0}],"sn":"WaitForCompleteParticle","rt":$n[6].IEnumerator,"p":[$n[2].ParticleSystem]},{"a":2,"n":"Animator","t":16,"rt":$n[2].Animator,"g":{"a":2,"n":"get_Animator","t":8,"rt":$n[2].Animator,"fg":"Animator"},"fn":"Animator"},{"a":2,"n":"Id","t":16,"rt":$n[0].Int32,"g":{"a":2,"n":"get_Id","t":8,"rt":$n[0].Int32,"fg":"Id","box":function ($v) { return Bridge.box($v, System.Int32);}},"s":{"a":2,"n":"set_Id","t":8,"p":[$n[0].Int32],"rt":$n[0].Void,"fs":"Id"},"fn":"Id"},{"a":2,"n":"TileState","t":16,"rt":$n[3].TileStateEnum,"g":{"a":2,"n":"get_TileState","t":8,"rt":$n[3].TileStateEnum,"fg":"TileState","box":function ($v) { return Bridge.box($v, ProjectGamePlay.TileStateEnum, System.Enum.toStringFn(ProjectGamePlay.TileStateEnum));}},"s":{"a":2,"n":"set_TileState","t":8,"p":[$n[3].TileStateEnum],"rt":$n[0].Void,"fs":"TileState"},"fn":"TileState"},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"_animator","t":4,"rt":$n[2].Animator,"sn":"_animator"},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"_backGroundSprite","t":4,"rt":$n[2].SpriteRenderer,"sn":"_backGroundSprite"},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"_iconSprite","t":4,"rt":$n[2].SpriteRenderer,"sn":"_iconSprite"},{"a":1,"n":"_isMoving","t":4,"rt":$n[0].Boolean,"sn":"_isMoving","box":function ($v) { return Bridge.box($v, System.Boolean, System.Boolean.toString);}},{"a":1,"n":"_isSelect","t":4,"rt":$n[0].Boolean,"sn":"_isSelect","box":function ($v) { return Bridge.box($v, System.Boolean, System.Boolean.toString);}},{"a":1,"n":"_targetPos","t":4,"rt":$n[2].Vector3,"sn":"_targetPos"},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"_tileId","t":4,"rt":$n[0].Int32,"sn":"_tileId","box":function ($v) { return Bridge.box($v, System.Int32);}},{"a":1,"n":"_tileState","t":4,"rt":$n[3].TileStateEnum,"sn":"_tileState","box":function ($v) { return Bridge.box($v, ProjectGamePlay.TileStateEnum, System.Enum.toStringFn(ProjectGamePlay.TileStateEnum));}}]}; }, $n);
+    $m("ProjectGamePlay.Tile", function () { return {"att":1048577,"a":2,"m":[{"a":2,"isSynthetic":true,"n":".ctor","t":1,"sn":"ctor"},{"a":2,"n":"AnimCollect","t":8,"sn":"AnimCollect","rt":$n[0].Void},{"a":2,"n":"AnimUnCollected","t":8,"sn":"AnimUnCollected","rt":$n[0].Void},{"a":1,"n":"FixedUpdate","t":8,"sn":"FixedUpdate","rt":$n[0].Void},{"a":2,"n":"GetPosition","t":8,"sn":"GetPosition","rt":$n[2].Vector3},{"a":2,"n":"OnCompleteMoveToSlot","t":8,"sn":"OnCompleteMoveToSlot","rt":$n[0].Void},{"a":2,"n":"OnTileCollect","t":8,"sn":"OnTileCollect","rt":$n[0].Void},{"a":2,"n":"OnTileInSlot","t":8,"sn":"OnTileInSlot","rt":$n[0].Void},{"a":2,"n":"ReturnToBlockLayer","t":8,"sn":"ReturnToBlockLayer","rt":$n[0].Void},{"a":2,"n":"SetSpriteIcon","t":8,"pi":[{"n":"index","pt":$n[0].Int32,"ps":0}],"sn":"SetSpriteIcon","rt":$n[0].Void,"p":[$n[0].Int32]},{"a":2,"n":"SetTargetPosToMove","t":8,"pi":[{"n":"targetPos","pt":$n[2].Vector3,"ps":0}],"sn":"SetTargetPosToMove","rt":$n[0].Void,"p":[$n[2].Vector3]},{"a":2,"n":"SetTileMovingLayer","t":8,"sn":"SetTileMovingLayer","rt":$n[0].Void},{"a":1,"n":"WaitForCompleteParticle","t":8,"pi":[{"n":"ps","pt":$n[2].ParticleSystem,"ps":0}],"sn":"WaitForCompleteParticle","rt":$n[6].IEnumerator,"p":[$n[2].ParticleSystem]},{"a":2,"n":"Animator","t":16,"rt":$n[2].Animator,"g":{"a":2,"n":"get_Animator","t":8,"rt":$n[2].Animator,"fg":"Animator"},"fn":"Animator"},{"a":2,"n":"Id","t":16,"rt":$n[0].Int32,"g":{"a":2,"n":"get_Id","t":8,"rt":$n[0].Int32,"fg":"Id","box":function ($v) { return Bridge.box($v, System.Int32);}},"s":{"a":2,"n":"set_Id","t":8,"p":[$n[0].Int32],"rt":$n[0].Void,"fs":"Id"},"fn":"Id"},{"a":2,"n":"Index","t":16,"rt":$n[0].Int32,"g":{"a":2,"n":"get_Index","t":8,"rt":$n[0].Int32,"fg":"Index","box":function ($v) { return Bridge.box($v, System.Int32);}},"s":{"a":2,"n":"set_Index","t":8,"p":[$n[0].Int32],"rt":$n[0].Void,"fs":"Index"},"fn":"Index"},{"a":2,"n":"TileState","t":16,"rt":$n[3].TileStateEnum,"g":{"a":2,"n":"get_TileState","t":8,"rt":$n[3].TileStateEnum,"fg":"TileState","box":function ($v) { return Bridge.box($v, ProjectGamePlay.TileStateEnum, System.Enum.toStringFn(ProjectGamePlay.TileStateEnum));}},"s":{"a":2,"n":"set_TileState","t":8,"p":[$n[3].TileStateEnum],"rt":$n[0].Void,"fs":"TileState"},"fn":"TileState"},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"_animator","t":4,"rt":$n[2].Animator,"sn":"_animator"},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"_backGroundSprite","t":4,"rt":$n[2].SpriteRenderer,"sn":"_backGroundSprite"},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"_iconSprite","t":4,"rt":$n[2].SpriteRenderer,"sn":"_iconSprite"},{"a":1,"n":"_index","t":4,"rt":$n[0].Int32,"sn":"_index","box":function ($v) { return Bridge.box($v, System.Int32);}},{"a":1,"n":"_isMoving","t":4,"rt":$n[0].Boolean,"sn":"_isMoving","box":function ($v) { return Bridge.box($v, System.Boolean, System.Boolean.toString);}},{"a":1,"n":"_isSelect","t":4,"rt":$n[0].Boolean,"sn":"_isSelect","box":function ($v) { return Bridge.box($v, System.Boolean, System.Boolean.toString);}},{"a":1,"n":"_targetPos","t":4,"rt":$n[2].Vector3,"sn":"_targetPos"},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"_tileId","t":4,"rt":$n[0].Int32,"sn":"_tileId","box":function ($v) { return Bridge.box($v, System.Int32);}},{"a":1,"n":"_tileState","t":4,"rt":$n[3].TileStateEnum,"sn":"_tileState","box":function ($v) { return Bridge.box($v, ProjectGamePlay.TileStateEnum, System.Enum.toStringFn(ProjectGamePlay.TileStateEnum));}}]}; }, $n);
     /*ProjectGamePlay.Tile end.*/
 
     }});

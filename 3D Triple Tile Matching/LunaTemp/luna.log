@@ -1,25 +1,25 @@
-report@config:load 86.42
+report@config:load 139.52
 Authorized using stored user info.
-report@account:authorize 31.81
-Exporting assets from Unity.............
+report@account:authorize 33.03
+Exporting assets from Unity...........
 
 [ Stage1 ] Assets exported from Unity and staged for further processing
-report@unity:export 10250.26
-report@config:load 84.70
+report@unity:export 8235.23
+report@config:load 66.83
 Resources:
 {}
-report@assets:stage2 11666.73
-report@assets:stage3 580.93
+report@assets:stage2 13783.82
+report@assets:stage3 736.14
 [ Stage2 ] Assets postprocessed and bundled successfully
-report@config:unity 0.68
-report@config:load 93.01
-report@config:unity 1.65
-report@code:compose 201.91
+report@config:unity 0.25
+report@config:load 113.08
+report@config:unity 4.08
+report@code:compose 283.61
 Authorized using stored user info.
-report@account:authorize 11.96
+report@account:authorize 25.42
 MSBuild version 17.6.3+07e294721 for .NET Framework
 
-Build started 2/5/2024 3:30:30 PM.
+Build started 2/5/2024 5:15:46 PM.
 
 
 
@@ -88,62 +88,67 @@ GenerateTargetFrameworkMonikerAttribute:
 Skipping target "GenerateTargetFrameworkMonikerAttribute" because all output files are up-to-date with respect to the input files.
 
 CoreCompile:
-  C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Current\Bin\Roslyn\csc.exe /noconfig /nowarn:CS0626,1701,1702 /fullpaths /nostdlib+ /errorreport:prompt /warn:4 /define:UNITY_LUNA;CSHARP_7_OR_LATER;CSHARP_7_3_OR_NEWER;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_5_OR_NEWER;UNITY_2021;UNITY_2017_1_OR_NEWER;UNITY_2017_2_OR_NEWER;UNITY_2017_3_OR_NEWER;UNITY_2017_4_OR_NEWER;UNITY_2018_1_OR_NEWER;UNITY_2018_2_OR_NEWER;UNITY_2018_3_OR_NEWER;UNITY_2018_4_OR_NEWER;UNITY_2019_1_OR_NEWER;UNITY_2019_2_OR_NEWER;UNITY_2019_3_OR_NEWER;UNITY_2019_4_OR_NEWER;UNITY_2020_1_OR_NEWER;UNITY_2020_2_OR_NEWER;UNITY_2020_3_OR_NEWER;UNITY_2021_1_OR_NEWER;UNITY_2021_2_OR_NEWER;UNITY_2021_3_OR_NEWER;UNITY_2021_3;UNITY_2021_3_30 /highentropyva+ /reference:"D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\packages\Bridge.Core.17.9.40-luna\lib\net40\Bridge.dll" /reference:"D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\packages\Bridge.Html5.17.9.0\lib\net40\Bridge.Html5.dll" /reference:"D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\packages\Bridge.WebGL.1.22.0\lib\net40\Bridge.WebGL.dll" /reference:"D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\packages\DOTween.1.2.705\lib\net40\DOTween.dll" /reference
-:"D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\packages\com.unity.ide.rider\3.0.0\JetBrains.dll" /reference:"D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\packages\Bridge.Newtonsoft.Json.1.16.0\lib\net40\Newtonsoft.Json.dll" /reference:"D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\packages\Retyped.Core.1.6.6733\lib\net40\Retyped.Core.dll" /reference:"D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\packages\Retyped.dom.2.8.6733\lib\net40\Retyped.dom.dll" /reference:"D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\packages\Retyped.es5.2.8.6733\lib\net40\Retyped.es5.dll" /reference:"D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\packages\Retyped.scripthost.2.8.6733\lib\net40\Retyped.scripthost.dll" /reference:"D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\packages\com.unity.textmeshpro\3.0.6\TextMeshPro.dll" /reference:"D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\Vendor\UnityEngine.dll" /reference:"D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\packages\com.unity.ui\1.2.1\UnityEngine.UI.dll" /reference:"D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\packages\com.unity.urp\7.6\UnityEngine.UniversalRenderPipeline.dll" /debug+ /debug:full /optimize- /out:obj\Debug\UnityScriptsCompiler.dll /subsystemversion:6.00 /target:library /warnaserror- /utf8output /langversion:8 "D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\Scripts\PlayableScript\HandController.cs" "D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\Scripts\PlayableScript\MapGenerate.cs" "D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\Scripts\PlayableScript\PlayableAdsManager.cs" "D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\Scripts\PlayableScript\PlayNowButton.cs" "D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\Scripts\PlayableScript\Pooling.cs" "D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\Scripts\PlayableScript\SlotController.cs" "D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\Scripts\PlayableScript\SlotHolder.cs" "D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\Scripts\PlayableScript\SpriteSheetData.cs" "D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\Scripts\PlayableScript\Tile.cs" Properties/AssemblyInfo.cs Sources/OtherDummyScript.cs "obj\Debug\.NETFramework,Version=v4.7.AssemblyAttributes.cs"
+  C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Current\Bin\Roslyn\csc.exe /noconfig /nowarn:CS0626,1701,1702 /fullpaths /nostdlib+ /errorreport:prompt /warn:4 /define:UNITY_LUNA;CSHARP_7_OR_LATER;CSHARP_7_3_OR_NEWER;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_5_OR_NEWER;UNITY_2021;UNITY_2017_1_OR_NEWER;UNITY_2017_2_OR_NEWER;UNITY_2017_3_OR_NEWER;UNITY_2017_4_OR_NEWER;UNITY_2018_1_OR_NEWER;UNITY_2018_2_OR_NEWER;UNITY_2018_3_OR_NEWER;UNITY_2018_4_OR_NEWER;UNITY_2019_1_OR_NEWER;UNITY_2019_2_OR_NEWER;UNITY_2019_3_OR_NEWER;UNITY_2019_4_OR_NEWER;UNITY_2020_1_OR_NEWER;UNITY_2020_2_OR_NEWER;UNITY_2020_3_OR_NEWER;UNITY_2021_1_OR_NEWER;UNITY_2021_2_OR_NEWER;UNITY_2021_3_OR_NEWER;UNITY_2021_3;UNITY_2021_3_30 /highentropyva+ /reference:"D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\packages\Bridge.Core.17.9.40-luna\lib\net40\Bridge.dll" /reference:"D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\packages\Bridge.Html5.17.9.0\lib\net40\Bridge.Html5.dll" /reference:"D
+:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\packages\Bridge.WebGL.1.22.0\lib\net40\Bridge.WebGL.dll" /reference:"D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\packages\DOTween.1.2.705\lib\net40\DOTween.dll" /reference:"D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\packages\com.unity.ide.rider\3.0.0\JetBrains.dll" /reference:"D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\packages\Bridge.Newtonsoft.Json.1.16.0\lib\net40\Newtonsoft.Json.dll" /reference:"D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\packages\Retyped.Core.1.6.6733\lib\net40\Retyped.Core.dll" /reference:"D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\packages\Retyped.dom.2.8.6733\lib\net40\Retyped.dom.dll" /reference:"D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\packages\Retyped.es5.2.8.6733\lib\net40\Retyped.es5.dll" /reference:"D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\packages\Retyped.scripthost.2.8.6733\lib\net40\Retyped.scripthost.dll" /reference:"D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\packages\com.unity.textmeshpro\3.0.6\TextMeshPro.dll" /reference:"D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\Vendor\UnityEngine.dll" /reference:"D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\packages\com.unity.ui\1.2.1\UnityEngine.UI.dll" /reference:"D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\packages\com.unity.urp\7.6\UnityEngine.UniversalRenderPipeline.dll" /debug+ /debug:full /optimize- /out:obj\Debug\UnityScriptsCompiler.dll /subsystemversion:6.00 /target:library /warnaserror- /utf8output /langversion:8 "D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\Scripts\PlayableScript\HandController.cs" "D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\Scripts\PlayableScript\MapGenerate.cs" "D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\Scripts\PlayableScript\PlayableAdsManager.cs" "D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\Scripts\PlayableScript\PlayNowButton.cs" "D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\Scripts\PlayableScript\Pooling.cs" "D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\Scripts\PlayableScript\SlotController.cs" "D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\Scripts\PlayableScript\SlotHolder.cs" "D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\Scripts\PlayableScript\SpriteSheetData.cs" "D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\Scripts\PlayableScript\Tile.cs" Properties/AssemblyInfo.cs Sources/OtherDummyScript.cs "obj\Debug\.NETFramework,Version=v4.7.AssemblyAttributes.cs"
 
-D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\Scripts\PlayableScript\Tile.cs(12,49): warning CS0649: Field 'Tile._iconSprite' is never assigned to, and will always have its default value null [D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj]
-
-D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\Scripts\PlayableScript\PlayableAdsManager.cs(44,41): warning CS0649: Field 'PlayableAdsManager._title' is never assigned to, and will always have its default value null [D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj]
-D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\Scripts\PlayableScript\PlayNowButton.cs(6,22): warning CS0649: Field 'PlayNowButton._animator' is never assigned to, and will always have its default value null [D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj]
-D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\Scripts\PlayableScript\PlayableAdsManager.cs(45,41): warning CS0649: Field 'PlayableAdsManager._tilePrefab' is never assigned to, and will always have its default value null [D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj]
-D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\Scripts\PlayableScript\PlayableAdsManager.cs(47,40): warning CS0649: Field 'PlayableAdsManager._slotRootPrefab' is never assigned to, and will always have its default value null [D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj]
-D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\Scripts\PlayableScript\Tile.cs(11,49): warning CS0649: Field 'Tile._backGroundSprite' is never assigned to, and will always have its default value null [D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj]
 D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\Scripts\PlayableScript\PlayableAdsManager.cs(48,46): warning CS0649: Field 'PlayableAdsManager._spriteSheetData' is never assigned to, and will always have its default value null [D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj]
 
-D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\Scripts\PlayableScript\PlayableAdsManager.cs(46,41): warning CS0649: Field 'PlayableAdsManager._tileRoot' is never assigned to, and will always have its default value null [D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj]
+D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\Scripts\PlayableScript\PlayableAdsManager.cs(45,41): warning CS0649: Field 'PlayableAdsManager._tilePrefab' is never assigned to, and will always have its default value null [D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj]
+D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\Scripts\PlayableScript\PlayNowButton.cs(6,22): warning CS0649: Field 'PlayNowButton._animator' is never assigned to, and will always have its default value null [D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj]
+D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\Scripts\PlayableScript\PlayableAdsManager.cs(43,36): warning CS0649: Field 'PlayableAdsManager._backgroundPanel' is never assigned to, and will always have its default value null [D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj]
 D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\Scripts\PlayableScript\Tile.cs(10,43): warning CS0649: Field 'Tile._animator' is never assigned to, and will always have its default value null [D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj]
 
-D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\Scripts\PlayableScript\PlayableAdsManager.cs(42,29): warning CS0649: Field 'PlayableAdsManager.playNowButton' is never assigned to, and will always have its default value null [D:\Uni
-ty Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj]
-D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\Scripts\PlayableScript\PlayableAdsManager.cs(49,41): warning CS0649: Field 'PlayableAdsManager._collectEffectPrefab' is never assigned to, and will always have its default value null 
-[D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj]
+D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\Scripts\PlayableScript\PlayableAdsManager.cs(44,41): warning CS0649: Field 'PlayableAdsManager._title' is never assigned to, and will always have its default value null [D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj]
+D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\Scripts\PlayableScript\PlayableAdsManager.cs(46,41): warning CS0649: Field 'PlayableAdsManager._tileRoot' is never assigned to, and will always have its default value null [D:\Unity G
+ame\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj]
+D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\Scripts\PlayableScript\Tile.cs(12,49): warning CS0649: Field 'Tile._iconSprite' is never assigned to, and will always have its default value null [D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj]
 
-D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\Scripts\PlayableScript\PlayableAdsManager.cs(43,36): warning CS0649: Field 'PlayableAdsManager._backgroundPanel' is never assigned to, and will always have its default value null [D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj]
+D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\Scripts\PlayableScript\PlayableAdsManager.cs(49,41): warning CS0649: Field 'PlayableAdsManager._collectEffectPrefab' is never assigned to, and will always have its default value null [D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj]
 
-  CompilerServer: server - server processed compilation - de67511c-158f-4345-b51a-f58285e5b81a
+D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\Scripts\PlayableScript\PlayableAdsManager.cs(42,29): warning CS0649: Field 'PlayableAdsManager.playNowButton' is never assigned to, and will always have its default value null [D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj]
+
+D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\Scripts\PlayableScript\Tile.cs(11,49): warning CS0649: Field 'Tile._backGroundSprite' is never assigned to, and will always have its default value null [D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj]
+
+D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\Scripts\PlayableScript\PlayableAdsManager.cs(47,40): warning CS0649: Field 'PlayableAdsManager._slotRootPrefab' is never assigned to, and will always have its default value null [D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj]
+
+  CompilerServer: server - server processed compilation - 77077287-0567-4512-bbe3-d90f933f7169
 
 _CopyFilesMarkedCopyLocal:
-  Copying file from "D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\packages\com.unity.ide.rider\3.0.0\JetBrains.dll" to "D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\bin\Debug\JetBrains.dll".
+
   Copying file from "D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\packages\Bridge.Core.17.9.40-luna\lib\net40\Bridge.dll" to "D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\bin\Debug\Bridge.dll".
+  Copying file from "D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\packages\DOTween.1.2.705\lib\net40\DOTween.dll" to "D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\bin\Debug\DOTween.dll".
+  Copying file from "D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\packages\Bridge.Newtonsoft.Json.1.16.0\lib\net40\Newtonsoft.Json.dll" to "D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\bin\Debug\Newtonsoft.Json.dll".
 
   Copying file from "D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\packages\Bridge.Html5.17.9.0\lib\net40\Bridge.Html5.dll" to "D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\bin\Debug\Bridge.Html5.dll".
-  Copying file from "D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\packages\DOTween.1.2.705\lib\net40\DOTween.dll" to "D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\bin\Debug\DOTween.dll".
-  Copying file from "D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\packages\Bridge.WebGL.1.22.0\lib\net40\Bridge.WebGL.dll" to "D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\bin\Debug\Bridge.WebGL.dll".
 
-  Copying file from "D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\packages\Bridge.Newtonsoft.Json.1.16.0\lib\net40\Newtonsoft.Json.dll" to "D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\bin\Debug\Newtonsoft.Json.dll".
+  Copying file from "D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\packages\com.unity.ide.rider\3.0.0\JetBrains.dll" to "D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\bin\Debug\JetBrains.dll".
+
+  Copying file from "D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\packages\Bridge.WebGL.1.22.0\lib\net40\Bridge.WebGL.dll" to "D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\bin\Debug\Bridge.WebGL.dll".
 
   Copying file from "D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\packages\Retyped.dom.2.8.6733\lib\net40\Retyped.dom.dll" to "D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\bin\Debug\Retyped.dom.dll".
 
-  Copying file from "D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\packages\Retyped.es5.2.8.6733\lib\net40\Retyped.es5.dll" to "D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\bin\Debug\Retyped.es5.dll".
-  Copying file from "D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\packages\Retyped.scripthost.2.8.6733\lib\net40\Retyped.scripthost.dll" to "D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\bin\Debug\Retyped.scripthost.dll".
-
   Copying file from "D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\packages\Retyped.Core.1.6.6733\lib\net40\Retyped.Core.dll" to "D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\bin\Debug\Retyped.Core.dll".
 
+  Copying file from "D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\packages\Retyped.es5.2.8.6733\lib\net40\Retyped.es5.dll" to "D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\bin\Debug\Retyped.es5.dll".
+
   Copying file from "D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\packages\com.unity.textmeshpro\3.0.6\TextMeshPro.dll" to "D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\bin\Debug\TextMeshPro.dll".
+  Copying file from "D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\packages\Retyped.scripthost.2.8.6733\lib\net40\Retyped.scripthost.dll" to "D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\bin\Debug\Retyped.scripthost.dll".
 
   Copying file from "D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\Vendor\UnityEngine.dll" to "D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\bin\Debug\UnityEngine.dll".
 
   Copying file from "D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\packages\com.unity.ui\1.2.1\UnityEngine.UI.dll" to "D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\bin\Debug\UnityEngine.UI.dll".
 
-  Copying file from "D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\packages\com.unity.urp\7.6\UnityEngine.UniversalRenderPipeline.dll" to "D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\bin\Debug\UnityEngine.UniversalRenderPipeline.dll".
-
   Copying file from "D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\packages\Bridge.Html5.17.9.0\lib\net40\Bridge.Html5.xml" to "D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\bin\Debug\Bridge.Html5.xml".
-  Copying file from "D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\packages\Bridge.Core.17.9.40-luna\lib\net40\Bridge.xml" to "D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\bin\Debug\Bridge.xml".
+
   Copying file from "D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\packages\Bridge.WebGL.1.22.0\lib\net40\Bridge.WebGL.xml" to "D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\bin\Debug\Bridge.WebGL.xml".
 
-  Copying file from "D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\packages\Retyped.Core.1.6.6733\lib\net40\Retyped.Core.xml" to "D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\bin\Debug\Retyped.Core.xml".
+  Copying file from "D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\packages\com.unity.urp\7.6\UnityEngine.UniversalRenderPipeline.dll" to "D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\bin\Debug\UnityEngine.UniversalRenderPipeline.dll".
+
+  Copying file from "D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\packages\Bridge.Core.17.9.40-luna\lib\net40\Bridge.xml" to "D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\bin\Debug\Bridge.xml".
 
   Copying file from "D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\packages\Bridge.Newtonsoft.Json.1.16.0\lib\net40\Newtonsoft.Json.xml" to "D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\bin\Debug\Newtonsoft.Json.xml".
+
+  Copying file from "D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\packages\Retyped.Core.1.6.6733\lib\net40\Retyped.Core.xml" to "D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\bin\Debug\Retyped.Core.xml".
 
   Copying file from "D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\packages\Retyped.dom.2.8.6733\lib\net40\Retyped.dom.xml" to "D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\bin\Debug\Retyped.dom.xml".
 
@@ -164,6 +169,7 @@ BridgeNetCompilerTask:
   Bridge started
 
       To enable detailed logging, configure "logging" in bridge.json.
+
       https://github.com/bridgedotnet/Bridge/wiki/global-configuration#logging
 
   Bridge done
@@ -177,34 +183,34 @@ Build succeeded.
 
 "D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj" (Rebuild target) (1) ->
 (CoreCompile target) -> 
-  D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\Scripts\PlayableScript\Tile.cs(12,49): warning CS0649: Field 'Tile._iconSprite' is never assigned to, and will always have its default value null [D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj]
-  D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\Scripts\PlayableScript\PlayableAdsManager.cs(44,41): warning CS0649: Field 'PlayableAdsManager._title' is never assigned to, and will always have its default value null [D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj]
-  D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\Scripts\PlayableScript\PlayNowButton.cs(6,22): warning CS0649: Field 'PlayNowButton._animator' is never assigned to, and will always have its default value null [D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj]
-  D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\Scripts\PlayableScript\PlayableAdsManager.cs(45,41): warning CS0649: Field 'PlayableAdsManager._tilePrefab' is never assigned to, and will always have its default value null [D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj]
-  D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\Scripts\PlayableScript\PlayableAdsManager.cs(47,40): warning CS0649: Field 'PlayableAdsManager._slotRootPrefab' is never assigned to, and will always have its default value null [D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj]
-  D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\Scripts\PlayableScript\Tile.cs(11,49): warning CS0649: Field 'Tile._backGroundSprite' is never assigned to, and will always have its default value null [D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj]
   D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\Scripts\PlayableScript\PlayableAdsManager.cs(48,46): warning CS0649: Field 'PlayableAdsManager._spriteSheetData' is never assigned to, and will always have its default value null [D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj]
-  D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\Scripts\PlayableScript\PlayableAdsManager.cs(46,41): warning CS0649: Field 'PlayableAdsManager._tileRoot' is never assigned to, and will always have its default value null [D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj]
-  D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\Scripts\PlayableScript\Tile.cs(10,43): warning CS0649: Field 'Tile._animator' is never assigned to, and will always have its default value null [D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj]
-  D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\Scripts\PlayableScript\PlayableAdsManager.cs(42,29): warning CS0649: Field 'PlayableAdsManager.playNowButton' is never assigned to, and will always have its default value null [D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj]
-  D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\Scripts\PlayableScript\PlayableAdsManager.cs(49,41): warning CS0649: Field 'PlayableAdsManager._collectEffectPrefab' is never assigned to, and will always have its default value null [D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj]
+  D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\Scripts\PlayableScript\PlayableAdsManager.cs(45,41): warning CS0649: Field 'PlayableAdsManager._tilePrefab' is never assigned to, and will always have its default value null [D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj]
+  D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\Scripts\PlayableScript\PlayNowButton.cs(6,22): warning CS0649: Field 'PlayNowButton._animator' is never assigned to, and will always have its default value null [D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj]
   D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\Scripts\PlayableScript\PlayableAdsManager.cs(43,36): warning CS0649: Field 'PlayableAdsManager._backgroundPanel' is never assigned to, and will always have its default value null [D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj]
+  D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\Scripts\PlayableScript\Tile.cs(10,43): warning CS0649: Field 'Tile._animator' is never assigned to, and will always have its default value null [D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj]
+  D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\Scripts\PlayableScript\PlayableAdsManager.cs(44,41): warning CS0649: Field 'PlayableAdsManager._title' is never assigned to, and will always have its default value null [D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj]
+  D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\Scripts\PlayableScript\PlayableAdsManager.cs(46,41): warning CS0649: Field 'PlayableAdsManager._tileRoot' is never assigned to, and will always have its default value null [D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj]
+  D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\Scripts\PlayableScript\Tile.cs(12,49): warning CS0649: Field 'Tile._iconSprite' is never assigned to, and will always have its default value null [D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj]
+  D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\Scripts\PlayableScript\PlayableAdsManager.cs(49,41): warning CS0649: Field 'PlayableAdsManager._collectEffectPrefab' is never assigned to, and will always have its default value null [D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj]
+  D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\Scripts\PlayableScript\PlayableAdsManager.cs(42,29): warning CS0649: Field 'PlayableAdsManager.playNowButton' is never assigned to, and will always have its default value null [D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj]
+  D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\Scripts\PlayableScript\Tile.cs(11,49): warning CS0649: Field 'Tile._backGroundSprite' is never assigned to, and will always have its default value null [D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj]
+  D:\Unity Game\Git 3D Triple Tile Matching\3D Triple Tile Matching\Assets\Scripts\PlayableScript\PlayableAdsManager.cs(47,40): warning CS0649: Field 'PlayableAdsManager._slotRootPrefab' is never assigned to, and will always have its default value null [D:\Unity Game\AdsGame\LunaPlugin\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj]
 
     12 Warning(s)
     0 Error(s)
 
 
-Time Elapsed 00:00:29.53
+Time Elapsed 00:00:29.62
 
 Source code compiled successfully!
 Diagnostics gathered successfully
-report@code:build 37340.03
-report@diagnostics:verify 1.21
-report@diagnostics:upload 10653.66
-report@code:stage 17850.83
+report@code:build 38538.54
+report@diagnostics:verify 1.04
+report@diagnostics:upload 10792.84
+report@code:stage 19008.04
 [ Stage3 ] Code compiled and bundled successfully.
-report@code:bundle 66174.93
-report@package:stage 2576.82
+report@code:bundle 68785.02
+report@package:stage 3387.21
 [ Stage4 ] Target platform: develop
 [ Stage4 ] Package bundled successfully
-report@assets:stats 0.72
+report@assets:stats 0.66

@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
@@ -85,40 +84,12 @@ namespace ProjectGamePlay
             int i = index;
             for (int j = 0; j < 3; j++)
             {
-                //_usedSlots[index - j].ContainedTile.TileState = Tile._TileStateEnum.Collected;
-                //_GameManager.Instance.BoosterSystem.ListHintTileManager.RemoveTile(_usedSlots[index - j].ContainedTile);
                 _usedSlots[index - j].ContainedTile.AnimCollect();
-                // sequence.Join(_usedSlots[index - j].ContainedTile.AnimatedCollected());
             }
             await Task.Delay(TimeSpan.FromSeconds(0.5f));
             for (i = index + 1; i < _currentFirstFreeSlotIndex; i++)
             {
                 _usedSlots[i].MoveTileToLeftSlotWithStep(3);
-            }
-            _currentFirstFreeSlotIndex -= 3;
-            // sequence.OnComplete(() =>
-            // {
-            //     _GameManager.Instance.BoosterSystem.TileMovedManager.RemoveTileMovedWhenCollect(index);
-            //     for (i = index + 1; i < _currentFirstFreeSlotIndex; i++)
-            //     {
-            //         _usedSlots[i].MoveTileToLeftSlotWithStep(3);
-            //     }
-            //     _currentFirstFreeSlotIndex -= 3;
-            //     _GameManager.Instance.NumOfTile -= 3;
-            //     _GameManager.Instance.NumOfFreeSlot = _numberOfSlots - _numOfTilesInSlots;
-            // });
-        }
-
-        private IEnumerator WaitForCompleteCollectTile(float timer, int index){
-            while (timer > 0)
-            {
-                timer -= 0.1f;
-                yield return new WaitForSeconds(0.1f);
-            }
-            Debug.Log("WaitForCompleteCollectTile");
-            for(index = index + 1; index < _currentFirstFreeSlotIndex; index++)
-            {
-                _usedSlots[index].MoveTileToLeftSlotWithStep(3);
             }
             _currentFirstFreeSlotIndex -= 3;
         }
