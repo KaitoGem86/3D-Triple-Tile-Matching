@@ -1,0 +1,86 @@
+{
+    "BuildID": "e8df9c3f-a179-4dd4-b873-19fe6015ce10",
+    "Command": "project:build",
+    "ProjectID": "35f35fef124d76f4a9621e5a310bcc25",
+    "ProjectStateHash": "1253834c33d95b09878b29b7b153c75b0c92503604725d89c2bc22d99666d81d",
+    "StageCompletedAt": 3,
+    "EarliestFatalError": 0,
+    "StartTime": 1707117964703,
+    "EndTime": 1707118015807,
+    "PlaygroundUserID": 13720,
+    "OperatingSystem": "win32",
+    "UnityPackageID": null,
+    "TargetPlatform": "develop",
+    "UnityVersion": "2021.3.30f1",
+    "LunaVersion": "5.5.0",
+    "LogCount": 3,
+    "Logs": [
+        {
+            "LogID": "75af9cb2-aa6f-482f-9474-06f4f30204ed",
+            "Order": 2,
+            "Timestamp": 1707118016079,
+            "Stage": 3,
+            "ErrorType": 3,
+            "ErrorCode": "LP3007",
+            "Description": "You are not using any custom events",
+            "Details": [
+                "You are not using any custom events. It is recommended to use custom events to have a better understanding of the playable."
+            ],
+            "DescriptionValues": [
+                ""
+            ],
+            "DetailsValues": [
+                ""
+            ],
+            "LogCount": 1,
+            "LinePosition": null,
+            "FilePath": "",
+            "ClassName": "",
+            "MemberName": "",
+            "Severity": 0
+        },
+        {
+            "LogID": "560ef9eb-4c8b-429f-9447-e8112258bbb5",
+            "Order": 2,
+            "Timestamp": 1707118016080,
+            "Stage": 3,
+            "ErrorType": 3,
+            "ErrorCode": "LP3011",
+            "Description": "You are not using any LunaPlaygroundFields attributes.",
+            "Details": [
+                "You are not using any LunaPlaygroundFields attributes, it allows you to configure your playable to different concepts to find the best variation, which can drastically improve playable performance on all ad networks."
+            ],
+            "DescriptionValues": null,
+            "DetailsValues": null,
+            "LogCount": 1,
+            "LinePosition": null,
+            "FilePath": "",
+            "ClassName": "",
+            "MemberName": "",
+            "Severity": 0
+        },
+        {
+            "LogID": "e5344eab-57df-416a-96c8-c7fed5de36c6",
+            "Order": 0,
+            "Timestamp": 1707117972611,
+            "Stage": 1,
+            "ErrorType": 2,
+            "ErrorCode": "LP1010",
+            "Description": "Looks like a collider was scaled, this might affect performance.",
+            "Details": [
+                "Looks like Tile collider on Tile game object was scaled, this might affect performance."
+            ],
+            "DescriptionValues": [],
+            "DetailsValues": [
+                "Tile",
+                "Tile"
+            ],
+            "LogCount": 1,
+            "LinePosition": 0,
+            "FilePath": "",
+            "ClassName": "",
+            "MemberName": "",
+            "Severity": 0
+        }
+    ]
+}

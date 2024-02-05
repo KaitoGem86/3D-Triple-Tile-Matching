@@ -101,7 +101,7 @@ MonoBehaviour:
   _usedByLunaBuild: []
   _includedShaderVariants: []
   _excludedShaderVariants: []
-  version: 113
+  version: 17
   _shaderParsedShaders:
   - ParsedSubShaders:
     - Index: 0
@@ -1557,8 +1557,7 @@ MonoBehaviour:
     - _
     fallbackShader: {fileID: 0}
     CompilationErrors: []
-  _modifiedShaders:
-  - Assets/TextMesh Pro/Shaders/TMP_SDF Overlay.shader
+  _modifiedShaders: []
   invalidShaders: 0
   _sceneLightData:
     PointLightCount: 0
