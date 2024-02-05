@@ -32,11 +32,9 @@ namespace ProjectGamePlay
             SetTileMovingLayer();
             _animator.SetBool("IsMoveToSlot", true);
             item.Item2.ContainedTile = this;
-            PlayableAdsManager.Instance.AddCollectTile(_tileId, this);
         }
         public void AnimCollect()
         {
-            Debug.Log("AnimCollect");
             _animator.SetBool("IsCollected", true);
         }
 
@@ -48,10 +46,12 @@ namespace ProjectGamePlay
 
         private void FixedUpdate()
         {
-            if(_isMoving){
+            if (_isMoving)
+            {
                 var pos = Vector3.Lerp(transform.position, _targetPos, Time.fixedDeltaTime * 15);
                 transform.position = pos;
-                if(Vector3.Distance(transform.position, _targetPos) < 0.1f){
+                if (Vector3.Distance(transform.position, _targetPos) < 0.1f)
+                {
                     _isMoving = false;
                 }
             }
@@ -62,9 +62,10 @@ namespace ProjectGamePlay
             _tileId = index;
             var sprite = PlayableAdsManager.Instance.SpriteSheetData.GetSprite(index);
             _iconSprite.sprite = sprite;
-        } 
+        }
 
-        public void SetTargetPosToMove(Vector3 targetPos){
+        public void SetTargetPosToMove(Vector3 targetPos)
+        {
             _targetPos = targetPos;
             _isMoving = true;
         }
@@ -77,18 +78,28 @@ namespace ProjectGamePlay
             return pos;
         }
 
-        public void SetTileMovingLayer(){
+        public void SetTileMovingLayer()
+        {
             _backGroundSprite.sortingOrder = 3;
             _iconSprite.sortingOrder = 4;
         }
 
-        public void ReturnToBlockLayer(){
+        public void ReturnToBlockLayer()
+        {
             _backGroundSprite.sortingOrder = 1;
             _iconSprite.sortingOrder = 2;
         }
 
-        public void OnCompleteMoveToSlot(){
+        public void OnTileInSlot()
+        {
+            Debug.Log("OnTileInSlot");
+            PlayableAdsManager.Instance.AddCollectTile(_tileId, this);
+        }
+
+        public void OnCompleteMoveToSlot()
+        {
             _animator.SetBool("IsMoveToSlot", false);
+
             _backGroundSprite.sortingOrder = 1;
             _iconSprite.sortingOrder = 2;
         }
@@ -108,6 +119,6 @@ namespace ProjectGamePlay
         public Animator Animator
         {
             get => _animator;
-        } 
+        }
     }
 }
