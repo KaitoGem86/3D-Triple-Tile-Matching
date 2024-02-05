@@ -18,7 +18,7 @@ namespace ProjectGamePlay
         private int _numberOfSlots = 7;
 
         public SlotHolder(Transform slotRoot){
-            _usedSlots ??= new List<SlotController>();
+            _usedSlots = new List<SlotController>();
             for (int i = 0; i < _numberOfSlots; i++)
             {
                 _usedSlots.Add(new SlotController(slotRoot.GetChild(i)));

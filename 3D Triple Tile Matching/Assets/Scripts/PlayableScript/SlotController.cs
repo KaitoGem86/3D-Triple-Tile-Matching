@@ -7,9 +7,6 @@ namespace ProjectGamePlay
         private Tile _containedTile;
         private SlotController leftSlot;
         private SlotController rightSlot;
-        public SlotController(){
-
-        }
 
         public SlotController(Transform slotTransform){
             _slotTransform = slotTransform;

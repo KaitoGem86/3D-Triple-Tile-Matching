@@ -41,11 +41,9 @@ namespace ProjectGamePlay{
         public Dictionary<int, int> dictTilesData = new Dictionary<int, int>();
         public List<int> listTilesData;
         public int totalTiles;
-        public int currentTiles;
 
         public TileDataController(SpriteSheetData spriteSheetData, int total){
             totalTiles = total;
-            currentTiles = 0;
             dictTilesData = new Dictionary<int, int>();
             listTilesData = new List<int>();
             int numOfTripleTiles = total / 3;
@@ -68,7 +66,6 @@ namespace ProjectGamePlay{
                     dictTilesData.Remove(randomId);
                     listTilesData.Remove(randomId);
                 }
-                currentTiles++;
             }
             return randomId;
         }

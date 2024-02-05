@@ -6,9 +6,6 @@ namespace ProjectGamePlay{
         public Sprite[] sprites;
 
         public Sprite GetSprite(int index){
-            if(index < 0 || index >= sprites.Length){
-                throw new System.Exception("Dont exist sprite with index: " + index);
-            }
             return sprites[index];
         }
     }

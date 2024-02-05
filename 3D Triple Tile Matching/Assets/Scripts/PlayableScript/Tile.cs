@@ -13,7 +13,6 @@ namespace ProjectGamePlay
         private Vector3 _targetPos;
 
         private TileStateEnum _tileState = TileStateEnum.UnCollected;
-        private SlotHolder _slotHolder;
 
         private void Start()
         {
