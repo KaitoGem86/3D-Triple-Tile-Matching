@@ -45,6 +45,23 @@ namespace ProjectGamePlay
             ContainedTile = null;
         }
 
+        public void MoveTileToLeftSlotWithStep(int step)
+        {
+            if(_containedTile == null) return;
+            if (step == 0) return;
+            if (step == 1) MoveTileToLeftSlot();
+            else
+            {
+                var slot = this;
+                for (int i = 0; i < step; i++)
+                {
+                    if (slot == null) return;
+                    slot.MoveTileToLeftSlot();
+                    slot = slot.LeftSlot;
+                }
+            }
+        }
+
         public Tile ContainedTile { 
             get => _containedTile; 
             set => _containedTile = value; }

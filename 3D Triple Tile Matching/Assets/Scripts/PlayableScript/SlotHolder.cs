@@ -1,4 +1,7 @@
+using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 
 namespace ProjectGamePlay
@@ -74,7 +77,7 @@ namespace ProjectGamePlay
             return (index - 1, _usedSlots[index - 1]);
         }
 
-        public void CollectTripleTile(int id, int index)
+        public async void CollectTripleTile(int id, int index)
         {
 
             _numOfTilesInSlots -= 3;
@@ -87,6 +90,12 @@ namespace ProjectGamePlay
                 _usedSlots[index - j].ContainedTile.AnimCollect();
                 // sequence.Join(_usedSlots[index - j].ContainedTile.AnimatedCollected());
             }
+            await Task.Delay(TimeSpan.FromSeconds(0.5f));
+            for (i = index + 1; i < _currentFirstFreeSlotIndex; i++)
+            {
+                _usedSlots[i].MoveTileToLeftSlotWithStep(3);
+            }
+            _currentFirstFreeSlotIndex -= 3;
             // sequence.OnComplete(() =>
             // {
             //     _GameManager.Instance.BoosterSystem.TileMovedManager.RemoveTileMovedWhenCollect(index);
@@ -98,6 +107,20 @@ namespace ProjectGamePlay
             //     _GameManager.Instance.NumOfTile -= 3;
             //     _GameManager.Instance.NumOfFreeSlot = _numberOfSlots - _numOfTilesInSlots;
             // });
+        }
+
+        private IEnumerator WaitForCompleteCollectTile(float timer, int index){
+            while (timer > 0)
+            {
+                timer -= 0.1f;
+                yield return new WaitForSeconds(0.1f);
+            }
+            Debug.Log("WaitForCompleteCollectTile");
+            for(index = index + 1; index < _currentFirstFreeSlotIndex; index++)
+            {
+                _usedSlots[index].MoveTileToLeftSlotWithStep(3);
+            }
+            _currentFirstFreeSlotIndex -= 3;
         }
 
         public Dictionary<int, int> ListContainedTileId
