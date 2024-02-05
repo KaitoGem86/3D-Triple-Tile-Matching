@@ -6,7 +6,8 @@ namespace ProjectGamePlay
     {
         [SerializeField] private int _tileId;
         [SerializeField] private Animator _animator;
-        private SpriteRenderer _backGroundSprite;
+        [SerializeField] private SpriteRenderer _backGroundSprite;
+        [SerializeField] private SpriteRenderer _iconSprite;
         private bool _isSelect = false;
         private bool _isMoving = false;
         private Vector3 _targetPos;
@@ -16,7 +17,7 @@ namespace ProjectGamePlay
 
         private void Start()
         {
-            _backGroundSprite = GetComponent<SpriteRenderer>();
+            //_backGroundSprite = GetComponent<SpriteRenderer>();
             PlayableAdsManager.Instance.AddTile(_tileId, this);
         }
 
@@ -27,9 +28,10 @@ namespace ProjectGamePlay
                 return;
             }
             _isSelect = true;
-            //_backGroundSprite.color = Color.red;
             var item = PlayableAdsManager.Instance.SlotHolder.GetSlotFreeForTile(_tileId);
             SetTargetPosToMove(item.Item2.GetSlotPosition());
+            SetTileMovingLayer();
+            _animator.SetBool("IsMoveToSlot", true);
             item.Item2.ContainedTile = this;
             PlayableAdsManager.Instance.AddCollectTile(_tileId, this);
         }
@@ -67,6 +69,11 @@ namespace ProjectGamePlay
             return pos;
         }
 
+        private void SetTileMovingLayer(){
+            _backGroundSprite.sortingOrder = 3;
+            _iconSprite.sortingOrder = 4;
+        }
+
         public TileStateEnum TileState
         {
             get => _tileState;
@@ -77,6 +84,11 @@ namespace ProjectGamePlay
         {
             get => _tileId;
             set => _tileId = value;
+        }
+
+        public Animator Animator
+        {
+            get => _animator;
         } 
     }
 }
