@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using ObjectPool;
 using ProjectGamePlay;
 using UnityEngine;
 using UnityEngine.UI;
@@ -45,6 +46,7 @@ public class PlayableAdsManager : MonoBehaviour
     [SerializeField] private GameObject _tileRoot;
     [SerializeField] private Transform _slotRootPrefab;
     [SerializeField] private SpriteSheetData _spriteSheetData;
+    [SerializeField] private GameObject _collectEffectPrefab;
 
     public AudioSource tileTapSound;
     public AudioSource tileCollectSound;
@@ -55,6 +57,7 @@ public class PlayableAdsManager : MonoBehaviour
         SlotHolder = new ProjectGamePlay.SlotHolder(_slotRootPrefab);
         var dictMap = MapGenerate.GenerateTestMap(24, _spriteSheetData, _tilePrefab, _tileRoot);
         _listTile = dictMap;
+        Pooling.Instance.CreatePool(_TypeGameObjectEnum.CollectEffect, _collectEffectPrefab, 3);
     }
 
     public void AddCollectTile(int tileId, ProjectGamePlay.Tile tile)

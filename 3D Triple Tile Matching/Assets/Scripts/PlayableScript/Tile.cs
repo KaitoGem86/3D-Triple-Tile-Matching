@@ -1,3 +1,5 @@
+using System.Collections;
+using ObjectPool;
 using UnityEngine;
 
 namespace ProjectGamePlay
@@ -96,12 +98,22 @@ namespace ProjectGamePlay
             PlayableAdsManager.Instance.AddCollectTile(_tileId, this);
         }
 
+        private IEnumerator WaitForCompleteParticle(ParticleSystem ps){
+            while (ps.isPlaying)
+            {
+                yield return new WaitForSeconds(0.1f);
+            }
+            Pooling.Instance.ReturnToPool(_TypeGameObjectEnum.CollectEffect, ps.gameObject);
+        }
+
         public void OnCompleteMoveToSlot()
         {
             _animator.SetBool("IsMoveToSlot", false);
-
             _backGroundSprite.sortingOrder = 1;
             _iconSprite.sortingOrder = 2;
+            var t = Pooling.Instance.SpawnFromPool(_TypeGameObjectEnum.CollectEffect, transform.position, Quaternion.identity).GetComponent<ParticleSystem>();
+            t.Play();
+            StartCoroutine(WaitForCompleteParticle(t));
         }
 
         public TileStateEnum TileState
