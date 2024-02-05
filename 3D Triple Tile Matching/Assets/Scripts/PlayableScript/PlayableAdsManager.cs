@@ -42,6 +42,7 @@ public class PlayableAdsManager : MonoBehaviour
     [SerializeField] private Image _backgroundPanel;
     [SerializeField] private GameObject _title;
     [SerializeField] private GameObject _tilePrefab;
+    [SerializeField] private GameObject _tileRoot;
     [SerializeField] private Transform _slotRootPrefab;
 
     public AudioSource tileTapSound;
@@ -50,6 +51,7 @@ public class PlayableAdsManager : MonoBehaviour
 
     private void Start(){
         SlotHolder = new ProjectGamePlay.SlotHolder(_slotRootPrefab);
+        var dictMap = ProjectGamePlay.MapGenerate.GenerateTestMap(_tilePrefab, _tileRoot);
     }
 
     public void AddCollectTile(int tileId, ProjectGamePlay.Tile tile)
