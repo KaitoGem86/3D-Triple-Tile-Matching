@@ -36,6 +36,8 @@ public class PlayableAdsManager : MonoBehaviour
     private Dictionary<int, List<ProjectGamePlay.Tile>> _dictCollectTile;
     private Dictionary<int, List<ProjectGamePlay.Tile>> _listTile;
     private int numOfPlayerTurn = 3;
+    private float _timer = 0;
+    private Tile _currentSelectedTile;
     [SerializeField] Button playNowButton;
     [SerializeField] private Image _backgroundPanel;
     [SerializeField] private GameObject _title;
@@ -126,15 +128,21 @@ public class PlayableAdsManager : MonoBehaviour
         return null;
     }
 
-    public void Update()
+    public void LateUpdate()
     {
         if (numOfPlayerTurn == 0 )
             return;
         if (Input.touchCount <= 0)
             return;
+        _timer += Time.deltaTime;
         Touch touch = Input.GetTouch(0);
         if (touch.phase == TouchPhase.Ended)
         {
+            if(_timer > 0.2f)
+            {
+                _currentSelectedTile.Animator.SetBool("IsSelect", false);
+                return;
+            }
             Vector3 touchPosition = Camera.main.ScreenToWorldPoint(touch.position);
             if (Physics.Raycast(touchPosition - Vector3.forward * 10, Vector3.forward, out RaycastHit hit, 100f))
             {
@@ -144,6 +152,19 @@ public class PlayableAdsManager : MonoBehaviour
                     tileTapSound.Play();
                 }
 
+            }
+        }
+        else if (touch.phase == TouchPhase.Began)
+        {
+            _timer = 0;
+            Vector3 touchPosition = Camera.main.ScreenToWorldPoint(touch.position);
+            if (Physics.Raycast(touchPosition - Vector3.forward * 10, Vector3.forward, out RaycastHit hit, 100f))
+            {
+                if (hit.transform.GetComponent<ProjectGamePlay.Tile>() != null)
+                {
+                    _currentSelectedTile = hit.transform.GetComponent<ProjectGamePlay.Tile>();
+                    _currentSelectedTile.Animator.SetBool("IsSelect", true);
+                }
             }
         }
     }
