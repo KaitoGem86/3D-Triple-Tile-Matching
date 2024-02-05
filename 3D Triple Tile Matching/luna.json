@@ -75,6 +75,7 @@
                 "Assets/Sprites/PlayableAds/text.png",
                 "Assets/Sprites/PlayableAds/Tile.png",
                 "Assets/Sprites/PlayableAds/táo.png",
+                "Assets/TripleTileGamePlayProject/",
                 "**/Editor/",
                 "**/FacebookSDK/",
                 "**/googleads**/",

@@ -1,0 +1,90 @@
+{
+    "BuildID": "990f0491-2122-49bc-9be8-694ac46a81f5",
+    "Command": "project:build",
+    "ProjectID": "35f35fef124d76f4a9621e5a310bcc25",
+    "ProjectStateHash": "c20aeea9799715cfd9d10c7b077197394461ad0e69dd79d6040f95b2491b8a06",
+    "StageCompletedAt": 2,
+    "EarliestFatalError": 0,
+    "StartTime": 1707106837722,
+    "EndTime": 1707106882897,
+    "PlaygroundUserID": 13720,
+    "OperatingSystem": "win32",
+    "TargetPlatform": "develop",
+    "UnityVersion": "2021.3.30f1",
+    "LunaVersion": "5.5.0",
+    "LogCount": 3,
+    "Logs": [
+        {
+            "LogID": "f08731bc-2c3f-44bc-9cc6-48f4d0cba785",
+            "Timestamp": 1707106850710,
+            "Stage": 1,
+            "Severity": 0,
+            "ErrorType": 2,
+            "ErrorCode": "LP1010",
+            "Description": "Looks like a collider was scaled, this might affect performance.",
+            "Details": [
+                "Looks like Tile collider on Tile game object was scaled, this might affect performance."
+            ],
+            "DescriptionValues": [],
+            "DetailsValues": [
+                "Tile",
+                "Tile"
+            ],
+            "LogCount": 1,
+            "FilePath": "",
+            "LinePosition": 0,
+            "ClassName": "",
+            "MemberName": "",
+            "Order": 0
+        },
+        {
+            "LogID": "3a0da3fe-5419-469d-8bc9-2fdd1fd516e6",
+            "Timestamp": 1707106850715,
+            "Stage": 1,
+            "Severity": 0,
+            "ErrorType": 3,
+            "ErrorCode": "LP1008",
+            "Description": "There are missing components on slotPrefab.",
+            "Details": [
+                "slotPrefab",
+                "slotPrefab",
+                "slotPrefab",
+                "slotPrefab",
+                "slotPrefab",
+                "slotPrefab",
+                "slotPrefab",
+                "slotPrefab"
+            ],
+            "DescriptionValues": [
+                "slotPrefab"
+            ],
+            "DetailsValues": [],
+            "LogCount": 8,
+            "FilePath": "",
+            "LinePosition": 0,
+            "ClassName": "",
+            "MemberName": "",
+            "Order": 1
+        },
+        {
+            "LogID": "b0570518-ee41-47fe-945e-50acbcaaf312",
+            "Order": 2,
+            "Timestamp": 1707106882651,
+            "Stage": 3,
+            "Severity": 1,
+            "ErrorType": 0,
+            "ErrorCode": "LP2005",
+            "Description": "Unknown exception",
+            "Details": [
+                "An unknown compilation error has occurred. Please see luna.log for more details"
+            ],
+            "DescriptionValues": null,
+            "DetailsValues": null,
+            "LogCount": 1,
+            "FilePath": "",
+            "LinePosition": null,
+            "ClassName": null,
+            "MemberName": null
+        }
+    ]
+}
