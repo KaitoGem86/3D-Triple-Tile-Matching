@@ -82,6 +82,7 @@ namespace ProjectGamePlay
             _numOfTilesInSlots -= 3;
             _listContainedTileId.Remove(id);
             int i = index;
+            PlayableAdsManager.Instance.tileCollectSound.Play();
             for (int j = 0; j < 3; j++)
             {
                 _usedSlots[index - j].ContainedTile.AnimCollect();
