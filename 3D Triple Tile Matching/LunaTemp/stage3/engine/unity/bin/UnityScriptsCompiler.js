@@ -1,6 +1,6 @@
-if ( TRACE ) { TRACE( JSON.parse( '["HandController#init","HandController#FixedUpdate","PlayableAdsManager#Instance#get","PlayableAdsManager#SpriteSheetData#get","PlayableAdsManager#init","PlayableAdsManager#Awake","PlayableAdsManager#Start","PlayableAdsManager#AddCollectTile","PlayableAdsManager#AddTile","PlayableAdsManager#GetTile","PlayableAdsManager#LateUpdate","PlayableAdsManager#ShowPopUpPlayNow","PlayNowButton#Start","PlayNowButton#OnMouseDown","PlayNowButton#ZoomInButton","PlayNowButton#CompleteZoomInButton","ProjectGamePlay.MapGenerate#GenerateTestMap$1","ProjectGamePlay.MapGenerate#GenerateTestMap","ProjectGamePlay.SlotController#ContainedTile#get","ProjectGamePlay.SlotController#ContainedTile#set","ProjectGamePlay.SlotController#LeftSlot#get","ProjectGamePlay.SlotController#LeftSlot#set","ProjectGamePlay.SlotController#RightSlot#get","ProjectGamePlay.SlotController#RightSlot#set","ProjectGamePlay.SlotController#ctor","ProjectGamePlay.SlotController#GetSlotPosition","ProjectGamePlay.SlotController#MoveTileToRightSlot","ProjectGamePlay.SlotController#MoveTileToLeftSlot","ProjectGamePlay.SlotHolder#init","ProjectGamePlay.SlotHolder#ctor","ProjectGamePlay.SlotHolder#GetSlotFree","ProjectGamePlay.SlotHolder#GetSlotFreeForTile","ProjectGamePlay.SpriteSheetData#GetSprite","ProjectGamePlay.Tile#TileState#get","ProjectGamePlay.Tile#TileState#set","ProjectGamePlay.Tile#Id#get","ProjectGamePlay.Tile#Id#set","ProjectGamePlay.Tile#Animator#get","ProjectGamePlay.Tile#init","ProjectGamePlay.Tile#Start","ProjectGamePlay.Tile#OnTileCollect","ProjectGamePlay.Tile#AnimCollect","ProjectGamePlay.Tile#AnimUnCollected","ProjectGamePlay.Tile#FixedUpdate","ProjectGamePlay.Tile#SetSpriteIcon","ProjectGamePlay.Tile#SetTargetPosToMove","ProjectGamePlay.Tile#GetPosition","ProjectGamePlay.Tile#SetTileMovingLayer","ProjectGamePlay.Tile#ReturnToBlockLayer","ProjectGamePlay.Tile#OnCompleteMoveToSlot","ProjectGamePlay.TileDataController#init","ProjectGamePlay.TileDataController#ctor","ProjectGamePlay.TileDataController#GetRandomTileId"]' ) ); }
+if ( TRACE ) { TRACE( JSON.parse( '["HandController#init","HandController#FixedUpdate","ObjectPool.Pooling#Instance#get","ObjectPool.Pooling#ctor","ObjectPool.Pooling#CreatePool","ObjectPool.Pooling#SpawnFromPool","ObjectPool.Pooling#ReturnToPool","PlayableAdsManager#Instance#get","PlayableAdsManager#SpriteSheetData#get","PlayableAdsManager#init","PlayableAdsManager#Awake","PlayableAdsManager#Start","PlayableAdsManager#AddCollectTile","PlayableAdsManager#AddTile","PlayableAdsManager#GetTile","PlayableAdsManager#LateUpdate","PlayableAdsManager#ShowPopUpPlayNow","PlayNowButton#Start","PlayNowButton#OnMouseDown","PlayNowButton#ZoomInButton","PlayNowButton#CompleteZoomInButton","ProjectGamePlay.MapGenerate#GenerateTestMap$1","ProjectGamePlay.MapGenerate#GenerateTestMap","ProjectGamePlay.SlotController#ContainedTile#get","ProjectGamePlay.SlotController#ContainedTile#set","ProjectGamePlay.SlotController#LeftSlot#get","ProjectGamePlay.SlotController#LeftSlot#set","ProjectGamePlay.SlotController#RightSlot#get","ProjectGamePlay.SlotController#RightSlot#set","ProjectGamePlay.SlotController#ctor","ProjectGamePlay.SlotController#GetSlotPosition","ProjectGamePlay.SlotController#MoveTileToRightSlot","ProjectGamePlay.SlotController#MoveTileToLeftSlot","ProjectGamePlay.SlotHolder#init","ProjectGamePlay.SlotHolder#ctor","ProjectGamePlay.SlotHolder#GetSlotFree","ProjectGamePlay.SlotHolder#GetSlotFreeForTile","ProjectGamePlay.SpriteSheetData#GetSprite","ProjectGamePlay.Tile#TileState#get","ProjectGamePlay.Tile#TileState#set","ProjectGamePlay.Tile#Id#get","ProjectGamePlay.Tile#Id#set","ProjectGamePlay.Tile#Animator#get","ProjectGamePlay.Tile#init","ProjectGamePlay.Tile#Start","ProjectGamePlay.Tile#OnTileCollect","ProjectGamePlay.Tile#AnimCollect","ProjectGamePlay.Tile#AnimUnCollected","ProjectGamePlay.Tile#FixedUpdate","ProjectGamePlay.Tile#SetSpriteIcon","ProjectGamePlay.Tile#SetTargetPosToMove","ProjectGamePlay.Tile#GetPosition","ProjectGamePlay.Tile#SetTileMovingLayer","ProjectGamePlay.Tile#ReturnToBlockLayer","ProjectGamePlay.Tile#OnTileInSlot","ProjectGamePlay.Tile#WaitForCompleteParticle","ProjectGamePlay.Tile#OnCompleteMoveToSlot","ProjectGamePlay.TileDataController#init","ProjectGamePlay.TileDataController#ctor","ProjectGamePlay.TileDataController#GetRandomTileId"]' ) ); }
 /**
- * @version 1.0.8801.25992
+ * @version 1.0.8801.27917
  * @copyright anton
  * @compiler Bridge.NET 17.9.40-luna
  */
@@ -100,6 +100,111 @@ if ( TRACE ) { TRACE( "HandController#FixedUpdate", this ); }
     });
     /*HandController end.*/
 
+    /*ObjectPool._TypeGameObjectEnum start.*/
+    Bridge.define("ObjectPool._TypeGameObjectEnum", {
+        $kind: 6,
+        statics: {
+            fields: {
+                Tile: 0,
+                Slot: 1,
+                CollectEffect: 2
+            }
+        }
+    });
+    /*ObjectPool._TypeGameObjectEnum end.*/
+
+    /*ObjectPool.Pooling start.*/
+    Bridge.define("ObjectPool.Pooling", {
+        statics: {
+            fields: {
+                _instance: null
+            },
+            props: {
+                Instance: {
+                    get: function () {
+if ( TRACE ) { TRACE( "ObjectPool.Pooling#Instance#get", this ); }
+
+                        if (ObjectPool.Pooling._instance == null) {
+                            ObjectPool.Pooling._instance = new ObjectPool.Pooling();
+                        }
+                        return ObjectPool.Pooling._instance;
+                    }
+                }
+            }
+        },
+        fields: {
+            _poolDictionary: null,
+            _prefabDictionary: null,
+            _poolParent: null
+        },
+        ctors: {
+            ctor: function () {
+if ( TRACE ) { TRACE( "ObjectPool.Pooling#ctor", this ); }
+
+                this.$initialize();
+                this._poolDictionary = new (System.Collections.Generic.Dictionary$2(ObjectPool._TypeGameObjectEnum,System.Collections.Generic.Queue$1(UnityEngine.GameObject))).ctor();
+                this._prefabDictionary = new (System.Collections.Generic.Dictionary$2(ObjectPool._TypeGameObjectEnum,UnityEngine.GameObject)).ctor();
+                this._poolParent = new UnityEngine.GameObject.$ctor2("PoolParent").transform;
+            }
+        },
+        methods: {
+            /*ObjectPool.Pooling.CreatePool start.*/
+            CreatePool: function (key, prefab, size) {
+if ( TRACE ) { TRACE( "ObjectPool.Pooling#CreatePool", this ); }
+
+                if (!this._poolDictionary.containsKey(key)) {
+                    this._poolDictionary.add(key, new (System.Collections.Generic.Queue$1(UnityEngine.GameObject)).ctor());
+                    this._prefabDictionary.add(key, prefab);
+                    for (var i = 0; i < size; i = (i + 1) | 0) {
+                        var tmp = UnityEngine.Object.Instantiate(UnityEngine.GameObject, prefab, this._poolParent);
+                        tmp.SetActive(false);
+                        this._poolDictionary.getItem(key).Enqueue(tmp);
+                    }
+                }
+            },
+            /*ObjectPool.Pooling.CreatePool end.*/
+
+            /*ObjectPool.Pooling.SpawnFromPool start.*/
+            SpawnFromPool: function (key, position, rotation) {
+if ( TRACE ) { TRACE( "ObjectPool.Pooling#SpawnFromPool", this ); }
+
+                if (this._poolDictionary.containsKey(key)) {
+                    if (this._poolDictionary.getItem(key).Count > 0) {
+                        var tmp = this._poolDictionary.getItem(key).Dequeue();
+                        tmp.SetActive(true);
+                        tmp.transform.position = position.$clone();
+                        tmp.transform.rotation = rotation.$clone();
+                        return tmp;
+                    } else {
+                        var tmp1 = UnityEngine.Object.Instantiate$3(UnityEngine.GameObject, this._prefabDictionary.getItem(key), position.$clone(), rotation.$clone(), this._poolParent);
+                        return tmp1;
+                    }
+                } else {
+                    UnityEngine.Debug.LogError$2("Pool with key: " + System.Enum.toString(ObjectPool._TypeGameObjectEnum, key) + " doesn't exist");
+                    return null;
+                }
+            },
+            /*ObjectPool.Pooling.SpawnFromPool end.*/
+
+            /*ObjectPool.Pooling.ReturnToPool start.*/
+            ReturnToPool: function (key, gameObject) {
+if ( TRACE ) { TRACE( "ObjectPool.Pooling#ReturnToPool", this ); }
+
+                if (this._poolDictionary.containsKey(key)) {
+                    gameObject.transform.SetParent(this._poolParent);
+                    gameObject.SetActive(false);
+                    this._poolDictionary.getItem(key).Enqueue(gameObject);
+                } else {
+                    UnityEngine.Debug.LogError$2("Pool with key: " + System.Enum.toString(ObjectPool._TypeGameObjectEnum, key) + " doesn't exist");
+                }
+            },
+            /*ObjectPool.Pooling.ReturnToPool end.*/
+
+
+        }
+    });
+    /*ObjectPool.Pooling end.*/
+
     /*OtherDummyScript start.*/
     Bridge.define("OtherDummyScript", {
         inherits: [UnityEngine.MonoBehaviour]
@@ -139,6 +244,7 @@ if ( TRACE ) { TRACE( "PlayableAdsManager#Instance#get", this ); }
             _tileRoot: null,
             _slotRootPrefab: null,
             _spriteSheetData: null,
+            _collectEffectPrefab: null,
             tileTapSound: null,
             tileCollectSound: null,
             unCollectSound: null,
@@ -184,6 +290,7 @@ if ( TRACE ) { TRACE( "PlayableAdsManager#Start", this ); }
                 this.SlotHolder = new ProjectGamePlay.SlotHolder(this._slotRootPrefab);
                 var dictMap = ProjectGamePlay.MapGenerate.GenerateTestMap(24, this._spriteSheetData, this._tilePrefab, this._tileRoot);
                 this._listTile = dictMap;
+                ObjectPool.Pooling.Instance.CreatePool(ObjectPool._TypeGameObjectEnum.CollectEffect, this._collectEffectPrefab, 3);
             },
             /*PlayableAdsManager.Start end.*/
 
@@ -721,7 +828,6 @@ if ( TRACE ) { TRACE( "ProjectGamePlay.Tile#OnTileCollect", this ); }
                 this.SetTileMovingLayer();
                 this._animator.SetBool$1("IsMoveToSlot", true);
                 item.Item2.ContainedTile = this;
-                PlayableAdsManager.Instance.AddCollectTile(this._tileId, this);
             },
             /*ProjectGamePlay.Tile.OnTileCollect end.*/
 
@@ -729,7 +835,6 @@ if ( TRACE ) { TRACE( "ProjectGamePlay.Tile#OnTileCollect", this ); }
             AnimCollect: function () {
 if ( TRACE ) { TRACE( "ProjectGamePlay.Tile#AnimCollect", this ); }
 
-                UnityEngine.Debug.Log$1("AnimCollect");
                 this._animator.SetBool$1("IsCollected", true);
             },
             /*ProjectGamePlay.Tile.AnimCollect end.*/
@@ -805,6 +910,64 @@ if ( TRACE ) { TRACE( "ProjectGamePlay.Tile#ReturnToBlockLayer", this ); }
             },
             /*ProjectGamePlay.Tile.ReturnToBlockLayer end.*/
 
+            /*ProjectGamePlay.Tile.OnTileInSlot start.*/
+            OnTileInSlot: function () {
+if ( TRACE ) { TRACE( "ProjectGamePlay.Tile#OnTileInSlot", this ); }
+
+                UnityEngine.Debug.Log$1("OnTileInSlot");
+                PlayableAdsManager.Instance.AddCollectTile(this._tileId, this);
+            },
+            /*ProjectGamePlay.Tile.OnTileInSlot end.*/
+
+            /*ProjectGamePlay.Tile.WaitForCompleteParticle start.*/
+            WaitForCompleteParticle: function (ps) {
+if ( TRACE ) { TRACE( "ProjectGamePlay.Tile#WaitForCompleteParticle", this ); }
+
+                var $step = 0,
+                    $jumpFromFinally,
+                    $returnValue,
+                    $async_e;
+
+                var $enumerator = new Bridge.GeneratorEnumerator(Bridge.fn.bind(this, function () {
+                    try {
+                        for (;;) {
+                            switch ($step) {
+                                case 0: {
+                                    if ( ps.isPlaying ) {
+                                            $step = 1;
+                                            continue;
+                                        } 
+                                        $step = 3;
+                                        continue;
+                                }
+                                case 1: {
+                                    $enumerator.current = new UnityEngine.WaitForSeconds(0.1);
+                                        $step = 2;
+                                        return true;
+                                }
+                                case 2: {
+                                    
+                                        $step = 0;
+                                        continue;
+                                }
+                                case 3: {
+                                    ObjectPool.Pooling.Instance.ReturnToPool(ObjectPool._TypeGameObjectEnum.CollectEffect, ps.gameObject);
+
+                                }
+                                default: {
+                                    return false;
+                                }
+                            }
+                        }
+                    } catch($async_e1) {
+                        $async_e = System.Exception.create($async_e1);
+                        throw $async_e;
+                    }
+                }));
+                return $enumerator;
+            },
+            /*ProjectGamePlay.Tile.WaitForCompleteParticle end.*/
+
             /*ProjectGamePlay.Tile.OnCompleteMoveToSlot start.*/
             OnCompleteMoveToSlot: function () {
 if ( TRACE ) { TRACE( "ProjectGamePlay.Tile#OnCompleteMoveToSlot", this ); }
@@ -812,6 +975,9 @@ if ( TRACE ) { TRACE( "ProjectGamePlay.Tile#OnCompleteMoveToSlot", this ); }
                 this._animator.SetBool$1("IsMoveToSlot", false);
                 this._backGroundSprite.sortingOrder = 1;
                 this._iconSprite.sortingOrder = 2;
+                var t = ObjectPool.Pooling.Instance.SpawnFromPool(ObjectPool._TypeGameObjectEnum.CollectEffect, this.transform.position.$clone(), pc.Quat.IDENTITY.clone()).GetComponent(UnityEngine.ParticleSystem);
+                t.Play();
+                this.StartCoroutine$1(this.WaitForCompleteParticle(t));
             },
             /*ProjectGamePlay.Tile.OnCompleteMoveToSlot end.*/
 
@@ -888,14 +1054,14 @@ if ( TRACE ) { TRACE( "ProjectGamePlay.TileDataController#GetRandomTileId", this
 
     if ( MODULE_reflection ) {
     var $m = Bridge.setMetadata,
-        $n = ["System","System.Collections.Generic","UnityEngine","ProjectGamePlay","UnityEngine.UI"];
+        $n = ["System","System.Collections.Generic","UnityEngine","ProjectGamePlay","UnityEngine.UI","ObjectPool","System.Collections"];
 
     /*HandController start.*/
     $m("HandController", function () { return {"att":1048577,"a":2,"m":[{"a":2,"isSynthetic":true,"n":".ctor","t":1,"sn":"ctor"},{"a":1,"n":"FixedUpdate","t":8,"sn":"FixedUpdate","rt":$n[0].Void},{"a":1,"n":"_isCompleteSegment","t":4,"rt":$n[0].Boolean,"sn":"_isCompleteSegment","box":function ($v) { return Bridge.box($v, System.Boolean, System.Boolean.toString);}},{"a":1,"n":"_isCompleteSetVar","t":4,"rt":$n[0].Boolean,"sn":"_isCompleteSetVar","box":function ($v) { return Bridge.box($v, System.Boolean, System.Boolean.toString);}},{"a":1,"n":"_isCompleteTutorial","t":4,"rt":$n[0].Boolean,"sn":"_isCompleteTutorial","box":function ($v) { return Bridge.box($v, System.Boolean, System.Boolean.toString);}},{"a":1,"n":"_listTile","t":4,"rt":$n[1].List$1(ProjectGamePlay.Tile),"sn":"_listTile"},{"a":1,"n":"_pos","t":4,"rt":$n[2].Vector3,"sn":"_pos"},{"a":1,"n":"_time","t":4,"rt":$n[0].Single,"sn":"_time","box":function ($v) { return Bridge.box($v, System.Single, System.Single.format, System.Single.getHashCode);}},{"a":1,"n":"_timeFrame","t":4,"rt":$n[0].Single,"sn":"_timeFrame","box":function ($v) { return Bridge.box($v, System.Single, System.Single.format, System.Single.getHashCode);}}]}; }, $n);
     /*HandController end.*/
 
     /*PlayableAdsManager start.*/
-    $m("PlayableAdsManager", function () { return {"att":1048577,"a":2,"m":[{"a":2,"isSynthetic":true,"n":".ctor","t":1,"sn":"ctor"},{"a":2,"n":"AddCollectTile","t":8,"pi":[{"n":"tileId","pt":$n[0].Int32,"ps":0},{"n":"tile","pt":$n[3].Tile,"ps":1}],"sn":"AddCollectTile","rt":$n[0].Void,"p":[$n[0].Int32,$n[3].Tile]},{"a":2,"n":"AddTile","t":8,"pi":[{"n":"tileId","pt":$n[0].Int32,"ps":0},{"n":"tile","pt":$n[3].Tile,"ps":1}],"sn":"AddTile","rt":$n[0].Void,"p":[$n[0].Int32,$n[3].Tile]},{"a":1,"n":"Awake","t":8,"sn":"Awake","rt":$n[0].Void},{"a":2,"n":"GetTile","t":8,"pi":[{"n":"tileId","pt":$n[0].Int32,"ps":0}],"sn":"GetTile","rt":$n[1].List$1(ProjectGamePlay.Tile),"p":[$n[0].Int32]},{"a":2,"n":"LateUpdate","t":8,"sn":"LateUpdate","rt":$n[0].Void},{"a":1,"n":"ShowPopUpPlayNow","t":8,"sn":"ShowPopUpPlayNow","rt":$n[0].Void},{"a":1,"n":"Start","t":8,"sn":"Start","rt":$n[0].Void},{"a":2,"n":"Instance","is":true,"t":16,"rt":PlayableAdsManager,"g":{"a":2,"n":"get_Instance","t":8,"rt":PlayableAdsManager,"fg":"Instance","is":true},"fn":"Instance"},{"a":2,"n":"SlotHolder","t":16,"rt":$n[3].SlotHolder,"g":{"a":2,"n":"get_SlotHolder","t":8,"rt":$n[3].SlotHolder,"fg":"SlotHolder"},"s":{"a":2,"n":"set_SlotHolder","t":8,"p":[$n[3].SlotHolder],"rt":$n[0].Void,"fs":"SlotHolder"},"fn":"SlotHolder"},{"a":2,"n":"SpriteSheetData","t":16,"rt":$n[3].SpriteSheetData,"g":{"a":2,"n":"get_SpriteSheetData","t":8,"rt":$n[3].SpriteSheetData,"fg":"SpriteSheetData"},"fn":"SpriteSheetData"},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"_backgroundPanel","t":4,"rt":$n[4].Image,"sn":"_backgroundPanel"},{"a":1,"n":"_currentSelectedTile","t":4,"rt":$n[3].Tile,"sn":"_currentSelectedTile"},{"a":1,"n":"_dictCollectTile","t":4,"rt":$n[1].Dictionary$2(System.Int32,System.Collections.Generic.List$1(ProjectGamePlay.Tile)),"sn":"_dictCollectTile"},{"a":1,"n":"_listTile","t":4,"rt":$n[1].Dictionary$2(System.Int32,System.Collections.Generic.List$1(ProjectGamePlay.Tile)),"sn":"_listTile"},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"_slotRootPrefab","t":4,"rt":$n[2].Transform,"sn":"_slotRootPrefab"},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"_spriteSheetData","t":4,"rt":$n[3].SpriteSheetData,"sn":"_spriteSheetData"},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"_tilePrefab","t":4,"rt":$n[2].GameObject,"sn":"_tilePrefab"},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"_tileRoot","t":4,"rt":$n[2].GameObject,"sn":"_tileRoot"},{"a":1,"n":"_timer","t":4,"rt":$n[0].Single,"sn":"_timer","box":function ($v) { return Bridge.box($v, System.Single, System.Single.format, System.Single.getHashCode);}},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"_title","t":4,"rt":$n[2].GameObject,"sn":"_title"},{"a":1,"n":"instance","is":true,"t":4,"rt":PlayableAdsManager,"sn":"instance"},{"a":1,"n":"numOfPlayerTurn","t":4,"rt":$n[0].Int32,"sn":"numOfPlayerTurn","box":function ($v) { return Bridge.box($v, System.Int32);}},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"playNowButton","t":4,"rt":$n[4].Button,"sn":"playNowButton"},{"a":2,"n":"tileCollectSound","t":4,"rt":$n[2].AudioSource,"sn":"tileCollectSound"},{"a":2,"n":"tileTapSound","t":4,"rt":$n[2].AudioSource,"sn":"tileTapSound"},{"a":2,"n":"unCollectSound","t":4,"rt":$n[2].AudioSource,"sn":"unCollectSound"},{"a":1,"backing":true,"n":"<SlotHolder>k__BackingField","t":4,"rt":$n[3].SlotHolder,"sn":"SlotHolder"}]}; }, $n);
+    $m("PlayableAdsManager", function () { return {"att":1048577,"a":2,"m":[{"a":2,"isSynthetic":true,"n":".ctor","t":1,"sn":"ctor"},{"a":2,"n":"AddCollectTile","t":8,"pi":[{"n":"tileId","pt":$n[0].Int32,"ps":0},{"n":"tile","pt":$n[3].Tile,"ps":1}],"sn":"AddCollectTile","rt":$n[0].Void,"p":[$n[0].Int32,$n[3].Tile]},{"a":2,"n":"AddTile","t":8,"pi":[{"n":"tileId","pt":$n[0].Int32,"ps":0},{"n":"tile","pt":$n[3].Tile,"ps":1}],"sn":"AddTile","rt":$n[0].Void,"p":[$n[0].Int32,$n[3].Tile]},{"a":1,"n":"Awake","t":8,"sn":"Awake","rt":$n[0].Void},{"a":2,"n":"GetTile","t":8,"pi":[{"n":"tileId","pt":$n[0].Int32,"ps":0}],"sn":"GetTile","rt":$n[1].List$1(ProjectGamePlay.Tile),"p":[$n[0].Int32]},{"a":2,"n":"LateUpdate","t":8,"sn":"LateUpdate","rt":$n[0].Void},{"a":1,"n":"ShowPopUpPlayNow","t":8,"sn":"ShowPopUpPlayNow","rt":$n[0].Void},{"a":1,"n":"Start","t":8,"sn":"Start","rt":$n[0].Void},{"a":2,"n":"Instance","is":true,"t":16,"rt":PlayableAdsManager,"g":{"a":2,"n":"get_Instance","t":8,"rt":PlayableAdsManager,"fg":"Instance","is":true},"fn":"Instance"},{"a":2,"n":"SlotHolder","t":16,"rt":$n[3].SlotHolder,"g":{"a":2,"n":"get_SlotHolder","t":8,"rt":$n[3].SlotHolder,"fg":"SlotHolder"},"s":{"a":2,"n":"set_SlotHolder","t":8,"p":[$n[3].SlotHolder],"rt":$n[0].Void,"fs":"SlotHolder"},"fn":"SlotHolder"},{"a":2,"n":"SpriteSheetData","t":16,"rt":$n[3].SpriteSheetData,"g":{"a":2,"n":"get_SpriteSheetData","t":8,"rt":$n[3].SpriteSheetData,"fg":"SpriteSheetData"},"fn":"SpriteSheetData"},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"_backgroundPanel","t":4,"rt":$n[4].Image,"sn":"_backgroundPanel"},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"_collectEffectPrefab","t":4,"rt":$n[2].GameObject,"sn":"_collectEffectPrefab"},{"a":1,"n":"_currentSelectedTile","t":4,"rt":$n[3].Tile,"sn":"_currentSelectedTile"},{"a":1,"n":"_dictCollectTile","t":4,"rt":$n[1].Dictionary$2(System.Int32,System.Collections.Generic.List$1(ProjectGamePlay.Tile)),"sn":"_dictCollectTile"},{"a":1,"n":"_listTile","t":4,"rt":$n[1].Dictionary$2(System.Int32,System.Collections.Generic.List$1(ProjectGamePlay.Tile)),"sn":"_listTile"},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"_slotRootPrefab","t":4,"rt":$n[2].Transform,"sn":"_slotRootPrefab"},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"_spriteSheetData","t":4,"rt":$n[3].SpriteSheetData,"sn":"_spriteSheetData"},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"_tilePrefab","t":4,"rt":$n[2].GameObject,"sn":"_tilePrefab"},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"_tileRoot","t":4,"rt":$n[2].GameObject,"sn":"_tileRoot"},{"a":1,"n":"_timer","t":4,"rt":$n[0].Single,"sn":"_timer","box":function ($v) { return Bridge.box($v, System.Single, System.Single.format, System.Single.getHashCode);}},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"_title","t":4,"rt":$n[2].GameObject,"sn":"_title"},{"a":1,"n":"instance","is":true,"t":4,"rt":PlayableAdsManager,"sn":"instance"},{"a":1,"n":"numOfPlayerTurn","t":4,"rt":$n[0].Int32,"sn":"numOfPlayerTurn","box":function ($v) { return Bridge.box($v, System.Int32);}},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"playNowButton","t":4,"rt":$n[4].Button,"sn":"playNowButton"},{"a":2,"n":"tileCollectSound","t":4,"rt":$n[2].AudioSource,"sn":"tileCollectSound"},{"a":2,"n":"tileTapSound","t":4,"rt":$n[2].AudioSource,"sn":"tileTapSound"},{"a":2,"n":"unCollectSound","t":4,"rt":$n[2].AudioSource,"sn":"unCollectSound"},{"a":1,"backing":true,"n":"<SlotHolder>k__BackingField","t":4,"rt":$n[3].SlotHolder,"sn":"SlotHolder"}]}; }, $n);
     /*PlayableAdsManager end.*/
 
     /*PlayNowButton start.*/
@@ -905,6 +1071,14 @@ if ( TRACE ) { TRACE( "ProjectGamePlay.TileDataController#GetRandomTileId", this
     /*OtherDummyScript start.*/
     $m("OtherDummyScript", function () { return {"att":1048577,"a":2,"m":[{"a":2,"isSynthetic":true,"n":".ctor","t":1,"sn":"ctor"}]}; }, $n);
     /*OtherDummyScript end.*/
+
+    /*ObjectPool._TypeGameObjectEnum start.*/
+    $m("ObjectPool._TypeGameObjectEnum", function () { return {"att":257,"a":2,"m":[{"a":2,"isSynthetic":true,"n":".ctor","t":1,"sn":"ctor"},{"a":2,"n":"CollectEffect","is":true,"t":4,"rt":$n[5]._TypeGameObjectEnum,"sn":"CollectEffect","box":function ($v) { return Bridge.box($v, ObjectPool._TypeGameObjectEnum, System.Enum.toStringFn(ObjectPool._TypeGameObjectEnum));}},{"a":2,"n":"Slot","is":true,"t":4,"rt":$n[5]._TypeGameObjectEnum,"sn":"Slot","box":function ($v) { return Bridge.box($v, ObjectPool._TypeGameObjectEnum, System.Enum.toStringFn(ObjectPool._TypeGameObjectEnum));}},{"a":2,"n":"Tile","is":true,"t":4,"rt":$n[5]._TypeGameObjectEnum,"sn":"Tile","box":function ($v) { return Bridge.box($v, ObjectPool._TypeGameObjectEnum, System.Enum.toStringFn(ObjectPool._TypeGameObjectEnum));}}]}; }, $n);
+    /*ObjectPool._TypeGameObjectEnum end.*/
+
+    /*ObjectPool.Pooling start.*/
+    $m("ObjectPool.Pooling", function () { return {"att":1048577,"a":2,"m":[{"a":1,"n":".ctor","t":1,"sn":"ctor"},{"a":2,"n":"CreatePool","t":8,"pi":[{"n":"key","pt":$n[5]._TypeGameObjectEnum,"ps":0},{"n":"prefab","pt":$n[2].GameObject,"ps":1},{"n":"size","pt":$n[0].Int32,"ps":2}],"sn":"CreatePool","rt":$n[0].Void,"p":[$n[5]._TypeGameObjectEnum,$n[2].GameObject,$n[0].Int32]},{"a":2,"n":"ReturnToPool","t":8,"pi":[{"n":"key","pt":$n[5]._TypeGameObjectEnum,"ps":0},{"n":"gameObject","pt":$n[2].GameObject,"ps":1}],"sn":"ReturnToPool","rt":$n[0].Void,"p":[$n[5]._TypeGameObjectEnum,$n[2].GameObject]},{"a":2,"n":"SpawnFromPool","t":8,"pi":[{"n":"key","pt":$n[5]._TypeGameObjectEnum,"ps":0},{"n":"position","pt":$n[2].Vector3,"ps":1},{"n":"rotation","pt":$n[2].Quaternion,"ps":2}],"sn":"SpawnFromPool","rt":$n[2].GameObject,"p":[$n[5]._TypeGameObjectEnum,$n[2].Vector3,$n[2].Quaternion]},{"a":2,"n":"Instance","is":true,"t":16,"rt":$n[5].Pooling,"g":{"a":2,"n":"get_Instance","t":8,"rt":$n[5].Pooling,"fg":"Instance","is":true},"fn":"Instance"},{"a":1,"n":"_instance","is":true,"t":4,"rt":$n[5].Pooling,"sn":"_instance"},{"a":1,"n":"_poolDictionary","t":4,"rt":$n[1].Dictionary$2(ObjectPool._TypeGameObjectEnum,System.Collections.Generic.Queue$1(UnityEngine.GameObject)),"sn":"_poolDictionary"},{"a":1,"n":"_poolParent","t":4,"rt":$n[2].Transform,"sn":"_poolParent"},{"a":1,"n":"_prefabDictionary","t":4,"rt":$n[1].Dictionary$2(ObjectPool._TypeGameObjectEnum,UnityEngine.GameObject),"sn":"_prefabDictionary"}]}; }, $n);
+    /*ObjectPool.Pooling end.*/
 
     /*ProjectGamePlay.MapGenerate start.*/
     $m("ProjectGamePlay.MapGenerate", function () { return {"att":1048577,"a":2,"m":[{"a":2,"isSynthetic":true,"n":".ctor","t":1,"sn":"ctor"},{"a":2,"n":"GenerateTestMap","is":true,"t":8,"pi":[{"n":"tilePrefab","pt":$n[2].GameObject,"ps":0},{"n":"tileRoot","pt":$n[2].GameObject,"ps":1}],"sn":"GenerateTestMap$1","rt":$n[1].Dictionary$2(System.Int32,System.Collections.Generic.List$1(ProjectGamePlay.Tile)),"p":[$n[2].GameObject,$n[2].GameObject]},{"a":2,"n":"GenerateTestMap","is":true,"t":8,"pi":[{"n":"numOfTiles","pt":$n[0].Int32,"ps":0},{"n":"spriteSheet","pt":$n[3].SpriteSheetData,"ps":1},{"n":"tilePrefab","pt":$n[2].GameObject,"ps":2},{"n":"tileRoot","pt":$n[2].GameObject,"ps":3}],"sn":"GenerateTestMap","rt":$n[1].Dictionary$2(System.Int32,System.Collections.Generic.List$1(ProjectGamePlay.Tile)),"p":[$n[0].Int32,$n[3].SpriteSheetData,$n[2].GameObject,$n[2].GameObject]}]}; }, $n);
@@ -933,7 +1107,7 @@ if ( TRACE ) { TRACE( "ProjectGamePlay.TileDataController#GetRandomTileId", this
     /*ProjectGamePlay.SpriteSheetData end.*/
 
     /*ProjectGamePlay.Tile start.*/
-    $m("ProjectGamePlay.Tile", function () { return {"att":1048577,"a":2,"m":[{"a":2,"isSynthetic":true,"n":".ctor","t":1,"sn":"ctor"},{"a":2,"n":"AnimCollect","t":8,"sn":"AnimCollect","rt":$n[0].Void},{"a":2,"n":"AnimUnCollected","t":8,"sn":"AnimUnCollected","rt":$n[0].Void},{"a":1,"n":"FixedUpdate","t":8,"sn":"FixedUpdate","rt":$n[0].Void},{"a":2,"n":"GetPosition","t":8,"sn":"GetPosition","rt":$n[2].Vector3},{"a":2,"n":"OnCompleteMoveToSlot","t":8,"sn":"OnCompleteMoveToSlot","rt":$n[0].Void},{"a":2,"n":"OnTileCollect","t":8,"sn":"OnTileCollect","rt":$n[0].Void},{"a":2,"n":"ReturnToBlockLayer","t":8,"sn":"ReturnToBlockLayer","rt":$n[0].Void},{"a":2,"n":"SetSpriteIcon","t":8,"pi":[{"n":"index","pt":$n[0].Int32,"ps":0}],"sn":"SetSpriteIcon","rt":$n[0].Void,"p":[$n[0].Int32]},{"a":2,"n":"SetTargetPosToMove","t":8,"pi":[{"n":"targetPos","pt":$n[2].Vector3,"ps":0}],"sn":"SetTargetPosToMove","rt":$n[0].Void,"p":[$n[2].Vector3]},{"a":2,"n":"SetTileMovingLayer","t":8,"sn":"SetTileMovingLayer","rt":$n[0].Void},{"a":1,"n":"Start","t":8,"sn":"Start","rt":$n[0].Void},{"a":2,"n":"Animator","t":16,"rt":$n[2].Animator,"g":{"a":2,"n":"get_Animator","t":8,"rt":$n[2].Animator,"fg":"Animator"},"fn":"Animator"},{"a":2,"n":"Id","t":16,"rt":$n[0].Int32,"g":{"a":2,"n":"get_Id","t":8,"rt":$n[0].Int32,"fg":"Id","box":function ($v) { return Bridge.box($v, System.Int32);}},"s":{"a":2,"n":"set_Id","t":8,"p":[$n[0].Int32],"rt":$n[0].Void,"fs":"Id"},"fn":"Id"},{"a":2,"n":"TileState","t":16,"rt":$n[3].TileStateEnum,"g":{"a":2,"n":"get_TileState","t":8,"rt":$n[3].TileStateEnum,"fg":"TileState","box":function ($v) { return Bridge.box($v, ProjectGamePlay.TileStateEnum, System.Enum.toStringFn(ProjectGamePlay.TileStateEnum));}},"s":{"a":2,"n":"set_TileState","t":8,"p":[$n[3].TileStateEnum],"rt":$n[0].Void,"fs":"TileState"},"fn":"TileState"},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"_animator","t":4,"rt":$n[2].Animator,"sn":"_animator"},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"_backGroundSprite","t":4,"rt":$n[2].SpriteRenderer,"sn":"_backGroundSprite"},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"_iconSprite","t":4,"rt":$n[2].SpriteRenderer,"sn":"_iconSprite"},{"a":1,"n":"_isMoving","t":4,"rt":$n[0].Boolean,"sn":"_isMoving","box":function ($v) { return Bridge.box($v, System.Boolean, System.Boolean.toString);}},{"a":1,"n":"_isSelect","t":4,"rt":$n[0].Boolean,"sn":"_isSelect","box":function ($v) { return Bridge.box($v, System.Boolean, System.Boolean.toString);}},{"a":1,"n":"_targetPos","t":4,"rt":$n[2].Vector3,"sn":"_targetPos"},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"_tileId","t":4,"rt":$n[0].Int32,"sn":"_tileId","box":function ($v) { return Bridge.box($v, System.Int32);}},{"a":1,"n":"_tileState","t":4,"rt":$n[3].TileStateEnum,"sn":"_tileState","box":function ($v) { return Bridge.box($v, ProjectGamePlay.TileStateEnum, System.Enum.toStringFn(ProjectGamePlay.TileStateEnum));}}]}; }, $n);
+    $m("ProjectGamePlay.Tile", function () { return {"att":1048577,"a":2,"m":[{"a":2,"isSynthetic":true,"n":".ctor","t":1,"sn":"ctor"},{"a":2,"n":"AnimCollect","t":8,"sn":"AnimCollect","rt":$n[0].Void},{"a":2,"n":"AnimUnCollected","t":8,"sn":"AnimUnCollected","rt":$n[0].Void},{"a":1,"n":"FixedUpdate","t":8,"sn":"FixedUpdate","rt":$n[0].Void},{"a":2,"n":"GetPosition","t":8,"sn":"GetPosition","rt":$n[2].Vector3},{"a":2,"n":"OnCompleteMoveToSlot","t":8,"sn":"OnCompleteMoveToSlot","rt":$n[0].Void},{"a":2,"n":"OnTileCollect","t":8,"sn":"OnTileCollect","rt":$n[0].Void},{"a":2,"n":"OnTileInSlot","t":8,"sn":"OnTileInSlot","rt":$n[0].Void},{"a":2,"n":"ReturnToBlockLayer","t":8,"sn":"ReturnToBlockLayer","rt":$n[0].Void},{"a":2,"n":"SetSpriteIcon","t":8,"pi":[{"n":"index","pt":$n[0].Int32,"ps":0}],"sn":"SetSpriteIcon","rt":$n[0].Void,"p":[$n[0].Int32]},{"a":2,"n":"SetTargetPosToMove","t":8,"pi":[{"n":"targetPos","pt":$n[2].Vector3,"ps":0}],"sn":"SetTargetPosToMove","rt":$n[0].Void,"p":[$n[2].Vector3]},{"a":2,"n":"SetTileMovingLayer","t":8,"sn":"SetTileMovingLayer","rt":$n[0].Void},{"a":1,"n":"Start","t":8,"sn":"Start","rt":$n[0].Void},{"a":1,"n":"WaitForCompleteParticle","t":8,"pi":[{"n":"ps","pt":$n[2].ParticleSystem,"ps":0}],"sn":"WaitForCompleteParticle","rt":$n[6].IEnumerator,"p":[$n[2].ParticleSystem]},{"a":2,"n":"Animator","t":16,"rt":$n[2].Animator,"g":{"a":2,"n":"get_Animator","t":8,"rt":$n[2].Animator,"fg":"Animator"},"fn":"Animator"},{"a":2,"n":"Id","t":16,"rt":$n[0].Int32,"g":{"a":2,"n":"get_Id","t":8,"rt":$n[0].Int32,"fg":"Id","box":function ($v) { return Bridge.box($v, System.Int32);}},"s":{"a":2,"n":"set_Id","t":8,"p":[$n[0].Int32],"rt":$n[0].Void,"fs":"Id"},"fn":"Id"},{"a":2,"n":"TileState","t":16,"rt":$n[3].TileStateEnum,"g":{"a":2,"n":"get_TileState","t":8,"rt":$n[3].TileStateEnum,"fg":"TileState","box":function ($v) { return Bridge.box($v, ProjectGamePlay.TileStateEnum, System.Enum.toStringFn(ProjectGamePlay.TileStateEnum));}},"s":{"a":2,"n":"set_TileState","t":8,"p":[$n[3].TileStateEnum],"rt":$n[0].Void,"fs":"TileState"},"fn":"TileState"},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"_animator","t":4,"rt":$n[2].Animator,"sn":"_animator"},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"_backGroundSprite","t":4,"rt":$n[2].SpriteRenderer,"sn":"_backGroundSprite"},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"_iconSprite","t":4,"rt":$n[2].SpriteRenderer,"sn":"_iconSprite"},{"a":1,"n":"_isMoving","t":4,"rt":$n[0].Boolean,"sn":"_isMoving","box":function ($v) { return Bridge.box($v, System.Boolean, System.Boolean.toString);}},{"a":1,"n":"_isSelect","t":4,"rt":$n[0].Boolean,"sn":"_isSelect","box":function ($v) { return Bridge.box($v, System.Boolean, System.Boolean.toString);}},{"a":1,"n":"_targetPos","t":4,"rt":$n[2].Vector3,"sn":"_targetPos"},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"_tileId","t":4,"rt":$n[0].Int32,"sn":"_tileId","box":function ($v) { return Bridge.box($v, System.Int32);}},{"a":1,"n":"_tileState","t":4,"rt":$n[3].TileStateEnum,"sn":"_tileState","box":function ($v) { return Bridge.box($v, ProjectGamePlay.TileStateEnum, System.Enum.toStringFn(ProjectGamePlay.TileStateEnum));}}]}; }, $n);
     /*ProjectGamePlay.Tile end.*/
 
     }});
