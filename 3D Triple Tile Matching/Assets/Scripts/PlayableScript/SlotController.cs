@@ -26,6 +26,7 @@ namespace ProjectGamePlay
             {
                 return;
             }
+            ContainedTile.Index += 1;
             ContainedTile.SetTargetPosToMove(RightSlot.GetSlotPosition());
             rightSlot.ContainedTile = ContainedTile;
             ContainedTile = null;
@@ -38,6 +39,7 @@ namespace ProjectGamePlay
             if(LeftSlot == null){
                 return;
             }
+            ContainedTile.Index -= 1;
             ContainedTile.SetTargetPosToMove(LeftSlot.GetSlotPosition());
             leftSlot.ContainedTile = ContainedTile;
             ContainedTile = null;

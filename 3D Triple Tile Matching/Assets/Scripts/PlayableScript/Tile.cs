@@ -12,15 +12,10 @@ namespace ProjectGamePlay
         [SerializeField] private SpriteRenderer _iconSprite;
         private bool _isSelect = false;
         private bool _isMoving = false;
+        private int _index = 0;
         private Vector3 _targetPos;
 
         private TileStateEnum _tileState = TileStateEnum.UnCollected;
-
-        private void Start()
-        {
-            //_backGroundSprite = GetComponent<SpriteRenderer>();
-            //PlayableAdsManager.Instance.AddTile(_tileId, this);
-        }
 
         public void OnTileCollect()
         {
@@ -32,6 +27,7 @@ namespace ProjectGamePlay
             var item = PlayableAdsManager.Instance.SlotHolder.GetSlotFreeForTile(_tileId);
             SetTargetPosToMove(item.Item2.GetSlotPosition());
             SetTileMovingLayer();
+            _index = item.Item1;
             _animator.SetBool("IsMoveToSlot", true);
             item.Item2.ContainedTile = this;
         }
@@ -94,8 +90,10 @@ namespace ProjectGamePlay
 
         public void OnTileInSlot()
         {
-            Debug.Log("OnTileInSlot");
-            PlayableAdsManager.Instance.AddCollectTile(_tileId, this);
+            if(PlayableAdsManager.Instance.SlotHolder.ListContainedTileId[_tileId] == 3){
+                PlayableAdsManager.Instance.SlotHolder.CollectTripleTile(_tileId, _index);
+            }
+            //PlayableAdsManager.Instance.AddCollectTile(_tileId, this);
         }
 
         private IEnumerator WaitForCompleteParticle(ParticleSystem ps){
@@ -126,6 +124,11 @@ namespace ProjectGamePlay
         {
             get => _tileId;
             set => _tileId = value;
+        }
+
+        public int Index{
+            get => _index;
+            set => _index = value;
         }
 
         public Animator Animator

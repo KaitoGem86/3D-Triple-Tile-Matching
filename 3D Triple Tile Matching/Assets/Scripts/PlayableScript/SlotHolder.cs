@@ -73,5 +73,40 @@ namespace ProjectGamePlay
             _numOfTilesInSlots++;
             return (index - 1, _usedSlots[index - 1]);
         }
+
+        public void CollectTripleTile(int id, int index)
+        {
+
+            _numOfTilesInSlots -= 3;
+            _listContainedTileId.Remove(id);
+            int i = index;
+            for (int j = 0; j < 3; j++)
+            {
+                //_usedSlots[index - j].ContainedTile.TileState = Tile._TileStateEnum.Collected;
+                //_GameManager.Instance.BoosterSystem.ListHintTileManager.RemoveTile(_usedSlots[index - j].ContainedTile);
+                _usedSlots[index - j].ContainedTile.AnimCollect();
+                // sequence.Join(_usedSlots[index - j].ContainedTile.AnimatedCollected());
+            }
+            // sequence.OnComplete(() =>
+            // {
+            //     _GameManager.Instance.BoosterSystem.TileMovedManager.RemoveTileMovedWhenCollect(index);
+            //     for (i = index + 1; i < _currentFirstFreeSlotIndex; i++)
+            //     {
+            //         _usedSlots[i].MoveTileToLeftSlotWithStep(3);
+            //     }
+            //     _currentFirstFreeSlotIndex -= 3;
+            //     _GameManager.Instance.NumOfTile -= 3;
+            //     _GameManager.Instance.NumOfFreeSlot = _numberOfSlots - _numOfTilesInSlots;
+            // });
+        }
+
+        public Dictionary<int, int> ListContainedTileId
+        {
+            get
+            {
+                return _listContainedTileId;
+            }
+        }
+
     }
 }
