@@ -48,17 +48,14 @@ namespace ProjectGamePlay
             if (!_listContainedTileId.ContainsKey(id))
             {
                 _numOfTilesInSlots++;
-                _listContainedTileId.Add(id, 1);
                 return GetSlotFree();
             }
 
             if(_listContainedTileId[id] == 0){
                 _numOfTilesInSlots++;
-                _listContainedTileId[id] = 1;
                 return GetSlotFree();
             }
 
-            _listContainedTileId[id] += 1;
             int index = _currentFirstFreeSlotIndex + 1;
             for (int i = _currentFirstFreeSlotIndex - 1; i > 0; i--)
             {
@@ -74,6 +71,21 @@ namespace ProjectGamePlay
             _currentFirstFreeSlotIndex++;
             _numOfTilesInSlots++;
             return (index - 1, _usedSlots[index - 1]);
+        }
+
+        public void AddIdTile(int id){
+            if (!_listContainedTileId.ContainsKey(id))
+            {
+                _listContainedTileId.Add(id, 1);
+                return;
+            }
+
+            if(_listContainedTileId[id] == 0){
+                _listContainedTileId[id] = 1;
+                return;
+            }
+
+            _listContainedTileId[id] += 1;
         }
 
         public async void CollectTripleTile(int id, int index)

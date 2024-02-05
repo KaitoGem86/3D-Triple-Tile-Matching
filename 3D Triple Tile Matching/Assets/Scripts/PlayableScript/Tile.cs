@@ -90,6 +90,7 @@ namespace ProjectGamePlay
 
         public void OnTileInSlot()
         {
+            PlayableAdsManager.Instance.SlotHolder.AddIdTile(_tileId);
             if(PlayableAdsManager.Instance.SlotHolder.ListContainedTileId[_tileId] == 3){
                 PlayableAdsManager.Instance.SlotHolder.CollectTripleTile(_tileId, _index);
             }
