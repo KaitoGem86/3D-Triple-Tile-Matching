@@ -44,14 +44,17 @@ public class PlayableAdsManager : MonoBehaviour
     [SerializeField] private GameObject _tilePrefab;
     [SerializeField] private GameObject _tileRoot;
     [SerializeField] private Transform _slotRootPrefab;
+    [SerializeField] private SpriteSheetData _spriteSheetData;
 
     public AudioSource tileTapSound;
     public AudioSource tileCollectSound;
     public AudioSource unCollectSound;
 
-    private void Start(){
+    private void Start()
+    {
         SlotHolder = new ProjectGamePlay.SlotHolder(_slotRootPrefab);
-        var dictMap = ProjectGamePlay.MapGenerate.GenerateTestMap(_tilePrefab, _tileRoot);
+        var dictMap = MapGenerate.GenerateTestMap(24, _spriteSheetData, _tilePrefab, _tileRoot);
+        _listTile = dictMap;
     }
 
     public void AddCollectTile(int tileId, ProjectGamePlay.Tile tile)
@@ -132,7 +135,7 @@ public class PlayableAdsManager : MonoBehaviour
 
     public void LateUpdate()
     {
-        if (numOfPlayerTurn == 0 )
+        if (numOfPlayerTurn == 0)
             return;
         if (Input.touchCount <= 0)
             return;
@@ -140,7 +143,7 @@ public class PlayableAdsManager : MonoBehaviour
         Touch touch = Input.GetTouch(0);
         if (touch.phase == TouchPhase.Ended)
         {
-            if(_timer > 0.2f)
+            if (_timer > 0.2f)
             {
                 _currentSelectedTile.Animator.SetBool("IsSelect", false);
                 return;
@@ -179,4 +182,5 @@ public class PlayableAdsManager : MonoBehaviour
     }
 
     public ProjectGamePlay.SlotHolder SlotHolder { get; set; }
+    public SpriteSheetData SpriteSheetData { get => _spriteSheetData; }
 }

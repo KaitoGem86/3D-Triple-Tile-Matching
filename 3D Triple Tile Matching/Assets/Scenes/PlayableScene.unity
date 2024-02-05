@@ -1731,6 +1731,7 @@ MonoBehaviour:
   _tilePrefab: {fileID: 3435983278738778368, guid: ce8d30a483afbb040bc8d88d6f43bfe6, type: 3}
   _tileRoot: {fileID: 950618668}
   _slotRootPrefab: {fileID: 2082639306}
+  _spriteSheetData: {fileID: 11400000, guid: 3a0ffcf1a3afd444ea1d17152979eaf3, type: 2}
   tileTapSound: {fileID: 534040147}
   tileCollectSound: {fileID: 263023223}
   unCollectSound: {fileID: 726091529}
