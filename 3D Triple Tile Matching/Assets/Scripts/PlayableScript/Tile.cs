@@ -78,9 +78,14 @@ namespace ProjectGamePlay
             return pos;
         }
 
-        private void SetTileMovingLayer(){
+        public void SetTileMovingLayer(){
             _backGroundSprite.sortingOrder = 3;
             _iconSprite.sortingOrder = 4;
+        }
+
+        public void ReturnToBlockLayer(){
+            _backGroundSprite.sortingOrder = 1;
+            _iconSprite.sortingOrder = 2;
         }
 
         public void OnCompleteMoveToSlot(){

@@ -146,6 +146,7 @@ public class PlayableAdsManager : MonoBehaviour
             if (_timer > 0.2f)
             {
                 _currentSelectedTile.Animator.SetBool("IsSelect", false);
+                _currentSelectedTile.ReturnToBlockLayer();
                 return;
             }
             Vector3 touchPosition = Camera.main.ScreenToWorldPoint(touch.position);
@@ -169,6 +170,7 @@ public class PlayableAdsManager : MonoBehaviour
                 {
                     _currentSelectedTile = hit.transform.GetComponent<ProjectGamePlay.Tile>();
                     _currentSelectedTile.Animator.SetBool("IsSelect", true);
+                    _currentSelectedTile.SetTileMovingLayer();
                 }
             }
         }
