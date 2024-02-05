@@ -34,7 +34,6 @@ public class PlayableAdsManager : MonoBehaviour
         Luna.Unity.Playable.InstallFullGame();
     }
 
-    private Dictionary<int, List<ProjectGamePlay.Tile>> _dictCollectTile;
     private Dictionary<int, List<ProjectGamePlay.Tile>> _listTile;
     private int numOfPlayerTurn = 3;
     private float _timer = 0;
@@ -54,77 +53,10 @@ public class PlayableAdsManager : MonoBehaviour
 
     private void Start()
     {
-        SlotHolder = new ProjectGamePlay.SlotHolder(_slotRootPrefab);
+        SlotHolder = new ProjectGamePlay.SlotHolder(_slotRootPrefab, 24);
         var dictMap = MapGenerate.GenerateTestMap(24, _spriteSheetData, _tilePrefab, _tileRoot);
         _listTile = dictMap;
         Pooling.Instance.CreatePool(_TypeGameObjectEnum.CollectEffect, _collectEffectPrefab, 3);
-    }
-
-    public void AddCollectTile(int tileId, ProjectGamePlay.Tile tile)
-    {
-        if (_dictCollectTile == null)
-        {
-            _dictCollectTile = new Dictionary<int, List<ProjectGamePlay.Tile>>();
-        }
-
-        if (_dictCollectTile.ContainsKey(tileId))
-        {
-            _dictCollectTile[tileId].Add(tile);
-        }
-        else
-        {
-            if (_dictCollectTile.Count != 0)
-            {
-                unCollectSound.Play();
-                tile.AnimUnCollected();
-                foreach (var item in _dictCollectTile)
-                {
-                    foreach (var tileItem in item.Value)
-                    {
-                        tileItem.AnimUnCollected();
-                    }
-                }
-                _dictCollectTile.Clear();
-                return;
-            }
-            else
-            {
-                _dictCollectTile.Add(tileId, new List<ProjectGamePlay.Tile> { tile });
-            }
-        }
-
-        if (_dictCollectTile[tileId].Count == 3)
-        {
-            tileCollectSound.Play();
-            foreach (var item in _dictCollectTile[tileId])
-            {
-                item.AnimCollect();
-                _listTile[tileId].Remove(item);
-            }
-            numOfPlayerTurn--;
-            if (numOfPlayerTurn == 0)
-            {
-                ShowPopUpPlayNow();
-            }
-            _dictCollectTile.Remove(tileId);
-        }
-    }
-
-    public void AddTile(int tileId, ProjectGamePlay.Tile tile)
-    {
-        if (_listTile == null)
-        {
-            _listTile = new Dictionary<int, List<ProjectGamePlay.Tile>>();
-        }
-
-        if (_listTile.ContainsKey(tileId))
-        {
-            _listTile[tileId].Add(tile);
-        }
-        else
-        {
-            _listTile.Add(tileId, new List<ProjectGamePlay.Tile> { tile });
-        }
     }
 
     public List<ProjectGamePlay.Tile> GetTile(int tileId)
@@ -179,7 +111,7 @@ public class PlayableAdsManager : MonoBehaviour
         }
     }
 
-    private void ShowPopUpPlayNow()
+    public void ShowPopUpPlayNow()
     {
         _backgroundPanel.gameObject.SetActive(true);
         _title.SetActive(true);

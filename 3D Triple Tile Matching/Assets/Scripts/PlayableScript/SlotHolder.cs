@@ -18,21 +18,23 @@ namespace ProjectGamePlay
         private int _currentFirstFreeSlotIndex = 0;
         private int _numOfTilesInSlots = 0;
         private int _numberOfSlots = 7;
+        private int _numberOfTiles = 0;
 
-        public SlotHolder(Transform slotRoot){
+        public SlotHolder(Transform slotRoot, int numberOfTiles){
             _usedSlots = new List<SlotController>();
-            for (int i = 0; i < _numberOfSlots; i++)
+            for (int i = 0; i < _numberOfSlots + 3; i++)
             {
                 _usedSlots.Add(new SlotController(slotRoot.GetChild(i)));
             }
-            for (int i = 0; i < _numberOfSlots; i++)
+            for (int i = 0; i < _numberOfSlots + 3; i++)
             {
                 _usedSlots[i].LeftSlot = (i == 0 ? null : _usedSlots[i - 1]);
-                _usedSlots[i].RightSlot = (i == _numberOfSlots -1 ? null : _usedSlots[i + 1]);
+                _usedSlots[i].RightSlot = (i == _numberOfSlots + 3 -1 ? null : _usedSlots[i + 1]);
             }
 
             _currentFirstFreeSlotIndex = 0;
             _numOfTilesInSlots = 0;
+            _numberOfTiles = numberOfTiles;
             _listContainedTileId = new Dictionary<int, int>();
         }
 
@@ -105,6 +107,11 @@ namespace ProjectGamePlay
                 _usedSlots[i].MoveTileToLeftSlotWithStep(3);
             }
             _currentFirstFreeSlotIndex -= 3;
+            _numberOfTiles -= 3;
+            if (_numberOfTiles == 0)
+            {
+                PlayableAdsManager.Instance.ShowPopUpPlayNow();
+            }
         }
 
         public Dictionary<int, int> ListContainedTileId
