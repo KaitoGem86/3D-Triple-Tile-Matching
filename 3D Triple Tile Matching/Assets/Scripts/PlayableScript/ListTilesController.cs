@@ -39,5 +39,26 @@ namespace ProjectGamePlay{
                 }               
             }
         }
+
+        public List<Tile> GetHint(){
+            var dictCheck = new Dictionary<int, List<Tile>>();
+            foreach(var listTile in _dictListTilesInFloor){
+                if(listTile.Key == 0){
+                    continue;
+                }
+                for(int i = 0; i < listTile.Value.Count; i++){
+                    if(listTile.Value[i].TileState == TileStateEnum.InBlock){
+                        if(!dictCheck.ContainsKey(listTile.Value[i].Id)){
+                            dictCheck.Add(listTile.Value[i].Id, new List<Tile>());
+                        }
+                        dictCheck[listTile.Value[i].Id].Add(listTile.Value[i]);
+                        if(dictCheck[listTile.Value[i].Id].Count == 3){
+                            return dictCheck[listTile.Value[i].Id];
+                        }
+                    }
+                }               
+            }
+            return null;
+        }
     }
 }
