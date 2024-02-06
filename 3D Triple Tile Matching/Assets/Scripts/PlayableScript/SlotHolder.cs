@@ -8,7 +8,9 @@ namespace ProjectGamePlay
     public enum TileStateEnum
     {
         Collected,
-        UnCollected
+        UnCollected,
+        InBlock,
+        Selected
     }
 
     public class SlotHolder

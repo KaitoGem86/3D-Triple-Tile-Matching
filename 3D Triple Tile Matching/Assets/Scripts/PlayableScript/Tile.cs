@@ -15,7 +15,7 @@ namespace ProjectGamePlay
         private int _index = 0;
         private Vector3 _targetPos;
 
-        private TileStateEnum _tileState = TileStateEnum.UnCollected;
+        private TileStateEnum _tileState = TileStateEnum.InBlock;
 
         public void OnTileCollect()
         {
@@ -23,6 +23,7 @@ namespace ProjectGamePlay
             {
                 return;
             }
+            _tileState = TileStateEnum.Selected;
             _isSelect = true;
             var item = PlayableAdsManager.Instance.SlotHolder.GetSlotFreeForTile(_tileId);
             SetTargetPosToMove(item.Item2.GetSlotPosition());
@@ -94,7 +95,6 @@ namespace ProjectGamePlay
             if(PlayableAdsManager.Instance.SlotHolder.ListContainedTileId[_tileId] == 3){
                 PlayableAdsManager.Instance.SlotHolder.CollectTripleTile(_tileId, _index);
             }
-            //PlayableAdsManager.Instance.AddCollectTile(_tileId, this);
         }
 
         private IEnumerator WaitForCompleteParticle(ParticleSystem ps){
