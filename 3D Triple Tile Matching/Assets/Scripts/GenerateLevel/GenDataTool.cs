@@ -46,13 +46,5 @@ namespace GenerateLevel{
             Debug.Log("Number of layers: " + listLayers.Count);
             Debug.Log("Number of tiles: " + levelData.numOfTiles);
         }
-
-
-        private void SaveScriptableObject(LevelData levelDataInstance){
-            string path = "Assets/ScriptableObject/" + levelDataInstance.levelName + ".asset";
-            UnityEditor.AssetDatabase.CreateAsset(levelDataInstance, path);
-            UnityEditor.AssetDatabase.SaveAssets();
-            UnityEditor.AssetDatabase.Refresh();
-        }
     }
 }
