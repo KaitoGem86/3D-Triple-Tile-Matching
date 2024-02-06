@@ -64,7 +64,10 @@ namespace ProjectGamePlay
             for (int i = _currentFirstFreeSlotIndex - 1; i > 0; i--)
             {
                 index = index - 1;
-                if (_usedSlots[i].ContainedTile.Id == id)
+                if(_usedSlots[i].ContainedTile == null){
+                    continue;
+                }
+                if (_usedSlots[i].ContainedTile!= null && _usedSlots[i].ContainedTile.Id == id)
                 {
                     index += 1;
                     break;
@@ -115,7 +118,7 @@ namespace ProjectGamePlay
             {
                 _usedSlots[i].MoveTileToLeftSlotWithStep(step);
             }
-            _currentFirstFreeSlotIndex -= step;
+            _currentFirstFreeSlotIndex -= 3;
             _numberOfTiles -= 3;
             if (_numberOfTiles == 0)
             {

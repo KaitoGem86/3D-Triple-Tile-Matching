@@ -14,7 +14,6 @@ namespace ProjectGamePlay
         [SerializeField] private SpriteRenderer _iconSprite;
         [SerializeField] private SpriteRenderer _unCollectMaskSprite;
 
-        private bool _isSelect = false;
         private bool _isMoving = false;
         private int _index = 0;
         private Vector3 _targetPos;
@@ -33,16 +32,12 @@ namespace ProjectGamePlay
 
         public void OnTileCollect()
         {
-            if (_isSelect)
-            {
-                return;
-            }
+
             if (_tileState == TileStateEnum.FloorBehind)
             {
                 return;
             }
             _tileState = TileStateEnum.Selected;
-            _isSelect = true;
             var item = PlayableAdsManager.Instance.SlotHolder.GetSlotFreeForTile(_tileId);
             SetTargetPosToMove(item.Item2.GetSlotPosition());
             SetTileMovingLayer();
@@ -62,7 +57,7 @@ namespace ProjectGamePlay
 
         public void AnimUnCollected()
         {
-            _isSelect = false;
+            _tileState = TileStateEnum.InBlock;
             _backGroundSprite.color = Color.white;
         }
 
@@ -142,7 +137,6 @@ namespace ProjectGamePlay
         public void RemoveTileFront(Tile tile){
             _listTileFront.Remove(tile);
             if(_listTileFront.Count == 0){
-                Debug.Log("SetTileStateSelect(true)");
                 SetTileStateSelect(false);
                 _tileState = TileStateEnum.InBlock;
             }
