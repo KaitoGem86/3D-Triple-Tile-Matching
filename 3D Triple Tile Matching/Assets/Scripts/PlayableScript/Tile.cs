@@ -33,7 +33,7 @@ namespace ProjectGamePlay
         public void OnTileCollect()
         {
 
-            if (_tileState == TileStateEnum.FloorBehind)
+            if (_tileState != TileStateEnum.InBlock)
             {
                 return;
             }
@@ -147,6 +147,10 @@ namespace ProjectGamePlay
             PlayableAdsManager.Instance.SlotHolder.AddIdTile(_tileId);
             if(PlayableAdsManager.Instance.SlotHolder.ListContainedTileId[_tileId] == 3){
                 PlayableAdsManager.Instance.SlotHolder.CollectTripleTile(_tileId, _index);
+            }
+            if(PlayableAdsManager.Instance.SlotHolder.CheckLoseGame()){
+                Debug.Log("Lose game");
+                Luna.Unity.LifeCycle.GameEnded();
             }
         }
 

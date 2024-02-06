@@ -95,6 +95,10 @@ namespace ProjectGamePlay
             _listContainedTileId[id] += 1;
         }
 
+        public bool CheckLoseGame(){
+            return _numOfTilesInSlots >= _numberOfSlots;
+        }
+
         public async void CollectTripleTile(int id, int index)
         {
 
