@@ -8,7 +8,6 @@ namespace ProjectGamePlay
     public enum TileStateEnum
     {
         Collected,
-        UnCollected,
         InBlock,
         Selected
     }
