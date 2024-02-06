@@ -35,6 +35,7 @@ namespace ProjectGamePlay
         public void AnimCollect()
         {
             _animator.SetBool("IsCollected", true);
+            _tileState = TileStateEnum.Collected;
         }
 
         public void AnimUnCollected()

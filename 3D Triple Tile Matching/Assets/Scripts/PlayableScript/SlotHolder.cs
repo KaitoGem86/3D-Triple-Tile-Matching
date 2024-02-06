@@ -102,13 +102,20 @@ namespace ProjectGamePlay
             for (int j = 0; j < 3; j++)
             {
                 _usedSlots[index - j].ContainedTile.AnimCollect();
+                _usedSlots[index - j].ContainedTile = null;
             }
-            await Task.Delay(TimeSpan.FromSeconds(0.5f));
+            await Task.Delay(TimeSpan.FromSeconds(0.75f));
+            var step = 3;
+            if(index - 3 >= 0 && (_usedSlots[index - 3].ContainedTile == null || _usedSlots[index - 3].ContainedTile.TileState == TileStateEnum.Collected)){
+                Debug.Log("Double move to left");
+                step = 6;
+            }
+            Debug.Log("Step: " + step);
             for (i = index + 1; i < _currentFirstFreeSlotIndex; i++)
             {
-                _usedSlots[i].MoveTileToLeftSlotWithStep(3);
+                _usedSlots[i].MoveTileToLeftSlotWithStep(step);
             }
-            _currentFirstFreeSlotIndex -= 3;
+            _currentFirstFreeSlotIndex -= step;
             _numberOfTiles -= 3;
             if (_numberOfTiles == 0)
             {
