@@ -35,6 +35,25 @@ namespace ProjectGamePlay{
             }
             return dictMap;
         }
+
+        public static Dictionary<int, List<Tile>> GenerateMap(LevelData levelData, SpriteSheetData spriteSheet, GameObject tilePrefab, GameObject tileRoot){
+            TileDataController tileDataController = new TileDataController(spriteSheet, levelData.numOfTiles);
+            Dictionary<int, List<Tile>> dictMap = new Dictionary<int, List<Tile>>();
+            for(int i = 0; i < levelData.numOfTiles; i++){
+                float x = levelData.tileData[i].tilePosition.x;
+                float y = levelData.tileData[i].tilePosition.y;
+                int id = tileDataController.GetRandomTileId();
+                var tile = GameObject.Instantiate(tilePrefab, tileRoot.transform).GetComponent<Tile>();
+                tile.transform.position = new Vector3(x * 2.24f, y * 2.49f, 0);
+                tile.SetSpriteIcon(id);
+                tile.SetLayer(levelData.tileData[i].tileFloor);
+                if(!dictMap.ContainsKey(id)){
+                    dictMap.Add(id, new List<Tile>());
+                }
+                dictMap[id].Add(tile);
+            }
+            return dictMap;
+        }
     }
 
     public class TileDataController{

@@ -24,6 +24,7 @@ namespace ProjectGamePlay
 
         private void SetTileOnFloor(int floor){
             _tileFloor = floor;
+            
         }
 
         public void OnTileCollect()
