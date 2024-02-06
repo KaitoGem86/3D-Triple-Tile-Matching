@@ -47,7 +47,7 @@ public class PlayableAdsManager : MonoBehaviour
     [SerializeField] private SpriteSheetData _spriteSheetData;
     [SerializeField] private LevelData _levelData;
     [SerializeField] private GameObject _collectEffectPrefab;
-    
+
 
     public AudioSource tileTapSound;
     public AudioSource tileCollectSound;
@@ -55,10 +55,12 @@ public class PlayableAdsManager : MonoBehaviour
 
     private void Start()
     {
-        SlotHolder = new ProjectGamePlay.SlotHolder(_slotRootPrefab, 24);
+        SlotHolder = new ProjectGamePlay.SlotHolder(_slotRootPrefab, _levelData.numOfTiles);
+        ListTilesController = new ProjectGamePlay.ListTilesController();
         //var dictMap = MapGenerate.GenerateTestMap(24, _spriteSheetData, _tilePrefab, _tileRoot);
         var dictMap = MapGenerate.GenerateMap(_levelData, _spriteSheetData, _tilePrefab, _tileRoot);
         _listTile = dictMap;
+        ListTilesController.SetConnectForTile();
         Pooling.Instance.CreatePool(_TypeGameObjectEnum.CollectEffect, _collectEffectPrefab, 3);
     }
 
@@ -83,17 +85,23 @@ public class PlayableAdsManager : MonoBehaviour
         {
             if (_timer > 0.2f)
             {
-                _currentSelectedTile.Animator.SetBool("IsSelect", false);
-                _currentSelectedTile.ReturnToBlockLayer();
-                return;
+                if (_currentSelectedTile.TileState == TileStateEnum.InBlock)
+                {
+                    _currentSelectedTile.Animator.SetBool("IsSelect", false);
+                    _currentSelectedTile.ReturnToBlockLayer();
+                    return;
+                }
             }
             Vector3 touchPosition = Camera.main.ScreenToWorldPoint(touch.position);
             if (Physics.Raycast(touchPosition - Vector3.forward * 10, Vector3.forward, out RaycastHit hit, 100f))
             {
                 if (hit.transform.GetComponent<ProjectGamePlay.Tile>() != null)
                 {
-                    hit.transform.GetComponent<ProjectGamePlay.Tile>().OnTileCollect();
-                    tileTapSound.Play();
+                    if (hit.transform.GetComponent<ProjectGamePlay.Tile>().TileState == TileStateEnum.InBlock)
+                    {
+                        hit.transform.GetComponent<ProjectGamePlay.Tile>().OnTileCollect();
+                        tileTapSound.Play();
+                    }
                 }
 
             }
@@ -107,8 +115,11 @@ public class PlayableAdsManager : MonoBehaviour
                 if (hit.transform.GetComponent<ProjectGamePlay.Tile>() != null)
                 {
                     _currentSelectedTile = hit.transform.GetComponent<ProjectGamePlay.Tile>();
-                    _currentSelectedTile.Animator.SetBool("IsSelect", true);
-                    _currentSelectedTile.SetTileMovingLayer();
+                    if (_currentSelectedTile.TileState == TileStateEnum.InBlock)
+                    {
+                        _currentSelectedTile.Animator.SetBool("IsSelect", true);
+                        _currentSelectedTile.SetTileMovingLayer();
+                    }
                 }
             }
         }
@@ -122,5 +133,6 @@ public class PlayableAdsManager : MonoBehaviour
     }
 
     public ProjectGamePlay.SlotHolder SlotHolder { get; set; }
+    public ProjectGamePlay.ListTilesController ListTilesController { get; set; }
     public SpriteSheetData SpriteSheetData { get => _spriteSheetData; }
 }

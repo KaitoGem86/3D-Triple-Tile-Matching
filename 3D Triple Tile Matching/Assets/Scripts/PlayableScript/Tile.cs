@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using ObjectPool;
 using UnityEngine;
 
@@ -12,17 +13,15 @@ namespace ProjectGamePlay
         [SerializeField] private SpriteRenderer _backGroundSprite;
         [SerializeField] private SpriteRenderer _iconSprite;
         [SerializeField] private SpriteRenderer _unCollectMaskSprite;
-        [SerializeField] private AnimationCurve _idleAnim;
-        [SerializeField] private AnimationCurve _collectAnim;
-        [SerializeField] private AnimationCurve _movingToSlotAnim;
-        [SerializeField] private AnimationCurve _toSelectAnim;
-        [SerializeField] private AnimationCurve _idleInSlotANim;
 
         private bool _isSelect = false;
         private bool _isMoving = false;
         private int _index = 0;
         private Vector3 _targetPos;
         private TileStateEnum _tileState = TileStateEnum.InBlock;
+
+        private List<Tile> _listTileBehind = new List<Tile>();
+        private List<Tile> _listTileFront = new List<Tile>();
 
         public void Start(){
         }
@@ -38,6 +37,10 @@ namespace ProjectGamePlay
             {
                 return;
             }
+            if (_tileState == TileStateEnum.FloorBehind)
+            {
+                return;
+            }
             _tileState = TileStateEnum.Selected;
             _isSelect = true;
             var item = PlayableAdsManager.Instance.SlotHolder.GetSlotFreeForTile(_tileId);
@@ -46,6 +49,10 @@ namespace ProjectGamePlay
             _index = item.Item1;
             _animator.SetBool("IsMoveToSlot", true);
             item.Item2.ContainedTile = this;
+            foreach (var tile in _listTileBehind)
+            {
+                tile.RemoveTileFront(this);
+            }
         }
         public void AnimCollect()
         {
@@ -108,6 +115,37 @@ namespace ProjectGamePlay
             _backGroundSprite.sortingOrder = 3 * layer + 1;
             _iconSprite.sortingOrder = 3 * layer + 2;
             _unCollectMaskSprite.sortingOrder = 3 * layer + 3;
+        }
+
+        public void SetTileStateSelect(bool isCanSelect)
+        {
+            _unCollectMaskSprite.gameObject.SetActive(isCanSelect);
+        }
+
+        public void SetTileBehind(List<Tile> tilesInBehindFloor)
+        {
+            var pos1 = transform.position;
+            var halfSize1 = _backGroundSprite.bounds.size / 2;
+            foreach (var tile in tilesInBehindFloor)
+            {
+                var pos2 = tile.transform.position;
+                var halfSize2 = tile._backGroundSprite.bounds.size / 2;
+                if(RectangeleUtils.IsRectangleOverlap(pos1, pos2, halfSize1, halfSize2)){
+                    _listTileBehind.Add(tile);
+                    tile._listTileFront.Add(this);
+                    tile.SetTileStateSelect(true);
+                    tile._tileState = TileStateEnum.FloorBehind;
+                }
+            }
+        }
+
+        public void RemoveTileFront(Tile tile){
+            _listTileFront.Remove(tile);
+            if(_listTileFront.Count == 0){
+                Debug.Log("SetTileStateSelect(true)");
+                SetTileStateSelect(false);
+                _tileState = TileStateEnum.InBlock;
+            }
         }
 
         public void OnTileInSlot()

@@ -9,7 +9,8 @@ namespace ProjectGamePlay
     {
         Collected,
         InBlock,
-        Selected
+        Selected,
+        FloorBehind
     }
 
     public class SlotHolder

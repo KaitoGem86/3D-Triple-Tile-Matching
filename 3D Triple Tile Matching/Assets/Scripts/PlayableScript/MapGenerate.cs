@@ -48,6 +48,7 @@ namespace ProjectGamePlay{
                 tile.transform.SetParent(tileRoot.transform);
                 tile.SetSpriteIcon(id);
                 tile.SetTileOnFloor(levelData.tileData[i].tileFloor);
+                PlayableAdsManager.Instance.ListTilesController.AddTileToFloor(levelData.tileData[i].tileFloor,tile);
                 if(!dictMap.ContainsKey(id)){
                     dictMap.Add(id, new List<Tile>());
                 }
