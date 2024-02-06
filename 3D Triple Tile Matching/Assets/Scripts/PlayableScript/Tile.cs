@@ -7,15 +7,24 @@ namespace ProjectGamePlay
     public class Tile : MonoBehaviour
     {
         [SerializeField] private int _tileId;
+        [SerializeField] private int _tileFloor;
         [SerializeField] private Animator _animator;
         [SerializeField] private SpriteRenderer _backGroundSprite;
         [SerializeField] private SpriteRenderer _iconSprite;
+        [SerializeField] private SpriteRenderer _unCollectMaskSprite;
         private bool _isSelect = false;
         private bool _isMoving = false;
         private int _index = 0;
         private Vector3 _targetPos;
-
         private TileStateEnum _tileState = TileStateEnum.InBlock;
+
+        public void Start(){
+            ReturnToBlockLayer();
+        }
+
+        private void SetTileOnFloor(int floor){
+            _tileFloor = floor;
+        }
 
         public void OnTileCollect()
         {
@@ -80,14 +89,18 @@ namespace ProjectGamePlay
 
         public void SetTileMovingLayer()
         {
-            _backGroundSprite.sortingOrder = 3;
-            _iconSprite.sortingOrder = 4;
+            SetLayer(1);
         }
 
         public void ReturnToBlockLayer()
         {
-            _backGroundSprite.sortingOrder = 1;
-            _iconSprite.sortingOrder = 2;
+            SetLayer(0);
+        }
+
+        public void SetLayer(int layer){
+            _backGroundSprite.sortingOrder = layer*3;
+            _iconSprite.sortingOrder = layer*3 + 1;
+            _unCollectMaskSprite.sortingOrder = layer*3 + 2;
         }
 
         public void OnTileInSlot()
@@ -98,14 +111,6 @@ namespace ProjectGamePlay
             }
         }
 
-        private IEnumerator WaitForCompleteParticle(ParticleSystem ps){
-            while (ps.isPlaying)
-            {
-                yield return new WaitForSeconds(0.1f);
-            }
-            Pooling.Instance.ReturnToPool(_TypeGameObjectEnum.CollectEffect, ps.gameObject);
-        }
-
         public void OnCompleteMoveToSlot()
         {
             _animator.SetBool("IsMoveToSlot", false);
@@ -114,6 +119,14 @@ namespace ProjectGamePlay
             var t = Pooling.Instance.SpawnFromPool(_TypeGameObjectEnum.CollectEffect, transform.position, Quaternion.identity).GetComponent<ParticleSystem>();
             t.Play();
             StartCoroutine(WaitForCompleteParticle(t));
+        }
+
+        private IEnumerator WaitForCompleteParticle(ParticleSystem ps){
+            while (ps.isPlaying)
+            {
+                yield return new WaitForSeconds(0.1f);
+            }
+            Pooling.Instance.ReturnToPool(_TypeGameObjectEnum.CollectEffect, ps.gameObject);
         }
 
         public TileStateEnum TileState
