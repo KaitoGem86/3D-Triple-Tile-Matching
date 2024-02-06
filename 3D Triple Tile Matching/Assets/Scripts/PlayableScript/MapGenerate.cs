@@ -43,10 +43,11 @@ namespace ProjectGamePlay{
                 float x = levelData.tileData[i].tilePosition.x;
                 float y = levelData.tileData[i].tilePosition.y;
                 int id = tileDataController.GetRandomTileId();
-                var tile = GameObject.Instantiate(tilePrefab, tileRoot.transform).GetComponent<Tile>();
-                tile.transform.position = new Vector3(x * 2.24f, y * 2.49f, 0);
+                var tile = GameObject.Instantiate(tilePrefab, levelData.tileData[i].tilePosition, Quaternion.identity).GetComponent<Tile>();
+                tile.transform.localScale = levelData.tileData[i].tileScale;
+                tile.transform.SetParent(tileRoot.transform);
                 tile.SetSpriteIcon(id);
-                tile.SetLayer(levelData.tileData[i].tileFloor);
+                tile.SetTileOnFloor(levelData.tileData[i].tileFloor);
                 if(!dictMap.ContainsKey(id)){
                     dictMap.Add(id, new List<Tile>());
                 }

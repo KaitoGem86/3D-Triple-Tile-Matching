@@ -37,6 +37,7 @@ namespace GenerateLevel{
                     var tileData = new TileData();
                     tileData.tileFloor = tile.GetComponent<SpriteRenderer>().sortingOrder/3;
                     tileData.tilePosition = tile.position;
+                    tileData.tilePosition.z = -tileData.tileFloor;
                     tileData.tileScale = tile.localScale;
                     levelData.tileData.Add(tileData);
                 }

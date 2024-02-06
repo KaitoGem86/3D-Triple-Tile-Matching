@@ -45,7 +45,9 @@ public class PlayableAdsManager : MonoBehaviour
     [SerializeField] private GameObject _tileRoot;
     [SerializeField] private Transform _slotRootPrefab;
     [SerializeField] private SpriteSheetData _spriteSheetData;
+    [SerializeField] private LevelData _levelData;
     [SerializeField] private GameObject _collectEffectPrefab;
+    
 
     public AudioSource tileTapSound;
     public AudioSource tileCollectSound;
@@ -54,7 +56,8 @@ public class PlayableAdsManager : MonoBehaviour
     private void Start()
     {
         SlotHolder = new ProjectGamePlay.SlotHolder(_slotRootPrefab, 24);
-        var dictMap = MapGenerate.GenerateTestMap(24, _spriteSheetData, _tilePrefab, _tileRoot);
+        //var dictMap = MapGenerate.GenerateTestMap(24, _spriteSheetData, _tilePrefab, _tileRoot);
+        var dictMap = MapGenerate.GenerateMap(_levelData, _spriteSheetData, _tilePrefab, _tileRoot);
         _listTile = dictMap;
         Pooling.Instance.CreatePool(_TypeGameObjectEnum.CollectEffect, _collectEffectPrefab, 3);
     }

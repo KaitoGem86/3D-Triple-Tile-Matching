@@ -12,6 +12,12 @@ namespace ProjectGamePlay
         [SerializeField] private SpriteRenderer _backGroundSprite;
         [SerializeField] private SpriteRenderer _iconSprite;
         [SerializeField] private SpriteRenderer _unCollectMaskSprite;
+        [SerializeField] private AnimationCurve _idleAnim;
+        [SerializeField] private AnimationCurve _collectAnim;
+        [SerializeField] private AnimationCurve _movingToSlotAnim;
+        [SerializeField] private AnimationCurve _toSelectAnim;
+        [SerializeField] private AnimationCurve _idleInSlotANim;
+
         private bool _isSelect = false;
         private bool _isMoving = false;
         private int _index = 0;
@@ -19,12 +25,11 @@ namespace ProjectGamePlay
         private TileStateEnum _tileState = TileStateEnum.InBlock;
 
         public void Start(){
-            ReturnToBlockLayer();
         }
 
-        private void SetTileOnFloor(int floor){
+        public void SetTileOnFloor(int floor){
             _tileFloor = floor;
-            
+            SetLayer(floor);
         }
 
         public void OnTileCollect()
@@ -90,18 +95,19 @@ namespace ProjectGamePlay
 
         public void SetTileMovingLayer()
         {
-            SetLayer(1);
+            SetLayer(4);
         }
 
         public void ReturnToBlockLayer()
         {
-            SetLayer(0);
+            Debug.Log("_tileFloor: " + _tileFloor);
+            SetLayer(_tileFloor);
         }
 
         public void SetLayer(int layer){
-            _backGroundSprite.sortingOrder = layer*3;
-            _iconSprite.sortingOrder = layer*3 + 1;
-            _unCollectMaskSprite.sortingOrder = layer*3 + 2;
+            _backGroundSprite.sortingOrder = 3 * layer + 1;
+            _iconSprite.sortingOrder = 3 * layer + 2;
+            _unCollectMaskSprite.sortingOrder = 3 * layer + 3;
         }
 
         public void OnTileInSlot()
