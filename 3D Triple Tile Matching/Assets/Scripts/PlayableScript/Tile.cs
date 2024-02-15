@@ -149,8 +149,7 @@ namespace ProjectGamePlay
                 PlayableAdsManager.Instance.SlotHolder.CollectTripleTile(_tileId, _index);
             }
             if(PlayableAdsManager.Instance.SlotHolder.CheckLoseGame()){
-                Debug.Log("Lose game");
-                Luna.Unity.LifeCycle.GameEnded();
+                PlayableAdsManager.Instance.ShowPopUpTry();
             }
         }
 

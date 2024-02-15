@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using ObjectPool;
 using ProjectGamePlay;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -40,7 +41,6 @@ public class PlayableAdsManager : MonoBehaviour
     private Tile _currentSelectedTile;
     [SerializeField] Button playNowButton;
     [SerializeField] private Image _backgroundPanel;
-    [SerializeField] private GameObject _title;
     [SerializeField] private GameObject _tilePrefab;
     [SerializeField] private GameObject _tileRoot;
     [SerializeField] private Transform _slotRootPrefab;
@@ -48,6 +48,7 @@ public class PlayableAdsManager : MonoBehaviour
     [SerializeField] private LevelData _levelData;
     [SerializeField] private GameObject _collectEffectPrefab;
     [SerializeField] private HandController _handController;
+    [SerializeField] private TMP_Text _buttonText;
 
 
     public AudioSource tileTapSound;
@@ -167,8 +168,16 @@ public class PlayableAdsManager : MonoBehaviour
 
     public void ShowPopUpPlayNow()
     {
+        _buttonText.text = "PLAY NOW";
         _backgroundPanel.gameObject.SetActive(true);
-        _title.SetActive(true);
+        playNowButton.gameObject.SetActive(true);
+        playNowButton.GetComponent<PlayNowButton>().ZoomInButton();
+    }
+
+    public void ShowPopUpTry(){
+        _buttonText.text = "TRY";
+        _backgroundPanel.gameObject.SetActive(true);
+        playNowButton.gameObject.SetActive(true);
         playNowButton.GetComponent<PlayNowButton>().ZoomInButton();
     }
 

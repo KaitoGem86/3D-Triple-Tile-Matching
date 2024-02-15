@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using UnityEngine;
 
 public class PlayNowButton : MonoBehaviour
@@ -9,6 +10,8 @@ public class PlayNowButton : MonoBehaviour
     }
     public void OnMouseDown()
     {
+        string url = "https://play.google.com/store/apps/details?id=net.percas.triple.tile.pair.matching.puzzle.master";
+        Application.OpenURL(url);
         Luna.Unity.LifeCycle.GameEnded();
     }
 
