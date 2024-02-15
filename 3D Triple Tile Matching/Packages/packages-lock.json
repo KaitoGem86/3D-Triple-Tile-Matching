@@ -109,7 +109,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.textmeshpro": {
-      "version": "file:D:/Unity Game/AdsGame/com.unity.textmeshpro-3.0.6",
+      "version": "file:D:/Unity Game/FeatureGames/com.unity.textmeshpro-3.0.6",
       "depth": 0,
       "source": "local",
       "dependencies": {
@@ -145,7 +145,7 @@
       "hash": "cffda935db251398cd8630a4b937241cb416602e"
     },
     "uk.lunalabs.luna": {
-      "version": "file:../../../AdsGame/LunaPlugin/scripts",
+      "version": "file:D:/Unity Game/FeatureGames/5.5.0/scripts",
       "depth": 0,
       "source": "local",
       "dependencies": {}
