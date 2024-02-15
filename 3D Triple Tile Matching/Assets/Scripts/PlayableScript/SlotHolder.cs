@@ -23,7 +23,8 @@ namespace ProjectGamePlay
         private int _numberOfTiles = 0;
         private int _numOfTilesMoving = 0;
 
-        public SlotHolder(Transform slotRoot, int numberOfTiles){
+        public SlotHolder(Transform slotRoot, int numberOfTiles)
+        {
             _usedSlots = new List<SlotController>();
             for (int i = 0; i < _numberOfSlots + 3; i++)
             {
@@ -32,7 +33,7 @@ namespace ProjectGamePlay
             for (int i = 0; i < _numberOfSlots + 3; i++)
             {
                 _usedSlots[i].LeftSlot = (i == 0 ? null : _usedSlots[i - 1]);
-                _usedSlots[i].RightSlot = (i == _numberOfSlots + 3 -1 ? null : _usedSlots[i + 1]);
+                _usedSlots[i].RightSlot = (i == _numberOfSlots + 3 - 1 ? null : _usedSlots[i + 1]);
             }
 
             _currentFirstFreeSlotIndex = 0;
@@ -56,7 +57,8 @@ namespace ProjectGamePlay
                 return GetSlotFree();
             }
 
-            if(_listContainedTileId[id] == 0){
+            if (_listContainedTileId[id] == 0)
+            {
                 _numOfTilesInSlots++;
                 return GetSlotFree();
             }
@@ -65,10 +67,11 @@ namespace ProjectGamePlay
             for (int i = _currentFirstFreeSlotIndex - 1; i > 0; i--)
             {
                 index = index - 1;
-                if(_usedSlots[i].ContainedTile == null){
+                if (_usedSlots[i].ContainedTile == null)
+                {
                     continue;
                 }
-                if (_usedSlots[i].ContainedTile!= null && _usedSlots[i].ContainedTile.Id == id)
+                if (_usedSlots[i].ContainedTile != null && _usedSlots[i].ContainedTile.Id == id)
                 {
                     index += 1;
                     break;
@@ -81,14 +84,16 @@ namespace ProjectGamePlay
             return (index - 1, _usedSlots[index - 1]);
         }
 
-        public void AddIdTile(int id){
+        public void AddIdTile(int id)
+        {
             if (!_listContainedTileId.ContainsKey(id))
             {
                 _listContainedTileId.Add(id, 1);
                 return;
             }
 
-            if(_listContainedTileId[id] == 0){
+            if (_listContainedTileId[id] == 0)
+            {
                 _listContainedTileId[id] = 1;
                 return;
             }
@@ -96,8 +101,9 @@ namespace ProjectGamePlay
             _listContainedTileId[id] += 1;
         }
 
-        public bool CheckLoseGame(){
-            if(_numOfTilesMoving > 0)
+        public bool CheckLoseGame()
+        {
+            if (_numOfTilesMoving > 0)
                 return false;
             return _numOfTilesInSlots >= _numberOfSlots;
         }
@@ -114,13 +120,17 @@ namespace ProjectGamePlay
             }
             await Task.Delay(TimeSpan.FromSeconds(0.75f));
             var step = 3;
-            if(index - 3 >= 0 && (_usedSlots[index - 3].ContainedTile == null || _usedSlots[index - 3].ContainedTile.TileState == TileStateEnum.Collected)){
-                Debug.Log("Double move to left");
+            if ((index - 3 >= 0 && (_usedSlots[index - 3].ContainedTile == null || _usedSlots[index - 3].ContainedTile.TileState == TileStateEnum.Collected))
+                || (index + 3 <= 7 && (_usedSlots[index + 3].ContainedTile == null || _usedSlots[index + 3].ContainedTile.TileState == TileStateEnum.Collected)))
+            {
                 step = 6;
             }
-            Debug.Log("Step: " + step);
-            for (i = index + 1; i < _currentFirstFreeSlotIndex; i++)
+            for (i = index + 1; i < _currentFirstFreeSlotIndex + 3; i++)
             {
+                if (_usedSlots[i].ContainedTile == null)
+                {
+                    continue;
+                }
                 _usedSlots[i].MoveTileToLeftSlotWithStep(step);
             }
             _currentFirstFreeSlotIndex -= 3;

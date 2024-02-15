@@ -1,0 +1,110 @@
+{
+    "BuildID": "75d8882a-f051-4eea-9a12-4a1c69e2313a",
+    "Command": "project:deploy",
+    "ProjectID": "35f35fef124d76f4a9621e5a310bcc25",
+    "ProjectStateHash": "56c17417536dd540017004fad14e0752050f1136c7fe41614c09a90f6200e83f",
+    "StageCompletedAt": 3,
+    "EarliestFatalError": 0,
+    "StartTime": 1707980501812,
+    "EndTime": 1707980593656,
+    "PlaygroundUserID": 13720,
+    "OperatingSystem": "win32",
+    "UnityPackageID": null,
+    "TargetPlatform": "playground",
+    "UnityVersion": "2021.3.30f1",
+    "LunaVersion": "5.5.0",
+    "LogCount": 4,
+    "Logs": [
+        {
+            "LogID": "b940f2ba-c57c-46f6-9fb1-38c9b2b4831e",
+            "Order": 2,
+            "Timestamp": 1707980594133,
+            "Stage": 3,
+            "ErrorType": 0,
+            "ErrorCode": "LP3014",
+            "Description": "You are using the wrong API: Application.OpenURL.",
+            "Details": [
+                "You are using the wrong API: Application.OpenURL. which can lead to ad networks rejecting the playable. Please use Luna.Unity.Playable.InstallFullGame() instead. "
+            ],
+            "DescriptionValues": [
+                "Application.OpenURL"
+            ],
+            "DetailsValues": [
+                "Application.OpenURL"
+            ],
+            "LogCount": 1,
+            "LinePosition": 14,
+            "FilePath": "D:\\Unity Game\\Git 3D Triple Tile Matching\\3D Triple Tile Matching\\Assets\\Scripts\\PlayableScript\\PlayNowButton.cs",
+            "ClassName": "",
+            "MemberName": "",
+            "Severity": 0
+        },
+        {
+            "LogID": "b4d7e944-ff0a-4748-8809-d94feb0a1cb8",
+            "Order": 2,
+            "Timestamp": 1707980594184,
+            "Stage": 3,
+            "ErrorType": 3,
+            "ErrorCode": "LP3007",
+            "Description": "You are not using any custom events",
+            "Details": [
+                "You are not using any custom events. It is recommended to use custom events to have a better understanding of the playable."
+            ],
+            "DescriptionValues": [
+                ""
+            ],
+            "DetailsValues": [
+                ""
+            ],
+            "LogCount": 1,
+            "LinePosition": null,
+            "FilePath": "",
+            "ClassName": "",
+            "MemberName": "",
+            "Severity": 0
+        },
+        {
+            "LogID": "952900cf-1c8f-4f0e-a703-fe41e09a398d",
+            "Order": 2,
+            "Timestamp": 1707980594184,
+            "Stage": 3,
+            "ErrorType": 3,
+            "ErrorCode": "LP3011",
+            "Description": "You are not using any LunaPlaygroundFields attributes.",
+            "Details": [
+                "You are not using any LunaPlaygroundFields attributes, it allows you to configure your playable to different concepts to find the best variation, which can drastically improve playable performance on all ad networks."
+            ],
+            "DescriptionValues": null,
+            "DetailsValues": null,
+            "LogCount": 1,
+            "LinePosition": null,
+            "FilePath": "",
+            "ClassName": "",
+            "MemberName": "",
+            "Severity": 0
+        },
+        {
+            "LogID": "3ba16f78-9304-4d47-a71f-a1e24cd8b63d",
+            "Order": 0,
+            "Timestamp": 1707980525806,
+            "Stage": 1,
+            "ErrorType": 2,
+            "ErrorCode": "LP1010",
+            "Description": "Looks like a collider was scaled, this might affect performance.",
+            "Details": [
+                "Looks like Tile collider on Tile game object was scaled, this might affect performance."
+            ],
+            "DescriptionValues": [],
+            "DetailsValues": [
+                "Tile",
+                "Tile"
+            ],
+            "LogCount": 1,
+            "LinePosition": 0,
+            "FilePath": "",
+            "ClassName": "",
+            "MemberName": "",
+            "Severity": 0
+        }
+    ]
+}

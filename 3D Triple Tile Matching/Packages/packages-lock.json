@@ -145,7 +145,7 @@
       "hash": "cffda935db251398cd8630a4b937241cb416602e"
     },
     "uk.lunalabs.luna": {
-      "version": "file:../../../FeatureGames/5.5.0/scripts",
+      "version": "file:../../../FeatureGames/5.5.0_1/scripts",
       "depth": 0,
       "source": "local",
       "dependencies": {}

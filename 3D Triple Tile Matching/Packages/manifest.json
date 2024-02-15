@@ -11,7 +11,7 @@
     "com.unity.ugui": "1.0.0",
     "com.unity.visualscripting": "1.9.0",
     "com.zbase.unityscreennavigator": "https://github.com/Zitga-Tech/ZBase.UnityScreenNavigator.git?path=/Packages/ZBase.UnityScreenNavigator",
-    "uk.lunalabs.luna": "file:../../../FeatureGames/5.5.0/scripts",
+    "uk.lunalabs.luna": "file:../../../FeatureGames/5.5.0_1/scripts",
     "com.unity.modules.ai": "1.0.0",
     "com.unity.modules.androidjni": "1.0.0",
     "com.unity.modules.animation": "1.0.0",
