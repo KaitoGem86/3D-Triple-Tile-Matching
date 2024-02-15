@@ -1,6 +1,6 @@
 if ( TRACE ) { TRACE( JSON.parse( '["GenerateLevel.GenDataTool#ReadMapFromGameObject","GenerateLevel.MakeTileMap#ctor","GenerateLevel.MakeTileMap#GenTileMap","GenerateLevel.MakeTileMap#CreatePixelMap","GenerateLevel.MakeTileMap#CreatePixelTile","HandController#init","HandController#FixedUpdate","HandController#SetTargetPosToMove","ObjectPool.Pooling#Instance#get","ObjectPool.Pooling#ctor","ObjectPool.Pooling#CreatePool","ObjectPool.Pooling#SpawnFromPool","ObjectPool.Pooling#ReturnToPool","PlayableAdsManager#Instance#get","PlayableAdsManager#SpriteSheetData#get","PlayableAdsManager#IsCompleteGame#get","PlayableAdsManager#IsCompleteGame#set","PlayableAdsManager#init","PlayableAdsManager#Awake","PlayableAdsManager#Start","PlayableAdsManager#GetTile","PlayableAdsManager#LateUpdate","PlayableAdsManager#ShowPopUpPlayNow","PlayableAdsManager#ShowPopUpTry","PlayNowButton#Start","PlayNowButton#OnMouseDown","PlayNowButton#ZoomInButton","PlayNowButton#CompleteZoomInButton","ProjectGamePlay.LevelData#init","ProjectGamePlay.ListTilesController#ctor","ProjectGamePlay.ListTilesController#AddTileToFloor","ProjectGamePlay.ListTilesController#RemoveTileFromFloor","ProjectGamePlay.ListTilesController#GetListTilesInFloor","ProjectGamePlay.ListTilesController#SetConnectForTile","ProjectGamePlay.ListTilesController#GetHint","ProjectGamePlay.MapGenerate#GenerateTestMap$1","ProjectGamePlay.MapGenerate#GenerateTestMap","ProjectGamePlay.MapGenerate#GenerateMap","ProjectGamePlay.RectangeleUtils#IsRectangleOverlap","ProjectGamePlay.SlotController#ContainedTile#get","ProjectGamePlay.SlotController#ContainedTile#set","ProjectGamePlay.SlotController#LeftSlot#get","ProjectGamePlay.SlotController#LeftSlot#set","ProjectGamePlay.SlotController#RightSlot#get","ProjectGamePlay.SlotController#RightSlot#set","ProjectGamePlay.SlotController#ctor","ProjectGamePlay.SlotController#GetSlotPosition","ProjectGamePlay.SlotController#MoveTileToRightSlot","ProjectGamePlay.SlotController#MoveTileToLeftSlot","ProjectGamePlay.SlotController#MoveTileToLeftSlotWithStep","ProjectGamePlay.SlotHolder#ListContainedTileId#get","ProjectGamePlay.SlotHolder#NumberOfTilesInSlots#get","ProjectGamePlay.SlotHolder#NumberOfTilesInSlots#set","ProjectGamePlay.SlotHolder#NumOfTilesMoving#get","ProjectGamePlay.SlotHolder#NumOfTilesMoving#set","ProjectGamePlay.SlotHolder#init","ProjectGamePlay.SlotHolder#ctor","ProjectGamePlay.SlotHolder#GetSlotFree","ProjectGamePlay.SlotHolder#GetSlotFreeForTile","ProjectGamePlay.SlotHolder#AddIdTile","ProjectGamePlay.SlotHolder#CheckLoseGame","ProjectGamePlay.SlotHolder#CollectTripleTile","ProjectGamePlay.SpriteSheetData#GetSprite","ProjectGamePlay.Tile#TileState#get","ProjectGamePlay.Tile#TileState#set","ProjectGamePlay.Tile#Id#get","ProjectGamePlay.Tile#Id#set","ProjectGamePlay.Tile#Index#get","ProjectGamePlay.Tile#Index#set","ProjectGamePlay.Tile#Animator#get","ProjectGamePlay.Tile#init","ProjectGamePlay.Tile#Start","ProjectGamePlay.Tile#SetTileOnFloor","ProjectGamePlay.Tile#OnTileCollect","ProjectGamePlay.Tile#AnimCollect","ProjectGamePlay.Tile#AnimUnCollected","ProjectGamePlay.Tile#FixedUpdate","ProjectGamePlay.Tile#SetSpriteIcon","ProjectGamePlay.Tile#SetTargetPosToMove","ProjectGamePlay.Tile#GetPosition","ProjectGamePlay.Tile#SetTileMovingLayer","ProjectGamePlay.Tile#ReturnToBlockLayer","ProjectGamePlay.Tile#SetLayer","ProjectGamePlay.Tile#SetTileStateSelect","ProjectGamePlay.Tile#SetTileBehind","ProjectGamePlay.Tile#RemoveTileFront","ProjectGamePlay.Tile#OnTileInSlot","ProjectGamePlay.Tile#OnCompleteMoveToSlot","ProjectGamePlay.Tile#WaitForCompleteParticle","ProjectGamePlay.TileData#init","ProjectGamePlay.TileDataController#init","ProjectGamePlay.TileDataController#ctor","ProjectGamePlay.TileDataController#GetRandomTileId"]' ) ); }
 /**
- * @version 1.0.8811.25276
+ * @version 1.0.8811.30264
  * @copyright anton
  * @compiler Bridge.NET 17.9.40-luna
  */
@@ -474,6 +474,7 @@ if ( TRACE ) { TRACE( "PlayableAdsManager#LateUpdate", this ); }
                         if (UnityEngine.MonoBehaviour.op_Inequality(this._currentSelectedTile, null) && this._currentSelectedTile.TileState === ProjectGamePlay.TileStateEnum.InBlock) {
                             this._currentSelectedTile.Animator.SetBool$1("IsSelect", false);
                             this._currentSelectedTile.ReturnToBlockLayer();
+                            this._currentSelectedTile = null;
                             return;
                         }
                     }
@@ -488,6 +489,7 @@ if ( TRACE ) { TRACE( "PlayableAdsManager#LateUpdate", this ); }
                         }
 
                     }
+                    this._currentSelectedTile = null;
                 } else if (touch.phase === UnityEngine.TouchPhase.Began) {
                     this._timer = 0;
                     var touchPosition1 = UnityEngine.Camera.main.ScreenToWorldPoint(UnityEngine.Vector3.FromVector2(touch.position));
@@ -1090,7 +1092,8 @@ if ( TRACE ) { TRACE( "ProjectGamePlay.SlotHolder#CollectTripleTile", this ); }
                     $task1, 
                     $jumpFromFinally, 
                     i, 
-                    step, 
+                    start, 
+                    step_, 
                     $asyncBody = Bridge.fn.bind(this, function () {
                         for (;;) {
                             $step = System.Array.min([0,1], $step);
@@ -1113,15 +1116,49 @@ if ( TRACE ) { TRACE( "ProjectGamePlay.SlotHolder#CollectTripleTile", this ); }
                                 }
                                 case 1: {
                                     $task1.getAwaitedResult();
-                                    step = 3;
-                                    if (((index - 3) | 0) >= 0 && (UnityEngine.MonoBehaviour.op_Equality(this._usedSlots.getItem(((index - 3) | 0)).ContainedTile, null) || this._usedSlots.getItem(((index - 3) | 0)).ContainedTile.TileState === ProjectGamePlay.TileStateEnum.Collected)) {
-                                        UnityEngine.Debug.Log$1("Double move to left");
-                                        step = 6;
+                                    // var step = 3;
+                                    if (((index - 3) | 0) >= 0 && UnityEngine.MonoBehaviour.op_Equality(this._usedSlots.getItem(((index - 3) | 0)).ContainedTile, null)) {
+                                        UnityEngine.Debug.Log$1("Step 6");
                                     }
-                                    UnityEngine.Debug.Log$1("Step: " + step);
-                                    for (i = (index + 1) | 0; i < this._currentFirstFreeSlotIndex; i = (i + 1) | 0) {
-                                        this._usedSlots.getItem(i).MoveTileToLeftSlotWithStep(step);
+                                    // if ((index - 3 >= 0 && (_usedSlots[index - 3].ContainedTile == null || _usedSlots[index - 3].ContainedTile.TileState == TileStateEnum.Collected))
+                                    //     || (index + 3 <= 7 && (_usedSlots[index + 3].ContainedTile == null || _usedSlots[index + 3].ContainedTile.TileState == TileStateEnum.Collected))
+                                    // )
+                                    // {
+                                    //     step = 6;
+                                    // }
+                                    start = 9999;
+                                    step_ = 0;
+                                    for (var j1 = (index - 2) | 0; j1 < 8; j1 = (j1 + 1) | 0) {
+                                        if (UnityEngine.MonoBehaviour.op_Equality(this._usedSlots.getItem(j1).ContainedTile, null) || this._usedSlots.getItem(j1).ContainedTile.TileState === ProjectGamePlay.TileStateEnum.Collected) {
+                                            step_ = (step_ + 1) | 0;
+                                        }
+                                        if (UnityEngine.MonoBehaviour.op_Inequality(this._usedSlots.getItem(j1).ContainedTile, null) && this._usedSlots.getItem(j1).ContainedTile.TileState !== ProjectGamePlay.TileStateEnum.Collected) {
+                                            start = UnityEngine.Mathf.Min(start, j1);
+                                            break;
+                                        }
                                     }
+                                    for (var j2 = start; j2 < UnityEngine.Mathf.Min(((start + this._numOfTilesInSlots) | 0), 8); j2 = (j2 + 1) | 0) {
+
+                                        if (UnityEngine.MonoBehaviour.op_Equality(this._usedSlots.getItem(j2).ContainedTile, null)) {
+                                            continue;
+                                        }
+                                        if (this._usedSlots.getItem(j2).ContainedTile.TileState === ProjectGamePlay.TileStateEnum.Collected) {
+                                            continue;
+                                        }
+                                        this._usedSlots.getItem(j2).MoveTileToLeftSlotWithStep(step_);
+                                    }
+                                    // for (i = index - 2; i < _currentFirstFreeSlotIndex + 3; i++)
+                                    // {
+                                    //     if (_usedSlots[i].ContainedTile == null)
+                                    //     {
+                                    //         continue;
+                                    //     }
+                                    //     if (_usedSlots[i].ContainedTile.TileState == TileStateEnum.Collected)
+                                    //     {
+                                    //         continue;
+                                    //     }
+                                    //     _usedSlots[i].MoveTileToLeftSlotWithStep(step);
+                                    // }
                                     this._currentFirstFreeSlotIndex = (this._currentFirstFreeSlotIndex - 3) | 0;
                                     this._numberOfTiles = (this._numberOfTiles - 3) | 0;
                                     if (this._numberOfTiles === 0) {

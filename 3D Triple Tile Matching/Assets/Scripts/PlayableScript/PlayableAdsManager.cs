@@ -135,6 +135,7 @@ public class PlayableAdsManager : MonoBehaviour
                 {
                     _currentSelectedTile.Animator.SetBool("IsSelect", false);
                     _currentSelectedTile.ReturnToBlockLayer();
+                    _currentSelectedTile = null;
                     return;
                 }
             }
@@ -151,6 +152,7 @@ public class PlayableAdsManager : MonoBehaviour
                 }
 
             }
+            _currentSelectedTile = null;
         }
         else if (touch.phase == TouchPhase.Began)
         {
