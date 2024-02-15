@@ -38,6 +38,7 @@ namespace ProjectGamePlay
                 return;
             }
             _tileState = TileStateEnum.Selected;
+            PlayableAdsManager.Instance.SlotHolder.NumOfTilesMoving += 1;
             var item = PlayableAdsManager.Instance.SlotHolder.GetSlotFreeForTile(_tileId);
             SetTargetPosToMove(item.Item2.GetSlotPosition());
             SetTileMovingLayer();
@@ -145,10 +146,13 @@ namespace ProjectGamePlay
         public void OnTileInSlot()
         {
             PlayableAdsManager.Instance.SlotHolder.AddIdTile(_tileId);
+            PlayableAdsManager.Instance.SlotHolder.NumOfTilesMoving -= 1;
             if(PlayableAdsManager.Instance.SlotHolder.ListContainedTileId[_tileId] == 3){
+                PlayableAdsManager.Instance.SlotHolder.NumberOfTilesInSlots -= 3;
                 PlayableAdsManager.Instance.SlotHolder.CollectTripleTile(_tileId, _index);
             }
             if(PlayableAdsManager.Instance.SlotHolder.CheckLoseGame()){
+                PlayableAdsManager.Instance.IsCompleteGame = true;
                 PlayableAdsManager.Instance.ShowPopUpTry();
             }
         }

@@ -21,6 +21,7 @@ namespace ProjectGamePlay
         private int _numOfTilesInSlots = 0;
         private int _numberOfSlots = 7;
         private int _numberOfTiles = 0;
+        private int _numOfTilesMoving = 0;
 
         public SlotHolder(Transform slotRoot, int numberOfTiles){
             _usedSlots = new List<SlotController>();
@@ -96,13 +97,13 @@ namespace ProjectGamePlay
         }
 
         public bool CheckLoseGame(){
+            if(_numOfTilesMoving > 0)
+                return false;
             return _numOfTilesInSlots >= _numberOfSlots;
         }
 
         public async void CollectTripleTile(int id, int index)
         {
-
-            _numOfTilesInSlots -= 3;
             _listContainedTileId.Remove(id);
             int i = index;
             PlayableAdsManager.Instance.tileCollectSound.Play();
@@ -138,5 +139,28 @@ namespace ProjectGamePlay
             }
         }
 
+        public int NumberOfTilesInSlots
+        {
+            get
+            {
+                return _numOfTilesInSlots;
+            }
+            set
+            {
+                _numOfTilesInSlots = value;
+            }
+        }
+
+        public int NumOfTilesMoving
+        {
+            get
+            {
+                return _numOfTilesMoving;
+            }
+            set
+            {
+                _numOfTilesMoving = value;
+            }
+        }
     }
 }
