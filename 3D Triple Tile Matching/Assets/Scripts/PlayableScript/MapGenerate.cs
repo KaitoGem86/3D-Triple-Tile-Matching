@@ -42,10 +42,12 @@ namespace ProjectGamePlay{
             for(int i = 0; i < levelData.numOfTiles; i++){
                 float x = levelData.tileData[i].tilePosition.x;
                 float y = levelData.tileData[i].tilePosition.y;
+                float z = -levelData.tileData[i].tileFloor;
                 int id = tileDataController.GetRandomTileId();
-                var tile = GameObject.Instantiate(tilePrefab, levelData.tileData[i].tilePosition, Quaternion.identity).GetComponent<Tile>();
+                var tile = GameObject.Instantiate(tilePrefab, new Vector3(x, y, z), Quaternion.identity).GetComponent<Tile>();
                 tile.transform.localScale = levelData.tileData[i].tileScale;
                 tile.transform.SetParent(tileRoot.transform);
+                tile.name = "Tile " + i;
                 tile.SetSpriteIcon(id);
                 tile.SetTileOnFloor(levelData.tileData[i].tileFloor);
                 PlayableAdsManager.Instance.ListTilesController.AddTileToFloor(levelData.tileData[i].tileFloor,tile);

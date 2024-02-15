@@ -114,19 +114,24 @@ public class PlayableAdsManager : MonoBehaviour
     public void LateUpdate()
     {
         if(!_isCompleteTutorial){
+            Debug.Log("Tutorial");
             return;
         }
-        if (numOfPlayerTurn == 0)
+        if (numOfPlayerTurn == 0){
+            Debug.Log("No Turn");
             return;
+        }
+            
         if (Input.touchCount <= 0)
             return;
         _timer += Time.deltaTime;
+        Debug.Log("Touch");
         Touch touch = Input.GetTouch(0);
         if (touch.phase == TouchPhase.Ended)
         {
             if (_timer > 0.2f)
             {
-                if (_currentSelectedTile.TileState == TileStateEnum.InBlock)
+                if (_currentSelectedTile != null && _currentSelectedTile.TileState == TileStateEnum.InBlock)
                 {
                     _currentSelectedTile.Animator.SetBool("IsSelect", false);
                     _currentSelectedTile.ReturnToBlockLayer();
@@ -155,7 +160,9 @@ public class PlayableAdsManager : MonoBehaviour
             {
                 if (hit.transform.GetComponent<ProjectGamePlay.Tile>() != null)
                 {
+                    Debug.Log("Hit");
                     _currentSelectedTile = hit.transform.GetComponent<ProjectGamePlay.Tile>();
+                    Debug.Log(_currentSelectedTile.TileState + " " + _currentSelectedTile.transform.name);
                     if (_currentSelectedTile.TileState == TileStateEnum.InBlock)
                     {
                         _currentSelectedTile.Animator.SetBool("IsSelect", true);
