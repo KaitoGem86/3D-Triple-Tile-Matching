@@ -120,14 +120,22 @@ namespace ProjectGamePlay
             }
             await Task.Delay(TimeSpan.FromSeconds(0.75f));
             var step = 3;
+            if(index - 3 >= 0 && _usedSlots[index - 3].ContainedTile == null){
+                Debug.Log("Step 6");
+            }
             if ((index - 3 >= 0 && (_usedSlots[index - 3].ContainedTile == null || _usedSlots[index - 3].ContainedTile.TileState == TileStateEnum.Collected))
-                || (index + 3 <= 7 && (_usedSlots[index + 3].ContainedTile == null || _usedSlots[index + 3].ContainedTile.TileState == TileStateEnum.Collected)))
+                // || (index + 3 <= 7 && (_usedSlots[index + 3].ContainedTile == null || _usedSlots[index + 3].ContainedTile.TileState == TileStateEnum.Collected))
+            )
             {
                 step = 6;
             }
-            for (i = index + 1; i < _currentFirstFreeSlotIndex + 3; i++)
+            for (i = index - 2; i < _currentFirstFreeSlotIndex + 3; i++)
             {
                 if (_usedSlots[i].ContainedTile == null)
+                {
+                    continue;
+                }
+                if (_usedSlots[i].ContainedTile.TileState == TileStateEnum.Collected)
                 {
                     continue;
                 }
