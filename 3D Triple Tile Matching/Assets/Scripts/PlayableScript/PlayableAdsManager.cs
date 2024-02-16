@@ -48,7 +48,6 @@ public class PlayableAdsManager : MonoBehaviour
     [SerializeField] private SpriteSheetData _spriteSheetData;
     [SerializeField] private LevelData _levelData;
     [SerializeField] private GameObject _collectEffectPrefab;
-    [SerializeField] private HandController _handController;
     [SerializeField] private bool _isEasyInFirstLayer;
     [SerializeField] private BaseStartSceneManager _baseStartSceneManager;
 
@@ -65,7 +64,6 @@ public class PlayableAdsManager : MonoBehaviour
         FindPanelAndButton();
         SlotHolder = new ProjectGamePlay.SlotHolder(_slotRootPrefab, _levelData.numOfTiles);
         ListTilesController = new ProjectGamePlay.ListTilesController();
-        //var dictMap = MapGenerate.GenerateTestMap(24, _spriteSheetData, _tilePrefab, _tileRoot);
         Dictionary<int, List<Tile>> dictMap = null;
         if(_isEasyInFirstLayer)
             dictMap = MapGenerate.GenerateMapWithTutorialInFirstLayer(_levelData, _spriteSheetData, _tilePrefab, _tileRoot);
@@ -74,40 +72,7 @@ public class PlayableAdsManager : MonoBehaviour
         _listTile = dictMap;
         ListTilesController.SetConnectForTile();
         Pooling.Instance.CreatePool(_TypeGameObjectEnum.CollectEffect, _collectEffectPrefab, 3);
-        // var listHint = ListTilesController.GetHint();
-        // _handController.SetTargetPosToMove(
-        //     listHint[0].transform.position, ()=>{
-        //         listHint[0].SetTileMovingLayer();
-        //         listHint[0].Animator.SetBool("IsSelect", true);
-        //         tileTapSound.Play();
-        //         listHint[0].OnTileCollect();
-        //         _handController.SetTargetPosToMove(
-        //             listHint[1].transform.position, ()=>{
-        //                 listHint[1].SetTileMovingLayer();
-        //                 listHint[1].Animator.SetBool("IsSelect", true);
-        //                 listHint[1].OnTileCollect();
-        //                 tileTapSound.Play();
-        //                 _handController.SetTargetPosToMove(
-        //                     listHint[2].transform.position, ()=>{
-        //                         listHint[2].SetTileMovingLayer();
-        //                         listHint[2].Animator.SetBool("IsSelect", true);
-        //                         listHint[2].OnTileCollect();
-        //                         tileTapSound.Play();
-        //                         _handController.SetTargetPosToMove(
-        //                             new Vector3(15, -15, 0), ()=>{
-        //                                 _handController.gameObject.SetActive(false);
-        //                                 _handController.gameObject.SetActive(false);
-        //                             },
-        //                             0.25f
-        //                         );
-        //                         _isCompleteTutorial = true;
-        //                     },
-        //                     0.5f
-        //                 );
-        //             },
-        //             0.75f
-        //         );
-        //     }, 0.75f);
+        _baseStartSceneManager.StartScene();
     }
 
     private void FindPanelAndButton(){
