@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c331aacb0f1a9b242b470acda7a2eb3d, type: 3}
-  m_Name: LevelData
+  m_Name: LevelDataPlayable6
   m_EditorClassIdentifier: 
   levelName: Level3
   numOfTiles: 60
