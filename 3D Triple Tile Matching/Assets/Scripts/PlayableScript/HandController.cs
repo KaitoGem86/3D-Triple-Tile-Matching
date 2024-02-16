@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using ProjectGamePlay;
 using UnityEngine;
 
 public class HandController : MonoBehaviour
@@ -31,5 +32,46 @@ public class HandController : MonoBehaviour
         _targetPos = targetPos;
         _isMoving = true;
         _onCompleteMoving = onCompleteMoving;
+    }
+
+    public void AutoMoveToTripleGroup(List<Tile> listHint)
+    {
+        SetTargetPosToMove(
+                    listHint[0].transform.position, () =>
+                    {
+                        listHint[0].SetTileMovingLayer();
+                        listHint[0].Animator.SetBool("IsSelect", true);
+                        PlayableAdsManager.Instance.tileTapSound.Play();
+                        listHint[0].OnTileCollect();
+                        SetTargetPosToMove(
+                            listHint[1].transform.position, () =>
+                            {
+                                listHint[1].SetTileMovingLayer();
+                                listHint[1].Animator.SetBool("IsSelect", true);
+                                listHint[1].OnTileCollect();
+                                PlayableAdsManager.Instance.tileTapSound.Play();
+                                SetTargetPosToMove(
+                                    listHint[2].transform.position, () =>
+                                    {
+                                        listHint[2].SetTileMovingLayer();
+                                        listHint[2].Animator.SetBool("IsSelect", true);
+                                        listHint[2].OnTileCollect();
+                                        PlayableAdsManager.Instance.tileTapSound.Play();
+                                        SetTargetPosToMove(
+                                            new Vector3(15, -15, 0), () =>
+                                            {
+                                                gameObject.SetActive(false);
+                                                gameObject.SetActive(false);
+                                            },
+                                            0.25f
+                                        );
+                                        PlayableAdsManager.Instance.IsCompleteTutorial = true;
+                                    },
+                                    0.5f
+                                );
+                            },
+                            0.75f
+                        );
+                    }, 0.75f);
     }
 }

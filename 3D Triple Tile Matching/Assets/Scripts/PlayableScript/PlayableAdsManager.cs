@@ -50,6 +50,7 @@ public class PlayableAdsManager : MonoBehaviour
     [SerializeField] private GameObject _collectEffectPrefab;
     [SerializeField] private HandController _handController;
     [SerializeField] private bool _isEasyInFirstLayer;
+    [SerializeField] private BaseStartSceneManager _baseStartSceneManager;
 
 
     public AudioSource tileTapSound;
@@ -73,40 +74,40 @@ public class PlayableAdsManager : MonoBehaviour
         _listTile = dictMap;
         ListTilesController.SetConnectForTile();
         Pooling.Instance.CreatePool(_TypeGameObjectEnum.CollectEffect, _collectEffectPrefab, 3);
-        var listHint = ListTilesController.GetHint();
-        _handController.SetTargetPosToMove(
-            listHint[0].transform.position, ()=>{
-                listHint[0].SetTileMovingLayer();
-                listHint[0].Animator.SetBool("IsSelect", true);
-                tileTapSound.Play();
-                listHint[0].OnTileCollect();
-                _handController.SetTargetPosToMove(
-                    listHint[1].transform.position, ()=>{
-                        listHint[1].SetTileMovingLayer();
-                        listHint[1].Animator.SetBool("IsSelect", true);
-                        listHint[1].OnTileCollect();
-                        tileTapSound.Play();
-                        _handController.SetTargetPosToMove(
-                            listHint[2].transform.position, ()=>{
-                                listHint[2].SetTileMovingLayer();
-                                listHint[2].Animator.SetBool("IsSelect", true);
-                                listHint[2].OnTileCollect();
-                                tileTapSound.Play();
-                                _handController.SetTargetPosToMove(
-                                    new Vector3(15, -15, 0), ()=>{
-                                        _handController.gameObject.SetActive(false);
-                                        _handController.gameObject.SetActive(false);
-                                    },
-                                    0.25f
-                                );
-                                _isCompleteTutorial = true;
-                            },
-                            0.5f
-                        );
-                    },
-                    0.75f
-                );
-            }, 0.75f);
+        // var listHint = ListTilesController.GetHint();
+        // _handController.SetTargetPosToMove(
+        //     listHint[0].transform.position, ()=>{
+        //         listHint[0].SetTileMovingLayer();
+        //         listHint[0].Animator.SetBool("IsSelect", true);
+        //         tileTapSound.Play();
+        //         listHint[0].OnTileCollect();
+        //         _handController.SetTargetPosToMove(
+        //             listHint[1].transform.position, ()=>{
+        //                 listHint[1].SetTileMovingLayer();
+        //                 listHint[1].Animator.SetBool("IsSelect", true);
+        //                 listHint[1].OnTileCollect();
+        //                 tileTapSound.Play();
+        //                 _handController.SetTargetPosToMove(
+        //                     listHint[2].transform.position, ()=>{
+        //                         listHint[2].SetTileMovingLayer();
+        //                         listHint[2].Animator.SetBool("IsSelect", true);
+        //                         listHint[2].OnTileCollect();
+        //                         tileTapSound.Play();
+        //                         _handController.SetTargetPosToMove(
+        //                             new Vector3(15, -15, 0), ()=>{
+        //                                 _handController.gameObject.SetActive(false);
+        //                                 _handController.gameObject.SetActive(false);
+        //                             },
+        //                             0.25f
+        //                         );
+        //                         _isCompleteTutorial = true;
+        //                     },
+        //                     0.5f
+        //                 );
+        //             },
+        //             0.75f
+        //         );
+        //     }, 0.75f);
     }
 
     private void FindPanelAndButton(){
@@ -206,4 +207,5 @@ public class PlayableAdsManager : MonoBehaviour
     public ProjectGamePlay.ListTilesController ListTilesController { get; set; }
     public SpriteSheetData SpriteSheetData { get => _spriteSheetData; }
     public bool IsCompleteGame { get => _isCompleteGame; set => _isCompleteGame = value; }
+    public bool IsCompleteTutorial { get => _isCompleteTutorial; set => _isCompleteTutorial = value;}
 }
