@@ -34,7 +34,7 @@ public class HandController : MonoBehaviour
         _onCompleteMoving = onCompleteMoving;
     }
 
-    public void AutoMoveToTripleGroup(List<Tile> listHint)
+    public void AutoMoveAndCollectTripleGroup(List<Tile> listHint)
     {
         SetTargetPosToMove(
                     listHint[0].transform.position, () =>
@@ -74,4 +74,6 @@ public class HandController : MonoBehaviour
                         );
                     }, 0.75f);
     }
+
+       
 }

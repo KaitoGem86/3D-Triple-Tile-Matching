@@ -99,7 +99,9 @@ namespace ProjectGamePlay
 
         public void SetTileMovingLayer()
         {
-            SetLayer(4);
+            _tileFloor = this.GetComponent<SpriteRenderer>().sortingOrder/3;
+            SetLayer(50);
+
         }
 
         public void ReturnToBlockLayer()
@@ -161,8 +163,7 @@ namespace ProjectGamePlay
         public void OnCompleteMoveToSlot()
         {
             _animator.SetBool("IsMoveToSlot", false);
-            _backGroundSprite.sortingOrder = 1;
-            _iconSprite.sortingOrder = 2;
+            SetLayer(40);
             var t = Pooling.Instance.SpawnFromPool(_TypeGameObjectEnum.CollectEffect, transform.position, Quaternion.identity).GetComponent<ParticleSystem>();
             t.Play();
             StartCoroutine(WaitForCompleteParticle(t));

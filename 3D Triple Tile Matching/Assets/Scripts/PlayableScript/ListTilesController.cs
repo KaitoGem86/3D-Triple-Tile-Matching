@@ -60,5 +60,7 @@ namespace ProjectGamePlay{
             }
             return null;
         }
+
+        public Dictionary<int, List<Tile>> ListTiles => _dictListTilesInFloor;
     }
 }

@@ -6,7 +6,7 @@ namespace ProjectGamePlay{
         public override void StartScene() 
         {
             var listHint = PlayableAdsManager.Instance.ListTilesController.GetHint();
-            _handController.AutoMoveToTripleGroup(listHint);
+            _handController.AutoMoveAndCollectTripleGroup(listHint);
         }
     }
 }

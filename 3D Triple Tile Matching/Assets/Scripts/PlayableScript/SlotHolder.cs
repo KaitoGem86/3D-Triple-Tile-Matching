@@ -10,7 +10,8 @@ namespace ProjectGamePlay
         Collected,
         InBlock,
         Selected,
-        FloorBehind
+        FloorBehind,
+        InTutorial,
     }
 
     public class SlotHolder
