@@ -24,6 +24,7 @@ namespace GenerateLevel{
     public class GenDataTool : MonoBehaviour{
         [SerializeField] public GameObject levelRoot;
         [SerializeField] public LevelData levelData;
+        [SerializeField] public int minFloor;
 
         public void ReadMapFromGameObject(){
             var listLayers = new List<Transform>();
@@ -35,7 +36,7 @@ namespace GenerateLevel{
             foreach(Transform layer in listLayers){
                 foreach(Transform tile in layer){
                     var tileData = new TileData();
-                    tileData.tileFloor = tile.GetComponent<SpriteRenderer>().sortingOrder/3;
+                    tileData.tileFloor = (tile.GetComponent<SpriteRenderer>().sortingOrder - minFloor)/3 ;
                     tileData.tilePosition = tile.position;
                     tileData.tilePosition.z = -tileData.tileFloor;
                     tileData.tileScale = tile.localScale;

@@ -322,7 +322,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &75462050
 Transform:
   m_ObjectHideFlags: 0
@@ -1963,8 +1963,8 @@ MonoBehaviour:
   _tilePrefab: {fileID: 3435983278738778368, guid: ce8d30a483afbb040bc8d88d6f43bfe6, type: 3}
   _tileRoot: {fileID: 950618668}
   _slotRootPrefab: {fileID: 2082639306}
-  _spriteSheetData: {fileID: 11400000, guid: 3a0ffcf1a3afd444ea1d17152979eaf3, type: 2}
-  _levelData: {fileID: 11400000, guid: d110c62de06b90b4d87ab78defe48863, type: 2}
+  _spriteSheetData: {fileID: 11400000, guid: f3259f9aa929db84f9e25cfe9f15d56e, type: 2}
+  _levelData: {fileID: 11400000, guid: 25ee9cc2e566f1e48a4700ae8fbaf791, type: 2}
   _collectEffectPrefab: {fileID: 4140760699340328457, guid: 8b02defc9dccde4418d34ccad5565555, type: 3}
   _handController: {fileID: 75462051}
   tileTapSound: {fileID: 534040147}
