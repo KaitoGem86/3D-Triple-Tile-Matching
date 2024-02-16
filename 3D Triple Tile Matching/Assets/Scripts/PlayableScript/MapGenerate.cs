@@ -36,6 +36,46 @@ namespace ProjectGamePlay{
             return dictMap;
         }
 
+        public static Dictionary<int, List<Tile>> GenerateMapWithTutorialInFirstLayer(LevelData levelData, SpriteSheetData spriteSheet, GameObject tilePrefab, GameObject tileRoot){
+            TileDataController tileDataController = new TileDataController(spriteSheet, levelData.numOfTiles);
+            Dictionary<int, List<Tile>> dictMap = new Dictionary<int, List<Tile>>();
+            for(int i = 0; i < 3; i++){
+                float x = levelData.tileData[i].tilePosition.x;
+                float y = levelData.tileData[i].tilePosition.y;
+                float z = -levelData.tileData[i].tileFloor;
+                int id = tileDataController.GetTileId(0);
+                var tile = GameObject.Instantiate(tilePrefab, new Vector3(x, y, z), Quaternion.identity).GetComponent<Tile>();
+                tile.transform.localScale = levelData.tileData[i].tileScale;
+                tile.transform.SetParent(tileRoot.transform);
+                tile.name = "Tile " + i;
+                tile.SetSpriteIcon(id);
+                tile.SetTileOnFloor(levelData.tileData[i].tileFloor);
+                PlayableAdsManager.Instance.ListTilesController.AddTileToFloor(levelData.tileData[i].tileFloor,tile);
+                if(!dictMap.ContainsKey(id)){
+                    dictMap.Add(id, new List<Tile>());
+                }
+                dictMap[id].Add(tile);
+            }
+            for(int i = 3; i < levelData.numOfTiles; i++){
+                float x = levelData.tileData[i].tilePosition.x;
+                float y = levelData.tileData[i].tilePosition.y;
+                float z = -levelData.tileData[i].tileFloor;
+                int id = tileDataController.GetRandomTileId();
+                var tile = GameObject.Instantiate(tilePrefab, new Vector3(x, y, z), Quaternion.identity).GetComponent<Tile>();
+                tile.transform.localScale = levelData.tileData[i].tileScale;
+                tile.transform.SetParent(tileRoot.transform);
+                tile.name = "Tile " + i;
+                tile.SetSpriteIcon(id);
+                tile.SetTileOnFloor(levelData.tileData[i].tileFloor);
+                PlayableAdsManager.Instance.ListTilesController.AddTileToFloor(levelData.tileData[i].tileFloor,tile);
+                if(!dictMap.ContainsKey(id)){
+                    dictMap.Add(id, new List<Tile>());
+                }
+                dictMap[id].Add(tile);
+            }
+            return dictMap;
+        }
+
         public static Dictionary<int, List<Tile>> GenerateMap(LevelData levelData, SpriteSheetData spriteSheet, GameObject tilePrefab, GameObject tileRoot){
             TileDataController tileDataController = new TileDataController(spriteSheet, levelData.numOfTiles);
             Dictionary<int, List<Tile>> dictMap = new Dictionary<int, List<Tile>>();
@@ -91,6 +131,18 @@ namespace ProjectGamePlay{
                 }
             }
             return randomId;
+        }
+
+        public int GetTileId(int id){
+            int tileId = listTilesData[id];
+            if(dictTilesData[tileId] > 0){
+                dictTilesData[tileId]--;
+                if(dictTilesData[tileId] == 0){
+                    dictTilesData.Remove(tileId);
+                    listTilesData.Remove(tileId);
+                }
+            }
+            return tileId;
         }
     }
 }

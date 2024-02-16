@@ -322,7 +322,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &75462050
 Transform:
   m_ObjectHideFlags: 0
@@ -1967,6 +1967,7 @@ MonoBehaviour:
   _levelData: {fileID: 11400000, guid: 25ee9cc2e566f1e48a4700ae8fbaf791, type: 2}
   _collectEffectPrefab: {fileID: 4140760699340328457, guid: 8b02defc9dccde4418d34ccad5565555, type: 3}
   _handController: {fileID: 75462051}
+  _isEasyInFirstLayer: 1
   tileTapSound: {fileID: 534040147}
   tileCollectSound: {fileID: 263023223}
   unCollectSound: {fileID: 726091529}

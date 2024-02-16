@@ -49,6 +49,7 @@ public class PlayableAdsManager : MonoBehaviour
     [SerializeField] private LevelData _levelData;
     [SerializeField] private GameObject _collectEffectPrefab;
     [SerializeField] private HandController _handController;
+    [SerializeField] private bool _isEasyInFirstLayer;
 
 
     public AudioSource tileTapSound;
@@ -64,7 +65,11 @@ public class PlayableAdsManager : MonoBehaviour
         SlotHolder = new ProjectGamePlay.SlotHolder(_slotRootPrefab, _levelData.numOfTiles);
         ListTilesController = new ProjectGamePlay.ListTilesController();
         //var dictMap = MapGenerate.GenerateTestMap(24, _spriteSheetData, _tilePrefab, _tileRoot);
-        var dictMap = MapGenerate.GenerateMap(_levelData, _spriteSheetData, _tilePrefab, _tileRoot);
+        Dictionary<int, List<Tile>> dictMap = null;
+        if(_isEasyInFirstLayer)
+            dictMap = MapGenerate.GenerateMapWithTutorialInFirstLayer(_levelData, _spriteSheetData, _tilePrefab, _tileRoot);
+        else
+            dictMap = MapGenerate.GenerateMap(_levelData, _spriteSheetData, _tilePrefab, _tileRoot);
         _listTile = dictMap;
         ListTilesController.SetConnectForTile();
         Pooling.Instance.CreatePool(_TypeGameObjectEnum.CollectEffect, _collectEffectPrefab, 3);
