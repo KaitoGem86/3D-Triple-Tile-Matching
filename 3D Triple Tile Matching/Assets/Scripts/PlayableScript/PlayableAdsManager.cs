@@ -56,7 +56,8 @@ public class PlayableAdsManager : MonoBehaviour
     public AudioSource tileCollectSound;
     public AudioSource unCollectSound;
 
-    private bool _isCompleteTutorial;
+    private bool _isAllowSelectTile;
+    private bool _isInTutorial;
     private bool _isCompleteGame;
 
     private void Start()
@@ -69,6 +70,7 @@ public class PlayableAdsManager : MonoBehaviour
             dictMap = MapGenerate.GenerateMapWithTutorialInFirstLayer(_levelData, _spriteSheetData, _tilePrefab, _tileRoot);
         else
             dictMap = MapGenerate.GenerateMap(_levelData, _spriteSheetData, _tilePrefab, _tileRoot);
+        _isInTutorial = true;
         _listTile = dictMap;
         ListTilesController.SetConnectForTile();
         Pooling.Instance.CreatePool(_TypeGameObjectEnum.CollectEffect, _collectEffectPrefab, 3);
@@ -93,7 +95,7 @@ public class PlayableAdsManager : MonoBehaviour
 
     public void LateUpdate()
     {
-        if(!_isCompleteTutorial){
+        if(!_isAllowSelectTile){
             return;
         }
         if (numOfPlayerTurn == 0){
@@ -172,5 +174,7 @@ public class PlayableAdsManager : MonoBehaviour
     public ProjectGamePlay.ListTilesController ListTilesController { get; set; }
     public SpriteSheetData SpriteSheetData { get => _spriteSheetData; }
     public bool IsCompleteGame { get => _isCompleteGame; set => _isCompleteGame = value; }
-    public bool IsCompleteTutorial { get => _isCompleteTutorial; set => _isCompleteTutorial = value;}
+    public bool IsAllowSelectTile { get => _isAllowSelectTile; set => _isAllowSelectTile = value;}
+    public bool IsInTutorial { get => _isInTutorial; set => _isInTutorial = value; }
+    public BaseStartSceneManager BaseStartSceneManager { get => _baseStartSceneManager; }
 }

@@ -61,11 +61,10 @@ public class HandController : MonoBehaviour
                                             new Vector3(15, -15, 0), () =>
                                             {
                                                 gameObject.SetActive(false);
-                                                gameObject.SetActive(false);
                                             },
                                             0.25f
                                         );
-                                        PlayableAdsManager.Instance.IsCompleteTutorial = true;
+                                        PlayableAdsManager.Instance.IsAllowSelectTile = true;
                                     },
                                     0.5f
                                 );
@@ -75,5 +74,5 @@ public class HandController : MonoBehaviour
                     }, 0.75f);
     }
 
-       
+
 }

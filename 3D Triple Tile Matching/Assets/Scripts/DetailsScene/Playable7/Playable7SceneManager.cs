@@ -1,27 +1,25 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace ProjectGamePlay
 {
     public class Playable7SceneManager : BaseStartSceneManager
     {
-        [SerializeField] private GameObject darkPanel;
-        [SerializeField] private HandController handController;
+        [SerializeField] private GameObject _darkPanel;
+        [SerializeField] private HandController _handController;
+        private List<Tile> listHint;
+        int indexHint = 0;
 
         public override void StartScene()
         {
-            PlayableAdsManager.Instance.IsCompleteTutorial = true;
-            var listHint = PlayableAdsManager.Instance.ListTilesController.GetHint();
+            PlayableAdsManager.Instance.IsAllowSelectTile = true;
+            listHint = PlayableAdsManager.Instance.ListTilesController.GetHint();
             SetAllTileToTutorialLayer(TileStateEnum.InBlock, TileStateEnum.InTutorial);
-            darkPanel.SetActive(true);
-
-            handController.SetTargetPosToMove(Vector2.zero, () =>
-            {
-                listHint[0].SetLayer(50);
-                listHint[0].TileState = TileStateEnum.InBlock;
-            }, 0.3f);
+            _darkPanel.SetActive(true);
+            SetNextHint();
         }
 
-        public void SetAllTileToTutorialLayer(TileStateEnum tileStateBefore, TileStateEnum tileStateAfter)
+        private void SetAllTileToTutorialLayer(TileStateEnum tileStateBefore, TileStateEnum tileStateAfter)
         {
             foreach (var tileLayer in PlayableAdsManager.Instance.ListTilesController.ListTiles)
             {
@@ -31,6 +29,31 @@ namespace ProjectGamePlay
                         tile.TileState = tileStateAfter;
                 }
             }
+        }
+
+        public override void CompleteTutorialOfAds()
+        {
+            _darkPanel.SetActive(false);
+            PlayableAdsManager.Instance.IsAllowSelectTile = true;
+            SetAllTileToTutorialLayer(TileStateEnum.InTutorial, TileStateEnum.InBlock);
+        }
+
+        public void SetNextHint()
+        {
+            listHint[indexHint].SetLayer(50);
+            listHint[indexHint].TileState = TileStateEnum.InBlock;
+            _handController.SetTargetPosToMove(listHint[indexHint].transform.position, () =>
+                {
+                    if(indexHint == 2){
+                        _handController.SetTargetPosToMove(new Vector3(15, -15, 0), () =>
+                            {
+                                gameObject.SetActive(false);
+                            },
+                            0.25f);
+                        return;
+                    }
+                    indexHint++;
+                }, 0.3f);
         }
     }
 }

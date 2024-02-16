@@ -49,6 +49,10 @@ namespace ProjectGamePlay
             {
                 tile.RemoveTileFront(this);
             }
+            if(PlayableAdsManager.Instance.IsInTutorial){
+                var tmp = (Playable7SceneManager) PlayableAdsManager.Instance.BaseStartSceneManager;
+                tmp.SetNextHint();
+            }
         }
         public void AnimCollect()
         {

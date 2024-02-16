@@ -120,16 +120,6 @@ namespace ProjectGamePlay
                 _usedSlots[index - j].ContainedTile = null;
             }
             await Task.Delay(TimeSpan.FromSeconds(0.75f));
-            // var step = 3;
-            if(index - 3 >= 0 && _usedSlots[index - 3].ContainedTile == null){
-                Debug.Log("Step 6");
-            }
-            // if ((index - 3 >= 0 && (_usedSlots[index - 3].ContainedTile == null || _usedSlots[index - 3].ContainedTile.TileState == TileStateEnum.Collected))
-            //     || (index + 3 <= 7 && (_usedSlots[index + 3].ContainedTile == null || _usedSlots[index + 3].ContainedTile.TileState == TileStateEnum.Collected))
-            // )
-            // {
-            //     step = 6;
-            // }
             int start = 9999;
             int step_ = 0;
             for(int j = index - 2; j < 8; j++){
@@ -153,20 +143,14 @@ namespace ProjectGamePlay
                 }
                 _usedSlots[j].MoveTileToLeftSlotWithStep(step_);
             }
-            // for (i = index - 2; i < _currentFirstFreeSlotIndex + 3; i++)
-            // {
-            //     if (_usedSlots[i].ContainedTile == null)
-            //     {
-            //         continue;
-            //     }
-            //     if (_usedSlots[i].ContainedTile.TileState == TileStateEnum.Collected)
-            //     {
-            //         continue;
-            //     }
-            //     _usedSlots[i].MoveTileToLeftSlotWithStep(step);
-            // }
             _currentFirstFreeSlotIndex -= 3;
             _numberOfTiles -= 3;
+            if(PlayableAdsManager.Instance.IsInTutorial){
+                Debug.Log("Tutorial");
+                PlayableAdsManager.Instance.IsInTutorial = false;
+                PlayableAdsManager.Instance.BaseStartSceneManager.CompleteTutorialOfAds();
+                return;
+            }
             if (_numberOfTiles == 0)
             {
                 PlayableAdsManager.Instance.ShowPopUpPlayNow();
