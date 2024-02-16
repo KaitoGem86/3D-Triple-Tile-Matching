@@ -1,6 +1,6 @@
-if ( TRACE ) { TRACE( JSON.parse( '["GenerateLevel.GenDataTool#ReadMapFromGameObject","GenerateLevel.MakeTileMap#ctor","GenerateLevel.MakeTileMap#GenTileMap","GenerateLevel.MakeTileMap#CreatePixelMap","GenerateLevel.MakeTileMap#CreatePixelTile","HandController#init","HandController#FixedUpdate","HandController#SetTargetPosToMove","ObjectPool.Pooling#Instance#get","ObjectPool.Pooling#ctor","ObjectPool.Pooling#CreatePool","ObjectPool.Pooling#SpawnFromPool","ObjectPool.Pooling#ReturnToPool","PlayableAdsManager#Instance#get","PlayableAdsManager#SpriteSheetData#get","PlayableAdsManager#IsCompleteGame#get","PlayableAdsManager#IsCompleteGame#set","PlayableAdsManager#init","PlayableAdsManager#Awake","PlayableAdsManager#Start","PlayableAdsManager#GetTile","PlayableAdsManager#LateUpdate","PlayableAdsManager#ShowPopUpPlayNow","PlayableAdsManager#ShowPopUpTry","PlayNowButton#Start","PlayNowButton#OnMouseDown","PlayNowButton#ZoomInButton","PlayNowButton#CompleteZoomInButton","ProjectGamePlay.LevelData#init","ProjectGamePlay.ListTilesController#ctor","ProjectGamePlay.ListTilesController#AddTileToFloor","ProjectGamePlay.ListTilesController#RemoveTileFromFloor","ProjectGamePlay.ListTilesController#GetListTilesInFloor","ProjectGamePlay.ListTilesController#SetConnectForTile","ProjectGamePlay.ListTilesController#GetHint","ProjectGamePlay.MapGenerate#GenerateTestMap$1","ProjectGamePlay.MapGenerate#GenerateTestMap","ProjectGamePlay.MapGenerate#GenerateMap","ProjectGamePlay.RectangeleUtils#IsRectangleOverlap","ProjectGamePlay.SlotController#ContainedTile#get","ProjectGamePlay.SlotController#ContainedTile#set","ProjectGamePlay.SlotController#LeftSlot#get","ProjectGamePlay.SlotController#LeftSlot#set","ProjectGamePlay.SlotController#RightSlot#get","ProjectGamePlay.SlotController#RightSlot#set","ProjectGamePlay.SlotController#ctor","ProjectGamePlay.SlotController#GetSlotPosition","ProjectGamePlay.SlotController#MoveTileToRightSlot","ProjectGamePlay.SlotController#MoveTileToLeftSlot","ProjectGamePlay.SlotController#MoveTileToLeftSlotWithStep","ProjectGamePlay.SlotHolder#ListContainedTileId#get","ProjectGamePlay.SlotHolder#NumberOfTilesInSlots#get","ProjectGamePlay.SlotHolder#NumberOfTilesInSlots#set","ProjectGamePlay.SlotHolder#NumOfTilesMoving#get","ProjectGamePlay.SlotHolder#NumOfTilesMoving#set","ProjectGamePlay.SlotHolder#init","ProjectGamePlay.SlotHolder#ctor","ProjectGamePlay.SlotHolder#GetSlotFree","ProjectGamePlay.SlotHolder#GetSlotFreeForTile","ProjectGamePlay.SlotHolder#AddIdTile","ProjectGamePlay.SlotHolder#CheckLoseGame","ProjectGamePlay.SlotHolder#CollectTripleTile","ProjectGamePlay.SpriteSheetData#GetSprite","ProjectGamePlay.Tile#TileState#get","ProjectGamePlay.Tile#TileState#set","ProjectGamePlay.Tile#Id#get","ProjectGamePlay.Tile#Id#set","ProjectGamePlay.Tile#Index#get","ProjectGamePlay.Tile#Index#set","ProjectGamePlay.Tile#Animator#get","ProjectGamePlay.Tile#init","ProjectGamePlay.Tile#Start","ProjectGamePlay.Tile#SetTileOnFloor","ProjectGamePlay.Tile#OnTileCollect","ProjectGamePlay.Tile#AnimCollect","ProjectGamePlay.Tile#AnimUnCollected","ProjectGamePlay.Tile#FixedUpdate","ProjectGamePlay.Tile#SetSpriteIcon","ProjectGamePlay.Tile#SetTargetPosToMove","ProjectGamePlay.Tile#GetPosition","ProjectGamePlay.Tile#SetTileMovingLayer","ProjectGamePlay.Tile#ReturnToBlockLayer","ProjectGamePlay.Tile#SetLayer","ProjectGamePlay.Tile#SetTileStateSelect","ProjectGamePlay.Tile#SetTileBehind","ProjectGamePlay.Tile#RemoveTileFront","ProjectGamePlay.Tile#OnTileInSlot","ProjectGamePlay.Tile#OnCompleteMoveToSlot","ProjectGamePlay.Tile#WaitForCompleteParticle","ProjectGamePlay.TileData#init","ProjectGamePlay.TileDataController#init","ProjectGamePlay.TileDataController#ctor","ProjectGamePlay.TileDataController#GetRandomTileId"]' ) ); }
+if ( TRACE ) { TRACE( JSON.parse( '["GenerateLevel.GenDataTool#ReadMapFromGameObject","GenerateLevel.MakeTileMap#ctor","GenerateLevel.MakeTileMap#GenTileMap","GenerateLevel.MakeTileMap#CreatePixelMap","GenerateLevel.MakeTileMap#CreatePixelTile","HandController#init","HandController#FixedUpdate","HandController#SetTargetPosToMove","ObjectPool.Pooling#Instance#get","ObjectPool.Pooling#ctor","ObjectPool.Pooling#CreatePool","ObjectPool.Pooling#SpawnFromPool","ObjectPool.Pooling#ReturnToPool","PlayableAdsManager#Instance#get","PlayableAdsManager#SpriteSheetData#get","PlayableAdsManager#IsCompleteGame#get","PlayableAdsManager#IsCompleteGame#set","PlayableAdsManager#init","PlayableAdsManager#Awake","PlayableAdsManager#Start","PlayableAdsManager#FindPanelAndButton","PlayableAdsManager#GetTile","PlayableAdsManager#LateUpdate","PlayableAdsManager#ShowPopUpPlayNow","PlayableAdsManager#ShowPopUpTry","PlayNowButton#Start","PlayNowButton#OnMouseDown","PlayNowButton#ZoomInButton","PlayNowButton#CompleteZoomInButton","PlayNowButton#Active","ProjectGamePlay.LevelData#init","ProjectGamePlay.ListTilesController#ctor","ProjectGamePlay.ListTilesController#AddTileToFloor","ProjectGamePlay.ListTilesController#RemoveTileFromFloor","ProjectGamePlay.ListTilesController#GetListTilesInFloor","ProjectGamePlay.ListTilesController#SetConnectForTile","ProjectGamePlay.ListTilesController#GetHint","ProjectGamePlay.MapGenerate#GenerateTestMap$1","ProjectGamePlay.MapGenerate#GenerateTestMap","ProjectGamePlay.MapGenerate#GenerateMap","ProjectGamePlay.RectangeleUtils#IsRectangleOverlap","ProjectGamePlay.SlotController#ContainedTile#get","ProjectGamePlay.SlotController#ContainedTile#set","ProjectGamePlay.SlotController#LeftSlot#get","ProjectGamePlay.SlotController#LeftSlot#set","ProjectGamePlay.SlotController#RightSlot#get","ProjectGamePlay.SlotController#RightSlot#set","ProjectGamePlay.SlotController#ctor","ProjectGamePlay.SlotController#GetSlotPosition","ProjectGamePlay.SlotController#MoveTileToRightSlot","ProjectGamePlay.SlotController#MoveTileToLeftSlot","ProjectGamePlay.SlotController#MoveTileToLeftSlotWithStep","ProjectGamePlay.SlotHolder#ListContainedTileId#get","ProjectGamePlay.SlotHolder#NumberOfTilesInSlots#get","ProjectGamePlay.SlotHolder#NumberOfTilesInSlots#set","ProjectGamePlay.SlotHolder#NumOfTilesMoving#get","ProjectGamePlay.SlotHolder#NumOfTilesMoving#set","ProjectGamePlay.SlotHolder#init","ProjectGamePlay.SlotHolder#ctor","ProjectGamePlay.SlotHolder#GetSlotFree","ProjectGamePlay.SlotHolder#GetSlotFreeForTile","ProjectGamePlay.SlotHolder#AddIdTile","ProjectGamePlay.SlotHolder#CheckLoseGame","ProjectGamePlay.SlotHolder#CollectTripleTile","ProjectGamePlay.SpriteSheetData#GetSprite","ProjectGamePlay.Tile#TileState#get","ProjectGamePlay.Tile#TileState#set","ProjectGamePlay.Tile#Id#get","ProjectGamePlay.Tile#Id#set","ProjectGamePlay.Tile#Index#get","ProjectGamePlay.Tile#Index#set","ProjectGamePlay.Tile#Animator#get","ProjectGamePlay.Tile#init","ProjectGamePlay.Tile#Start","ProjectGamePlay.Tile#SetTileOnFloor","ProjectGamePlay.Tile#OnTileCollect","ProjectGamePlay.Tile#AnimCollect","ProjectGamePlay.Tile#AnimUnCollected","ProjectGamePlay.Tile#FixedUpdate","ProjectGamePlay.Tile#SetSpriteIcon","ProjectGamePlay.Tile#SetTargetPosToMove","ProjectGamePlay.Tile#GetPosition","ProjectGamePlay.Tile#SetTileMovingLayer","ProjectGamePlay.Tile#ReturnToBlockLayer","ProjectGamePlay.Tile#SetLayer","ProjectGamePlay.Tile#SetTileStateSelect","ProjectGamePlay.Tile#SetTileBehind","ProjectGamePlay.Tile#RemoveTileFront","ProjectGamePlay.Tile#OnTileInSlot","ProjectGamePlay.Tile#OnCompleteMoveToSlot","ProjectGamePlay.Tile#WaitForCompleteParticle","ProjectGamePlay.TileData#init","ProjectGamePlay.TileDataController#init","ProjectGamePlay.TileDataController#ctor","ProjectGamePlay.TileDataController#GetRandomTileId"]' ) ); }
 /**
- * @version 1.0.8811.30264
+ * @version 1.0.8811.40109
  * @copyright anton
  * @compiler Bridge.NET 17.9.40-luna
  */
@@ -338,7 +338,8 @@ if ( TRACE ) { TRACE( "PlayableAdsManager#Instance#get", this ); }
             numOfPlayerTurn: 0,
             _timer: 0,
             _currentSelectedTile: null,
-            playNowButton: null,
+            _playNowButton: null,
+            _tryButton: null,
             _backgroundPanel: null,
             _tilePrefab: null,
             _tileRoot: null,
@@ -347,7 +348,6 @@ if ( TRACE ) { TRACE( "PlayableAdsManager#Instance#get", this ); }
             _levelData: null,
             _collectEffectPrefab: null,
             _handController: null,
-            _buttonText: null,
             tileTapSound: null,
             tileCollectSound: null,
             unCollectSound: null,
@@ -405,6 +405,7 @@ if ( TRACE ) { TRACE( "PlayableAdsManager#Awake", this ); }
             Start: function () {
 if ( TRACE ) { TRACE( "PlayableAdsManager#Start", this ); }
 
+                this.FindPanelAndButton();
                 this.SlotHolder = new ProjectGamePlay.SlotHolder(this._slotRootPrefab, this._levelData.numOfTiles);
                 this.ListTilesController = new ProjectGamePlay.ListTilesController();
                 //var dictMap = MapGenerate.GenerateTestMap(24, _spriteSheetData, _tilePrefab, _tileRoot);
@@ -438,6 +439,17 @@ if ( TRACE ) { TRACE( "PlayableAdsManager#Start", this ); }
                 }), 0.75);
             },
             /*PlayableAdsManager.Start end.*/
+
+            /*PlayableAdsManager.FindPanelAndButton start.*/
+            FindPanelAndButton: function () {
+if ( TRACE ) { TRACE( "PlayableAdsManager#FindPanelAndButton", this ); }
+
+                var canvas = UnityEngine.GameObject.Find("Canvas");
+                this._backgroundPanel = canvas.transform.GetChild(1).GetComponent(UnityEngine.UI.Image);
+                this._playNowButton = canvas.transform.GetChild(2).GetComponent(UnityEngine.UI.Button);
+                this._tryButton = canvas.transform.GetChild(3).GetComponent(UnityEngine.UI.Button);
+            },
+            /*PlayableAdsManager.FindPanelAndButton end.*/
 
             /*PlayableAdsManager.GetTile start.*/
             GetTile: function (tileId) {
@@ -511,10 +523,11 @@ if ( TRACE ) { TRACE( "PlayableAdsManager#LateUpdate", this ); }
             ShowPopUpPlayNow: function () {
 if ( TRACE ) { TRACE( "PlayableAdsManager#ShowPopUpPlayNow", this ); }
 
-                this._buttonText.text = "PLAY NOW";
                 this._backgroundPanel.gameObject.SetActive(true);
-                this.playNowButton.gameObject.SetActive(true);
-                this.playNowButton.GetComponent(PlayNowButton).ZoomInButton();
+                this._playNowButton.gameObject.SetActive(true);
+                //_playNowButton.GetComponent<PlayNowButton>().Active();
+                this._playNowButton.GetComponent(PlayNowButton).ZoomInButton();
+                UnityEngine.Debug.Log$1("ShowPopUpPlayNow");
             },
             /*PlayableAdsManager.ShowPopUpPlayNow end.*/
 
@@ -522,10 +535,10 @@ if ( TRACE ) { TRACE( "PlayableAdsManager#ShowPopUpPlayNow", this ); }
             ShowPopUpTry: function () {
 if ( TRACE ) { TRACE( "PlayableAdsManager#ShowPopUpTry", this ); }
 
-                this._buttonText.text = "TRY";
                 this._backgroundPanel.gameObject.SetActive(true);
-                this.playNowButton.gameObject.SetActive(true);
-                this.playNowButton.GetComponent(PlayNowButton).ZoomInButton();
+                this._tryButton.gameObject.SetActive(true);
+                //_tryButton.GetComponent<PlayNowButton>().Active();
+                this._tryButton.GetComponent(PlayNowButton).ZoomInButton();
             },
             /*PlayableAdsManager.ShowPopUpTry end.*/
 
@@ -538,7 +551,10 @@ if ( TRACE ) { TRACE( "PlayableAdsManager#ShowPopUpTry", this ); }
     Bridge.define("PlayNowButton", {
         inherits: [UnityEngine.MonoBehaviour],
         fields: {
-            _animator: null
+            _animator: null,
+            _button: null,
+            _buttonBackground: null,
+            _buttonText: null
         },
         methods: {
             /*PlayNowButton.Start start.*/
@@ -572,6 +588,16 @@ if ( TRACE ) { TRACE( "PlayNowButton#CompleteZoomInButton", this ); }
                 this._animator.SetBool$1("IsZoomIn", false);
             },
             /*PlayNowButton.CompleteZoomInButton end.*/
+
+            /*PlayNowButton.Active start.*/
+            Active: function () {
+if ( TRACE ) { TRACE( "PlayNowButton#Active", this ); }
+
+                this._button.interactable = true;
+                this._buttonBackground.color = new pc.Color( 255, 255, 255, 255 );
+                this._buttonText.color = new pc.Color( 255, 255, 255, 255 );
+            },
+            /*PlayNowButton.Active end.*/
 
 
         }
@@ -1640,11 +1666,11 @@ if ( TRACE ) { TRACE( "ProjectGamePlay.TileDataController#GetRandomTileId", this
     /*HandController end.*/
 
     /*PlayableAdsManager start.*/
-    $m("PlayableAdsManager", function () { return {"att":1048577,"a":2,"m":[{"a":2,"isSynthetic":true,"n":".ctor","t":1,"sn":"ctor"},{"a":1,"n":"Awake","t":8,"sn":"Awake","rt":$n[0].Void},{"a":2,"n":"GetTile","t":8,"pi":[{"n":"tileId","pt":$n[0].Int32,"ps":0}],"sn":"GetTile","rt":$n[2].List$1(ProjectGamePlay.Tile),"p":[$n[0].Int32]},{"a":2,"n":"LateUpdate","t":8,"sn":"LateUpdate","rt":$n[0].Void},{"a":2,"n":"ShowPopUpPlayNow","t":8,"sn":"ShowPopUpPlayNow","rt":$n[0].Void},{"a":2,"n":"ShowPopUpTry","t":8,"sn":"ShowPopUpTry","rt":$n[0].Void},{"a":1,"n":"Start","t":8,"sn":"Start","rt":$n[0].Void},{"a":2,"n":"Instance","is":true,"t":16,"rt":PlayableAdsManager,"g":{"a":2,"n":"get_Instance","t":8,"rt":PlayableAdsManager,"fg":"Instance","is":true},"fn":"Instance"},{"a":2,"n":"IsCompleteGame","t":16,"rt":$n[0].Boolean,"g":{"a":2,"n":"get_IsCompleteGame","t":8,"rt":$n[0].Boolean,"fg":"IsCompleteGame","box":function ($v) { return Bridge.box($v, System.Boolean, System.Boolean.toString);}},"s":{"a":2,"n":"set_IsCompleteGame","t":8,"p":[$n[0].Boolean],"rt":$n[0].Void,"fs":"IsCompleteGame"},"fn":"IsCompleteGame"},{"a":2,"n":"ListTilesController","t":16,"rt":$n[3].ListTilesController,"g":{"a":2,"n":"get_ListTilesController","t":8,"rt":$n[3].ListTilesController,"fg":"ListTilesController"},"s":{"a":2,"n":"set_ListTilesController","t":8,"p":[$n[3].ListTilesController],"rt":$n[0].Void,"fs":"ListTilesController"},"fn":"ListTilesController"},{"a":2,"n":"SlotHolder","t":16,"rt":$n[3].SlotHolder,"g":{"a":2,"n":"get_SlotHolder","t":8,"rt":$n[3].SlotHolder,"fg":"SlotHolder"},"s":{"a":2,"n":"set_SlotHolder","t":8,"p":[$n[3].SlotHolder],"rt":$n[0].Void,"fs":"SlotHolder"},"fn":"SlotHolder"},{"a":2,"n":"SpriteSheetData","t":16,"rt":$n[3].SpriteSheetData,"g":{"a":2,"n":"get_SpriteSheetData","t":8,"rt":$n[3].SpriteSheetData,"fg":"SpriteSheetData"},"fn":"SpriteSheetData"},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"_backgroundPanel","t":4,"rt":$n[4].Image,"sn":"_backgroundPanel"},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"_buttonText","t":4,"rt":$n[5].TMP_Text,"sn":"_buttonText"},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"_collectEffectPrefab","t":4,"rt":$n[1].GameObject,"sn":"_collectEffectPrefab"},{"a":1,"n":"_currentSelectedTile","t":4,"rt":$n[3].Tile,"sn":"_currentSelectedTile"},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"_handController","t":4,"rt":HandController,"sn":"_handController"},{"a":1,"n":"_isCompleteGame","t":4,"rt":$n[0].Boolean,"sn":"_isCompleteGame","box":function ($v) { return Bridge.box($v, System.Boolean, System.Boolean.toString);}},{"a":1,"n":"_isCompleteTutorial","t":4,"rt":$n[0].Boolean,"sn":"_isCompleteTutorial","box":function ($v) { return Bridge.box($v, System.Boolean, System.Boolean.toString);}},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"_levelData","t":4,"rt":$n[3].LevelData,"sn":"_levelData"},{"a":1,"n":"_listTile","t":4,"rt":$n[2].Dictionary$2(System.Int32,System.Collections.Generic.List$1(ProjectGamePlay.Tile)),"sn":"_listTile"},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"_slotRootPrefab","t":4,"rt":$n[1].Transform,"sn":"_slotRootPrefab"},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"_spriteSheetData","t":4,"rt":$n[3].SpriteSheetData,"sn":"_spriteSheetData"},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"_tilePrefab","t":4,"rt":$n[1].GameObject,"sn":"_tilePrefab"},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"_tileRoot","t":4,"rt":$n[1].GameObject,"sn":"_tileRoot"},{"a":1,"n":"_timer","t":4,"rt":$n[0].Single,"sn":"_timer","box":function ($v) { return Bridge.box($v, System.Single, System.Single.format, System.Single.getHashCode);}},{"a":1,"n":"instance","is":true,"t":4,"rt":PlayableAdsManager,"sn":"instance"},{"a":1,"n":"numOfPlayerTurn","t":4,"rt":$n[0].Int32,"sn":"numOfPlayerTurn","box":function ($v) { return Bridge.box($v, System.Int32);}},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"playNowButton","t":4,"rt":$n[4].Button,"sn":"playNowButton"},{"a":2,"n":"tileCollectSound","t":4,"rt":$n[1].AudioSource,"sn":"tileCollectSound"},{"a":2,"n":"tileTapSound","t":4,"rt":$n[1].AudioSource,"sn":"tileTapSound"},{"a":2,"n":"unCollectSound","t":4,"rt":$n[1].AudioSource,"sn":"unCollectSound"},{"a":1,"backing":true,"n":"<ListTilesController>k__BackingField","t":4,"rt":$n[3].ListTilesController,"sn":"ListTilesController"},{"a":1,"backing":true,"n":"<SlotHolder>k__BackingField","t":4,"rt":$n[3].SlotHolder,"sn":"SlotHolder"}]}; }, $n);
+    $m("PlayableAdsManager", function () { return {"att":1048577,"a":2,"m":[{"a":2,"isSynthetic":true,"n":".ctor","t":1,"sn":"ctor"},{"a":1,"n":"Awake","t":8,"sn":"Awake","rt":$n[0].Void},{"a":1,"n":"FindPanelAndButton","t":8,"sn":"FindPanelAndButton","rt":$n[0].Void},{"a":2,"n":"GetTile","t":8,"pi":[{"n":"tileId","pt":$n[0].Int32,"ps":0}],"sn":"GetTile","rt":$n[2].List$1(ProjectGamePlay.Tile),"p":[$n[0].Int32]},{"a":2,"n":"LateUpdate","t":8,"sn":"LateUpdate","rt":$n[0].Void},{"a":2,"n":"ShowPopUpPlayNow","t":8,"sn":"ShowPopUpPlayNow","rt":$n[0].Void},{"a":2,"n":"ShowPopUpTry","t":8,"sn":"ShowPopUpTry","rt":$n[0].Void},{"a":1,"n":"Start","t":8,"sn":"Start","rt":$n[0].Void},{"a":2,"n":"Instance","is":true,"t":16,"rt":PlayableAdsManager,"g":{"a":2,"n":"get_Instance","t":8,"rt":PlayableAdsManager,"fg":"Instance","is":true},"fn":"Instance"},{"a":2,"n":"IsCompleteGame","t":16,"rt":$n[0].Boolean,"g":{"a":2,"n":"get_IsCompleteGame","t":8,"rt":$n[0].Boolean,"fg":"IsCompleteGame","box":function ($v) { return Bridge.box($v, System.Boolean, System.Boolean.toString);}},"s":{"a":2,"n":"set_IsCompleteGame","t":8,"p":[$n[0].Boolean],"rt":$n[0].Void,"fs":"IsCompleteGame"},"fn":"IsCompleteGame"},{"a":2,"n":"ListTilesController","t":16,"rt":$n[3].ListTilesController,"g":{"a":2,"n":"get_ListTilesController","t":8,"rt":$n[3].ListTilesController,"fg":"ListTilesController"},"s":{"a":2,"n":"set_ListTilesController","t":8,"p":[$n[3].ListTilesController],"rt":$n[0].Void,"fs":"ListTilesController"},"fn":"ListTilesController"},{"a":2,"n":"SlotHolder","t":16,"rt":$n[3].SlotHolder,"g":{"a":2,"n":"get_SlotHolder","t":8,"rt":$n[3].SlotHolder,"fg":"SlotHolder"},"s":{"a":2,"n":"set_SlotHolder","t":8,"p":[$n[3].SlotHolder],"rt":$n[0].Void,"fs":"SlotHolder"},"fn":"SlotHolder"},{"a":2,"n":"SpriteSheetData","t":16,"rt":$n[3].SpriteSheetData,"g":{"a":2,"n":"get_SpriteSheetData","t":8,"rt":$n[3].SpriteSheetData,"fg":"SpriteSheetData"},"fn":"SpriteSheetData"},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"_backgroundPanel","t":4,"rt":$n[4].Image,"sn":"_backgroundPanel"},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"_collectEffectPrefab","t":4,"rt":$n[1].GameObject,"sn":"_collectEffectPrefab"},{"a":1,"n":"_currentSelectedTile","t":4,"rt":$n[3].Tile,"sn":"_currentSelectedTile"},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"_handController","t":4,"rt":HandController,"sn":"_handController"},{"a":1,"n":"_isCompleteGame","t":4,"rt":$n[0].Boolean,"sn":"_isCompleteGame","box":function ($v) { return Bridge.box($v, System.Boolean, System.Boolean.toString);}},{"a":1,"n":"_isCompleteTutorial","t":4,"rt":$n[0].Boolean,"sn":"_isCompleteTutorial","box":function ($v) { return Bridge.box($v, System.Boolean, System.Boolean.toString);}},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"_levelData","t":4,"rt":$n[3].LevelData,"sn":"_levelData"},{"a":1,"n":"_listTile","t":4,"rt":$n[2].Dictionary$2(System.Int32,System.Collections.Generic.List$1(ProjectGamePlay.Tile)),"sn":"_listTile"},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"_playNowButton","t":4,"rt":$n[4].Button,"sn":"_playNowButton"},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"_slotRootPrefab","t":4,"rt":$n[1].Transform,"sn":"_slotRootPrefab"},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"_spriteSheetData","t":4,"rt":$n[3].SpriteSheetData,"sn":"_spriteSheetData"},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"_tilePrefab","t":4,"rt":$n[1].GameObject,"sn":"_tilePrefab"},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"_tileRoot","t":4,"rt":$n[1].GameObject,"sn":"_tileRoot"},{"a":1,"n":"_timer","t":4,"rt":$n[0].Single,"sn":"_timer","box":function ($v) { return Bridge.box($v, System.Single, System.Single.format, System.Single.getHashCode);}},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"_tryButton","t":4,"rt":$n[4].Button,"sn":"_tryButton"},{"a":1,"n":"instance","is":true,"t":4,"rt":PlayableAdsManager,"sn":"instance"},{"a":1,"n":"numOfPlayerTurn","t":4,"rt":$n[0].Int32,"sn":"numOfPlayerTurn","box":function ($v) { return Bridge.box($v, System.Int32);}},{"a":2,"n":"tileCollectSound","t":4,"rt":$n[1].AudioSource,"sn":"tileCollectSound"},{"a":2,"n":"tileTapSound","t":4,"rt":$n[1].AudioSource,"sn":"tileTapSound"},{"a":2,"n":"unCollectSound","t":4,"rt":$n[1].AudioSource,"sn":"unCollectSound"},{"a":1,"backing":true,"n":"<ListTilesController>k__BackingField","t":4,"rt":$n[3].ListTilesController,"sn":"ListTilesController"},{"a":1,"backing":true,"n":"<SlotHolder>k__BackingField","t":4,"rt":$n[3].SlotHolder,"sn":"SlotHolder"}]}; }, $n);
     /*PlayableAdsManager end.*/
 
     /*PlayNowButton start.*/
-    $m("PlayNowButton", function () { return {"att":1048577,"a":2,"m":[{"a":2,"isSynthetic":true,"n":".ctor","t":1,"sn":"ctor"},{"a":2,"n":"CompleteZoomInButton","t":8,"sn":"CompleteZoomInButton","rt":$n[0].Void},{"a":2,"n":"OnMouseDown","t":8,"sn":"OnMouseDown","rt":$n[0].Void},{"a":2,"n":"Start","t":8,"sn":"Start","rt":$n[0].Void},{"a":2,"n":"ZoomInButton","t":8,"sn":"ZoomInButton","rt":$n[0].Void},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"_animator","t":4,"rt":$n[1].Animator,"sn":"_animator"}]}; }, $n);
+    $m("PlayNowButton", function () { return {"att":1048577,"a":2,"m":[{"a":2,"isSynthetic":true,"n":".ctor","t":1,"sn":"ctor"},{"a":2,"n":"Active","t":8,"sn":"Active","rt":$n[0].Void},{"a":2,"n":"CompleteZoomInButton","t":8,"sn":"CompleteZoomInButton","rt":$n[0].Void},{"a":2,"n":"OnMouseDown","t":8,"sn":"OnMouseDown","rt":$n[0].Void},{"a":2,"n":"Start","t":8,"sn":"Start","rt":$n[0].Void},{"a":2,"n":"ZoomInButton","t":8,"sn":"ZoomInButton","rt":$n[0].Void},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"_animator","t":4,"rt":$n[1].Animator,"sn":"_animator"},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"_button","t":4,"rt":$n[4].Button,"sn":"_button"},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"_buttonBackground","t":4,"rt":$n[4].Image,"sn":"_buttonBackground"},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"_buttonText","t":4,"rt":$n[5].TMP_Text,"sn":"_buttonText"}]}; }, $n);
     /*PlayNowButton end.*/
 
     /*IAmAnEmptyScriptJustToMakeCodelessProjectsCompileProperty start.*/

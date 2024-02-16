@@ -39,7 +39,8 @@ public class PlayableAdsManager : MonoBehaviour
     private int numOfPlayerTurn = 3;
     private float _timer = 0;
     private Tile _currentSelectedTile;
-    [SerializeField] Button playNowButton;
+    [SerializeField] Button _playNowButton;
+    [SerializeField] Button _tryButton;
     [SerializeField] private Image _backgroundPanel;
     [SerializeField] private GameObject _tilePrefab;
     [SerializeField] private GameObject _tileRoot;
@@ -48,7 +49,6 @@ public class PlayableAdsManager : MonoBehaviour
     [SerializeField] private LevelData _levelData;
     [SerializeField] private GameObject _collectEffectPrefab;
     [SerializeField] private HandController _handController;
-    [SerializeField] private TMP_Text _buttonText;
 
 
     public AudioSource tileTapSound;
@@ -60,6 +60,7 @@ public class PlayableAdsManager : MonoBehaviour
 
     private void Start()
     {
+        FindPanelAndButton();
         SlotHolder = new ProjectGamePlay.SlotHolder(_slotRootPrefab, _levelData.numOfTiles);
         ListTilesController = new ProjectGamePlay.ListTilesController();
         //var dictMap = MapGenerate.GenerateTestMap(24, _spriteSheetData, _tilePrefab, _tileRoot);
@@ -101,6 +102,13 @@ public class PlayableAdsManager : MonoBehaviour
                     0.75f
                 );
             }, 0.75f);
+    }
+
+    private void FindPanelAndButton(){
+        var canvas = GameObject.Find("Canvas");
+        _backgroundPanel = canvas.transform.GetChild(1).GetComponent<Image>();
+        _playNowButton = canvas.transform.GetChild(2).GetComponent<Button>();
+        _tryButton = canvas.transform.GetChild(3).GetComponent<Button>();
     }
 
     public List<ProjectGamePlay.Tile> GetTile(int tileId)
@@ -175,17 +183,18 @@ public class PlayableAdsManager : MonoBehaviour
 
     public void ShowPopUpPlayNow()
     {
-        _buttonText.text = "PLAY NOW";
         _backgroundPanel.gameObject.SetActive(true);
-        playNowButton.gameObject.SetActive(true);
-        playNowButton.GetComponent<PlayNowButton>().ZoomInButton();
+         _playNowButton.gameObject.SetActive(true);
+        //_playNowButton.GetComponent<PlayNowButton>().Active();
+        _playNowButton.GetComponent<PlayNowButton>().ZoomInButton();
+        Debug.Log("ShowPopUpPlayNow");
     }
 
     public void ShowPopUpTry(){
-        _buttonText.text = "TRY";
         _backgroundPanel.gameObject.SetActive(true);
-        playNowButton.gameObject.SetActive(true);
-        playNowButton.GetComponent<PlayNowButton>().ZoomInButton();
+        _tryButton.gameObject.SetActive(true);
+        //_tryButton.GetComponent<PlayNowButton>().Active();
+        _tryButton.GetComponent<PlayNowButton>().ZoomInButton();
     }
 
     public ProjectGamePlay.SlotHolder SlotHolder { get; set; }

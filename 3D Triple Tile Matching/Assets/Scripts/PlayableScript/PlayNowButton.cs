@@ -1,10 +1,18 @@
 using System.Diagnostics;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayNowButton : MonoBehaviour
 {
     [SerializeField]
     private Animator _animator;
+    [SerializeField]
+    private Button _button;
+    [SerializeField]
+    private Image _buttonBackground;
+    [SerializeField]
+    private TMP_Text _buttonText;
 
     public void Start(){
     }
@@ -21,5 +29,11 @@ public class PlayNowButton : MonoBehaviour
 
     public void CompleteZoomInButton(){
         _animator.SetBool("IsZoomIn", false);
+    }
+
+    public void Active(){
+        _button.interactable = true;
+        _buttonBackground.color = new Color(255, 255, 255, 255);
+        _buttonText.color = new Color(255, 255, 255, 255);
     }
 }

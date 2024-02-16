@@ -71,6 +71,7 @@ namespace ProjectGamePlay
                 if (Vector3.Distance(transform.position, _targetPos) < 0.1f)
                 {
                     _isMoving = false;
+                    transform.position = _targetPos;
                 }
             }
         }
