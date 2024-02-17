@@ -61,6 +61,40 @@ namespace ProjectGamePlay{
             return null;
         }
 
+        public List<Tile> GetTilesInLowerFloorById(int id, int floor, int numOfNeededTiles){
+            var listTiles = new List<Tile>();
+            for(int i = 0; i < floor; i++){
+                if(_dictListTilesInFloor.ContainsKey(i)){
+                    foreach(var tile in _dictListTilesInFloor[i]){
+                        if(tile.Id == id){
+                            listTiles.Add(tile);
+                            if(listTiles.Count == numOfNeededTiles){
+                                return listTiles;
+                            }
+                        }
+                    }
+                }
+            }
+            Debug.LogError("Not enough tiles in lower floor");
+            return null;
+        }
+
+        public List<Tile> GetTilesInFloorExceptedId(int floor, int id, int numOfNeededTiles){
+            var listTiles = new List<Tile>();
+            if(_dictListTilesInFloor.ContainsKey(floor)){
+                foreach(var tile in _dictListTilesInFloor[floor]){
+                    if(tile.Id != id){
+                        listTiles.Add(tile);
+                        if(listTiles.Count == numOfNeededTiles){
+                            return listTiles;
+                        }
+                    }
+                }
+            }
+            Debug.LogError("Not enough tiles in floor to get excepted id");
+            return listTiles;
+        }
+
         public Dictionary<int, List<Tile>> ListTiles => _dictListTilesInFloor;
     }
 }

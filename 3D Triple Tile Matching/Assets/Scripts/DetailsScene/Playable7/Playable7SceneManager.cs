@@ -51,7 +51,6 @@ namespace ProjectGamePlay
             }
             listHint[indexHint].SetLayer(50);
             listHint[indexHint].TileState = TileStateEnum.InBlock;
-            Debug.Log("SetNextHint: " + listHint[indexHint].transform.position + " " + listHint[indexHint].gameObject.name);
             _handController.SetTargetPosToMove(listHint[indexHint].transform.position, () =>
                 {
                     indexHint++;
