@@ -110,7 +110,6 @@ namespace ProjectGamePlay
 
         public void ReturnToBlockLayer()
         {
-            Debug.Log("_tileFloor: " + _tileFloor);
             SetLayer(_tileFloor);
         }
 

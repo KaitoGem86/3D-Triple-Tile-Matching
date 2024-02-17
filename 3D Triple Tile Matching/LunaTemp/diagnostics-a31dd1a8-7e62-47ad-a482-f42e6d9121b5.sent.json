@@ -1,0 +1,225 @@
+{
+    "BuildID": "a31dd1a8-7e62-47ad-a482-f42e6d9121b5",
+    "Command": "project:deploy",
+    "ProjectID": "35f35fef124d76f4a9621e5a310bcc25",
+    "ProjectStateHash": "a6b510be77538eb255dd5ff127838908e7be6c3d45adee1abe4a38a4bf08dfc8",
+    "StageCompletedAt": 3,
+    "EarliestFatalError": 0,
+    "StartTime": 1708081051670,
+    "EndTime": 1708081133919,
+    "PlaygroundUserID": 13720,
+    "OperatingSystem": "win32",
+    "UnityPackageID": null,
+    "TargetPlatform": "playground",
+    "UnityVersion": "2021.3.30f1",
+    "LunaVersion": "5.5.0",
+    "LogCount": 9,
+    "Logs": [
+        {
+            "LogID": "d85e6ee2-1117-4963-9209-86ce7f20cb26",
+            "Order": 7,
+            "Timestamp": 1708081134221,
+            "Stage": 3,
+            "ErrorType": 0,
+            "ErrorCode": "LP3014",
+            "Description": "You are using the wrong API: Application.OpenURL.",
+            "Details": [
+                "You are using the wrong API: Application.OpenURL. which can lead to ad networks rejecting the playable. Please use Luna.Unity.Playable.InstallFullGame() instead. "
+            ],
+            "DescriptionValues": [
+                "Application.OpenURL"
+            ],
+            "DetailsValues": [
+                "Application.OpenURL"
+            ],
+            "LogCount": 1,
+            "LinePosition": 22,
+            "FilePath": "D:\\Unity Game\\Git 3D Triple Tile Matching\\3D Triple Tile Matching\\Assets\\Scripts\\PlayableScript\\PlayNowButton.cs",
+            "ClassName": "",
+            "MemberName": "",
+            "Severity": 0
+        },
+        {
+            "LogID": "8881e920-b921-4627-96d8-1788f46e4a5a",
+            "Order": 7,
+            "Timestamp": 1708081134259,
+            "Stage": 3,
+            "ErrorType": 3,
+            "ErrorCode": "LP3007",
+            "Description": "You are not using any custom events",
+            "Details": [
+                "You are not using any custom events. It is recommended to use custom events to have a better understanding of the playable."
+            ],
+            "DescriptionValues": [
+                ""
+            ],
+            "DetailsValues": [
+                ""
+            ],
+            "LogCount": 1,
+            "LinePosition": null,
+            "FilePath": "",
+            "ClassName": "",
+            "MemberName": "",
+            "Severity": 0
+        },
+        {
+            "LogID": "af8406f4-67d9-43ae-b7ec-5efc00cddd61",
+            "Order": 7,
+            "Timestamp": 1708081134260,
+            "Stage": 3,
+            "ErrorType": 3,
+            "ErrorCode": "LP3011",
+            "Description": "You are not using any LunaPlaygroundFields attributes.",
+            "Details": [
+                "You are not using any LunaPlaygroundFields attributes, it allows you to configure your playable to different concepts to find the best variation, which can drastically improve playable performance on all ad networks."
+            ],
+            "DescriptionValues": null,
+            "DetailsValues": null,
+            "LogCount": 1,
+            "LinePosition": null,
+            "FilePath": "",
+            "ClassName": "",
+            "MemberName": "",
+            "Severity": 0
+        },
+        {
+            "LogID": "0f208ab8-f2da-475c-adb8-85bc3bd2932a",
+            "Order": 0,
+            "Timestamp": 1708081060335,
+            "Stage": 1,
+            "ErrorType": 0,
+            "ErrorCode": "LP1030",
+            "Description": "TMP Font Asset uses unsupported 'Atlas Population Mode'",
+            "Details": [
+                "TMP Font Asset '{0}' uses Atlas Population Mode '{1}' which is not supported"
+            ],
+            "DescriptionValues": [],
+            "DetailsValues": [
+                "LiberationSans SDF - Fallback",
+                "Dynamic"
+            ],
+            "LogCount": 1,
+            "LinePosition": 0,
+            "FilePath": "",
+            "ClassName": "",
+            "MemberName": "",
+            "Severity": 0
+        },
+        {
+            "LogID": "a23e7f75-a860-457f-abf3-f36842d48811",
+            "Order": 1,
+            "Timestamp": 1708081060421,
+            "Stage": 1,
+            "ErrorType": 0,
+            "ErrorCode": "LP1030",
+            "Description": "TMP Font Asset uses unsupported 'Atlas Population Mode'",
+            "Details": [
+                "TMP Font Asset '{0}' uses Atlas Population Mode '{1}' which is not supported"
+            ],
+            "DescriptionValues": [],
+            "DetailsValues": [
+                "LiberationSans SDF",
+                "Dynamic"
+            ],
+            "LogCount": 1,
+            "LinePosition": 0,
+            "FilePath": "",
+            "ClassName": "",
+            "MemberName": "",
+            "Severity": 0
+        },
+        {
+            "LogID": "b0a8e34a-4d32-4080-95b5-a90237bf894c",
+            "Order": 2,
+            "Timestamp": 1708081060620,
+            "Stage": 1,
+            "ErrorType": 0,
+            "ErrorCode": "LP1012",
+            "Description": "Export Error: An item with the same key has already been added. Key: TextMeshPro/Mobile/Distance Field (UnityEngine.Shader)",
+            "Details": [
+                "TextMeshPro/Distance Field Overlay",
+                ""
+            ],
+            "DescriptionValues": [
+                "An item with the same key has already been added. Key: TextMeshPro/Mobile/Distance Field (UnityEngine.Shader)"
+            ],
+            "DetailsValues": [],
+            "LogCount": 1,
+            "LinePosition": 0,
+            "FilePath": "Assets/TextMesh Pro/Shaders/TMP_SDF Overlay.shader",
+            "ClassName": "",
+            "MemberName": "",
+            "Severity": 0
+        },
+        {
+            "LogID": "b36ecf73-d3a0-4b21-a9d1-68e2b4144343",
+            "Order": 3,
+            "Timestamp": 1708081060638,
+            "Stage": 1,
+            "ErrorType": 0,
+            "ErrorCode": "LP1012",
+            "Description": "Export Error: An item with the same key has already been added. Key: TextMeshPro/Mobile/Distance Field (UnityEngine.Shader)",
+            "Details": [
+                "TextMeshPro/Distance Field SSD",
+                ""
+            ],
+            "DescriptionValues": [
+                "An item with the same key has already been added. Key: TextMeshPro/Mobile/Distance Field (UnityEngine.Shader)"
+            ],
+            "DetailsValues": [],
+            "LogCount": 1,
+            "LinePosition": 0,
+            "FilePath": "Assets/TextMesh Pro/Shaders/TMP_SDF SSD.shader",
+            "ClassName": "",
+            "MemberName": "",
+            "Severity": 0
+        },
+        {
+            "LogID": "3944048d-567d-4c0e-af67-9b73a9826fb5",
+            "Order": 4,
+            "Timestamp": 1708081060708,
+            "Stage": 1,
+            "ErrorType": 0,
+            "ErrorCode": "LP1012",
+            "Description": "Export Error: An item with the same key has already been added. Key: TextMeshPro/Mobile/Distance Field (UnityEngine.Shader)",
+            "Details": [
+                "TextMeshPro/Distance Field",
+                ""
+            ],
+            "DescriptionValues": [
+                "An item with the same key has already been added. Key: TextMeshPro/Mobile/Distance Field (UnityEngine.Shader)"
+            ],
+            "DetailsValues": [],
+            "LogCount": 1,
+            "LinePosition": 0,
+            "FilePath": "Assets/TextMesh Pro/Shaders/TMP_SDF.shader",
+            "ClassName": "",
+            "MemberName": "",
+            "Severity": 0
+        },
+        {
+            "LogID": "29c88dda-7be9-41d9-8fc0-23a3dc524e3c",
+            "Order": 5,
+            "Timestamp": 1708081065815,
+            "Stage": 1,
+            "ErrorType": 2,
+            "ErrorCode": "LP1010",
+            "Description": "Looks like a collider was scaled, this might affect performance.",
+            "Details": [
+                "Looks like Tile collider on Tile game object was scaled, this might affect performance."
+            ],
+            "DescriptionValues": [],
+            "DetailsValues": [
+                "Tile",
+                "Tile"
+            ],
+            "LogCount": 1,
+            "LinePosition": 0,
+            "FilePath": "",
+            "ClassName": "",
+            "MemberName": "",
+            "Severity": 0
+        }
+    ]
+}

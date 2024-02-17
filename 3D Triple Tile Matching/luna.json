@@ -2,7 +2,7 @@
     "version": "5.5.0",
     "projectId": "35f35fef124d76f4a9621e5a310bcc25",
     "applicationID": 20285,
-    "creativeName": "TripleTile15",
+    "creativeName": "Triple-Tile-7th",
     "pgServer": "EU",
     "window": {
         "‐ ": true
@@ -169,9 +169,11 @@
             ]
         },
         "scenes": [
-            "Assets/Scenes/PlayableScene.unity"
+            "Assets/Scenes/Playable7Scene.unity"
         ],
-        "disabledScenes": [],
+        "disabledScenes": [
+            "Assets/Scenes/Playable6Scene.unity"
+        ],
         "startupScene": 0,
         "packages": {
             "default": {

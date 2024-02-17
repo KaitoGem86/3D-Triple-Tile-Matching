@@ -8,6 +8,7 @@ using UnityEngine;
 public class HandController : MonoBehaviour
 {
 
+    [SerializeField] private Animator _animator;
     private bool _isMoving = false;
     private Vector3 _targetPos;
     Action _onCompleteMoving;
@@ -21,14 +22,18 @@ public class HandController : MonoBehaviour
             if (Vector3.Distance(transform.position, _targetPos) < 0.1f)
             {
                 _isMoving = false;
+                transform.position = _targetPos;
+                _animator.SetBool("IsMoving", false);
                 _onCompleteMoving?.Invoke();
             }
         }
     }
 
-    public async void SetTargetPosToMove(Vector3 targetPos, Action onCompleteMoving, float timeDelay)
+    public async void SetTargetPosToMove(Vector3 targetPos, Action onCompleteMoving, float timeDelay, bool isHaveAnim = false)
     {
         await Task.Delay(TimeSpan.FromSeconds(timeDelay));
+        if (isHaveAnim)
+            _animator.SetBool("IsMoving", true);
         _targetPos = targetPos;
         _isMoving = true;
         _onCompleteMoving = onCompleteMoving;

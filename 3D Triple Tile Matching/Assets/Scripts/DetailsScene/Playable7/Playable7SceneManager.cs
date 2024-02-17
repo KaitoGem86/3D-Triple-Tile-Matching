@@ -40,18 +40,20 @@ namespace ProjectGamePlay
 
         public void SetNextHint()
         {
-            listHint[indexHint].SetLayer(50);
-            listHint[indexHint].TileState = TileStateEnum.InBlock;
-            _handController.SetTargetPosToMove(listHint[indexHint].transform.position, () =>
-                {
-                    if(indexHint == 2){
-                        _handController.SetTargetPosToMove(new Vector3(15, -15, 0), () =>
+            if (indexHint == 3)
+            {
+                _handController.SetTargetPosToMove(new Vector3(15, -15, 0), () =>
                             {
                                 gameObject.SetActive(false);
                             },
                             0.25f);
-                        return;
-                    }
+                return;
+            }
+            listHint[indexHint].SetLayer(50);
+            listHint[indexHint].TileState = TileStateEnum.InBlock;
+            Debug.Log("SetNextHint: " + listHint[indexHint].transform.position + " " + listHint[indexHint].gameObject.name);
+            _handController.SetTargetPosToMove(listHint[indexHint].transform.position, () =>
+                {
                     indexHint++;
                 }, 0.3f);
         }
