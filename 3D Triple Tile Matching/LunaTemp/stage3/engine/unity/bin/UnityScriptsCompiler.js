@@ -1,6 +1,6 @@
 if ( TRACE ) { TRACE( JSON.parse( '["GenerateLevel.GenDataTool#ReadMapFromGameObject","GenerateLevel.MakeTileMap#ctor","GenerateLevel.MakeTileMap#GenTileMap","GenerateLevel.MakeTileMap#CreatePixelMap","GenerateLevel.MakeTileMap#CreatePixelTile","HandController#init","HandController#FixedUpdate","HandController#SetTargetPosToMove","HandController#AutoMoveAndCollectTripleGroup","ObjectPool.Pooling#Instance#get","ObjectPool.Pooling#ctor","ObjectPool.Pooling#CreatePool","ObjectPool.Pooling#SpawnFromPool","ObjectPool.Pooling#ReturnToPool","PlayableAdsManager#Instance#get","PlayableAdsManager#SpriteSheetData#get","PlayableAdsManager#IsCompleteGame#get","PlayableAdsManager#IsCompleteGame#set","PlayableAdsManager#IsAllowSelectTile#get","PlayableAdsManager#IsAllowSelectTile#set","PlayableAdsManager#IsInTutorial#get","PlayableAdsManager#IsInTutorial#set","PlayableAdsManager#BaseStartSceneManager#get","PlayableAdsManager#init","PlayableAdsManager#Awake","PlayableAdsManager#Start","PlayableAdsManager#FindPanelAndButton","PlayableAdsManager#GetTile","PlayableAdsManager#LateUpdate","PlayableAdsManager#ShowPopUpPlayNow","PlayableAdsManager#ShowPopUpTry","PlayNowButton#Start","PlayNowButton#OnMouseDown","PlayNowButton#ZoomInButton","PlayNowButton#CompleteZoomInButton","PlayNowButton#Active","ProjectGamePlay.BaseStartSceneManager#StartScene","ProjectGamePlay.BaseStartSceneManager#CompleteTutorialOfAds","ProjectGamePlay.LevelData#init","ProjectGamePlay.ListTilesController#ListTiles#get","ProjectGamePlay.ListTilesController#ctor","ProjectGamePlay.ListTilesController#AddTileToFloor","ProjectGamePlay.ListTilesController#RemoveTileFromFloor","ProjectGamePlay.ListTilesController#GetListTilesInFloor","ProjectGamePlay.ListTilesController#SetConnectForTile","ProjectGamePlay.ListTilesController#GetHint","ProjectGamePlay.MapGenerate#GenerateTestMap$1","ProjectGamePlay.MapGenerate#GenerateTestMap","ProjectGamePlay.MapGenerate#GenerateMapWithTutorialInFirstLayer","ProjectGamePlay.MapGenerate#GenerateMap","ProjectGamePlay.RectangeleUtils#IsRectangleOverlap","ProjectGamePlay.SlotController#ContainedTile#get","ProjectGamePlay.SlotController#ContainedTile#set","ProjectGamePlay.SlotController#LeftSlot#get","ProjectGamePlay.SlotController#LeftSlot#set","ProjectGamePlay.SlotController#RightSlot#get","ProjectGamePlay.SlotController#RightSlot#set","ProjectGamePlay.SlotController#ctor","ProjectGamePlay.SlotController#GetSlotPosition","ProjectGamePlay.SlotController#MoveTileToRightSlot","ProjectGamePlay.SlotController#MoveTileToLeftSlot","ProjectGamePlay.SlotController#MoveTileToLeftSlotWithStep","ProjectGamePlay.SlotHolder#ListContainedTileId#get","ProjectGamePlay.SlotHolder#NumberOfTilesInSlots#get","ProjectGamePlay.SlotHolder#NumberOfTilesInSlots#set","ProjectGamePlay.SlotHolder#NumOfTilesMoving#get","ProjectGamePlay.SlotHolder#NumOfTilesMoving#set","ProjectGamePlay.SlotHolder#init","ProjectGamePlay.SlotHolder#ctor","ProjectGamePlay.SlotHolder#GetSlotFree","ProjectGamePlay.SlotHolder#GetSlotFreeForTile","ProjectGamePlay.SlotHolder#AddIdTile","ProjectGamePlay.SlotHolder#CheckLoseGame","ProjectGamePlay.SlotHolder#CollectTripleTile","ProjectGamePlay.SpriteSheetData#GetSprite","ProjectGamePlay.Tile#TileState#get","ProjectGamePlay.Tile#TileState#set","ProjectGamePlay.Tile#Id#get","ProjectGamePlay.Tile#Id#set","ProjectGamePlay.Tile#Index#get","ProjectGamePlay.Tile#Index#set","ProjectGamePlay.Tile#Animator#get","ProjectGamePlay.Tile#init","ProjectGamePlay.Tile#Start","ProjectGamePlay.Tile#SetTileOnFloor","ProjectGamePlay.Tile#OnTileCollect","ProjectGamePlay.Tile#AnimCollect","ProjectGamePlay.Tile#AnimUnCollected","ProjectGamePlay.Tile#FixedUpdate","ProjectGamePlay.Tile#SetSpriteIcon","ProjectGamePlay.Tile#SetTargetPosToMove","ProjectGamePlay.Tile#GetPosition","ProjectGamePlay.Tile#SetTileMovingLayer","ProjectGamePlay.Tile#ReturnToBlockLayer","ProjectGamePlay.Tile#SetLayer","ProjectGamePlay.Tile#SetTileStateSelect","ProjectGamePlay.Tile#SetTileBehind","ProjectGamePlay.Tile#RemoveTileFront","ProjectGamePlay.Tile#OnTileInSlot","ProjectGamePlay.Tile#OnCompleteMoveToSlot","ProjectGamePlay.Tile#WaitForCompleteParticle","ProjectGamePlay.TileData#init","ProjectGamePlay.TileDataController#init","ProjectGamePlay.TileDataController#ctor","ProjectGamePlay.TileDataController#GetRandomTileId","ProjectGamePlay.TileDataController#GetTileId","ProjectGamePlay.Playable6SceneManager#StartScene","ProjectGamePlay.Playable7SceneManager#init","ProjectGamePlay.Playable7SceneManager#StartScene","ProjectGamePlay.Playable7SceneManager#SetAllTileToTutorialLayer","ProjectGamePlay.Playable7SceneManager#CompleteTutorialOfAds","ProjectGamePlay.Playable7SceneManager#SetNextHint"]' ) ); }
 /**
- * @version 1.0.8812.32343
+ * @version 1.0.8813.19507
  * @copyright anton
  * @compiler Bridge.NET 17.9.40-luna
  */
@@ -132,6 +132,7 @@ if ( TRACE ) { TRACE( "GenerateLevel.MakeTileMap#CreatePixelTile", this ); }
     Bridge.define("HandController", {
         inherits: [UnityEngine.MonoBehaviour],
         fields: {
+            _animator: null,
             _isMoving: false,
             _targetPos: null,
             _onCompleteMoving: null
@@ -154,6 +155,8 @@ if ( TRACE ) { TRACE( "HandController#FixedUpdate", this ); }
                     this.transform.position = pos.$clone();
                     if (pc.Vec3.distance( this.transform.position, this._targetPos ) < 0.1) {
                         this._isMoving = false;
+                        this.transform.position = this._targetPos.$clone();
+                        this._animator.SetBool$1("IsMoving", false);
                         !Bridge.staticEquals(this._onCompleteMoving, null) ? this._onCompleteMoving() : null;
                     }
                 }
@@ -161,7 +164,7 @@ if ( TRACE ) { TRACE( "HandController#FixedUpdate", this ); }
             /*HandController.FixedUpdate end.*/
 
             /*HandController.SetTargetPosToMove start.*/
-            SetTargetPosToMove: function (targetPos, onCompleteMoving, timeDelay) {
+            SetTargetPosToMove: function (targetPos, onCompleteMoving, timeDelay, isHaveAnim) {
 if ( TRACE ) { TRACE( "HandController#SetTargetPosToMove", this ); }
 
                 var $step = 0,
@@ -172,6 +175,7 @@ if ( TRACE ) { TRACE( "HandController#SetTargetPosToMove", this ); }
                             $step = System.Array.min([0,1], $step);
                             switch ($step) {
                                 case 0: {
+                                    if (isHaveAnim === void 0) { isHaveAnim = false; }
                                     $task1 = System.Threading.Tasks.Task.delay(System.TimeSpan.fromSeconds(timeDelay));
                                     $step = 1;
                                     if ($task1.isCompleted()) {
@@ -182,6 +186,9 @@ if ( TRACE ) { TRACE( "HandController#SetTargetPosToMove", this ); }
                                 }
                                 case 1: {
                                     $task1.getAwaitedResult();
+                                    if (isHaveAnim) {
+                                        this._animator.SetBool$1("IsMoving", true);
+                                    }
                                     this._targetPos = targetPos.$clone();
                                     this._isMoving = true;
                                     this._onCompleteMoving = onCompleteMoving;
@@ -1885,6 +1892,7 @@ if ( TRACE ) { TRACE( "ProjectGamePlay.Playable7SceneManager#SetNextHint", this 
                 }
                 this.listHint.getItem(this.indexHint).SetLayer(50);
                 this.listHint.getItem(this.indexHint).TileState = ProjectGamePlay.TileStateEnum.InBlock;
+                UnityEngine.Debug.Log$1("SetNextHint: " + this.listHint.getItem(this.indexHint).transform.position + " " + (this.listHint.getItem(this.indexHint).gameObject.name || ""));
                 this._handController.SetTargetPosToMove(this.listHint.getItem(this.indexHint).transform.position.$clone(), Bridge.fn.bind(this, function () {
                     this.indexHint = (this.indexHint + 1) | 0;
                 }), 0.3);
@@ -1901,7 +1909,7 @@ if ( TRACE ) { TRACE( "ProjectGamePlay.Playable7SceneManager#SetNextHint", this 
         $n = ["System.Collections.Generic","System","UnityEngine","ProjectGamePlay","UnityEngine.UI","TMPro","ObjectPool","System.Collections"];
 
     /*HandController start.*/
-    $m("HandController", function () { return {"att":1048577,"a":2,"m":[{"a":2,"isSynthetic":true,"n":".ctor","t":1,"sn":"ctor"},{"a":2,"n":"AutoMoveAndCollectTripleGroup","t":8,"pi":[{"n":"listHint","pt":$n[0].List$1(ProjectGamePlay.Tile),"ps":0}],"sn":"AutoMoveAndCollectTripleGroup","rt":$n[1].Void,"p":[$n[0].List$1(ProjectGamePlay.Tile)]},{"a":1,"n":"FixedUpdate","t":8,"sn":"FixedUpdate","rt":$n[1].Void},{"a":2,"n":"SetTargetPosToMove","t":8,"pi":[{"n":"targetPos","pt":$n[2].Vector3,"ps":0},{"n":"onCompleteMoving","pt":Function,"ps":1},{"n":"timeDelay","pt":$n[1].Single,"ps":2}],"sn":"SetTargetPosToMove","rt":$n[1].Void,"p":[$n[2].Vector3,Function,$n[1].Single]},{"a":1,"n":"_isMoving","t":4,"rt":$n[1].Boolean,"sn":"_isMoving","box":function ($v) { return Bridge.box($v, System.Boolean, System.Boolean.toString);}},{"a":1,"n":"_onCompleteMoving","t":4,"rt":Function,"sn":"_onCompleteMoving"},{"a":1,"n":"_targetPos","t":4,"rt":$n[2].Vector3,"sn":"_targetPos"}]}; }, $n);
+    $m("HandController", function () { return {"att":1048577,"a":2,"m":[{"a":2,"isSynthetic":true,"n":".ctor","t":1,"sn":"ctor"},{"a":2,"n":"AutoMoveAndCollectTripleGroup","t":8,"pi":[{"n":"listHint","pt":$n[0].List$1(ProjectGamePlay.Tile),"ps":0}],"sn":"AutoMoveAndCollectTripleGroup","rt":$n[1].Void,"p":[$n[0].List$1(ProjectGamePlay.Tile)]},{"a":1,"n":"FixedUpdate","t":8,"sn":"FixedUpdate","rt":$n[1].Void},{"a":2,"n":"SetTargetPosToMove","t":8,"pi":[{"n":"targetPos","pt":$n[2].Vector3,"ps":0},{"n":"onCompleteMoving","pt":Function,"ps":1},{"n":"timeDelay","pt":$n[1].Single,"ps":2},{"n":"isHaveAnim","dv":false,"o":true,"pt":$n[1].Boolean,"ps":3}],"sn":"SetTargetPosToMove","rt":$n[1].Void,"p":[$n[2].Vector3,Function,$n[1].Single,$n[1].Boolean]},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"_animator","t":4,"rt":$n[2].Animator,"sn":"_animator"},{"a":1,"n":"_isMoving","t":4,"rt":$n[1].Boolean,"sn":"_isMoving","box":function ($v) { return Bridge.box($v, System.Boolean, System.Boolean.toString);}},{"a":1,"n":"_onCompleteMoving","t":4,"rt":Function,"sn":"_onCompleteMoving"},{"a":1,"n":"_targetPos","t":4,"rt":$n[2].Vector3,"sn":"_targetPos"}]}; }, $n);
     /*HandController end.*/
 
     /*PlayableAdsManager start.*/

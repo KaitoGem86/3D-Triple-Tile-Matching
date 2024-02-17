@@ -754,6 +754,7 @@ Deserializers["UnityEngine.EventSystems.StandaloneInputModule"] = function (requ
 Deserializers["HandController"] = function (request, data, root) {
   var i712 = root || request.c( 'HandController' )
   var i713 = data
+  request.r(i713[0], i713[1], 0, i712, '_animator')
   return i712
 }
 
@@ -2334,13 +2335,13 @@ Deserializers.productName = "triple_tile_matching_cube";
 
 Deserializers.lunaInitializationTime = "01/30/2024 16:34:15";
 
-Deserializers.lunaDaysRunning = "16.8";
+Deserializers.lunaDaysRunning = "17.5";
 
 Deserializers.lunaVersion = "5.5.0";
 
 Deserializers.lunaSHA = "aa8b6dc467b3eacc9168b32bb8d120b69b67a956";
 
-Deserializers.creativeName = "Triple-Tile-7th";
+Deserializers.creativeName = "Triple-Tile-7th-first-final";
 
 Deserializers.lunaAppID = "20285";
 
@@ -2388,7 +2389,7 @@ Deserializers.disableAntiAliasing = true;
 
 Deserializers.preferWebGl2 = true;
 
-Deserializers.buildID = "a31dd1a8-7e62-47ad-a482-f42e6d9121b5";
+Deserializers.buildID = "0e402703-71fd-4504-b114-820182ade160";
 
 Deserializers.typeNameToIdMap = function(){ var i = 0; return Deserializers.types.reduce( function( res, item ) { res[ item ] = i++; return res; }, {} ) }()
 
